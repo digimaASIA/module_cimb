@@ -1,0 +1,136 @@
+[
+	{
+		"id": 1,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":1,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":2,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":3,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":4,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":5,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 2,
+		"label":"Terapkan 5 perilaku di pekerjaanmu! 2",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya. 2",
+		"data":[
+			{
+			        "activityid":1,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span> 2",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span> 2",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":2,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i> 2",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span> 2",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 3,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Organization Culture Development</i>",
+		"data":[
+			
+		]
+	},
+	{
+		"id": 4,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>digima Content</i>",
+		"data":[
+			    
+			]
+	},
+	{
+		"id": 5,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>digima University</i>",
+		"data":[
+			
+		]
+	},
+	{
+		"id": 6,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Strategic BusinessDevelopment</i>",
+		"data":[
+			
+		]
+	},
+	{
+		"id": 7,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>General Affair</i>",
+		"data":[
+			
+		]
+	},
+	{
+		"id": 8,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Project Management</i>",
+		"data":[
+			
+		]
+	},
+	{
+		"id": 9,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Production</i>",
+		"data":[
+			
+		]
+	}
+]

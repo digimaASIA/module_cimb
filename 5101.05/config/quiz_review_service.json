@@ -1,0 +1,372 @@
+[
+	{
+		"id": 1,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":1,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":2,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Kronologi Eskalasi)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":3,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":4,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":5,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Financial Strategist</i>",
+		"data":[
+			{
+			        "activityid":3,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Financial Strategist</strong>",
+			        "image":"divisi_digima_asia/option_border_2.png"
+			}
+		]
+	},
+	{
+		"id": 3,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Organization Culture Development</i>",
+		"data":[
+			{
+			        "activityid":5,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Organization Culture Development</strong>",
+			        "image":"divisi_digima_asia/option_border_3.png"
+			}
+		]
+	},
+	{
+		"id": 4,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>digima Content</i>",
+		"data":[
+			    {
+			        "activityid":7,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Division Head digima Content</strong>",
+			        "image":"divisi_digima_asia/option_border_4.png"
+
+			    },
+			    {
+			        "activityid":9,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Associate Division digima Content</strong>",
+			        "image":"divisi_digima_asia/option_border_4.png"
+			    },
+			    {
+			    	"activityid":11,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Dept. Head Content Strategy</strong>",
+			        "image":"divisi_digima_asia/option_border_4.png"
+			    },
+			    {
+			    	"activityid":13,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Dept. Head Content Solution Architecture</strong>",
+			        "image":"divisi_digima_asia/option_border_4.png"
+			    },
+			    {
+			    	"activityid":15,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Dept. Head Content Strategy Engineer</strong>",
+			        "image":"divisi_digima_asia/option_border_4.png"
+			    },
+			    {
+			    	"activityid":17,
+			        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+			        "question":"Tuliskan fungsinya maksimal 40 karakter",
+			        "correct":1,
+			        "attempt":1,
+			        "type": "upload_input",
+			        "text":"<strong>Digital Instructional Designer Solution</strong>",
+			        "image":"divisi_digima_asia/option_border_4.png"
+			    }
+			]
+	},
+	{
+		"id": 5,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>digima University</i>",
+		"data":[
+			{
+		    	"activityid":19,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Division Head digima University</strong>",
+		        "image":"divisi_digima_asia/option_border_5.png"
+		    },
+		    {
+		    	"activityid":21,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Learning Solution</strong>",
+		        "image":"divisi_digima_asia/option_border_5.png"
+		    },
+		    {
+		    	"activityid":23,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Learning Delivery</strong>",
+		        "image":"divisi_digima_asia/option_border_5.png"
+		    }
+		]
+	},
+	{
+		"id": 6,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Strategic BusinessDevelopment</i>",
+		"data":[
+			{
+		    	"activityid":25,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Division Head Strategic BusinessDevelopment</strong>",
+		        "image":"divisi_digima_asia/option_border_6.png"
+		    },
+		    {
+		    	"activityid":27,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Associate Division Strategic Business Development</strong>",
+		        "image":"divisi_digima_asia/option_border_6.png"
+		    },
+		    {
+		    	"activityid":29,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Strategic Business Development</strong>",
+		        "image":"divisi_digima_asia/option_border_6.png"
+		    },
+		    {
+		    	"activityid":31,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Strategic Business Implementation</strong>",
+		        "image":"divisi_digima_asia/option_border_6.png"
+		    }
+		]
+	},
+	{
+		"id": 7,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>General Affair</i>",
+		"data":[
+			{
+		    	"activityid":33,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Division Head Operation</strong>",
+		        "image":"divisi_digima_asia/option_border_7.png"
+		    }
+		]
+	},
+	{
+		"id": 8,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Project Management</i>",
+		"data":[
+			{
+		    	"activityid":35,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Division Head Project Management</strong>",
+		        "image":"divisi_digima_asia/option_border_8.png"
+		    },
+		    {
+		    	"activityid":37,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Post Project Implementation</strong>",
+		        "image":"divisi_digima_asia/option_border_8.png"
+		    },
+		    {
+		    	"activityid":39,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Project Project Solution & Controller</strong>",
+		        "image":"divisi_digima_asia/option_border_8.png"
+		    },
+		    {
+		    	"activityid":41,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Project Management</strong>",
+		        "image":"divisi_digima_asia/option_border_8.png"
+		    },
+		    {
+		    	"activityid":43,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Strategic Marketing Development</strong>",
+		        "image":"divisi_digima_asia/option_border_8.png"
+		    }
+		]
+	},
+	{
+		"id": 9,
+		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		"desc":"<i>Production</i>",
+		"data":[
+			{
+		    	"activityid":45,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Division Head Production & Strategic Implementation</strong>",
+		        "image":"divisi_digima_asia/option_border_9.png"
+		    },
+		    {
+		    	"activityid":47,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Associate Division Production & Strategic Implementation</strong>",
+		        "image":"divisi_digima_asia/option_border_9.png"
+		    },
+		    {
+		    	"activityid":49,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Art and Design Direction</strong>",
+		        "image":"divisi_digima_asia/option_border_9.png"
+		    },
+		    {
+		    	"activityid":51,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Visual & Animation Developement</strong>",
+		        "image":"divisi_digima_asia/option_border_9.png"
+		    },
+		    {
+		    	"activityid":53,
+		        "label": "Upload fotomu bersama Team Leader dan tulis fungsinya.",
+		        "question":"Tuliskan fungsinya maksimal 40 karakter",
+		        "correct":1,
+		        "attempt":1,
+		        "type": "upload_input",
+		        "text":"<strong>Dept. Head Technology Solution</strong>",
+		        "image":"divisi_digima_asia/option_border_9.png"
+		    }
+		]
+	}
+]

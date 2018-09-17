@@ -1,0 +1,114 @@
+{
+	"course":"Basic Sales & Service Fundamental",
+	"module":"Action:<br>20 Days to be Detail",
+	"num_module":1,
+	"list_slide":[
+		{
+			"slide":0,
+			"file":"content/cover.html",
+			"hasClass":false,
+			"pre_slide":[]
+		},
+		{
+			"slide":1,
+			"file":"content/slider.html",
+			"hasClass":true,
+			"class":"Slider",
+			"pre_slide":[0],
+			"data":[
+				{
+					"image":"slide_1.PNG",
+					"text":"Master Guru akan menguji<br>pemahamanmu mengenai attention to detail.",
+					"ribbon":"",
+					"button":[
+						
+					]
+				},
+				{
+					"image":"max.gif",
+					"text":"Selama 20 hari, terapkan 5 perilaku attention to detail dalam pekerjaan sehari-hari kamu.",
+					"ribbon":"",
+					"button":[
+						{"text":"Start"}
+					]
+				}
+			]
+		},
+		{
+			"slide":2,
+			"file":"content/before_challenge.html",
+			"hasClass":true,
+			"class":"beforeChallenge",
+			"pre_slide":[0,1]
+		},
+		{
+			"slide":3,
+			"file":"content/game_map.html",
+			"hasClass":true,
+			"class":"gameMap",
+			"pre_slide":[0,1,2],
+			"slide_data":[
+				{
+					"image":"prof-pic.png",
+					"text":"<span style='red;'>Terapkan 5 perilaku</span> attention to detail di pekerjaan selama <span style='red;'>20 hari.</span>",
+					"ribbon":"",
+					"button":[
+						
+					]
+				},
+				{
+					"image":"prof-pic.png",
+					"text":"<span style='color:red'>Unggah bukti</span> sesuai petunjuk. Lalu <span style='color:red;'>tuliskan penjelasan</span> terkait bukti sebagai pertimbangan supervisor.",
+					"ribbon":"",
+					"button":[
+						
+					]
+				},
+				{
+					"image":"prof-pic.png",
+					"text":"Bukti dan penjelasanmu akan <span style='color:red'>direview oleh Supervisor</span>",
+					"ribbon":"",
+					"button":[
+						
+					]
+				},
+				{
+					"image":"prof-pic.png",
+					"text":"Raih <span style='color:red'>minimal skor 75</span> untuk lulus dari modul ini.",
+					"ribbon":"",
+					"button":[
+						{"text":"OK"}
+					]
+				}
+			]
+		},
+		{
+			"slide":4,
+			"file":"content/review_list.html",
+			"hasClass":true,
+			"class":"reviewList",
+			"pre_slide":[0,1,2,3]
+		},
+		{
+			"slide":5,
+			"file":"content/quiz_review.html",
+			"hasClass":true,
+			"class":"ModulReview",
+			"pre_slide":[0,1,2,3,4]
+		},
+		{
+			"slide":6,
+			"file":"content/review.html",
+			"hasClass":true,
+			"class":"review",
+			"pre_slide":[0,1,2,3,4,5]
+		},
+		{
+			"slide":7,
+			"file":"content/result.html",
+			"hasClass":false,
+			"class":"Result",
+			"pre_slide":[0,1,2,3,4,5]
+		}
+	]
+}
