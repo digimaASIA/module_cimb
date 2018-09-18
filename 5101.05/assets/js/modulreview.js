@@ -34,7 +34,8 @@ ModulReview.prototype.init = function() {
 	$this.category_game = $this.game_data['category_game'];
 	$this.category_game = 'sales';
 
-	$this.curr_challenge = ($this.game_data["curr_challenge"] == undefined ? 1 : parseInt($this.game_data["curr_challenge"]));
+	// $this.curr_challenge = ($this.game_data["curr_challenge"] == undefined ? 1 : parseInt($this.game_data["curr_challenge"]));
+	$this.curr_challenge = game.current_challenge;
 	console.log('curr_challenge: '+$this.curr_challenge);
 	// $this.curr_challenge = parseInt($this.game_data['curr_challenge']);
 	// $this.curr_challenge = 1; //comment
@@ -50,6 +51,13 @@ ModulReview.prototype.init = function() {
 	$this.sc_data = [];
 
 	$this.max_activityid = $this.max_file_upload * $this.curr_challenge + 1;
+
+	//set variabel status submit
+	$this.flagSubmit = 0;
+
+	$this.arr_last_challenge = [];
+	$this.count_sub_challenge_before = 0;
+
 	/*$("#tutorial").modal("show");
 	$('#sliderTutorial').slick({
         dots: true,
@@ -67,15 +75,31 @@ ModulReview.prototype.init = function() {
 	// },'json');
 	
 	$.get("config/quiz_review_"+$this.category_game+".json",function(e){
-		console.log(e);/**/
+		console.log(e);
 		// $this.ldata = e;
-		var curr_soal = e[$this.curr_challenge - 1]['data'][$this.curr_sub_challenge - 1];
-		$this.curr_soal = [];
-		$this.curr_soal.push(e[$this.curr_challenge - 1]['data'][$this.curr_sub_challenge - 1])
-		console.log($this.curr_soal);
-		$this.mission_total = e[$this.curr_challenge - 1]['data'].length;
+		console.log($this.curr_sub_challenge);
+		if($this.curr_challenge > 1){
+			for (var i = 0; i < ($this.curr_challenge - 1); i++) {
+				var count = e[i]['data'].length;
+				$this.count_sub_challenge_before += count;
+			}
+			// console.log($this.count_sub_challenge_before);
+			// console.log($this.curr_sub_challenge - 1 - $this.count_sub_challenge_before);
+			var curr_soal = e[$this.curr_challenge - 1]['data'][$this.curr_sub_challenge - 1 - $this.count_sub_challenge_before];
+			$this.curr_soal = [];
+			$this.curr_soal.push(e[$this.curr_challenge - 1]['data'][$this.curr_sub_challenge - 1 - $this.count_sub_challenge_before])
+			console.log($this.curr_soal);
+			$this.mission_total = e[$this.curr_challenge - 1]['data'].length;
+		}else{
+			var curr_soal = e[$this.curr_challenge - 1]['data'][$this.curr_sub_challenge - 1];
+			$this.curr_soal = [];
+			$this.curr_soal.push(e[$this.curr_challenge - 1]['data'][$this.curr_sub_challenge - 1])
+			console.log($this.curr_soal);
+			$this.mission_total = e[$this.curr_challenge - 1]['data'].length;
+		}
 
 		$('.total_mission').html('/'+$this.mission_total);
+		console.log(curr_soal);
 		$('.desc_challenge').html(curr_soal['label_2']);
 		$this.mulai_game();
 
@@ -99,7 +123,8 @@ ModulReview.prototype.mulai_game = function() {
 	$this.isReview = false;
 	$this.isComplete = false;
 
-	$this.sc_data = game.scorm_helper.getLastGame("sub_challenge_"+$this.curr_sub_challenge);
+	// $this.sc_data = game.scorm_helper.getLastGame("sub_challenge_"+$this.curr_sub_challenge);
+	// console.log($this.sc_data);
 	// $this.sc_data = [];
 	$('.loader_image_index').show();
 	$.post(game.base_url+"get_challenge.php",{"cmid":game.module_id,"username":game.username},function(e){
@@ -115,7 +140,7 @@ ModulReview.prototype.mulai_game = function() {
 				}
 				// console.log(e[i]["challenge_id"]);
 				// console.log($this.curr_sub_challenge);
-				if(e[i]["grade"] != -1 && e[i]["challenge_id"] == $this.curr_sub_challenge){
+				if(e[i]["grade"] != -1 && e[i]["challenge_id"] == $this.curr_challenge){
 					if(e[i]["status"]=="accepted" && e[i]["review_by"] == "buddy"){
 						$this.count_review_buddy++;
 					}
@@ -128,7 +153,7 @@ ModulReview.prototype.mulai_game = function() {
 				}
 				else{
 					$this.isReview = true;
-					break;
+					// break;
 				}
 
 				// check activity id lower than max activityid
@@ -136,10 +161,32 @@ ModulReview.prototype.mulai_game = function() {
 				if(parseInt(e[i]['activityid']) == find_activityid){
 					$this.count_upload += 1;
 				}
+
+				console.log(e[i]['challenge_id']+' - '+$this.curr_challenge);
+				if(e[i]['challenge_id'] == $this.curr_challenge){
+					var max = game.max_file_upload + 1;
+					var min = 1;
+					var activityid = e[i]["activityid"];
+					if($this.curr_sub_challenge > 1){
+						var deret_n = $.deretAritmatika(1, 4, $this.curr_sub_challenge); //function deret aritmatika kyubi.js
+						min = deret_n;
+
+						var deret_n2 = $.deretAritmatika(4, 4, $this.curr_sub_challenge); //function deret aritmatika kyubi.js
+						max = deret_n2;
+					}
+					console.log('min: '+min+' max: '+max+' activityid: '+activityid);
+					if(activityid >= min && activityid <= max){
+						$this.flagSubmit = 1;
+						$this.arr_last_challenge.push(e[i]);
+					}
+				}
 			}
 
 			//set mission upload to number_mission
 			$('.number_mission').html($this.curr_sub_challenge);
+			if($this.curr_challenge > 1){
+				$('.number_mission').html($this.curr_sub_challenge - $this.count_sub_challenge_before);
+			}
 
 			if(($this.count_review_learner == e.length && $this.tipe_review=="learner") || $this.count_review_atasan == e.length){
 				$this.isComplete = true;
@@ -152,6 +199,7 @@ ModulReview.prototype.mulai_game = function() {
 					$this.isReview = true;
 				}
 			}
+
 			// console.log('$this.isReview: '+$this.isReview);
 			$this.create_challange();
 			// if($this.isReview){
@@ -273,7 +321,7 @@ ModulReview.prototype.create_challange = function() {
 				try{
 					$('.loader_image_index').show();
 					console.log({username:game.username,cmid:game.module_id,data:data_submit});
-					$.post(game.base_url+"submit.php",{username:game.username,cmid:game.module_id,data:data_submit},function(e){
+					$.post(game.base_url+"submit_review.php",{username:game.username,cmid:game.module_id,data:data_submit},function(e){
 						console.log(e);
 						$('.loader_image_index').hide();
 						if(e.status == "success"){
@@ -310,27 +358,25 @@ ModulReview.prototype.create_challange = function() {
 	
 	var clone_item = $('.list-group').clone();
 	var clone_item_2 = $('.list-group .list-group-item').first().clone();
-	var curr_upload_id = parseInt($('.curr_upload_id').val());
 	// console.log(clone_item_2);
 	$('.list-group').html('');
 	console.log('test');
 	var flagEventDelete = 0;
 	var splice;
-		$(".fileToUpload").change(function(e){
+	var activityid_before = 0;
+
+	$(".fileToUpload").change(function(e){
 		console.log(this);
 		console.log(curr_upload_id);
 		var files       = this.files;
-		var numItems = $('.list-group .list-group-item').length
+		var numItems = $('.list-group .list-group-item').length;
+		var curr_upload_id = parseInt($('.curr_upload_id').val());
 		console.log(files);
 		console.log('curr_upload_id: '+curr_upload_id);
 		console.log('numItems: '+numItems);
 		//max_file_upload from game.js
 		if(files.length <= $this.max_file_upload && numItems <= 2){
-			var id = curr_upload_id;
 			for (var i = 0; i < files.length; i++) {
-				// id = curr_upload_id;
-				// id = i+1;
-				console.log('id: '+id);
 				var clone_item_3 = $(clone_item_2).clone();
 				console.log(i);
 				
@@ -353,7 +399,7 @@ ModulReview.prototype.create_challange = function() {
 	            var flagImage = 0;
 	            const file = files[i];
 				if($.inArray(ext,img_ext) > -1){
-					activity_type = 1; //activity type image
+					// activity_type = 1; //activity type image
 					flagImage = 1;
 					// console.log('test');
 					$('.loader_image_index').show();
@@ -361,181 +407,33 @@ ModulReview.prototype.create_challange = function() {
 						$('.loader_image_index').hide();
 						console.log(res);
 
-						// //upload image to server
-						// var activityid = $this.curr_sub_challenge * (numItems+1);
-						// var form = clone_item_3;
-						// console.log('uploadFile');
-						// $('.loader_image_index').show();
-						// // console.log(files[i]);
-						// game.uploadFile(activityid, res, function(data){	
-						// 	$('.loader_image_index').hide();
-						// 	console.log(data);
-						// 	console.log(file);
-						// 	console.log(form);
-						// 	console.log(form.find(".img_dynamic"));
-
-						// 	if(data["status"] == "success"){
-						// 		var arr_img = [];
-						// 		arr_img.push(res);
-						// 		$(clone_item_3).attr('id', 'list-group-item_'+numItems);
-						// 		$(clone_item_3).find('.img_dynamic').attr('id','img_dynamic-'+numItems);
-						// 		$(clone_item_3).find('.fa-times').attr('id','fa-times_'+numItems);
-						// 		// $(clone_item_3).find('.fa-times').attr('onclick','modulReview.remove_item('+numItems+')');
-						// 		$(clone_item_3).find('.txt_dynamic .file_name').html(file.name);
-						// 		// $('#img_dynamic-'+id).attr('src',game.base_url+data2["message"]+"?lastmod="+new Date());
-						// 		// console.log(i);
-						// 		// console.log(arr_img);
-						// 		// console.log(id);
-
-						// 		//preview image
-						// 		// $.base64image(arr_img).done(function(res2){
-						// 		// 	// console.log(res2);
-						// 		// 	// console.log(clone_item_3);
-						// 		// 	console.log('id: '+id);
-						// 		// 	// $(clone_item_3).find('.img_dynamic').attr('src',res2);
-						// 		// });
-
-						// 		curr_upload_id += 1;
-						// 		console.log('curr_upload_id: '+curr_upload_id);
-						// 		$('.curr_upload_id').val(numItems);
-						// 		$('.list-group').append(clone_item_3);
-
-						// 		$('.fa-times').click(function(e){
-						// 			var id = $(this).attr('id');
-						// 			id = id.split('_');	
-						// 			id = id[1];
-						// 			console.log(id);
-						// 			$('#list-group-item_'+id).remove();
-						// 			// if($this.sc_data.length > 0){
-						// 			// 	for (var i = 0; i < $this.sc_data.length; i++) {
-						// 			// 		if($this.sc_data[i]['']
-						// 			// 	}
-						// 			// 	$this.sc_data.splice(id, 1);
-						// 			// }
-						// 			console.log(splice);
-						// 			if(splice == undefined){
-						// 				splice = $this.sc_data.splice(id, 1);
-						// 			}
-						// 			console.log(splice);
-						// 			console.log($this.sc_data);
-						// 		});
-
-						// 		console.log('#fa-times_'+numItems);
-
-							
-
-				  //               var grade_by_id = null;
-				  //                // if($this.sc_data[$(form).attr("index")] == null || $this.sc_data[$(form).attr("index")] == undefined || $this.sc_data[$(form).attr("index")] === void 0){
-				  //                //     grade_by_id = null;
-				  //                // }
-				  //                // else{
-				  //                //     grade_by_id = $this.sc_data[$(form).attr("index")]["grade_by_id"];
-				  //                // }
-
-				  //                if(flagImage == 1){
-				  //               	$(form).find(".img_dynamic").attr("src",game.base_url+data["message"]+"?lastmod="+new Date());
-				  //                	activity_response = game.base_url+data["message"];
-				  //                }else{
-				  //                	activity_response = '<a href='+game.base_url+data["message"]+'>Klik Here</a>';
-				  //                }
-
-				  //                console.log('test');
-				  //                var res = {
-				  //                    activityid: activityid,
-				  //                    activity_title: activity_title,
-				  //                    activity_type: activity_type, //activity_type: 5, itu file
-				  //                    activity_question: activity_question,
-				  //                    activity_response: activity_response,
-				  //                    grade:-1,
-				  //                    pass_grade:100,
-				  //                    grade_type:0,
-				  //                    grade_by_id:grade_by_id,
-				  //                    reviewtype:2,
-				  //                    challange_id: $this.curr_challenge
-				  //                };
-				  //                console.log(res);
-				  //                console.log($this.sc_data);
-				  //                console.log(sc_data);
-				  //                $this.sc_data[numItems] = res;
-				  //                sc_data[numItems] = res;
-				  //                console.log($this.sc_data);
-				  //                console.log(sc_data);
-
-				  //                game.scorm_helper.setAnsData("game1",$this.sc_data);
-				  //           }
-							
-						// });
-
 					});
-					// new ImageCompressor(files[i], {
-					// 	maxWidth: 800,
-					// 	maxHeight: 800,
-					// 	success(result) {
-					// 		console.log(result);
-					// 		// callback(result);
-					// 	},
-					// 	error(e) {
-					// 		console.log(e.message);
-					// 		alert(e.message);
-					// 	}
-			  //       });
 				}else{
-					activity_type = 5; //activity type file
-					$(clone_item_3).attr('id', 'list-group-item_'+numItems);
-					$(clone_item_3).find('.img_dynamic').hide();
-					$(clone_item_3).find('.fa-times').attr('id','fa-times_'+numItems);
-					$(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
-					$(clone_item_3).find('.txt_dynamic .file_name').html(files[i].name);
-					var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+files[i].name+"?123";
-					$(clone_item_3).find(".img_dynamic").attr("src",img_src);
+					// activity_type = 5; //activity type file
+					// $(clone_item_3).attr('id', 'list-group-item_'+numItems);
+					// $(clone_item_3).find('.img_dynamic').hide();
+					// $(clone_item_3).find('.fa-times').attr('id','fa-times_'+numItems);
+					// $(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
+					// $(clone_item_3).find('.txt_dynamic .file_name').html(files[i].name);
+					// var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+files[i].name+"?123";
+					// $(clone_item_3).find(".img_dynamic").attr("src",img_src);
 
 					// $('.list-group').append(clone_item_3);
 				}
 
-
-				// curr_upload_id += 1;
-				// console.log('curr_upload_id: '+curr_upload_id);
-				// $('.curr_upload_id').val(numItems);
-				// $('.list-group').append(clone_item_3);
-
-				// console.log('#fa-times_'+numItems);
-				// $('.fa-times').click(function(e){
-				// 	// var id = $(this).attr('id');
-				// 	var id = numItems;
-				// 	// id = id.split('_');
-				// 	// id = id[1];
-				// 	console.log(id);
-				// 	$('#list-group-item_'+id).remove();
-				// 	$this.sc_data.splice(id, 1);
-				// 	console.log($this.sc_data);
-				// });
-
-				// $('.fa-times').click(function(e){
-				// 	var id = $(this).attr('id');
-				// 	id = id.split('_');	
-				// 	id = id[1];
-				// 	console.log(id);
-				// 	$('#list-group-item_'+id).remove();
-				// 	// if($this.sc_data.length > 0){
-				// 	// 	for (var i = 0; i < $this.sc_data.length; i++) {
-				// 	// 		if($this.sc_data[i]['']
-				// 	// 	}
-				// 	// 	$this.sc_data.splice(id, 1);
-				// 	// }
-				// 	console.log(splice);
-				// 	if(splice == undefined){
-				// 		splice = $this.sc_data.splice(id, 1);
-				// 	}
-				// 	console.log(splice);
-				// 	console.log($this.sc_data);
-				// });
-
-
-				//append content will upload to server
-				// $this.loadContent();
-
 				//upload image to server
-				var activityid = $this.curr_sub_challenge * (numItems+1);
+				//deret aritmatika
+				var currSubChallenge = $this.curr_sub_challenge;
+				var activityid = numItems + 1;
+				if($this.curr_sub_challenge > 1){
+					if(numItems == 0){
+						activityid = $.deretAritmatika(1, 4, currSubChallenge); //function kyubi.js
+						activityid_before = activityid;
+					}else{
+						activityid = activityid_before + numItems; //function kyubi.js
+					}
+				}
+				console.log('activityid_2: '+activityid);
 				var form = clone_item_3;
 				console.log('uploadFile');
 				$('.loader_image_index').show();
@@ -545,7 +443,6 @@ ModulReview.prototype.create_challange = function() {
 					console.log(data);
 					console.log(form);
 					console.log(form.find(".img_dynamic"));
-					$('.loader_image_index').hide();
 					if(data["status"] == "success"){
 		                var grade_by_id = null;
 		                 // if($this.sc_data[$(form).attr("index")] == null || $this.sc_data[$(form).attr("index")] == undefined || $this.sc_data[$(form).attr("index")] === void 0){
@@ -555,13 +452,14 @@ ModulReview.prototype.create_challange = function() {
 		                 //     grade_by_id = $this.sc_data[$(form).attr("index")]["grade_by_id"];
 		                 // }
 
-		                 if(flagImage == 1){
+		                if(flagImage == 1){
 	                 		var arr_img = [];
 							arr_img.push(res);
-							$(clone_item_3).attr('id', 'list-group-item_'+numItems);
-							$(clone_item_3).find('.img_dynamic').attr('id','img_dynamic-'+numItems);
-							$(clone_item_3).find('.fa-times').attr('id','fa-times_'+numItems);
-							// $(clone_item_3).find('.fa-times').attr('onclick','modulReview.remove_item('+numItems+')');
+							activity_type = 1; //activity type image
+							$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
+							$(clone_item_3).find('.img_dynamic').attr('id','img_dynamic-'+curr_upload_id);
+							$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
+							// $(clone_item_3).find('.fa-times').attr('onclick','modulReview.remove_item('+curr_upload_id+')');
 							$(clone_item_3).find('.txt_dynamic .file_name').html(file.name);
 							// $('#img_dynamic-'+id).attr('src',game.base_url+data2["message"]+"?lastmod="+new Date());
 							// console.log(i);
@@ -583,43 +481,33 @@ ModulReview.prototype.create_challange = function() {
 
 		                	$(form).find(".img_dynamic").attr("src",game.base_url+data["message"]+"?lastmod="+new Date());
 		                 	activity_response = game.base_url+data["message"];
-		                 }else{
+		                }else{
+		                 	activity_type = 5; //activity type file
+							$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
+							$(clone_item_3).find('.img_dynamic').hide();
+							$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
+							// $(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
+							$(clone_item_3).find('.txt_dynamic .file_name').html(files[i].name);
+							var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+files[i].name+"?123";
+							$(clone_item_3).find(".img_dynamic").attr("src",img_src);
+
 		                 	activity_response = '<a href='+game.base_url+data["message"]+'>Klik Here</a>';
-		                 }
+		                }
 
 		                curr_upload_id += 1;
 						console.log('curr_upload_id: '+curr_upload_id);
-						$('.curr_upload_id').val(numItems);
+						$('.curr_upload_id').val(curr_upload_id);
 						$('.list-group').append(clone_item_3);
 
-						if(numItems == game.max_file_upload){
-			                $('.fa-times').click(function(e){
-								var id = $(this).attr('id');
-								id = id.split('_');	
-								id = id[1];
-								console.log(id);
-								$('#list-group-item_'+id).remove();
 
-								// if($this.sc_data.length > 0){
-								// 	for (var i = 0; i < $this.sc_data.length; i++) {
-								// 		if($this.sc_data[i]['']
-								// 	}
-								// 	$this.sc_data.splice(id, 1);
-								// }
+		                $('.icon_remove').click(function(e){
+		                	$('.list-group').html('');
+		                	$this.sc_data = [];
 
-								console.log(splice);
-								console.log($this.sc_data);
-								if(splice == undefined){
-									splice = $this.sc_data.splice(id, 1);
-								}
-								splice = undefined;
-								console.log(splice);
-								console.log($this.sc_data);
-							});
-						}
+		                	console.log($this.sc_data);
+		                });
 
-		                 console.log('test');
-		                 var res = {
+		                var res = {
 		                     activityid: activityid,
 		                     activity_title: activity_title,
 		                     activity_type: activity_type, //activity_type: 5, itu file
@@ -630,7 +518,7 @@ ModulReview.prototype.create_challange = function() {
 		                     grade_type:0,
 		                     grade_by_id:grade_by_id,
 		                     reviewtype:2,
-		                     challenge_id: $this.curr_sub_challenge
+		                     challenge_id: $this.curr_challenge
 		                 };
 		                 console.log(res);
 		                 console.log($this.sc_data);
@@ -640,9 +528,9 @@ ModulReview.prototype.create_challange = function() {
 		                 console.log($this.sc_data);
 		                 console.log(sc_data);
 
-		                 game.scorm_helper.setAnsData("sub_challenge_"+$this.curr_sub_challenge, $this.sc_data);
+		                game.scorm_helper.setAnsData("sub_challenge_"+$this.curr_sub_challenge, $this.sc_data);
 		            }
-					
+					$('.loader_image_index').hide();
 				});
 			} //end looping
 			
@@ -656,6 +544,60 @@ ModulReview.prototype.create_challange = function() {
 			alert('Maximum upload is 3 files !');
 		}
 	});
+	
+	console.log($this.arr_last_challenge);
+	if($this.arr_last_challenge.length > 0){
+		$('.fileToUpload').attr('disabled', 'true');
+		$('.textarea_1').attr('disabled', 'true');
+		$('.submit-ans').attr('disabled', 'true');
+		$('.submit-ans').css('display', 'none');
+		$('.btn-back').css('display', 'unset');
+		// $('.icon_remove').css('display', 'none');
+
+		for (var i = 0; i < $this.arr_last_challenge.length; i++) {
+			var clone_item_3 = $(clone_item_2).clone();
+			var curr_upload_id = parseInt($('.curr_upload_id').val());
+			var response = $this.arr_last_challenge[i]['activity_response'];
+			if(i < $this.arr_last_challenge.length - 1){
+				if($this.arr_last_challenge[i]['activity_type'] == 1){
+					var img_src = response;
+	   				var arr_response = response.split('/');
+	   				var file_name = arr_response[8];
+					activity_type = 1; //activity type image
+					$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
+					$(clone_item_3).find('.img_dynamic').attr('id','img_dynamic-'+curr_upload_id);
+					$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
+					// $(clone_item_3).find('.fa-times').attr('onclick','modulReview.remove_item('+curr_upload_id+')');
+					$(clone_item_3).find('.txt_dynamic .file_name').html(file_name);
+
+	            	$(clone_item_3).find(".img_dynamic").attr("src",img_src);
+				}else{
+					var arr_response = response.split('/');
+	   				var file_name = arr_response[8];
+	   				file_name = file_name.split('>');
+					activity_type = 5; //activity type file
+					$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
+					$(clone_item_3).find('.img_dynamic').hide();
+					$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
+					// $(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
+					$(clone_item_3).find('.txt_dynamic .file_name').html(file_name[0]);
+					// $(clone_item_3).find(".img_dynamic").attr("src",img_src);
+				}
+
+				curr_upload_id += 1;
+				console.log('curr_upload_id: '+curr_upload_id);
+				$('.curr_upload_id').val(curr_upload_id);
+				$('.list-group').append(clone_item_3);
+			}
+			else{
+				$('.textarea_1').text(response);
+			}
+		}
+
+		$('.btn-back').click(function(){
+			game.setSlide(3);
+		});
+	}
 	// $this.loadContent();
 
 	//event click .fa-times
@@ -692,7 +634,7 @@ ModulReview.prototype.getDataForSubmit = function() {
 			}
 		}
 	}else{
-		var next_id = game.max_file_upload + 1;
+		var next_id = 0;
 		console.log($this.sc_data);
 		var activity_question = '';
 
@@ -703,6 +645,7 @@ ModulReview.prototype.getDataForSubmit = function() {
 
 			if(i == ($this.sc_data.length - 1)){
 				activity_question = $this.sc_data[i]['activity_question'];
+				next_id = $this.sc_data[i]['activityid'] + 1;
 			}
 		}
 

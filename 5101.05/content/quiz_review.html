@@ -202,6 +202,7 @@
     .fileinput-button input {
         font-size: unset;
         height: 100%;
+        right: 50%;
     }
 </style>
 <div class="slider-content noselect" id="maps" style="background: #E5E5E5;min-height: 100%;">
@@ -225,7 +226,7 @@
             </div>  -->
             <div class="title_challenge title_instruction">
                 <img src="assets/image/ribbon-mission.png">
-                <span>Mission Complete: 
+                <span>Mission: 
                     <span class="number_mission">0</span>
                     <span class="total_mission">/2</span>
                 </span>
@@ -254,13 +255,15 @@
                       </div> -->
                     </div>
                     <div class="row list-group-item row-flex">
-                        <div class="col-xs-10 txt_dynamic fileinput-button" style="text-align: left;margin: auto;color: #635e5e;">
+                        <div class="col-xs-6 txt_dynamic fileinput-button" style="text-align: left;margin: auto;color: #635e5e;">
                             <input id="fileToUpload-1" class="fileToUpload fileToUpload-1" type="file" name="fileToUpload" accept="">
                             <input class="curr_upload_id" type="hidden" name="curr_upload_id" value="1">
                             <i class="fa fa-paperclip" aria-hidden="true" style="font-size: 2em;padding-right: 10px;"></i>
                             <span> Attach File </span>
                         </div>
-                        <div class="col-xs-2" style="margin: auto;">
+                        <div class="col-xs-6 icon_remove" style="margin: auto;text-align: right;color: #635e5e;">
+                            <i class="fa fa-times" aria-hidden="true" style=""></i>
+                            <span> Remove Upload File </span>
                         </div>  
                     </div>
                 </div>
@@ -273,6 +276,7 @@
             </div>
             <div class="dynamic_btn_submit">
                 <button class="btn_start btn_submit btn-standard--submit submit-ans" id="">Submit</button>        
+                <button class="btn_start btn_submit btn-standard--submit btn-back" id="" style="display: none;">Back</button>        
             </div>              
         </div>
     </div>

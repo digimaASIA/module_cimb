@@ -85,11 +85,24 @@ review.prototype.init = function() {
 	// 	// 	$this.appendHtml($this.curr_soal);
 	// 	// },'json');
 	// },'json');
+
+	$('.btn-next2').click(function(){
+		game.setSlide(3);
+	});
+
 	$('.loader_image_index').show();
 	$.post(game.base_url+"get_challenge.php",{"cmid":game.module_id,"username":game.username},function(e){
-		console.log(e);
+		console.log(JSON.parse(e));
 		$('.loader_image_index').hide();
+		$this.ldata = JSON.parse(e);
 	});
+
+	// var url = game.base_url+'get_challenge.php';
+	// var async = false;
+	// var formdata = {"cmid":game.module_id,"username":game.username};
+	// var post = game.requestPost(url, async, formdata);
+	// console.log(post);
+	// console.log('test');
 };
 
 review.prototype.mulai_game = function() {

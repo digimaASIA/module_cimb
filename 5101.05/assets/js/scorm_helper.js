@@ -109,7 +109,7 @@ ScormHelper.prototype.getLastGame = function(category) {
 
 	$this.category = idx;
 	console.log(arr);
-	return(arr.length>0)?(arr[idx]["list_data"] != undefined ? arr[idx]["list_data"] : arr):arr;
+	// return (arr.length>0)?(arr[idx]["list_data"] != undefined ? arr[idx]["list_data"] : arr):arr;
 };
 
 ScormHelper.prototype.setQuizData = function(category,json_data) {
@@ -119,8 +119,12 @@ ScormHelper.prototype.setQuizData = function(category,json_data) {
 	temp.push({"index":category,"list_data":json_data});
 
 	$this.category = 0;
+	// console.log(temp);
+	// console.log($this.ldata);
+	// console.log($this.ldata["quiz"]);
+	($this.ldata["quiz"] == undefined ? $this.ldata["quiz"] = [] : '');
 	$this.ldata["quiz"].push(temp);
-
+	// console.log($this.ldata);
 	$this.scorm.set("cmi.suspend_data", JSON.stringify($this.ldata));
 	pipwerks.SCORM.save();
 };

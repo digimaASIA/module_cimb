@@ -262,7 +262,16 @@ $(document).ready(function(){
         // Take the difference between the dates and divide by milliseconds per day.
         // Round to nearest whole number to deal with DST.
         return Math.round((second-first)/(1000*60*60*24));
-    }
+    }, deretAritmatika:function(a,b,n){
+      /*
+        a: suku pertama,
+        b: beda tiap suku,
+        n: suku ke-n
+      */
+      // console.log('a: '+a+' b: '+b+' n: '+n);
+      var deret_n = a+(n-1)*b;
+      return deret_n; 
+    },
   });
   if($.last_segment() != 'login'){
     $.settimeoutalert();

@@ -58,7 +58,7 @@
 		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya. 2",
 		"data":[
 			{
-			        "activityid":1,
+			        "activityid":6,
 			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span> 2",
 			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span> 2",
 			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
@@ -67,7 +67,7 @@
 			        "image":""
 			},
 			{
-			        "activityid":2,
+			        "activityid":7,
 			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i> 2",
 			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span> 2",
 			        "question":"",

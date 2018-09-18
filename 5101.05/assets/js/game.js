@@ -11,6 +11,7 @@ var Game = function(){
     this.attemp=0;
     this.max_file_upload=3;
     this.current_challenge= 1;
+    this.date_server;
     /*
         game_data = {}
     */
@@ -36,18 +37,6 @@ var Game = function(){
         $this.scorm_helper = new ScormHelper();
         var game_data = $this.scorm_helper.getSingleData('game_data');
         console.log(game_data);
-        // (game_data == 1 ? $this.game_data = {} : '');
-        $this.game_data["category_game"] = 'sales';
-        $this.game_data["start_date"] = '2018-09-17';
-        // console.log($this.game_data);
-        if($this.game_data == 1){
-            $this.game_data = {};
-            game.setSlide(0);
-        }else{
-            if($this.game_data["category_game"]){
-                game.setSlide(3);
-            }
-        }
 
         if(!$this.isLocal){
             $this.username = $this.scorm_helper.getUsername();
@@ -62,6 +51,28 @@ var Game = function(){
         else{
             $this.base_url = "http://localhost/cimbniaga/challange/";
         }
+
+        var url = game.base_url+"get_date.php";
+        var async = false; // set asyncron false
+        var getDate = $this.requestGet(url, async);
+        $this.date_server = getDate.date;
+        // console.log(getDate);
+       
+        // (game_data == 1 ? $this.game_data = {} : '');
+        $this.game_data["category_game"] = 'sales';
+        $this.game_data["start_date"] = '2018-09-17';
+        console.log($this.game_data);
+        if($this.game_data == 1){
+            $this.game_data = {};
+            game.setSlide(0);
+            return;
+        }else{
+            if($this.game_data["category_game"]){
+                game.setSlide(3);
+                return;
+            }
+        }
+
         console.log('test game');
         $this.create_slide();
     },'json');
@@ -118,6 +129,7 @@ Game.prototype.setSlide = function(idx_slide) {
 };
 
 Game.prototype.nextSlide = function() {
+    console.log('nextSlide');
     console.log(this.scorm_helper.getCurrSlide());
     console.log(this.arr_content.length-1);
     if(this.scorm_helper.getCurrSlide()<this.arr_content.length-1){
@@ -157,8 +169,10 @@ Game.prototype.getDate = function() {
 };
 
 Game.prototype.getDate2 = function() {
+    // console.log('getDate2');
     var dateString = "";
-    var newDate = new Date();  
+    console.log(game.date_server);
+    var newDate = new Date(game.date_server);  
     var d = newDate.getDate(); 
     var m = newDate.getMonth() + 1; 
     // console.log(m);
@@ -293,4 +307,72 @@ Game.prototype.uploadFile = function(activityid, file, newFileName,callback){
         console.log(e);
         alert(e);
     }
+}
+
+Game.prototype.requestGet = function(url, async){
+    console.log('requestGet');
+    var res = '';
+    $.ajax({
+        url: url,
+        type: "GET",           // Type of request to be send, called as method
+        data: '',         // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false,     // The content type used when sending data to the server.
+        cache: false,           // To unable request pages to be cached
+        processData:false,      // To send DOMDocument or non processed data file it is set to false
+        dataType: 'json',
+        async: async, // next process wait untul this ajax finish
+        beforeSend: function( xhr ) {
+            $('.loader_image_index').show();
+        },
+        success: function(data) {
+            $('.loader_image_index').hide();
+            console.log(data);
+            res = data;
+            // return 'haha';
+         // if(data["status"] == "success"){
+             
+         // }
+        },fail: function(data) {
+            $('.loader_image_index').hide();
+            console.log(data);
+            res = data;
+            // return data;
+        }
+    }); 
+
+    return res;
+}
+
+Game.prototype.requestPost = function(url, async, formdata = ''){
+    console.log('requestPost');
+    var res = '';
+    $.ajax({
+        url: url,
+        type: "POST",           // Type of request to be send, called as method
+        data: formdata,         // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false,     // The content type used when sending data to the server.
+        cache: false,           // To unable request pages to be cached
+        processData:false,      // To send DOMDocument or non processed data file it is set to false
+        dataType: 'json',
+        async: async, // next process wait untul this ajax finish
+        beforeSend: function( xhr ) {
+            $('.loader_image_index').show();
+        },
+        success: function(data) {
+            $('.loader_image_index').hide();
+            console.log(data);
+            res = data;
+            // return 'haha';
+         // if(data["status"] == "success"){
+             
+         // }
+        },fail: function(data) {
+            $('.loader_image_index').hide();
+            console.log(data);
+            res = data;
+            // return data;
+        }
+    }); 
+    
+    return res;
 }

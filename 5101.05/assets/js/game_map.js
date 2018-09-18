@@ -10,6 +10,7 @@ gameMap.prototype.init = function() {
 	// console.log($this.image_path);
 	$this.game_data = game.game_data;
 	console.log($this.game_data);
+
 	$this.category_game = game.getCategoryGame();
 
 	// game.game_data['category_game'] = $this.category_game;
@@ -18,12 +19,17 @@ gameMap.prototype.init = function() {
 
 	//get curr challenge
 	// $this.curr_challenge = game.scorm_helper.getSingleData("game_data");
-	$this.curr_challenge = ($this.game_data["curr_challenge"] == undefined ? 1 : $this.game_data["curr_challenge"]);
+	// $this.curr_challenge = ($this.game_data["curr_challenge"] == undefined ? 1 : $this.game_data["curr_challenge"]);
+	$this.curr_challenge = 1;
 	// $this.curr_challenge = 2;
 	var interval = $this.setCurrSoal();
+	console.log(interval);
 	$this.curr_challenge += interval;
 	console.log('curr_challenge: '+$this.curr_challenge);
-	// game.game_data['curr_challenge'] = $this.curr_challenge;
+
+	//set game last challenge
+	game.game_data['curr_challenge'] = $this.curr_challenge;
+	console.log(game.game_data);
 	
 	//get current score
 	$this.curr_score = ($this.game_data['curr_score'] == undefined ? 0 : $this.game_data['curr_score']);
@@ -33,6 +39,14 @@ gameMap.prototype.init = function() {
 	var listSlider = game.arr_content[current]["slide_data"];
     $this.listSlider = listSlider;
     // console.log($this.listSlider);
+
+    //check status on review
+ //    if($this.game_data['on_review'] != undefined){
+	// 	if($this.game_data['on_review'] == true){
+	// 		game.setSlide(6);
+	// 	}
+	// }
+
 	$.get("config/game_map.json",function(e){
 		console.log(e);
 		$this.appendHtml(e);
@@ -66,9 +80,10 @@ gameMap.prototype.appendHtml = function(data) {
 					$(clone).find("#div_map-"+no+" .dynamic_img-"+no2+" .dynamic_txt").html(data2[j]['text']);
 
 					var challenge = data2[j]['id'];
-					// console.log($this.curr_challenge+'-'+challenge);
+					console.log($this.curr_challenge+'-'+challenge);
 					if($this.curr_challenge >= challenge){
 						if($this.curr_challenge == challenge){
+							console.log('here');
 							$(clone).find("#div_map-"+no+" .dynamic_img-"+no2+" .img_curr_step").css('display', 'unset');
 							$(clone).find("#div_map-"+no+" .dynamic_img-"+no2).addClass('active');
 						}else{
@@ -132,7 +147,7 @@ gameMap.prototype.countScore = function(){
 	$this.score_per_soal = game.max_score / game.total_soal;
 	console.log($this.game_data);
 	$this.curr_score = 0;
-	$this.curr_challenge = game.curr_challenge;
+	$this.curr_challenge = $this.game_data['curr_challenge'];
 	($this.game_data['curr_score'] != undefined ? $this.curr_score = $this.game_data['curr_score'] : '');
 	var sisa_challenge = game.total_soal - $this.curr_challenge;
 
@@ -161,6 +176,7 @@ gameMap.prototype.setCurrSoal = function(){
 	var last_date = game.game_data['start_date'];
 	var start = new Date(last_date);
 	// var start = new Date('2018-09-13');
+	console.log('date: '+date);
 	var end = new Date(date);
 	console.log(game.game_data);
 	console.log('start: '+start);

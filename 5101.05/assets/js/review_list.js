@@ -67,6 +67,62 @@ reviewList.prototype.init = function() {
 	                return a.activityid - b.activityid;
 	            });
 	            console.log($this.last_challange);
+
+	            /*check status on review*/
+	            if($this.last_challange.length > 0){
+	            	var onReview = true;
+	            	var countSubChallenge = 0;
+	            	var data_sub_challenge = $this.ldata[$this.curr_challenge - 1]['data'];
+	            	for (var h = 0; h < data_sub_challenge.length; h++) {
+
+		            	for (var i = 0; i < $this.last_challange.length; i++) {
+				            var max = game.max_file_upload + 1;
+							var min = 1;
+							var activityid = $this.last_challange[i]["activityid"];
+							var challenge_id = $this.last_challange[i]["challenge_id"];
+							var grade = $this.last_challange[i]["grade"];
+							var game_data = $this.game_data;
+							console.log(game_data);
+							if(game_data['curr_challenge'] == undefined){
+								game_data['curr_challenge'] = 1;
+							}
+
+							var max = game.max_file_upload + 1;
+							var min = 1;
+							if(data_sub_challenge[h]['activityid'] > 1){
+								var deret_n = $.deretAritmatika(1, 4, data_sub_challenge[h]['activityid']); //function deret aritmatika kyubi.js
+								min = deret_n;
+
+								var deret_n2 = $.deretAritmatika(4, 4, data_sub_challenge[h]['activityid']); //function deret aritmatika kyubi.js
+								max = deret_n2;
+							}
+
+							console.log('min: '+min+' max: '+max+' activityid: '+activityid);
+							if(activityid >= min && activityid <= max){
+								countSubChallenge += 1;
+
+								if(grade == 0 || grade == 100){
+									onReview = false;
+								}
+								break;
+							}
+						}
+					}
+					console.log('countSubChallenge: '+countSubChallenge+' length_sub_challenge: '+data_sub_challenge.length);
+					if(challenge_id == game_data['curr_challenge']){
+						if(countSubChallenge == data_sub_challenge.length){
+							if(onReview == true){
+								game.game_data['on_review'] = true;
+								$this.game_data = game.game_data;
+								game.scorm_helper.setSingleData('game_data', game.game_data);
+								game.setSlide(6);
+							}
+						}
+					}
+				}
+				/*end check status on review*/
+
+				//append html
 				$this.appendHtml($this.curr_soal);
 			},'json')
 			.fail(function(e) {
@@ -592,14 +648,23 @@ reviewList.prototype.appendHtml = function(data) {
 							}else{
 								var activityid = $this.last_challange[k]['activityid'];
 								var grade = $this.last_challange[k]['grade'];
-								var sub_challange_id = $this.last_challange[k]['challenge_id'];
+								var challange_id = $this.last_challange[k]['challenge_id'];
+								var max = game.max_file_upload + 1;
+								var min = 1;
+								if(curr_activityid > 1){
+									var deret_n = $.deretAritmatika(4, 4, curr_activityid); //function deret aritmatika kyubi.js
+									max = deret_n;
 
+									var deret_n2 = $.deretAritmatika(1, 4, curr_activityid); //function deret aritmatika kyubi.js
+									min = deret_n2;
+								}
 								//check activityid text
 								console.log($this.last_challange[k]);
-								console.log(sub_challange_id);
+								console.log(challange_id);
 								console.log($this.curr_challenge);
-								if($this.curr_challenge == sub_challange_id){
-									if(sub_challange_id == curr_activityid){
+								console.log(curr_activityid);
+								if($this.curr_challenge == challange_id){
+									if(activityid >= min && activityid <= max){
 										console.log(id);
 										if(grade == 100){ //if review img and text accepted
 											$(clone_item2).find('.dot').hide();
@@ -608,19 +673,17 @@ reviewList.prototype.appendHtml = function(data) {
 											$(clone_item2).find('.dot').hide();
 											$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-decline.png');
 											$(clone_item2).find('.img_dynamic').show();
+
+											break;
 										}else if(grade == -1){//if img and text still reviewing
 											console.log('test');
 											console.log(clone_item2);
-											// console.log($(clone_item2).find('#'+id));
-											// console.log($(clone_item2).find('.dot'));
-											// console.log($(clone_item2).find('.img_dynamic'));
 											$(clone_item2).find('.dot').hide();
 											$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-submit.png');
 											$(clone_item2).find('.img_dynamic').show();
 
 										}
 										console.log(clone_item2);
-										break;
 									}
 								}
 							}
