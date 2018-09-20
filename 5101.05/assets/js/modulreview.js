@@ -32,7 +32,7 @@ ModulReview.prototype.init = function() {
 	$this.game_data = game.game_data;
 	console.log($this.game_data);
 	$this.category_game = $this.game_data['category_game'];
-	$this.category_game = 'sales';
+	// $this.category_game = 'sales';
 
 	// $this.curr_challenge = ($this.game_data["curr_challenge"] == undefined ? 1 : parseInt($this.game_data["curr_challenge"]));
 	$this.curr_challenge = game.current_challenge;
@@ -57,6 +57,9 @@ ModulReview.prototype.init = function() {
 
 	$this.arr_last_challenge = [];
 	$this.count_sub_challenge_before = 0;
+
+	$this.attemp = game.attemp;
+    $this.newAttemp = game.newAttemp;
 
 	/*$("#tutorial").modal("show");
 	$('#sliderTutorial').slick({
@@ -99,6 +102,7 @@ ModulReview.prototype.init = function() {
 		}
 
 		$('.total_mission').html('/'+$this.mission_total);
+		$('.title_challenge').html();
 		console.log(curr_soal);
 		$('.desc_challenge').html(curr_soal['label_2']);
 		$this.mulai_game();
@@ -123,11 +127,11 @@ ModulReview.prototype.mulai_game = function() {
 	$this.isReview = false;
 	$this.isComplete = false;
 
-	// $this.sc_data = game.scorm_helper.getLastGame("sub_challenge_"+$this.curr_sub_challenge);
+	// $this.sc_data = game.scorm_helper.getLastGame("challenge_"+$this.curr_challenge+"-"+$this.curr_sub_challenge+"-"+$this.category_game, $this.sc_data);
 	// console.log($this.sc_data);
 	// $this.sc_data = [];
 	$('.loader_image_index').show();
-	$.post(game.base_url+"get_challenge.php",{"cmid":game.module_id,"username":game.username},function(e){
+	$.post(game.base_url+"get_challenge_review.php",{"cmid":game.module_id,"username":game.username},function(e){
 		console.log(e);
 		$('.loader_image_index').hide();
 		if(e.length>0){
@@ -175,9 +179,11 @@ ModulReview.prototype.mulai_game = function() {
 						max = deret_n2;
 					}
 					console.log('min: '+min+' max: '+max+' activityid: '+activityid);
-					if(activityid >= min && activityid <= max){
-						$this.flagSubmit = 1;
-						$this.arr_last_challenge.push(e[i]);
+					if($this.newAttemp == false){
+						if(activityid >= min && activityid <= max){
+							$this.flagSubmit = 1;
+							$this.arr_last_challenge.push(e[i]);
+						}
 					}
 				}
 			}
@@ -234,7 +240,7 @@ ModulReview.prototype.mulai_game = function() {
 			// }
 
 			if($this.count_review_buddy == e.length || $this.count_review_learner == e.length || $this.count_review_atasan == e.length || $this.isComplete){
-				$(".submit-ans").hide();
+				$(".btn-ans").hide();
 			}
 		}else{
 			// $("#tutorial").modal("show");
@@ -266,7 +272,13 @@ ModulReview.prototype.create_challange = function() {
 	var $this = this;
 	$this.count = 0;
 	var img_ext   = ['jpg','gif','png','jpeg'];
+
+	$('.btn-confirm').click(function(e){
+		$('.popupdialogbox').modal('show');
+	});
+
 	$(".submit-ans").click(function(e){
+		$('.popupdialogbox').modal('hide');
 		var flag = 0; //flag valid 
 		game.audio.audioButton.play();
 		// $(".img_result img").each(function(e){
@@ -340,7 +352,7 @@ ModulReview.prototype.create_challange = function() {
 					},'json')
 					.fail(function(e) {
 						console.log(e);
-    					alert("Gagal submit");
+    					alert("Error Submit !");
     					$('.loader_image_index').hide();
 
   					});
@@ -366,6 +378,7 @@ ModulReview.prototype.create_challange = function() {
 	var activityid_before = 0;
 
 	$(".fileToUpload").change(function(e){
+		// $('.loader_image_index').show();
 		console.log(this);
 		console.log(curr_upload_id);
 		var files       = this.files;
@@ -387,6 +400,11 @@ ModulReview.prototype.create_challange = function() {
 				console.log(files[i].name);
 				var ext         = files[i].name.split('.')[1].toLowerCase();
 				console.log(ext);
+				var size        = files[i].size;
+				if(size > 4000000){
+					alert('File size is too large, maximum 4MB');
+					return;
+				}
 				// var size        = files[i].size;
 				// console.log(size);
 				console.log(files[i]);
@@ -518,7 +536,10 @@ ModulReview.prototype.create_challange = function() {
 		                     grade_type:0,
 		                     grade_by_id:grade_by_id,
 		                     reviewtype:2,
-		                     challenge_id: $this.curr_challenge
+		                     challenge_id: $this.curr_challenge,
+		                     sub_challenge_id: $this.curr_sub_challenge,
+		                     category_game: $this.category_game,
+		                     attemp: $this.attemp
 		                 };
 		                 console.log(res);
 		                 console.log($this.sc_data);
@@ -528,7 +549,7 @@ ModulReview.prototype.create_challange = function() {
 		                 console.log($this.sc_data);
 		                 console.log(sc_data);
 
-		                game.scorm_helper.setAnsData("sub_challenge_"+$this.curr_sub_challenge, $this.sc_data);
+		                game.scorm_helper.setAnsData("challenge_"+$this.curr_challenge+"-"+$this.curr_sub_challenge+"-"+$this.category_game, $this.sc_data);
 		            }
 					$('.loader_image_index').hide();
 				});
@@ -547,11 +568,7 @@ ModulReview.prototype.create_challange = function() {
 	
 	console.log($this.arr_last_challenge);
 	if($this.arr_last_challenge.length > 0){
-		$('.fileToUpload').attr('disabled', 'true');
-		$('.textarea_1').attr('disabled', 'true');
-		$('.submit-ans').attr('disabled', 'true');
-		$('.submit-ans').css('display', 'none');
-		$('.btn-back').css('display', 'unset');
+		$this.disabledAllEvent();
 		// $('.icon_remove').css('display', 'none');
 
 		for (var i = 0; i < $this.arr_last_challenge.length; i++) {
@@ -597,6 +614,18 @@ ModulReview.prototype.create_challange = function() {
 		$('.btn-back').click(function(){
 			game.setSlide(3);
 		});
+	}else{
+		//if curr challenge didn't submited, even though position in next step
+		($this.game_data["curr_challenge"] == undefined ? $this.game_data["curr_challenge"] = 1 : '');
+		if($this.game_data["curr_challenge"] == $this.curr_challenge){
+			
+		}else{
+			$this.disabledAllEvent();
+
+			$('.btn-back').click(function(){
+				game.setSlide(3);
+			});
+		}
 	}
 	// $this.loadContent();
 
@@ -665,7 +694,10 @@ ModulReview.prototype.getDataForSubmit = function() {
 			grade_type:0,
 			grade_by_id:grade_by_id,
 			reviewtype:2,
-			challenge_id: $this.curr_challenge
+			challenge_id: $this.curr_challenge,
+			sub_challenge_id: $this.curr_sub_challenge,
+			category_game: $this.category_game,
+			attemp: $this.attemp
 		};
 
 		arr_temp.push(res);
@@ -674,430 +706,216 @@ ModulReview.prototype.getDataForSubmit = function() {
 	return arr_temp;
 };
 
-ModulReview.prototype.loadContent = function() {
-	var url2="";
-	var $this = this;
-	var data = $this.curr_soal;
-	console.log(data);
+// ModulReview.prototype.loadContent = function() {
+// 	var url2="";
+// 	var $this = this;
+// 	var data = $this.curr_soal;
+// 	console.log(data);
 
-	// if(challange[$this.count]["activity_type"] == 1){
-	// 	url2 = "content/type-1.html";
-	// }
-	// else if(challange[$this.count]["activity_type"] == 2){
-	// 	url2 = "content/type-2.html";
-	// }
+//     // clone
+//     var clone_item  = $(".list-group-item").first().clone();
+//     // var clone_modal = $(".owl-carousel2 #item_modal_1").first().clone();
+//     // console.log(clone_modal);
+//     // var clone_btn = $(".dynamic_button a").first().clone();
+//     // kosongkan
+//     // $(".list-group-item").html("");
+//     // $(clone_item).find(".dynamic_button").html("");
+//     // set ava image
+//     if(data[0]["image"]){
+//         $(".ava img").attr("src","assets/images/"+data[0]["image"]);
+//     }
 
-	// $.get(url2,function(e){
-	// 	var clone = $(e).clone();
-	// 	$("#accordion").append(clone);
+//     console.log(data);
+//     var arrChallenge = $this.arrChallenge;
+//     console.log(arrChallenge);
 
-	// 	$(clone).find("input[name='user_id']").val(game.username);
-	// 	$(clone).find("input[name='cmid']").val(game.module_id);
-	// 	$(clone).find("input[name='activityid']").val(challange[$this.count]["activityid"]);
-		
-	// 	$(clone).attr("index",$this.count);
-	// 	// $(clone).find("#accordion-wrapper").attr("href","#data-"+challange[$this.count]["activityid"]);
-	// 	// $(clone).find(".panel-collapse.collapse").attr("id","data-"+challange[$this.count]["activityid"]);
-	// 	$(clone).find(".panel-title").html(challange[$this.count]["activity_title"]);
-	// 	$(clone).find(".panel-body p").html(challange[$this.count]["activity_question"]);
-	// 	// $(clone).find(".status>div").css({"display":"none"});
-	// 	// $(clone).find(".grade_by").hide();
-
-	// 	if($(clone).find("#inputTextarea").length>0){
-	// 		var input_textarea = "textarea_"+challange[$this.count]["activityid"];
-	// 		$(clone).find("#inputTextarea").attr("id",input_textarea);
-			
-	// 		if($this.sc_data[$this.count] !== void 0 && $this.sc_data[$this.count]!=undefined && $this.sc_data[$this.count]!=null){
-	// 			$(clone).find("#"+input_textarea).val($this.sc_data[$this.count]["activity_response"]);
-	// 			if($this.sc_data[$this.count]["grade"]>=$this.sc_data[$this.count]["pass_grade"]){
-	// 				$this.total_score = parseInt($this.total_score) + parseInt($this.sc_data[$this.count]["grade"]);
-	// 				$(clone).find("#"+input_textarea).attr("readonly","readonly");
-	// 				$(clone).find("#"+input_textarea).attr("disabled","disabled");
-	// 			}
-	// 		}
-
-	// 		document.getElementById(input_textarea).onchange = function () {
-	// 			var form = $("textarea[id='"+input_textarea+"'").parents("form");
-	// 			var grade_by_id;
-	// 			if($this.sc_data[$(form).attr("index")] == undefined){
-	// 				grade_by_id = null;
-	// 			}
-	// 			else{
-	// 				grade_by_id = $this.sc_data[$(form).attr("index")]["grade_by_id"];
-	// 			}
-
-	// 			var res = {
-	// 					activityid:$this.ldata[$(form).attr("index")]["activityid"],
-	// 					activity_title:$this.ldata[$(form).attr("index")]["activity_title"],
-	// 					activity_type:$this.ldata[$(form).attr("index")]["activity_type"],
-	// 					activity_question:$this.ldata[$(form).attr("index")]["activity_question"],
-	// 					activity_response:$(this).val(),
-	// 					grade:-1,
-	// 					pass_grade:$this.ldata[$(form).attr("index")]["pass_grade"],
-	// 					grade_type:$this.ldata[$(form).attr("index")]["grade_type"],
-	// 					grade_by_id:grade_by_id,
-	// 					reviewtype:2
-	// 				};
-	// 			$this.sc_data[$(form).attr("index")] = res;
-	// 			game.scorm_helper.setAnsData("game1",$this.sc_data);
-	// 		}
-	// 	}
-	// 	else if($(clone).find("#fileToUpload").length>0){
-	// 		var id_file = "files_"+challange[$this.count]["activityid"];
-	// 		var img = "image_"+challange[$this.count]["activityid"];
-
-	// 		$(clone).find("#fileToUpload").attr("id",id_file);
-	// 		$(clone).find("#image").attr("id",img);
-
-	// 		if($this.sc_data[$this.count] !== void 0 && $this.sc_data[$this.count]!=undefined && $this.sc_data[$this.count]!=null){
-	// 			$(clone).find(".upload_wrapper").css({"display":"none"});
-	// 			$(clone).find(".thumb_profile").css({"display":"block"});
-	// 			document.getElementById(img).src = $this.sc_data[$this.count]["activity_response"]+"?lastmod="+new Date();
-
-	// 			if($this.sc_data[$this.count]["grade"]>=$this.sc_data[$this.count]["pass_grade"]){
-	// 				$this.total_score = parseInt($this.total_score) + parseInt($this.sc_data[$this.count]["grade"]);
-	// 				$(clone).find(".thumb_profile .close").css({"display":"none"});
-	// 				$(clone).find(".submit_wrapper").css({"display":"none"});
-	// 			}
-	// 		}
-	// 		else{
-	// 			$(clone).find(".upload_wrapper").css({"display":"block"});
-	// 			$(clone).find(".thumb_profile").css({"display":"none"});
-	// 		}
-
-	// 		console.log(id_file);
-	// 		document.getElementById(id_file).addEventListener('change', (e) => {
-	// 		  	const file = e.target.files[0];
-	// 			$(clone).find(".upload_wrapper").css({"display":"none"});
-	// 			$(clone).find(".thumb_profile").css({"display":"block"});
-
-	// 			var form = $("input[id='"+id_file+"']").parents("form");
-	// 			$(form).find(".loader_image").css({"display":"block"});
-	// 			$(form).find(".progress-bar").css({"width":"0%"});
-	// 			$(form).find("input[type='submit']").css({"display":"none"});
-	// 			$(form).find(".img_result img").attr("src","image/none.png");
-
-	// 			console.log(file);
-	// 		  if (!file) {
-	// 		    return;
-	// 		  }
-
-	// 		  new ImageCompressor(file, {
-	// 		    maxWidth: 800,
-	// 		    maxHeight: 800,
-	// 		    success(result) {
-	// 		    	console.log(result);
-	// 		      var formData = new FormData();
-	// 		      formData.append('user_id',game.username);
-	// 		      formData.append('cmid',game.module_id);
-	// 		      formData.append('activityid',$this.ldata[$(form).attr("index")]["activityid"]);
-	// 		      formData.append('file', result, result.name);
-	// 		      $(form).find("#progress").css({"display":"block"});
-			      
-	// 			    try{
-	// 					$.ajax({
-	// 						xhr: function() {
-	// 					        var xhr = new window.XMLHttpRequest();
-	// 					        xhr.upload.addEventListener("progress", function(evt) {
-	// 					            if (evt.lengthComputable) {
-	// 					                var percentComplete = evt.loaded / evt.total;
-	// 					                //Do something with upload progress here
-	// 					                $(form).find(".progress-bar").css({"width":(percentComplete*100)+"%"});
-	// 					            }
-	// 					       }, false);
-
-	// 					       return xhr;
-	// 					    },
-	// 						url: game.base_url+"upload.php",
-	// 						type: "POST",           // Type of request to be send, called as method
-	// 						data: formData, 		// Data sent to server, a set of key/value pairs (i.e. form fields and values)
-	// 						contentType: false,     // The content type used when sending data to the server.
-	// 						cache: false,           // To unable request pages to be cached
-	// 						processData:false,      // To send DOMDocument or non processed data file it is set to false
-	// 						dataType: 'json',
-	// 						success: function(data) {
-	// 							if(data["status"] == "success"){
-	// 								$(form).find(".loader_image").css({"display":"none"});
-	// 								$(form).find("#progress").css({"display":"none"});
-	// 								$(form).find(".upload_wrapper").css({"display":"none"});
-
-	// 								$(form).find(".img_result img").attr("src",game.base_url+data["message"]+"?lastmod="+new Date());
-	// 								var grade_by_id;
-	// 								if($this.sc_data[$(form).attr("index")] == null || $this.sc_data[$(form).attr("index")] == undefined || $this.sc_data[$(form).attr("index")] === void 0){
-	// 									grade_by_id = null;
-	// 								}
-	// 								else{
-	// 									grade_by_id = $this.sc_data[$(form).attr("index")]["grade_by_id"];
-	// 								}
-
-	// 								var res = {
-	// 									activityid:$this.ldata[$(form).attr("index")]["activityid"],
-	// 									activity_title:$this.ldata[$(form).attr("index")]["activity_title"],
-	// 									activity_type:$this.ldata[$(form).attr("index")]["activity_type"],
-	// 									activity_question:$this.ldata[$(form).attr("index")]["activity_question"],
-	// 									activity_response:game.base_url+data["message"],
-	// 									grade:-1,
-	// 									pass_grade:$this.ldata[$(form).attr("index")]["pass_grade"],
-	// 									grade_type:$this.ldata[$(form).attr("index")]["grade_type"],
-	// 									grade_by_id:grade_by_id,
-	// 									reviewtype:2
-	// 								};
-
-	// 								$this.sc_data[$(form).attr("index")] = res;
-	// 								console.log($this.sc_data);
-
-	// 								game.scorm_helper.setAnsData("game1",$this.sc_data);
-	// 							}
-	// 						}
-	// 					});	
-	// 				}catch(e){
-	// 					alert(e);
-	// 				}
-
-
-
-	// 		    },
-	// 		    error(e) {
-	// 		      console.log(e.message);
-	// 		    },
-	// 		  });
-	// 		});
-	// 	}
-	// 	if($this.sc_data[$this.count] !== void 0 && $this.sc_data[$this.count]!=undefined && $this.sc_data[$this.count]!=null){
-	// 		if($this.sc_data[$this.count]["review_by"] == "buddy"){
-	// 			if($this.sc_data[$this.count]["status"] == "accepted"){
-	// 				$(clone).find(".review_wrap.buddy").addClass("accepted");
-	// 			}
-	// 			else{
-	// 				$(clone).find(".review_wrap.buddy").addClass("rejected");
-	// 			}
-	// 		}
-	// 		else if($this.sc_data[$this.count]["review_by"] == "atasan"){
-	// 			if($this.sc_data[$this.count]["status"] == "accepted"){
-	// 				$(clone).find(".review_wrap.atasan").addClass("accepted");
-	// 			}
-	// 			else{
-	// 				$(clone).find(".review_wrap.atasan").addClass("rejected");
-	// 			}
-	// 		}
-	// 	}
-
-	// 	$this.count = parseInt($this.count)+1;
-	// 	if($this.count<challange.length){
-	// 		$this.loadContent();
-	// 	}
-	// 	else{
-	// 		$this.setTrigger();
-	// 	}
-	// 	$(".total_score").html($this.total_score);
-	// },'html');
-
-	// $("#content").attr("class","bg-white");
-
-    // clone
-    var clone_item  = $(".list-group-item").first().clone();
-    // var clone_modal = $(".owl-carousel2 #item_modal_1").first().clone();
-    // console.log(clone_modal);
-    // var clone_btn = $(".dynamic_button a").first().clone();
-    // kosongkan
-    // $(".list-group-item").html("");
-    // $(clone_item).find(".dynamic_button").html("");
-    // set ava image
-    if(data[0]["image"]){
-        $(".ava img").attr("src","assets/images/"+data[0]["image"]);
-    }
-
-    console.log(data);
-    var arrChallenge = $this.arrChallenge;
-    console.log(arrChallenge);
-
-  	for (var i = 0; i < data.length; i++) {
-  		console.log(data[i]['label_2']);
-  		$('.desc_challenge').html(data[i]['label_2']);
-   //      var clone = $(clone_item).clone();
-   //      // var clone2 = $(clone_modal).clone();
+//   	for (var i = 0; i < data.length; i++) {
+//   		console.log(data[i]['label_2']);
+//   		$('.desc_challenge').html(data[i]['label_2']);
+//    //      var clone = $(clone_item).clone();
+//    //      // var clone2 = $(clone_modal).clone();
       
-   //      var number = i+1;
-   //      var id_file = "files_"+number;  
-   //      // var start = $this.challenge * 2 - 1;
-   //      // var interval =(number * 2 - 2);
-   //      // var activityid = start + interval;
-   //      var activityid = data[i]["activityid"];
+//    //      var number = i+1;
+//    //      var id_file = "files_"+number;  
+//    //      // var start = $this.challenge * 2 - 1;
+//    //      // var interval =(number * 2 - 2);
+//    //      // var activityid = start + interval;
+//    //      var activityid = data[i]["activityid"];
 
 
-   //      $(clone).find(".quiz-number").html("<strong>"+number+"</strong>");
-   //      $(clone).find(".quiz-dots").html("");
-   //      $(clone).find(".fileToUpload").addClass("fileToUpload_"+number);
-   //      $(clone).find(".fileToUpload").attr("id",id_file);
-   //      $(clone).find(".thumb_profile").attr("id", "thumb_profile-"+number);
-   //      $(clone).find(".thumb_profile .close").attr("id", "close-"+number);
-   //      $(clone).find(".textarea").addClass("textarea_"+number);
-   //      $(clone).find(".upload_wrapper").attr("id", "upload_wrapper-"+number);
-   //      $(clone).find(".input_wrapper").attr("id", "input_wrapper-"+number);
-   //      $(clone).find(".quiz-wrapper").attr("id", "quiz-wrapper-"+number);
-   //      $(clone).find(".img_result").attr("id", "img_result-"+number);
-   //      $(clone).find(".textstatus").attr("id", "textstatus-"+number);
-   //      $(clone).find(".activityid").attr("id", "activityid-"+activityid);
+//    //      $(clone).find(".quiz-number").html("<strong>"+number+"</strong>");
+//    //      $(clone).find(".quiz-dots").html("");
+//    //      $(clone).find(".fileToUpload").addClass("fileToUpload_"+number);
+//    //      $(clone).find(".fileToUpload").attr("id",id_file);
+//    //      $(clone).find(".thumb_profile").attr("id", "thumb_profile-"+number);
+//    //      $(clone).find(".thumb_profile .close").attr("id", "close-"+number);
+//    //      $(clone).find(".textarea").addClass("textarea_"+number);
+//    //      $(clone).find(".upload_wrapper").attr("id", "upload_wrapper-"+number);
+//    //      $(clone).find(".input_wrapper").attr("id", "input_wrapper-"+number);
+//    //      $(clone).find(".quiz-wrapper").attr("id", "quiz-wrapper-"+number);
+//    //      $(clone).find(".img_result").attr("id", "img_result-"+number);
+//    //      $(clone).find(".textstatus").attr("id", "textstatus-"+number);
+//    //      $(clone).find(".activityid").attr("id", "activityid-"+activityid);
 
         
-   //      for (var j = 0; j < data.length; j++) {
-   //          if(j  < i){
-   //              $(clone).find(".quiz-dots").append("<span class='dots complete'>");
-   //          }else if(j  == i){
-   //              $(clone).find(".quiz-dots").append("<span class='dots active'>");
-   //          }else{
-   //              $(clone).find(".quiz-dots").append("<span class='dots'>");
-   //          }
-   //      }
+//    //      for (var j = 0; j < data.length; j++) {
+//    //          if(j  < i){
+//    //              $(clone).find(".quiz-dots").append("<span class='dots complete'>");
+//    //          }else if(j  == i){
+//    //              $(clone).find(".quiz-dots").append("<span class='dots active'>");
+//    //          }else{
+//    //              $(clone).find(".quiz-dots").append("<span class='dots'>");
+//    //          }
+//    //      }
 
-   //      if(arrChallenge.length > 0){
-   //          for(var k = 0; k < arrChallenge.length; k++){
-   //              console.log(arrChallenge[k]["activityid"]+" - "+activityid+" - "+arrChallenge[k]["grade"]);
-   //              if(arrChallenge[k]["activityid"] == activityid){
-   //                  var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+arrChallenge[k]["activityid"]+".jpg?123";
-   //                  // var img_src = arrChallenge[k]["activity_response"];
-   //                  var answer = arrChallenge[k]["activity_response"];
-   //                  console.log(img_src);
-   //                  console.log(answer);
-   //                  console.log("number: "+number);
+//    //      if(arrChallenge.length > 0){
+//    //          for(var k = 0; k < arrChallenge.length; k++){
+//    //              console.log(arrChallenge[k]["activityid"]+" - "+activityid+" - "+arrChallenge[k]["grade"]);
+//    //              if(arrChallenge[k]["activityid"] == activityid){
+//    //                  var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+arrChallenge[k]["activityid"]+".jpg?123";
+//    //                  // var img_src = arrChallenge[k]["activity_response"];
+//    //                  var answer = arrChallenge[k]["activity_response"];
+//    //                  console.log(img_src);
+//    //                  console.log(answer);
+//    //                  console.log("number: "+number);
 
-   //                  if(arrChallenge[k]["grade"] == 100){ //accept grade
-   //                      $(clone).find("#upload_wrapper-"+number).hide();
-   //                      $(clone).find("#thumb_profile-"+number).show();
-   //                      $(clone).find("#close-"+number).hide();
-   //                      $(clone).find(".textarea_"+number).attr("disabled", true);
-   //                      $(clone).find("#textstatus-"+number).text("accepted");
+//    //                  if(arrChallenge[k]["grade"] == 100){ //accept grade
+//    //                      $(clone).find("#upload_wrapper-"+number).hide();
+//    //                      $(clone).find("#thumb_profile-"+number).show();
+//    //                      $(clone).find("#close-"+number).hide();
+//    //                      $(clone).find(".textarea_"+number).attr("disabled", true);
+//    //                      $(clone).find("#textstatus-"+number).text("accepted");
 
-   //                      if(typeof arrChallenge[k+1] != "undefined"){
-   //                          console.log(arrChallenge[k+1]);
-   //                          if(arrChallenge[k+1]["activityid"] % 2 == 0){
-   //                              $(clone).find(".textarea_"+number).val(arrChallenge[k+1]["activity_response"]);
-   //                          }
-   //                      }
+//    //                      if(typeof arrChallenge[k+1] != "undefined"){
+//    //                          console.log(arrChallenge[k+1]);
+//    //                          if(arrChallenge[k+1]["activityid"] % 2 == 0){
+//    //                              $(clone).find(".textarea_"+number).val(arrChallenge[k+1]["activity_response"]);
+//    //                          }
+//    //                      }
 
-   //                      if(typeof arrChallenge[k] != "undefined"){
-   //                          $(clone).find("#img_result-"+number+" img").attr("src",img_src);
-   //                      }
-   //                  }
+//    //                      if(typeof arrChallenge[k] != "undefined"){
+//    //                          $(clone).find("#img_result-"+number+" img").attr("src",img_src);
+//    //                      }
+//    //                  }
 
-   //                  if(arrChallenge[k]["grade"] == 0){ //reject grade
-   //                      $(clone).find("#upload_wrapper-"+number).hide();
-   //                      $(clone).find("#thumb_profile-"+number).show();
-   //                      $(clone).find("#textstatus-"+number).text("rejected");
-   //                      $(clone).find("#close-"+number).hide();
-   //                      $(clone).find(".textarea_"+number).attr("disabled", true);
+//    //                  if(arrChallenge[k]["grade"] == 0){ //reject grade
+//    //                      $(clone).find("#upload_wrapper-"+number).hide();
+//    //                      $(clone).find("#thumb_profile-"+number).show();
+//    //                      $(clone).find("#textstatus-"+number).text("rejected");
+//    //                      $(clone).find("#close-"+number).hide();
+//    //                      $(clone).find(".textarea_"+number).attr("disabled", true);
 
-   //                      if(typeof arrChallenge[k+1] != "undefined"){
-   //                          console.log(arrChallenge[k+1]);
-   //                          if(arrChallenge[k+1]["activityid"] % 2 == 0){
-   //                              $(clone).find(".textarea_"+number).val(arrChallenge[k+1]["activity_response"]);
-   //                          }
-   //                      }
+//    //                      if(typeof arrChallenge[k+1] != "undefined"){
+//    //                          console.log(arrChallenge[k+1]);
+//    //                          if(arrChallenge[k+1]["activityid"] % 2 == 0){
+//    //                              $(clone).find(".textarea_"+number).val(arrChallenge[k+1]["activity_response"]);
+//    //                          }
+//    //                      }
 
-   //                      if(typeof arrChallenge[k] != "undefined"){
-   //                          $(clone).find("#img_result-"+number+" img").attr("src",img_src);
-   //                      }
-   //                  }
+//    //                      if(typeof arrChallenge[k] != "undefined"){
+//    //                          $(clone).find("#img_result-"+number+" img").attr("src",img_src);
+//    //                      }
+//    //                  }
 
-   //                  if(arrChallenge[k]["grade"] == -1){ //reject grade
-   //                      $(clone).find("#upload_wrapper-"+number).hide();
-   //                      console.log("#thumb_profile-"+number);
-   //                      $(clone).find("#thumb_profile-"+number).show();
-   //                      $(clone).find("#textstatus-"+number).text("review");
-   //                      $(clone).find("#close-"+number).hide();
-   //                      $(clone).find(".textarea_"+number).attr("disabled", true);
+//    //                  if(arrChallenge[k]["grade"] == -1){ //reject grade
+//    //                      $(clone).find("#upload_wrapper-"+number).hide();
+//    //                      console.log("#thumb_profile-"+number);
+//    //                      $(clone).find("#thumb_profile-"+number).show();
+//    //                      $(clone).find("#textstatus-"+number).text("review");
+//    //                      $(clone).find("#close-"+number).hide();
+//    //                      $(clone).find(".textarea_"+number).attr("disabled", true);
 
-   //                      console.log(arrChallenge[k+1]);
-   //                      if(typeof arrChallenge[k+1] != "undefined"){
-   //                          if(arrChallenge[k+1]["activityid"] % 2 == 0){
-   //                              $(clone).find(".textarea_"+number).val(arrChallenge[k+1]["activity_response"]);
-   //                          }
-   //                      }
+//    //                      console.log(arrChallenge[k+1]);
+//    //                      if(typeof arrChallenge[k+1] != "undefined"){
+//    //                          if(arrChallenge[k+1]["activityid"] % 2 == 0){
+//    //                              $(clone).find(".textarea_"+number).val(arrChallenge[k+1]["activity_response"]);
+//    //                          }
+//    //                      }
 
-   //                      if(typeof arrChallenge[k] != "undefined"){
-   //                          $(clone).find("#img_result-"+number+" img").attr("src",img_src);
-   //                      }
-   //                  }
-   //              }
-   //          }
-   //      }
+//    //                      if(typeof arrChallenge[k] != "undefined"){
+//    //                          $(clone).find("#img_result-"+number+" img").attr("src",img_src);
+//    //                      }
+//    //                  }
+//    //              }
+//    //          }
+//    //      }
         
-   //      if(data[i]["image2"]!=undefined){
-   //          $(clone).find(".dynamic_img").last().attr("src","assets/images/"+data[i]["image2"]);
-   //      }
+//    //      if(data[i]["image2"]!=undefined){
+//    //          $(clone).find(".dynamic_img").last().attr("src","assets/images/"+data[i]["image2"]);
+//    //      }
 
-   //      if(data[i]["image"]){
-   //          if(data[i]["image"]!="false"){
-   //              $(clone).find(".video_content").remove();
-   //              $(clone).attr("data-avatar",data[i]["image"]);
-   //              $(clone).find(".dynamic_img").first().attr("src","assets/images/"+data[i]["image"]);
-   //          }else{
-   //              $(clone).find(".video_content").remove();
-   //              $(clone).find(".image").remove();
-   //              $(clone).find(".caption").css("height","100%");
-   //          }
-   //      }
-   //      else{
-   //          $(clone).find(".dynamic_cover").attr("src","assets/images/"+data[i]["cover_video"]);
-   //          $(clone).addClass("video_wrapper");
-   //          $(clone).find(".img_wrapper span").css({"vertical-align":"middle"});
-   //          $(clone).find(".dynamic_img").first().hide();
-   //          $("video source").attr('src',"assets/video/"+data[i]["video"]);
-   //          $("video")[0].load();
+//    //      if(data[i]["image"]){
+//    //          if(data[i]["image"]!="false"){
+//    //              $(clone).find(".video_content").remove();
+//    //              $(clone).attr("data-avatar",data[i]["image"]);
+//    //              $(clone).find(".dynamic_img").first().attr("src","assets/images/"+data[i]["image"]);
+//    //          }else{
+//    //              $(clone).find(".video_content").remove();
+//    //              $(clone).find(".image").remove();
+//    //              $(clone).find(".caption").css("height","100%");
+//    //          }
+//    //      }
+//    //      else{
+//    //          $(clone).find(".dynamic_cover").attr("src","assets/images/"+data[i]["cover_video"]);
+//    //          $(clone).addClass("video_wrapper");
+//    //          $(clone).find(".img_wrapper span").css({"vertical-align":"middle"});
+//    //          $(clone).find(".dynamic_img").first().hide();
+//    //          $("video source").attr('src',"assets/video/"+data[i]["video"]);
+//    //          $("video")[0].load();
 
-   //          $(clone).find(".video_content").click(function(e){
-   //              if(!$(".modal-video").hasClass("open")){
-   //                  $(".modal-video").addClass("open");
-   //                  $("video")[0].play();
-   //              }
-   //          });
+//    //          $(clone).find(".video_content").click(function(e){
+//    //              if(!$(".modal-video").hasClass("open")){
+//    //                  $(".modal-video").addClass("open");
+//    //                  $("video")[0].play();
+//    //              }
+//    //          });
 
-   //          $(".modal-video .btn-close").click(function(e){
-   //              $(".modal-video").removeClass("open");
-   //              $("video")[0].pause();
-   //          });
+//    //          $(".modal-video .btn-close").click(function(e){
+//    //              $(".modal-video").removeClass("open");
+//    //              $("video")[0].pause();
+//    //          });
             
-   //      }
+//    //      }
 
-   //      if($this.list_ans.length > 0){
+//    //      if($this.list_ans.length > 0){
 
-   //      }else{
-   //          if(data[i]["question"] != undefined){
-   //              $(clone).find(".textarea_"+number).attr("placeholder",data[i]["question"]);
-   //          }
-   //      }
+//    //      }else{
+//    //          if(data[i]["question"] != undefined){
+//    //              $(clone).find(".textarea_"+number).attr("placeholder",data[i]["question"]);
+//    //          }
+//    //      }
      
-   //      if(data[i]["text"] == undefined){
-   //          $(clone).find(".text-box").hide();
-   //      }else{
-   //          //set text in json file key and class dynamic_text
-   //          // console.log(clone);
-   //          // $(clone).find(".dynamic_text").html(data[i]["text"]);
+//    //      if(data[i]["text"] == undefined){
+//    //          $(clone).find(".text-box").hide();
+//    //      }else{
+//    //          //set text in json file key and class dynamic_text
+//    //          // console.log(clone);
+//    //          // $(clone).find(".dynamic_text").html(data[i]["text"]);
 
-   //          if(data[i]["text"].indexOf("[first name]") != -1){
-   //              var txt_name = data[i]["text"];
-   //              var name = game.scorm_helper.getName();
-   //              var firstname = name.split(", ");
-   //              var real_name = txt_name.replace("[first name]","<span style='color:blue;'>"+firstname[1]+"</span>");
-   //              $(clone).find(".dynamic_text").html(real_name);
-   //          }else{
-   //              $(clone).find(".dynamic_text").html(data[i]["text"]);
-   //          }
-   //      }
+//    //          if(data[i]["text"].indexOf("[first name]") != -1){
+//    //              var txt_name = data[i]["text"];
+//    //              var name = game.scorm_helper.getName();
+//    //              var firstname = name.split(", ");
+//    //              var real_name = txt_name.replace("[first name]","<span style='color:blue;'>"+firstname[1]+"</span>");
+//    //              $(clone).find(".dynamic_text").html(real_name);
+//    //          }else{
+//    //              $(clone).find(".dynamic_text").html(data[i]["text"]);
+//    //          }
+//    //      }
 
-   //      if(data[i]["label"]){
-   //          $(clone).find(".quiz-label").html(data[i]["label"]);
-   //      }
-   //      else{
-   //          $(clone).find(".quiz-label").remove();
-   //      }
+//    //      if(data[i]["label"]){
+//    //          $(clone).find(".quiz-label").html(data[i]["label"]);
+//    //      }
+//    //      else{
+//    //          $(clone).find(".quiz-label").remove();
+//    //      }
 
-   //      console.log(clone);
-   //      $(".owl-carousel").append(clone);
-   //      // $(".owl-carousel2").append('test');
+//    //      console.log(clone);
+//    //      $(".owl-carousel").append(clone);
+//    //      // $(".owl-carousel2").append('test');
 
-    }
-};
+//     }
+// };
 
 ModulReview.prototype.setTrigger = function() {
 	var $this = this;
@@ -1162,4 +980,12 @@ ModulReview.prototype.remove_item = function(e) {
 	console.log(this.sc_data);
 	$this.sc_data.splice(id, 1);
 	console.log($this.sc_data);
+}
+
+ModulReview.prototype.disabledAllEvent = function(){
+	$('.fileToUpload').attr('disabled', 'true');
+	$('.textarea_1').attr('disabled', 'true');
+	$('.btn-confirm').attr('disabled', 'true');
+	$('.btn-confirm').css('display', 'none');
+	$('.btn-back').css('display', 'unset');
 }

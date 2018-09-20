@@ -202,6 +202,7 @@ ScormHelper.prototype.setAnsData = function(category,sc_data) {
 ScormHelper.prototype.getQuizResult = function(category) {
 	var $this = this;
 	var count=0;
+	console.log($this.ldata["quiz"]);
 	var arr = $this.ldata["quiz"][$this.ldata["quiz"].length-1];
 	game.debug(arr);
 
@@ -231,7 +232,7 @@ ScormHelper.prototype.getQuizResult = function(category) {
 ScormHelper.prototype.sendResult = function(score) {
 	var $this = this;
 	$this.scorm.set("cmi.core.score.raw", score);
-	$this.setSingleData("nilai",score*2);
+	// $this.setSingleData("nilai",score*2);
 };
 
 ScormHelper.prototype.setStatus = function(value) {

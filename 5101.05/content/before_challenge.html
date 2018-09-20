@@ -158,16 +158,16 @@
                 <button class="btn-standard--white btn_start select_option" id="btn_service">Service</button>
             </div>
             <div class="dynamic_btn_submit">
-                <div class="btn_start btn_submit btn-standard--submit" id="">Submit</div>        
+                <div class="btn_start btn_confirm btn-standard--submit" id="">Submit</div>        
             </div>              
         </div>
     </div>
 </div>
 
-  <div class="modal noselect popupdialogbox open" id="popupdialogbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal noselect popupdialogbox" id="popupdialogbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="tutorial" style="">
+                <div class="tutorial" id="confirm_1" style="display: none;">
                     <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
                         <div style="margin-top: -10px;">
                            <!--  <div class="circle-ucok">
@@ -200,11 +200,46 @@
                         </div> 
                     </div>
                 </div>
+
+                <div class="tutorial" id="confirm_2" style="display: none;">
+                    <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
+                        <div style="margin-top: -10px;">
+                           <!--  <div class="circle-ucok">
+                                <img src="assets/image/Ucok_Circle_Hallo.gif" alt="">
+                            </div> -->
+                            <div style="background: #fff;padding-top: 10px;border-radius: 10px;padding-bottom: 20px;">
+                                <!-- <div class="pita">
+                                <img src="assets/image/pita_result.png" alt="">
+                                    <span class="txt_pita">Congratulations!</span>
+                                </div> -->
+                                <div class="title">
+                                    <!-- <p><strong>Wait a minute</strong></p> -->
+                                </div>
+                                <p class="dynamic_text">
+                                    Apakah anda yakin dengan posisi yang anda pilih ?
+                                </p>
+                               <!--  <div class="btn-bottom text-center dynamic_button">
+                                    <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
+                                    <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
+                                </div> -->
+                                <div class="btn_wrapper" style="margin-top: 20px;">
+                                    <a class="btn-standard btn-standard--submit btn-inline btn_submit" >
+                                        Yes
+                                    </a>
+                                    <a class="btn-standard btn-standard--no btn-inline close-modal">
+                                        No
+                                    </a>
+                                </div>
+                            </div>  
+                        </div> 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
 <script type="text/javascript">
+    $('.tutorial#confirm_1').show();
     $('#popupdialogbox').modal('show');
 
     $(".close-modal").click(function(){

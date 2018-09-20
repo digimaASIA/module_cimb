@@ -275,7 +275,7 @@
                 </div>
             </div>
             <div class="dynamic_btn_submit">
-                <button class="btn_start btn_submit btn-standard--submit submit-ans" id="">Submit</button>        
+                <button class="btn_start btn_submit btn-standard--submit btn-confirm" id="">Submit</button>        
                 <button class="btn_start btn_submit btn-standard--submit btn-back" id="" style="display: none;">Back</button>        
             </div>              
         </div>
@@ -300,17 +300,17 @@
                                     <!-- <p><strong>Wait a minute</strong></p> -->
                                 </div>
                                 <p class="dynamic_text">
-                                    Siap menjalani ujian master guru selama 20 hari ?
+                                    Apakah anda yakin untuk submit ?
                                 </p>
                                <!--  <div class="btn-bottom text-center dynamic_button">
                                     <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
                                     <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
                                 </div> -->
                                 <div class="btn_wrapper" style="margin-top: 20px;">
-                                    <a class="btn-standard btn-standard--submit btn-inline close-modal" >
+                                    <a class="btn-standard btn-standard--submit btn-inline submit-ans">
                                         Yes
                                     </a>
-                                    <a class="btn-standard btn-standard--no btn-inline popupdialogbox-prev-slide">
+                                    <a class="btn-standard btn-standard--no btn-inline close-modal">
                                         No
                                     </a>
                                 </div>
@@ -328,12 +328,6 @@
     $(".close-modal").click(function(){
         game.audio.audioButton.play();
         $("#popupdialogbox").modal("hide");
-    });
-
-    $(".popupdialogbox-prev-slide").click(function(e){
-        game.audio.audioButton.play();
-        $("#popupdialogbox").modal("hide");
-        game.setSlide(1);
     });
 
     $(".btn_start.select_option").click(function(e){

@@ -443,7 +443,7 @@ $(document).ready(function(){
       size        = files[0].size;
       allow_ext   = ['jpg','gif','png','jpeg'];
       if($.inArray(ext,allow_ext) > -1){
-        if(size <= 2000000){
+        if(size <= 2000000){ //size maximum 2MB
           if(crop == undefined){
             $.base64image(files).done(function(res){
               file = "<img src='"+res+"' class='img-responsive thumbnail single-image-thumbnail'>";

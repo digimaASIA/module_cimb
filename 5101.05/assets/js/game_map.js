@@ -7,22 +7,17 @@ gameMap.prototype.init = function() {
 	console.log("init gameMap");
 	var $this = this;
 	$this.image_path = game.image_path;
-	// console.log($this.image_path);
+	console.log(game.game_data);
 	$this.game_data = game.game_data;
 	console.log($this.game_data);
 
-	$this.category_game = game.getCategoryGame();
-
-	// game.game_data['category_game'] = $this.category_game;
-	// console.log($this.category_game);
-	// $this.curr_menu = game.scorm_helper.getSingleData("curr_menu");
+	// $this.category_game = game.getCategoryGame();
+	$this.category_game = $this.game_data['category_game'];
 
 	//get curr challenge
-	// $this.curr_challenge = game.scorm_helper.getSingleData("game_data");
-	// $this.curr_challenge = ($this.game_data["curr_challenge"] == undefined ? 1 : $this.game_data["curr_challenge"]);
-	$this.curr_challenge = 1;
-	// $this.curr_challenge = 2;
+	$this.curr_challenge = 1; //default challenge
 	var interval = $this.setCurrSoal();
+	(interval >= game.total_soal ? interval = (game.total_soal - 1) : '');
 	console.log(interval);
 	$this.curr_challenge += interval;
 	console.log('curr_challenge: '+$this.curr_challenge);
@@ -33,6 +28,7 @@ gameMap.prototype.init = function() {
 	
 	//get current score
 	$this.curr_score = ($this.game_data['curr_score'] == undefined ? 0 : $this.game_data['curr_score']);
+	$this.hasReview = true; //status semua challenge sudah diisi dan direview oleh supervisor
 
 	var current = game.scorm_helper.getCurrSlide();
 	// var current = 3;
@@ -40,25 +36,91 @@ gameMap.prototype.init = function() {
     $this.listSlider = listSlider;
     // console.log($this.listSlider);
 
+    //set score per soal
+    $this.score_per_soal = game.max_score / game.total_soal;
+
+    $this.attemp = game.attemp;
+    $this.newAttemp = game.newAttemp;
+
     //check status on review
  //    if($this.game_data['on_review'] != undefined){
 	// 	if($this.game_data['on_review'] == true){
 	// 		game.setSlide(6);
 	// 	}
 	// }
-
 	$.get("config/game_map.json",function(e){
 		console.log(e);
-		$this.appendHtml(e);
+		//data map
+		$this.ldataMap = e;
+
+		$(".loader_image_index").show();
+		$.get("config/quiz_review_"+$this.category_game+".json",function(res){
+			console.log(res);
+			//data quiz
+			$this.ldata = res;
+			$this.mulai_game();
+		},'json')
+		.fail(function(e) {
+			$(".loader_image_index").hide();
+			console.log(e);
+			alert("Cannot load data json from local !");
+		});
 
 	},'json');
 };
 
-gameMap.prototype.appendHtml = function(data) {
+gameMap.prototype.mulai_game = function(){
+	var $this = this;
+	$.post(game.base_url+"get_challenge_review.php",{"cmid":game.module_id,"username":game.username},function(e2){
+		$(".loader_image_index").hide();
+		console.log(e2);
+		$this.last_challange = e2;
+		if($this.last_challange.length > 0){
+			$this.last_challange.sort(function(a, b) {
+	            return a.activityid - b.activityid;
+	        });
+	        console.log($this.last_challange);
+	        var ldata2 = $this.last_challange;
+
+			for (var i = 0; i < ldata2.length; i++) {
+				//get data from database
+				var attemp_prev = ldata2[i]["attemp"];
+				var category_game_prev = ldata2[i]["category_game"];
+				(attemp_prev == 0 ? attemp_prev = 1 : '');
+				(category_game_prev == null ? category_game_prev = 'sales' : '');
+				console.log(attemp_prev+' - '+$this.attemp);
+			    if(attemp_prev < $this.attemp){
+			        $this.newAttemp = true;
+			        game.newAttemp = true;
+			        break;
+			    }else{
+			    	console.log(category_game_prev+' - '+$this.category_game);
+			    	//attemp same, but category game different
+			    	if(category_game_prev != $this.category_game){
+			    		$this.newAttemp = true;
+			    		game.newAttemp = true;
+			    		break;
+			    	}
+			    }
+			}
+			console.log($this.newAttemp);
+	        //append html content
+			$this.appendHtml();
+		}
+    },'json')
+	.fail(function(e2) {
+		$(".loader_image_index").hide();
+		console.log(e2);
+		alert("Cannot connect to server !");
+	});
+}
+
+gameMap.prototype.appendHtml = function() {
 	var $this = this;
 	var clone = $(".wrap").clone();
 	$(".wrap").text("");
 	console.log($this);
+	var data = $this.ldataMap
 	console.log(data);
 
 	var total_soal = 0;
@@ -95,11 +157,12 @@ gameMap.prototype.appendHtml = function(data) {
 		}
 	}
 
+	game.score = $this.setCurrScore();
 	//set total soal
 	game.total_soal = total_soal;
 	//count current score and append
-	var curr_score = (game.max_score / game.total_soal) * game.score;
-	$(clone).find(".curr_score").html(curr_score);
+	$this.curr_score = game.score;
+	$(clone).find(".curr_score").html($this.curr_score);
 	$(clone).find(".total_score").html('/'+game.max_score);
 	$('.wrap').append(clone);
 	// $this.createSlider();
@@ -135,37 +198,125 @@ gameMap.prototype.appendHtml = function(data) {
     });
 
     /*call count score function*/
-    $this.countScore();
+    $this.countScoreResult();
 };
 
 
 /*function count score*/
-gameMap.prototype.countScore = function(){
+gameMap.prototype.countScoreResult = function(){
 	var $this = this;
 
 	console.log('game.total_soal: '+game.total_soal);
-	$this.score_per_soal = game.max_score / game.total_soal;
+	// $this.score_per_soal = game.max_score / game.total_soal;
 	console.log($this.game_data);
-	$this.curr_score = 0;
+	console.log($this.game_data['category_game']);
+	// $this.curr_score = 0;
 	$this.curr_challenge = $this.game_data['curr_challenge'];
 	($this.game_data['curr_score'] != undefined ? $this.curr_score = $this.game_data['curr_score'] : '');
 	var sisa_challenge = game.total_soal - $this.curr_challenge;
 
 	//get perkiraan score dari score sekarang hingga score akhit, diambil jika menang terus atau score 5
-	var perkiraan_score_akhir = $this.curr_score + (sisa_challenge * $this.score_per_challenge);
-	if(perkiraan_score_akhir < game.min_score){
+	console.log('$this.curr_score: '+$this.curr_score+' sisa_challenge: '+sisa_challenge+' $this.score_per_soal: '+$this.score_per_soal);
+	var perkiraan_score_akhir = $this.curr_score + (sisa_challenge * $this.score_per_soal);
+	// var perkiraan_score_akhir = 74;
+	console.log('perkiraan_score_akhir: '+perkiraan_score_akhir);
+	console.log('$this.hasReview: '+$this.hasReview);
+
+	if(perkiraan_score_akhir < game.min_score && $this.hasReview == true){
 		game.openModal('modal_feedback');
-	}
+	}else{
+		console.log($this.curr_challenge+' - '+game.total_soal+' - '+$this.hasReview)
+		if($this.curr_challenge == game.total_soal && $this.hasReview == true){
+			if(game.min_score <= $this.curr_score){
+				game.game_data['curr_score'] = $this.curr_score;
+				game.setSlide(7);
+			}
+		}
+	}	
 
 	$('.close_feedback').click(function(){
+		game.scorm_helper.setStatus('failed');
 		var date = game.getDate2();
 		console.log(new Date());
-		$this.game_data['start_date'] = date;
-		game.scorm_helper.setSingleData('game_data', $this.game_data);
+		// $this.game_data['start_date'] = date;
+		$this.game_data = {};
+		game.scorm_helper.setSingleData('game_data', undefined);
+		//set new attemp
+		var attemp = $this.attemp + 1;
+		game.scorm_helper.setSingleData('attemp', attemp);
 		game.closeModal('modal_feedback');
 		//got to cover page
-		// game.setSlide(0);
+		game.setSlide(0);
 	});
+}
+
+gameMap.prototype.setCurrScore = function(){
+	console.log('setCurrScore');
+	var $this = this;
+	var total_score = 0;
+	if($this.ldata.length > 0){
+		for (var i = 0; i < $this.ldata.length; i++) {
+			var data2 = $this.ldata[i]['data'];
+			var curr_score_per_challenge = 0;
+			if(data2.length > 0){
+				var curr_score_per_sub_challenge = $this.score_per_soal / data2.length;
+				var point = 0;
+				for (var j = 0; j < data2.length; j++) {
+					var curr_activityid = data2[j]['activityid'];
+					if($this.last_challange.length > 0){
+						var flagPoint = 0;
+						for (var k = 0; k < $this.last_challange.length; k++) {
+							var activityid = $this.last_challange[k]['activityid'];
+							var grade = $this.last_challange[k]['grade'];
+							var challange_id = $this.last_challange[k]['challenge_id'];
+							var max = game.max_file_upload + 1;
+							var min = 1;
+							if(curr_activityid > 1){
+								var deret_n = $.deretAritmatika(4, 4, curr_activityid); //function deret aritmatika kyubi.js
+								max = deret_n;
+
+								var deret_n2 = $.deretAritmatika(1, 4, curr_activityid); //function deret aritmatika kyubi.js
+								min = deret_n2;
+							}
+
+							//check activityid text
+							// console.log($this.last_challange[k]);
+							// console.log(challange_id);
+							// console.log($this.curr_challenge);
+							// console.log(curr_activityid);
+							//check challenge id from json and database
+							if($this.newAttemp == false && $this.ldata[i]['id'] == challange_id){
+								if(activityid >= min && activityid <= max){
+									if(grade == 100){ //if review img and text accepted
+										flagPoint = 1;
+									}else if(grade == 0){ //if review img and text rejected
+										flagPoint = 0;
+										break;
+									}else if(grade == -1){
+										flagPoint = 0;
+										$this.hasReview = false;
+										break;
+									}
+								}
+							}
+						}
+						if(flagPoint == 1){
+							point += 1;
+						}
+					}
+				}
+
+				console.log('challange_id: '+$this.ldata[i]['id']);
+				console.log('curr_score_per_sub_challenge: '+curr_score_per_sub_challenge+' point: '+point);
+				var curr_score_per_challenge = curr_score_per_sub_challenge * point;
+				console.log('total_score: '+total_score);
+				total_score += curr_score_per_challenge;
+				console.log('total_score: '+total_score);
+			}
+		}
+	}
+	console.log(total_score);
+	return total_score;	
 }
 
 //set current soal by date

@@ -27,6 +27,7 @@ reviewList.prototype.init = function() {
 	$this.count_review_atasan=0;
 	$this.count_review_learner=0;
 	$this.game_data = game.game_data;
+	console.log($this.game_data);
 	// $this.category_game = game.getCategoryGame();
 	$this.category_game = $this.game_data['category_game'];
 	// $this.curr_challenge = game.scorm_helper.getSingleData("curr_challenge");
@@ -34,10 +35,13 @@ reviewList.prototype.init = function() {
 	$this.curr_challenge = game.current_challenge;
 	console.log($this.curr_challenge);
 
-	$this.category_game = 'sales';
-	if($this.category_game == undefined){
-		// game.setSlide(0);
-	}
+	// $this.category_game = 'sales';
+	// if($this.category_game == undefined){
+	// 	// game.setSlide(0);
+	// }
+
+	$this.attemp = game.attemp;
+    $this.newAttemp = game.newAttemp;
 	/*$("#tutorial").modal("show");
 	$('#sliderTutorial').slick({
         dots: true,
@@ -53,12 +57,14 @@ reviewList.prototype.init = function() {
 		console.log(e);/**/
 		$this.ldata = e;
 		console.log($this.ldata[$this.curr_challenge - 1]);
+		$(".title_instruction span").html('');
+		$(".desc_challenge").html('');
 		if($this.ldata[$this.curr_challenge - 1]['data'].length > 0){
 			$this.curr_soal = [];
 			$this.curr_soal.push(e[$this.curr_challenge - 1]);
 
 			$(".loader_image_index").show();
-			$.post(game.base_url+"get_challenge.php",{"cmid":game.module_id,"username":game.username},function(e2){
+			$.post(game.base_url+"get_challenge_review.php",{"cmid":game.module_id,"username":game.username},function(e2){
 				$(".loader_image_index").hide();
 				console.log(e2);
 				//get challenge answer before
@@ -98,13 +104,15 @@ reviewList.prototype.init = function() {
 							}
 
 							console.log('min: '+min+' max: '+max+' activityid: '+activityid);
-							if(activityid >= min && activityid <= max){
-								countSubChallenge += 1;
+							if($this.newAttemp == false){
+								if(activityid >= min && activityid <= max){
+									countSubChallenge += 1;
 
-								if(grade == 0 || grade == 100){
-									onReview = false;
+									if(grade == 0 || grade == 100){
+										onReview = false;
+									}
+									break;
 								}
-								break;
 							}
 						}
 					}
@@ -663,27 +671,30 @@ reviewList.prototype.appendHtml = function(data) {
 								console.log(challange_id);
 								console.log($this.curr_challenge);
 								console.log(curr_activityid);
-								if($this.curr_challenge == challange_id){
-									if(activityid >= min && activityid <= max){
-										console.log(id);
-										if(grade == 100){ //if review img and text accepted
-											$(clone_item2).find('.dot').hide();
-											$(clone_item2).find('.img_dynamic').show();
-										}else if(grade == 0){ //if review img and text rejected
-											$(clone_item2).find('.dot').hide();
-											$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-decline.png');
-											$(clone_item2).find('.img_dynamic').show();
+								//newAttemp from game_map
+								if($this.newAttemp == false){
+									if($this.curr_challenge == challange_id){
+										if(activityid >= min && activityid <= max){
+											console.log(id);
+											if(grade == 100){ //if review img and text accepted
+												$(clone_item2).find('.dot').hide();
+												$(clone_item2).find('.img_dynamic').show();
+											}else if(grade == 0){ //if review img and text rejected
+												$(clone_item2).find('.dot').hide();
+												$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-decline.png');
+												$(clone_item2).find('.img_dynamic').show();
 
-											break;
-										}else if(grade == -1){//if img and text still reviewing
-											console.log('test');
+												break;
+											}else if(grade == -1){//if img and text still reviewing
+												console.log('test');
+												console.log(clone_item2);
+												$(clone_item2).find('.dot').hide();
+												$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-submit.png');
+												$(clone_item2).find('.img_dynamic').show();
+
+											}
 											console.log(clone_item2);
-											$(clone_item2).find('.dot').hide();
-											$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-submit.png');
-											$(clone_item2).find('.img_dynamic').show();
-
 										}
-										console.log(clone_item2);
 									}
 								}
 							}

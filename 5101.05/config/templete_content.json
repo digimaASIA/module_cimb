@@ -106,7 +106,7 @@
 		{
 			"slide":7,
 			"file":"content/result.html",
-			"hasClass":false,
+			"hasClass":true,
 			"class":"Result",
 			"pre_slide":[0,1,2,3,4,5]
 		}

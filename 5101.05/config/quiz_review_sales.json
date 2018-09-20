@@ -54,13 +54,13 @@
 	},
 	{
 		"id": 2,
-		"label":"Terapkan 5 perilaku di pekerjaanmu! 2",
-		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya. 2",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
 			{
 			        "activityid":6,
-			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span> 2",
-			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span> 2",
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
 			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
 			        "type": "upload_input",
 			        "text":"",
@@ -68,8 +68,35 @@
 			},
 			{
 			        "activityid":7,
-			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i> 2",
-			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span> 2",
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":8,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":9,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":10,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
 			        "question":"",
 			        "type": "upload_input",
 			        "text":"",
@@ -79,58 +106,938 @@
 	},
 	{
 		"id": 3,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>Organization Culture Development</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			
+			{
+			        "activityid":11,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":12,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":13,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":14,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":15,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
 		]
 	},
 	{
 		"id": 4,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>digima Content</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			    
+			    {
+			        "activityid":16,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+				},
+				{
+			        "activityid":17,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+				},
+				{
+			        "activityid":18,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+				},
+				{
+			        "activityid":19,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+				},
+				{
+			        "activityid":20,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+				}
 			]
 	},
 	{
 		"id": 5,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>digima University</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			
+			{
+			        "activityid":21,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":22,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":23,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":24,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":25,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
 		]
 	},
 	{
 		"id": 6,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>Strategic BusinessDevelopment</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			
+			{
+			        "activityid":26,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":27,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":28,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":29,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":30,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
 		]
 	},
 	{
 		"id": 7,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>General Affair</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			
+			{
+			        "activityid":31,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":32,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":33,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":34,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":35,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
 		]
 	},
 	{
 		"id": 8,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>Project Management</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			
+			{
+			        "activityid":36,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":37,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":38,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":39,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":40,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
 		]
 	},
 	{
 		"id": 9,
-		"label":"Upload fotomu bersama Team Leader dan tulis fungsinya.",
-		"desc":"<i>Production</i>",
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
 		"data":[
-			
+			{
+			        "activityid":41,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":42,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":43,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":44,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":45,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 10,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":46,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":47,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":48,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":49,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":50,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 11,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":51,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":52,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":53,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":54,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":55,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 12,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":56,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":57,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":58,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":59,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":60,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 13,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":61,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":62,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":63,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":64,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":65,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 14,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":66,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":67,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":68,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":69,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":70,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 15,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":71,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":72,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":73,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":74,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":75,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 16,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":76,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":77,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":78,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":79,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":80,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 17,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":81,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":82,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":83,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":84,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":85,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 18,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":86,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":87,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":88,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":89,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":90,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 19,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":91,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":92,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":93,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":94,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":95,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	},
+	{
+		"id": 20,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":96,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":97,
+			      	"label": "Menyusun informasi secara terperinci<br><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i>",
+			        "label_2": "Unggah bukti informasi secara terperinci.<br><span><i>(Contoh: Proposal kredit/PAA-Portofolio Asset Allocation/Menemukan target vs actual/Membuat simulasi penjualan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":98,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: WAPERD/AAJI/Sales Code/Approve proposal kredit/ Kelengkapan dokumen/Line up meeting)</i>",
+			        "label_2": "Unggah bukti <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Membuat sales pipeline/Daily sales activity plan)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":99,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i>",
+			        "label_2": "Unggah bukti memonitor detail dan kualitas pekerjaan.<br><span><i>(Contoh: Driving Performance Form/Booking Success Rate/Follow up proses kredit approval/Perpanjangan jatuh tempo)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":100,
+			      	"label": "<i>Double-Check<br>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check.</i><br><span><i>(Contoh: Double-check proposal/ Kelengkapan dokumen)</i></span>",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
 		]
 	}
 ]

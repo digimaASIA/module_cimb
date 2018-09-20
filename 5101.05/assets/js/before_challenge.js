@@ -9,7 +9,14 @@ beforeChallenge.prototype.init = function() {
 	console.log('beforeChallenge init');
 	var game_data = game.game_data;
 
+	$(".btn_confirm").click(function(e){
+		$('.tutorial').hide();
+		$('.tutorial#confirm_2').show();
+    	$('#popupdialogbox').modal('show');
+	});
+
 	$(".btn_submit").click(function(e){
+		$('#popupdialogbox').modal('hide');
 		// var id = e.target.id;
 		var id = $('.selected').attr('id');
 		console.log(id);
@@ -20,6 +27,7 @@ beforeChallenge.prototype.init = function() {
 			//set start date play
 			var date = game.getDate2();
 			game_data['start_date'] = date;
+			console.log(game_data);
 			game.scorm_helper.setSingleData('game_data', JSON.stringify(game_data));
 			game.nextSlide();
 		}else{

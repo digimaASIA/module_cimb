@@ -10,30 +10,36 @@ var Result = function(){
 
 
 Result.prototype.init = function() {
+	console.log('init Result');
 	// remove jquery mobile
 	$("html").removeClass("ui-mobile");
 	// get last game from scorm
-	var game_quiz = game.scorm_helper.getQuizResult(["game_slide_4"]);
+	// var game_quiz = game.scorm_helper.getQuizResult(["game_slide_4"]);
+	// console.log(game_quiz);
 	// count all game score range 0-5 for the star
-	var score = parseInt(game_quiz["score"])/parseInt(game_quiz["total_soal"])*game.max_score;
+	// var score = parseInt(game_quiz["score"])/parseInt(game_quiz["total_soal"])*game.max_score;
+	var score = game.game_data['curr_score'];
+	console.log(score);
 	// count score range 0-100 for save to cmi.raw.score
 	var count = score/game.max_score*100;
 	// for score in text
 	$(".txt_score").html(score);
 	// save score to to cmi.raw.score
-	game.scorm_helper.sendResult(count);
+	// game.scorm_helper.sendResult(count);
+	game.scorm_helper.sendResult(score);
 	// set duration and save to scorm
-	game.scorm_helper.setDuration();
+	// game.scorm_helper.setDuration();
 	// if score larger than minimum grade
 	if(score >= game.min_score){
 		// set to win
 		game.audio.audioMenang.play();
 		game.scorm_helper.setStatus("passed");
-		$(".btn-next-result").css({"display":"block"});
-		$(".slider-content").addClass("win");
-		$(".title-result").html("Congratulations!");
+		// $(".btn-next-result").css({"display":"block"});
+		// $(".slider-content").addClass("win");
+		// $(".title-result").html("Congratulations!");
 		// go to next slide
 		$(".btn-next-result").click(function(e){
+			console.log('test');
 			game.audio.audioButton.play();
 			$(this).off();
 			game.nextSlide();
