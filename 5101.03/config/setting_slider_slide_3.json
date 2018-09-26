@@ -1,0 +1,71 @@
+[
+	{
+		"image":"image_content03.gif",
+		"text":"Usaha yang baik!<br>Berikut ini kamu akan mengetahui dengan lebih jelas perbedaan antara <i>coaching</i> dengan metode lainnya."
+	},
+	{
+		"ribbon":"<i>Tap</i> masing-masing kotak di bawah untuk mengetahui lebih dalam.",
+		"click_and_show":[
+			{
+				"title":"Coaching",
+				"list":[
+					[
+						"Fokus untuk mencapai tujuan & obyektif.",
+						"<i>Coachee</i> secara aktif membagikan opini dan pandangan.",
+						"Sebuah <i>partnership;</i> kolaborasi.",
+						"Digunakan untuk meningkatkan kesadaran dan pembelajaran mandiri."
+					],
+					[
+						"Fokus untuk mencapai tujuan & obyektif.",
+						"<i>Coachee</i> secara aktif membagikan opini dan pandangan.",
+						"Sebuah <i>partnership;</i> kolaborasi.",
+						"Digunakan untuk meningkatkan kesadaran dan pembelajaran mandiri."
+					]
+				]
+			},
+			{
+				"title":"Teaching",
+				"list":[
+					"Fokus untuk memberikan pengetahuan dan keterampilan.",
+					"<i>Guru</i> adalah seorang yang ahli di bidangnya.",
+					"Proses bersifat 1 arah.",
+					"Digunakan saat pengetahuan dan pengalaman sangat kurang."
+				]
+			},
+			{
+				"title":"Counselling",
+				"list":[
+					"Fokus untuk menyelesaikan masalah yang berkaitan dengan emosi.",
+					"<i>Counselor</i> bertanya, mendengarkan, dan berempati.",
+					"Proses 2 arah, <i>counselor</i> memainkan peran yang sama-sama aktif.",
+					"Digunakan saat kinerja terhambat."
+				]
+			},
+			{
+				"title":"Mentoring",
+				"list":[
+					"Fokus untuk membagikan pengalaman.",
+					"<i>Mentor</i> adalah orang dengan pengalaman.",
+					"Mentor memberi nasehat dan berbagi pengalaman.",
+					"Digunakan untuk mempersiapkan tanggung jawab dan posisi lebih tinggi."
+				]
+			}
+		]
+	},
+	{
+		"image":"image_content04.gif",
+		"text":"Masih ingatkah dengan Kapten di kapal dimana Jaka melakukan pelayaran pertamanya sebagai seorang navigator?"
+	},
+	{
+		"image":"image_content05.svg",
+		"text":"Kapten tersebut telah banyak mencetak prestasi dan memiliki awak kapal yang handal. Apakah yang menjadi rahasianya?"
+	},
+	{
+		"video":"video.mp4",
+		"image":"cover_video.jpg",
+		"text":"Lihatlah video di atas untuk informasi selengkapnya.",
+		"button":[
+			{"text":"NEXT"}
+		]
+	}
+]

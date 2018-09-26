@@ -1,0 +1,174 @@
+<style type="text/css">
+    .anim_amplop{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .anim_amplop>img{
+        max-width: 710px;
+        width: 100%;
+    }
+    .amplop{
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .amplop_wrapper{
+        display: none;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+    .amplop .front{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+    }
+    .amplop .back{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+    }
+    .surat{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        left: 0;
+        height: 100%;
+        z-index: 1;
+        -webkit-animation: animsurat 1s ease-in; 
+        -moz-animation: animsurat 1s ease-in;
+        animation: animsurat 1s ease-in;
+        overflow: hidden;
+    }
+    @keyframes animsurat
+    {
+        0%{ height: 16%; }
+        100% { height: 96%; }
+    }
+    @-moz-keyframes animsurat
+    {
+        0%{ height: 16%; }
+        100% { height: 96%; }
+    }
+    @-webkit-keyframes animsurat
+    {
+        0%{ height: 16%; }
+        100% { height: 96%; }
+    }
+
+    .surat .top{
+        width: 100%;
+    }
+
+    .surat .bottom{
+        width: 100%;
+    }
+    .surat .content_surat{
+        width: 100%;
+        height: 100%;
+        background: #FFDEAD;
+        padding: 0px 0px 24%;
+        overflow-y: auto;
+        max-width: 710px;
+        margin: 0 auto;
+        margin-top: -3px;
+    }
+    .surat .content_surat>div{
+        overflow-y: auto;
+        height: 100%;
+        text-align: left;
+        font-size: .8em;
+        padding: 0 5px;
+    }
+    #content .slider-content>div{
+        padding: 0 15px !important;
+    }
+    .img_max{
+        width: 100%;
+        max-width: 710px;
+    }
+    .btn-new-game{
+		color: #fff;
+		border-radius: 5px;
+		width: 120px;
+		padding: 10px 0;
+		text-align: -webkit-center;
+		margin: 0 auto;
+		margin-top: 80px;
+		background: #1D8BEC;
+		border-top: 5px solid #186ab4;
+		font-size: 1.3em;
+		text-shadow: none;
+		height: 50px;
+		position: relative;
+		z-index: 2;
+    }
+    .text_word{
+        text-align: center;
+        font-weight: bold;
+        line-height: 25px;
+        font-size: 1.5em;
+        margin-top: 0px;
+    }
+</style>
+
+<div class="slider-content" style="background: #B3E5FC;">
+    <div class="wrap">
+        <div class="amplop">
+            <!--div class="anim_amplop">
+                <img src="assets/image/openning/amplop_1.gif" alt="">
+            </div-->
+            <div class="amplop_wrapper">
+                <!--div class="front">
+                    <img src="assets/image/openning/surat_front.png" alt="" class="img_max">
+                </div-->
+                <div class="surat">
+                    <div class="top" style="position: relative;top: 10px;z-index: 2;
+">
+                      <img src="assets/image/openning/scroll_top.png" alt="" class="img_max">  
+                    </div>
+                    <div class="">
+                        <div style="position: relative;top: -10px;z-index: 1;">
+                            <img src="assets/image/openning/scroll_body.png" alt="">
+                        </div> 
+                    </div>
+                    <div class="bottom" style="position: relative;top: -28px;z-index: 2;">
+                      <img src="assets/image/openning/scroll_bottom.png" alt="" class="img_max">  
+                    </div>
+                </div>
+                <!--div class="front">
+                    <img src="assets/image/openning/surat_front.png" alt="" class="img_max">   
+                </div-->
+            </div>  
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+   $(".scrolling").scroll(function(e){
+    $(this).unbind();
+    $(".petunjuk").hide();
+   });
+
+   
+
+   var time = setTimeout(function(){
+        clearInterval(time);
+        $(".anim_amplop").hide();
+        $(".amplop_wrapper").show();
+
+        //game.nextSlide();
+    }, 1000);
+
+    var time2 = setTimeout(function(){
+        clearInterval(time2);
+        game.nextSlide();
+    }, 3000);
+</script>
