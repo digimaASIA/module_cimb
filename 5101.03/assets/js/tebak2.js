@@ -239,7 +239,7 @@ Tebak2.prototype.setEvent = function($clone) {
     });
   }
   
-  $("#tutorial_tebak2").modal("show");
+  // $("#tutorial_tebak2").modal("show");
 
 };
 
