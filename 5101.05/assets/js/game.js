@@ -32,15 +32,22 @@ var Game = function(){
     this.username = "elim@digimasia.com";
     this.module_id = 1354;
     this.image_path = 'assets/image/';
+    this.challenge_on_weekend = true; //if true, on weekend stay increment challenge
     
     $.get("config/templete_content.json",function(e){
         $this.arr_content = e["list_slide"];
         $this.curr_module = e["module"];
         $this.curr_course = e["course"];
         $this.scorm_helper = new ScormHelper();
+        console.log($this.scorm_helper);
         var game_data = $this.scorm_helper.getSingleData('game_data');
         console.log(game_data);
+        // if(game_data != undefined){
+        //     game_data = JSON.parse(game_data);
+        // }
         var attemp = $this.scorm_helper.getSingleData('attemp');
+        // var attemp = 2;
+        console.log(attemp);
 
         if(!$this.isLocal){
             $this.username = $this.scorm_helper.getUsername();
@@ -75,7 +82,6 @@ var Game = function(){
         // console.log(getDate);
         
         //set attemp
-        // attemp = 2;
         if(attemp != undefined){
             $this.attemp = attemp;
         }
@@ -87,10 +93,18 @@ var Game = function(){
         //     "category_game":'sales',
         //     'start_date':'2018-09-15'
         // };
-        // game_data = {
-        //     "category_game":'service',
-        //     'start_date':'2018-09-20'
-        // };
+
+        var modeTest = 0;
+        if(modeTest == 1){
+            $this.username = 'elim@digimasia.com';
+            $this.attemp = 1;
+            game_data = {
+                "category_game":"sales",
+                "start_date":"2018-09-20",
+                "curr_challenge":1,
+                "curr_sub_challenge":"2"
+            };
+        }
         console.log(game_data);
         if(game_data == 1){
             $this.game_data = {};
@@ -99,6 +113,7 @@ var Game = function(){
         }else{
             $this.game_data = game_data;
             if($this.game_data["category_game"]){
+                // alert('go to game map');
                 game.setSlide(3);
                 return;
             }
@@ -115,24 +130,29 @@ Game.prototype.create_slide = function() {
     var current = $this.scorm_helper.getCurrSlide();
     // var current = 5;
 
-
     //if slide game_map, get date
     if(current == 3){
         var getDate = $this.getDate2();
         $this.date_server = getDate;
         //if date not local, use server date
         if($this.localDate == false){
-             var url = game.base_url+"get_date.php";
+             var url = game.base_url+"get_config.php";
             var async = false; // set asyncron false
-            getDate = $this.requestGet(url, async);
+
+            //request config from server
+            getConfig = $this.requestGet(url, async);
 
             //if request error return blank
-            if(getDate == 'error'){
+            if(getConfig == 'error'){
                 return 0;
+            }else{
+                //set varibel value from request
+                $this.date_server = getConfig.date;
+                $this.challenge_on_weekend = getConfig.challenge_on_weekend;
             }
-            $this.date_server = getDate.date;
 
         }
+        console.log('$this.date_server: '+$this.date_server);
     }
 
 
@@ -290,7 +310,7 @@ Game.prototype.getCategoryGame = function(){
     upload file to server
     @param: activityid, file
 */
-Game.prototype.uploadFile = function(activityid, file, newFileName,callback){
+Game.prototype.uploadFile = function(activityid, file, newFileName, asycn,callback){
     // $('.loader_image_index').show();
     // console.log($('.loader_image_index'));
     var formData = new FormData();
@@ -300,11 +320,18 @@ Game.prototype.uploadFile = function(activityid, file, newFileName,callback){
     formData.append('file', file, newFileName);
     // $(form).find("#progress").css({"display":"block"});
     console.log(formData);
+    // $('.loader_image_index').show();
     try{
-     $.ajax({
+        // $('.loader_image_index').show();
+        console.log($('.loader_image_index'));
+        $.ajax({
          xhr: function() {
+            // console.log('xhr');
+            // $('.loader_image_index').show();
+            // console.log('loader_image_index show');
              var xhr = new window.XMLHttpRequest();
              xhr.upload.addEventListener("progress", function(evt) {
+                // $('.loader_image_index').show();
                  if (evt.lengthComputable) {
                      var percentComplete = evt.loaded / evt.total;
                      //Do something with upload progress here
@@ -321,23 +348,25 @@ Game.prototype.uploadFile = function(activityid, file, newFileName,callback){
          cache: false,           // To unable request pages to be cached
          processData:false,      // To send DOMDocument or non processed data file it is set to false
          dataType: 'json',
-         async: false, // next process wait untul this ajax finish
+         async: asycn, // next process wait untul this ajax finish
         beforeSend: function( xhr ) {
-            $('.loader_image_index').show();
+            console.log(xhr);
+            // $('.loader_image_index').show();
         },
         success: function(data) {
-            $('.loader_image_index').hide();
+            // $('.loader_image_index').hide();
             console.log(data);
              // if(data["status"] == "success"){
                 callback(data);
              // }
         },error: function(data) {
-            $('.loader_image_index').hide();
+            // $('.loader_image_index').hide();
             console.log(data);
             alert('Cannot request to server !');
         }
      }); 
     }catch(e){
+        // $('.loader_image_index').hide();
         console.log(e);
         alert(e);
     }

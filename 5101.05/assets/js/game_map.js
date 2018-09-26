@@ -106,6 +106,8 @@ gameMap.prototype.mulai_game = function(){
 			console.log($this.newAttemp);
 	        //append html content
 			$this.appendHtml();
+		}else{
+			$this.appendHtml();
 		}
     },'json')
 	.fail(function(e2) {
@@ -175,7 +177,13 @@ gameMap.prototype.appendHtml = function() {
 		console.log(id[1]+'-'+curr_challenge);
 		game.current_challenge = id[1];
 		if(id[1] <= curr_challenge){
-			game.setSlide(4);
+			//prevent click more than one
+			if ( $(this).hasClass("unclickable") ) {
+				e.preventDefault();
+	    	} else {
+	    		$(this).addClass("unclickable")
+				game.setSlide(4);
+			}
 		}
 	});
 
@@ -183,7 +191,8 @@ gameMap.prototype.appendHtml = function() {
 	// 	// $this.createModalSlider();
         game.audio.audioButton.play();
  //        //open modal
-        $("#tutorial").modal("show");
+ 		$(".modal#tutorial .tutorial").show();
+        $(".modal#tutorial").modal("show");
 
    		$('#ulasan').slick({
    		    dots: true,
@@ -192,6 +201,7 @@ gameMap.prototype.appendHtml = function() {
         });
      
     	$("#tutorial .start-game").click(function(e){
+    		$(".modal#tutorial .tutorial").hide();
     		$("#tutorial").modal("hide");
      	});
 
@@ -243,6 +253,7 @@ gameMap.prototype.countScoreResult = function(){
 		game.scorm_helper.setSingleData('game_data', undefined);
 		//set new attemp
 		var attemp = $this.attemp + 1;
+		game.attemp = attemp;
 		game.scorm_helper.setSingleData('attemp', attemp);
 		game.closeModal('modal_feedback');
 		//got to cover page
@@ -285,17 +296,35 @@ gameMap.prototype.setCurrScore = function(){
 							// console.log($this.curr_challenge);
 							// console.log(curr_activityid);
 							//check challenge id from json and database
-							if($this.newAttemp == false && $this.ldata[i]['id'] == challange_id){
-								if(activityid >= min && activityid <= max){
-									if(grade == 100){ //if review img and text accepted
-										flagPoint = 1;
-									}else if(grade == 0){ //if review img and text rejected
-										flagPoint = 0;
-										break;
-									}else if(grade == -1){
-										flagPoint = 0;
-										$this.hasReview = false;
-										break;
+							if($this.newAttemp == false){
+								if($this.ldata[i]['id'] == challange_id){
+									if(activityid >= min && activityid <= max){
+										if(grade == 100){ //if review img and text accepted
+											flagPoint = 1;
+										}else if(grade == 0){ //if review img and text rejected
+											flagPoint = 0;
+											break;
+										}else if(grade == -1){
+											flagPoint = 0;
+											$this.hasReview = false;
+											break;
+										}
+									}
+								}
+							}else{
+								var last_attemp = ($this.last_challange[k]['attemp'] == 0 ? 1 : $this.last_challange[k]['attemp']);
+								if($this.ldata[i]['id'] == challange_id && last_attemp == $this.attemp){
+									if(activityid >= min && activityid <= max){
+										if(grade == 100){ //if review img and text accepted
+											flagPoint = 1;
+										}else if(grade == 0){ //if review img and text rejected
+											flagPoint = 0;
+											break;
+										}else if(grade == -1){
+											flagPoint = 0;
+											$this.hasReview = false;
+											break;
+										}
 									}
 								}
 							}
@@ -332,9 +361,45 @@ gameMap.prototype.setCurrSoal = function(){
 	console.log(game.game_data);
 	console.log('start: '+start);
 	console.log('end: '+end);
+
+	
 	var interval = $.datediff(start,end);
+	//get weekend number
+	console.log('game.challenge_on_weekend: '+game.challenge_on_weekend);
+	if(game.challenge_on_weekend == false){
+		var checkWeekend = $this.checkWeekend(start, interval);
+		console.log(checkWeekend);
+		interval -= checkWeekend;
+	}
 	console.log(interval);
 	return interval;
+}
+
+gameMap.prototype.checkWeekend = function(start_date, interval){
+	//cek weekend
+	console.log('start_date: '+start_date);
+	var countSaturdayOrSunday = 0;
+	for (var i = 1; i <= interval; i++) {
+		start_date.setDate(start_date.getDate() + 1);
+		console.log(start_date);
+		var day = start_date.getDay();
+		console.log('day: '+day);
+		if(day === 6 || day === 0){
+			// 6 = Saturday, 0 = Sunday
+			var minDay = 0;
+			if(day === 6){
+				countSaturdayOrSunday += 1;
+			}else if(day === 0){
+				countSaturdayOrSunday += 1;
+			} 
+			//if saturday min 1 day, if sunday min 2 days
+			// console.log(start_date.getDate());
+			// console.log(start_date.getDate() - minDay);
+			// start_date.setDate(start_date.getDate() - minDay);
+		}
+	}
+	
+	return countSaturdayOrSunday;
 }
 
 // gameMap.prototype.createSlider = function() {

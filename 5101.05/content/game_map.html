@@ -24,6 +24,8 @@
         .div_map{
             position: relative;
             margin: auto;
+            margin-left: 0;
+            margin-right: 0;
         }
 
         .dynamic_img{
@@ -59,8 +61,10 @@
 
         .text_title{
             color: white;
-            line-height: 1.4em;
-            font-size: 1.1em;
+            /*line-height: 1.4em;
+            font-size: 1.1em;*/
+            line-height: 7vw;
+            font-size: 4vw;
             /* margin: 0; */
             position: absolute;
             top: 0;
@@ -72,8 +76,10 @@
 
         .text_score{
             color: white;
-            line-height: 1.4em;
-            font-size: 1.1em;
+            /*line-height: 1.4em;
+            font-size: 1.1em;*/
+            line-height: 7vw;
+            font-size: 5vw;
             /* margin: 0; */
             position: absolute;
             top: 0;
@@ -97,6 +103,7 @@
     @media screen and (max-width: 767px){
         .img_map{
             position: relative;
+            width: 100%;
         }
 
         .dynamic_img-1{
@@ -219,15 +226,152 @@
 
     @media screen and (min-device-width: 376px) and (max-device-width: 767px){
         .div_header{
-            margin-left: 12%;
-            margin-right: 13%;
+            /*margin-left: 12%;
+            margin-right: 13%;*/
         }
     }
 
     @media screen and (min-device-width: 321px) and (max-device-width: 375px){
         .div_header{
-            margin-left: 7%;
-            margin-right: 8%;
+            /*margin-left: 7%;
+            margin-right: 8%;*/
+        }
+    }
+
+    @media screen and (min-device-width: 768px){
+        .img_map{
+            width: 100%;
+        }
+
+        .text_title{
+            line-height: 1.4em;
+            font-size: 1.4em;
+        }
+
+        .text_score{
+            line-height: 1.5em;
+            font-size: 1.5em;
+        }
+
+        .img_map{
+            position: relative;
+            width: 100%;
+        }
+
+        .dynamic_img-1{
+            bottom: 18%;
+            left: 16%;
+        }
+
+        .dynamic_txt{
+            top: 15%;
+            /* left: 40%; */
+            text-align: center;
+            width: 100%;
+        }
+
+        .dynamic_img-2{
+            bottom: 36%;
+            left: 54%;
+        }
+
+        .dynamic_img-3 {
+            position: absolute;
+            bottom: 54%;
+            left: 27%;
+        }
+
+        .dynamic_img-4 {
+            bottom: 72%;
+            left: 16%;
+        }
+
+        .dynamic_img-5 {
+            bottom: 87%;
+            left: 58%;
+        }
+
+        .img_curr_step{
+            /*display: unset !important;*/
+            position: absolute;
+            top: -130%;
+            left: 10%;
+            z-index: 9;
+        }
+
+        #div_map-2 .dynamic_img-1 {
+            bottom: 3%;
+            left: 69%;
+        }
+
+        #div_map-2 .dynamic_img-2{
+            bottom: 15%;
+            left: 37%;
+        }
+
+        #div_map-2 .dynamic_img-3{
+            bottom: 29%;
+            left: 6%;
+        }
+
+        #div_map-2 .dynamic_img-4 {
+            bottom: 50%;
+            left: 17%;
+        }
+
+        #div_map-2 .dynamic_img-5 {
+            bottom: 58%;
+            left: 61%;
+        }
+
+        #div_map-3 .dynamic_img-1 {
+            bottom: -25%;
+            left: 38%;
+        }
+
+        #div_map-3 .dynamic_img-2 {
+            bottom: -7%;
+            left: 7%;
+        }
+
+        #div_map-3 .dynamic_img-3 {
+            bottom: 15%;
+            left: 17%;
+        }
+
+        #div_map-3 .dynamic_img-4 {
+            bottom: 28%;
+            left: 54%;
+        }
+
+        #div_map-3 .dynamic_img-5 {
+            bottom: 50%;
+            left: 70%;
+        }
+
+        #div_map-4 .dynamic_img-1 {
+            bottom: -29%;
+            left: 38%;
+        }
+
+        #div_map-4 .dynamic_img-2 {
+            bottom: -19%;
+            left: 8%;
+        }
+
+        #div_map-4 .dynamic_img-3 {
+            bottom: 11%;
+            left: 26%;
+        }
+
+        #div_map-4 .dynamic_img-4 {
+            bottom: 34%;
+            left: 41%;
+        }
+
+        #div_map-4 .dynamic_img-5 {
+            bottom: 53.5%;
+            left: 8%;
         }
     }
 </style>
@@ -264,173 +408,173 @@
             <div class="col-12 div_map" id="div_map-1">
                 <img class="img_map" src="assets/image/map/bg-01.png">
                 <div class="dynamic_img dynamic_img-1">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-2">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-3">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-4">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-5">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
             </div>
             <div class="col-12 div_map" id="div_map-2">
                 <img class="img_map" src="assets/image/map/bg-01.png">
                 <div class="dynamic_img dynamic_img-1">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-2">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-3">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-4">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-5">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
             </div>
             <div class="col-12 div_map" id="div_map-3">
                 <img class="img_map" src="assets/image/map/bg-01.png">
                 <div class="dynamic_img dynamic_img-1">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-2">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-3">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-4">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-5">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
             </div>
             <div class="col-12 div_map" id="div_map-4">
                 <img class="img_map" src="assets/image/map/bg-01.png">
                 <div class="dynamic_img dynamic_img-1">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-2">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-3">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-4">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
                 <div class="dynamic_img dynamic_img-5">
-                    <img class="img_step" src="assets/image/map/stage01.png">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
                     <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
                     <div class="dynamic_txt dynamic_txt-1">
                         <span>1</span>
                     </div>
-                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.PNG">
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
                 </div>
             </div>
         </div>

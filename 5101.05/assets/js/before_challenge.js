@@ -28,7 +28,7 @@ beforeChallenge.prototype.init = function() {
 			var date = game.getDate2();
 			game_data['start_date'] = date;
 			console.log(game_data);
-			game.scorm_helper.setSingleData('game_data', JSON.stringify(game_data));
+			game.scorm_helper.setSingleData('game_data', game_data);
 			game.nextSlide();
 		}else{
 			alert('Harap pilih jabatan Anda!');

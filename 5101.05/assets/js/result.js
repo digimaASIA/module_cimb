@@ -19,6 +19,7 @@ Result.prototype.init = function() {
 	// count all game score range 0-5 for the star
 	// var score = parseInt(game_quiz["score"])/parseInt(game_quiz["total_soal"])*game.max_score;
 	var score = game.game_data['curr_score'];
+	// var score = 100;
 	console.log(score);
 	// count score range 0-100 for save to cmi.raw.score
 	var count = score/game.max_score*100;

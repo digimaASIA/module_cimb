@@ -113,6 +113,16 @@ reviewList.prototype.init = function() {
 									}
 									break;
 								}
+							}else{
+								var last_attemp = ($this.last_challange[i]['attemp'] == 0 ? 1 : $this.last_challange[i]['attemp']);
+								if(activityid >= min && activityid <= max && last_attemp == $this.attemp){
+									countSubChallenge += 1;
+
+									if(grade == 0 || grade == 100){
+										onReview = false;
+									}
+									break;
+								}
 							}
 						}
 					}
@@ -696,6 +706,31 @@ reviewList.prototype.appendHtml = function(data) {
 											console.log(clone_item2);
 										}
 									}
+								}else{
+									var last_attemp = ($this.last_challange[k]['attemp'] == 0 ? 1 : $this.last_challange[k]['attemp']);
+									if($this.curr_challenge == challange_id && last_attemp == $this.attemp){
+										if(activityid >= min && activityid <= max){
+											console.log(id);
+											if(grade == 100){ //if review img and text accepted
+												$(clone_item2).find('.dot').hide();
+												$(clone_item2).find('.img_dynamic').show();
+											}else if(grade == 0){ //if review img and text rejected
+												$(clone_item2).find('.dot').hide();
+												$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-decline.png');
+												$(clone_item2).find('.img_dynamic').show();
+
+												break;
+											}else if(grade == -1){//if img and text still reviewing
+												console.log('test');
+												console.log(clone_item2);
+												$(clone_item2).find('.dot').hide();
+												$(clone_item2).find('.img_dynamic').attr('src', game.image_path+'review/'+'icon-submit.png');
+												$(clone_item2).find('.img_dynamic').show();
+
+											}
+											console.log(clone_item2);
+										}
+									}
 								}
 							}
 						}
@@ -726,6 +761,13 @@ reviewList.prototype.appendHtml = function(data) {
 		// game.game_data['curr_challenge'] = id[2];
 		game.game_data['curr_sub_challenge'] = id[2];
 		game.scorm_helper.setSingleData('game_data', game.game_data);
-		game.nextSlide();
+		
+		//prevent click more than one
+		if ( $(this).hasClass("unclickable") ) {
+			e.preventDefault();
+    	} else {
+    		$(this).addClass("unclickable")
+			game.nextSlide();
+		}
 	});
 };

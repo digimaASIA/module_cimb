@@ -135,6 +135,7 @@ ModulReview.prototype.mulai_game = function() {
 		console.log(e);
 		$('.loader_image_index').hide();
 		if(e.length>0){
+			$this.ldata2 = e;
 			// $this.sc_data = e;
 			$this.count_upload = 0;
 			var find_activityid = ($this.max_file_upload + 1) * $this.curr_challenge 
@@ -181,6 +182,12 @@ ModulReview.prototype.mulai_game = function() {
 					console.log('min: '+min+' max: '+max+' activityid: '+activityid);
 					if($this.newAttemp == false){
 						if(activityid >= min && activityid <= max){
+							$this.flagSubmit = 1;
+							$this.arr_last_challenge.push(e[i]);
+						}
+					}else{
+						var last_attemp = (e[i]['attemp'] == 0 ? 1 : e[i]['attemp']);
+						if(activityid >= min && activityid <= max && last_attemp == $this.attemp){
 							$this.flagSubmit = 1;
 							$this.arr_last_challenge.push(e[i]);
 						}
@@ -328,7 +335,7 @@ ModulReview.prototype.create_challange = function() {
 		else{
 			var data_submit = $this.getDataForSubmit();
 			console.log(data_submit);
-			if(data_submit.length>0){
+			if(data_submit.length>1){
 				// $(this).off();
 				try{
 					$('.loader_image_index').show();
@@ -379,15 +386,16 @@ ModulReview.prototype.create_challange = function() {
 
 	$(".fileToUpload").change(function(e){
 		// $('.loader_image_index').show();
-		console.log(this);
-		console.log(curr_upload_id);
+		// console.log(this);
+		// console.log(curr_upload_id);
 		var files       = this.files;
 		var numItems = $('.list-group .list-group-item').length;
 		var curr_upload_id = parseInt($('.curr_upload_id').val());
-		console.log(files);
+		// console.log(files);
 		console.log('curr_upload_id: '+curr_upload_id);
 		console.log('numItems: '+numItems);
 		//max_file_upload from game.js
+		// $('.loader_image_quiz_review').show();
 		if(files.length <= $this.max_file_upload && numItems <= 2){
 			for (var i = 0; i < files.length; i++) {
 				var clone_item_3 = $(clone_item_2).clone();
@@ -410,7 +418,7 @@ ModulReview.prototype.create_challange = function() {
 				console.log(files[i]);
 				console.log($.inArray(ext,img_ext));
 				
-	            var activity_title = 'Mission-'+$this.curr_challenge+'-'+$this.curr_sub_challenge;
+	            var activity_title = 'Mission-'+$this.curr_challenge+'-'+($this.curr_sub_challenge - $this.count_sub_challenge_before);
 	            var activity_type; //activity_type: 5, itu file
 	            var activity_question = $('.desc_challenge').text();
 	            var activity_response;
@@ -456,8 +464,8 @@ ModulReview.prototype.create_challange = function() {
 				console.log('uploadFile');
 				$('.loader_image_index').show();
 				var newFileName = Math.random().toString(36).replace('0.', '')+'_'+files[i].name.replace(' ','_');
-
-				game.uploadFile(activityid, files[i], newFileName, function(data){	
+				// alert('test');
+				game.uploadFile(activityid, files[i], newFileName, true, function(data){	
 					console.log(data);
 					console.log(form);
 					console.log(form.find(".img_dynamic"));
@@ -505,11 +513,12 @@ ModulReview.prototype.create_challange = function() {
 							$(clone_item_3).find('.img_dynamic').hide();
 							$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
 							// $(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
-							$(clone_item_3).find('.txt_dynamic .file_name').html(files[i].name);
-							var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+files[i].name+"?123";
+							console.log(file);
+							$(clone_item_3).find('.txt_dynamic .file_name').html(file.name);
+							var img_src = game.base_url+"img_upload/"+game.username+"/"+game.module_id+"/"+file.name+"?123";
 							$(clone_item_3).find(".img_dynamic").attr("src",img_src);
 
-		                 	activity_response = '<a href='+game.base_url+data["message"]+'>Klik Here</a>';
+		                 	activity_response = '<a href="'+game.base_url+data["message"]+'">Klik Here</a>';
 		                }
 
 		                curr_upload_id += 1;
@@ -535,7 +544,7 @@ ModulReview.prototype.create_challange = function() {
 		                     pass_grade:100,
 		                     grade_type:0,
 		                     grade_by_id:grade_by_id,
-		                     reviewtype:2,
+		                     reviewtype:1, //2 buddy, 1 supervisor
 		                     challenge_id: $this.curr_challenge,
 		                     sub_challenge_id: $this.curr_sub_challenge,
 		                     category_game: $this.category_game,
@@ -550,8 +559,10 @@ ModulReview.prototype.create_challange = function() {
 		                 console.log(sc_data);
 
 		                game.scorm_helper.setAnsData("challenge_"+$this.curr_challenge+"-"+$this.curr_sub_challenge+"-"+$this.category_game, $this.sc_data);
+		            	$('.loader_image_index').hide();
+		            }else{
+		            	$('.loader_image_index').hide();
 		            }
-					$('.loader_image_index').hide();
 				});
 			} //end looping
 			
@@ -561,7 +572,10 @@ ModulReview.prototype.create_challange = function() {
 				
 			// }
 			// $('list-group').append(clone_item_2);
+			// $('.loader_image_quiz_review').hide();
+			// $('.loader_image_index').show();
 		}else{
+			// $('.loader_image_quiz_review').hide();
 			alert('Maximum upload is 3 files !');
 		}
 	});
@@ -678,7 +692,7 @@ ModulReview.prototype.getDataForSubmit = function() {
 			}
 		}
 
-		var activity_title = 'Mission-'+$this.curr_challenge+'-'+$this.curr_sub_challenge;
+		var activity_title = 'Mission-'+$this.curr_challenge+'-'+($this.curr_sub_challenge - $this.count_sub_challenge_before);
 		var activity_type = 2;
 		var activity_response = $('.textarea ').val();
 		var grade_by_id = null;
@@ -693,7 +707,7 @@ ModulReview.prototype.getDataForSubmit = function() {
 			pass_grade:100,
 			grade_type:0,
 			grade_by_id:grade_by_id,
-			reviewtype:2,
+			reviewtype:1,
 			challenge_id: $this.curr_challenge,
 			sub_challenge_id: $this.curr_sub_challenge,
 			category_game: $this.category_game,
