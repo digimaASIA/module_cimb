@@ -1,0 +1,99 @@
+<link rel="stylesheet" type="text/css" href="assets/css/game_quiz.css">
+
+<div id="game_quiz_page">
+    <div class="slider-content noselect" style="background: #B3E5FC;" data-role="page" data-prev="" data-next="#slide_0_0" current_sub="0" index="-1">
+        <div class="wrap">
+            <div style="margin: 0 auto;width: 100%;">
+				
+            	<!-- TIMER -->
+                <div class="timer">
+                    <img src="assets/image/general_game_assets/bg_timer.svg" alt="">
+                    <span class="txt_timer"><span class="text_time">02:00</span></span>
+                </div>
+                <!-- END -->
+                
+                <!-- NUMBERING -->
+                <div class="number_question">
+                    <img src="assets/image/game_quiz/background_num.png" alt="">
+                    <div class="text_num">
+                        <span class="curr_soal"></span>/<span class="total_soal"></span>
+                    </div>
+                </div>
+                <!-- END -->
+
+                <div class="question-wrapper">
+                    <!-- IMAGE -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                             <img src="#" alt="image-soal" id="img_soal" style="width: 100%;">
+                        </div>
+                    </div>
+                    <!-- END -->
+
+                    <!-- TEXT QUESTION -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="text_question">
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END -->
+                </div>
+                
+                <!-- FOR DROP DOWN QUESTION -->
+                <div class="drop_down_wrapper">
+                    <select name="question_1" class="form-control" data-role="none">
+                        <option value=""></option>
+                    </select>
+                </div>
+                <!-- END -->
+                
+                <!-- FOR DRAG AND DROP QUESTION -->
+                <div class="drop_wrapper">
+                    <div class="drop"></div>
+                </div>
+
+                <div class="drag_wrapper">
+                    <div class="drag">
+                        <div class="center_text">
+                            <span class="txt_drag">customers</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+
+                <div class="pilihan_jawaban_wrapper" style="text-align: center;margin-top: 20px;">
+                    <div class="category_wrapper">
+                        <div class="category"></div>
+                    </div>
+                    <!-- FOR MC, MMC, OR DAD SEQUENCE -->
+                    <ul class="pilihan_wrapper">
+                        <li class="pilihan">
+                            <span class="bullet">
+                                <span class="bul_abjad">A</span>
+                                <span class="bul_ceklis glyphicon glyphicon-ok"></span>
+                            </span>
+                            <span class="txt_pilihan"></span>
+                        </li>
+                    </ul>
+                    <!-- END -->
+
+                    <!-- BUTTON SUBMIT AND NEXT QUESTION -->
+                    <div style="position: relative;margin: 0 15px;margin-top: 25px;margin-bottom: 15px;min-height: 45px;">
+                        <div class="btn-standard btn-standard--submit btn-submit">
+                            <span class="l-table-middle">
+                                <span class="l-table-middle__cell">
+                                SUBMIT
+                                </span>
+                            </span>
+                        </div>
+                        <div class="next-soal">
+                            <img src="assets/image/game_quiz/next_soal.png" alt="">
+                        </div>
+                    </div>
+				
+			</div>
+        </div>
+    </div>
+</div>

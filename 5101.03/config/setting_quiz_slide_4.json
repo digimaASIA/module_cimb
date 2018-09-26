@@ -1,0 +1,69 @@
+{
+	"settings":{
+		"type":"page",
+		"showNumbering":true
+	},
+	"list_question":
+	[
+		{
+			"type":"mc",
+			"question":"Mengapa CIMB menganggap <i>coaching</i> merupakan hal penting untuk digalakkan?",
+			"pilihan":
+			[
+				{"index":0,"text":"Merupakan upaya untuk membantu karyawan dalam memperbaiki posisinya"},
+				{"index":1,"text":"Merupakan upaya untuk membantu karyawan dalam meningkatkan remunerasinya"},
+				{"index":2,"text":"Merupakan upaya untuk membantu karyawan dalam memperbaiki ataupun meningkatkan kinerjanya"},
+				{"index":3,"text":"merupakan upaya untuk membantu karyawan dalam memperbaiki ataupun meningkatkan targetnya"}
+			],
+			"jawaban":[2]
+		},
+		{
+			"type":"mc",
+			"question":"Apakah yang dititikberatkan dalam <i>coaching</i> selain peningkatan kompetensi?",
+			"pilihan":
+			[
+				{"index":0,"text":"Pembangunan rencana dalam bekerja"},
+				{"index":1,"text":"Penanaman motif dalam bekerja"},
+				{"index":2,"text":"Pembangunan cita-cita pribadi dalam bekerja"},
+				{"index":3,"text":"Penguatan cita-cita perusahaan dalam bekerja"}
+			],
+			"jawaban":[1]
+		},
+		{
+			"type":"mc",
+			"question":"Manakah yang merupakan keterampilan komunikasi terbuka dalam memberikan stimulus penyelesaian masalah?",
+			"pilihan":
+			[
+				{"index":0,"text":"Active Listening"},
+				{"index":1,"text":"Asking The Best Question"},
+				{"index":2,"text":"Feedback Skills"},
+				{"index":3,"text":"Cooperative"}
+			],
+			"jawaban":[1]
+		},
+		{
+			"type":"mc",
+			"question":"Apakah aplikasi <i>coaching</i> yang ada pada tahapan <i>Monitoring and Development Planning</i>?",
+			"pilihan":
+			[
+				{"index":0,"text":"Diskusi mengenai progress pencapaian kinerja"},
+				{"index":1,"text":"Diskusi penetapan KPI"},
+				{"index":2,"text":"Diskusi mengenai umpan balik pencapaian"},
+				{"index":3,"text":"Diskusi mengenai Diskusi mengenai tindak lanjut atas indikasi kinerja di bawah standar"}
+			],
+			"jawaban":[0]
+		},
+		{
+			"type":"mc",
+			"question":"Apakah yang merupakan bekal yang harus dipunyai seorang coach dalam kategori <i>Open &amp; Receptive?</i>",
+			"pilihan":
+			[
+				{"index":0,"text":"Seorang <i>coach</i> bersikap terbuka kepada fakta bahwa selalu ada <i>“big picture”</i> untuk dipertimbangkan <i>(open)</i>, dan dapat menerima masukan <i>(receptive)</i> dari karyawan"},
+				{"index":1,"text":"Seorang <i>coach</i> senantiasa memanfaatkan kesempatan untuk selalu memberikan tantangan kepada karyawan untuk berpikir melebihi/di luar persepsinya"},
+				{"index":2,"text":"Seorang <i>coach</i> harus menjadi panutan dalam memberikan contoh perilaku kepada karyawan"},
+				{"index":2,"text":"Seorang <i>coach</i> harus berani mengambil tindakan terhadap segala kekurangan karyawan tanpa rasa takut atau pilih kasih"}
+			],
+			"jawaban":[0]
+		}
+	]
+}
