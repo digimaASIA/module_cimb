@@ -1,0 +1,260 @@
+<link rel="stylesheet" type="text/css" href="assets/css/quiz.css"/>
+<style type="text/css">
+    .body-wrapper{
+        position: relative;
+    }
+    .point_challange_wrapper{
+        text-align: center;
+        margin: 35px 0;
+        display: inline-block;
+        position: relative;
+    }
+    .point_challange_wrapper .point_challenge{
+        display: inline-block;
+        background: #d69451;
+        border-radius: 50%;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin: 0 15px;
+    }
+    .point_challange_wrapper .point_challenge .check{
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+    .point_challange_wrapper .point_challenge.active .check{
+        display: table;
+    }
+    .point_challenge.end .img_bendera{
+        display: block !important;
+    }
+    .point_challange_wrapper .point_challenge .check>span{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 1.2em;
+        border-radius: 50%;
+        color: #d69451;
+        background: #f5bd6e;
+    }
+    .point_challange_wrapper .point_challenge .img_bendera{
+        position: absolute;
+        width: 45px;
+        bottom: 0;
+        left: 50%;
+        margin-left: -22.5px;
+        display: none;
+    }
+    .point_challange_wrapper .point_challenge .img_bendera img{
+        width: 100%;
+    }
+    .img_icon{
+        margin: 0 auto;
+        padding: 20px 10px 0px;
+        width: 100%;
+    }
+    .img_icon img{
+      width: 100%;  
+    }
+    .point_challange_wrapper .line{
+        height: 4px;
+        width: 80%;
+        position: absolute;
+        background: #d69451;
+        top: 50%;
+        margin-top: -2px;
+        left: 50%;
+        margin-left: -40%;
+        z-index: 0;
+    }
+    .point_challenge_wrap{
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+    }
+
+    .desc_challenge{
+        max-width: 250px;
+        margin: 20px auto;
+    }
+    .btn_start{
+        /*background: #1d8bec;*/
+        /*border-bottom: 7px solid #0759a2;*/
+        border-radius: 5px;
+        width: 130px;
+        margin: 0 auto;
+        padding: 10px 0;
+        /*color: #fff;*/
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+    .select_option{
+        /*opacity: .5;*/
+    }
+
+    .select_options a{
+        /*padding: 10px 20px 10px 20px;*/
+        padding: 15px 20px 15px 20px;
+    }
+
+    .select_options button{
+        width: 170px;
+    }
+
+    .select_option.selected{
+        /*opacity: 1;*/
+        background-color: #91b5d6;
+    }
+
+    .dynamic_btn_submit{
+        margin-top: 30%;
+    }
+
+    .review_list{
+        margin-right: -35px;
+        margin-left: -35px;
+    }
+
+    .review_list_content{
+        padding: 0;
+        background-color: #D6D6D6;
+    }
+
+    .list-group-item:first-child {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .list-group-item:last-child {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: unset;
+    }
+
+    .list-group-item, .list-group-item:focus, .list-group-item:hover {
+        background-color: unset;
+        border-color: unset;
+    }
+
+    .list-group-item {
+        border: unset;
+        text-align: left;
+        border-bottom: 1px solid #a79f9f !important;
+        margin:0;
+    }
+
+    .list-group {
+        margin-bottom: 0;
+    }
+
+    .dot {
+        height: 27.55px;
+        width: 27.55px;
+        background-color: #B1B0B0;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .row-flex {
+      display: flex; /* columns are now equal height */
+      display: -webkit-flex; /* Safari */
+    }
+
+    .list-group-item:hover{
+       background-color: grey;
+    }
+/*  
+  .title_challenge img{
+   width: 100%;
+}
+*/
+
+/*.title_challenge{
+  position: relative;
+  margin-left: -100px;
+}
+
+@media screen and (min-device-width: 321px) and (max-device-width: 424px){
+   .title_challenge{
+       margin-left: -22%;
+   }
+}
+
+@media screen and (min-device-width: 376px) and (max-device-width: 767px){
+   .title_challenge{
+       margin-left: -47%;
+   }
+}*/
+
+</style>
+<div class="slider-content noselect" style="background: #F5BD6E;">
+    <div class="wrap" style="overflow-x: hidden;">
+        <div>
+
+            <div class="l-table-middle">
+                 <div class="l-table-middle__cell">
+                    <div class="title_challenge title_instruction">
+                      <img src="assets/image/tebak1/ribbon-instruction.png" class="img-responsive">
+                      <span class="text_title" style="position: absolute;top: 2px;left: 33px;color:#fff;">
+                        Temukan satu perbedaannya.
+                      </span>
+                      <div class="number_quest" style="">
+                            <img src="assets/image/tebak2/pita_kiri.png" alt="" style="width:unset;height: unset;">
+                            <div class="text_num">
+                                <span class="curr_soal">1</span>/<span class="total_soal">5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <!--div class="rb-wrap">
+                          <p class="ribbon">
+                            <strong class="ribbon-content">Pita Tiga Dimensi</strong>
+                          </p>
+                        </div-->
+                        <div class="content_img-1">
+                            <img src="assets/image/tebak1/face1.png" alt="" class="img-responsive img-1 img-load" style="margin:15px auto;">
+                            <div class="img_mark">
+                                <img src="assets/image/tebak1/object_2.png" alt="" id="tebak1Transparent1" style="">
+                            </div>
+                        </div>
+                        <hr style="height:3px;border:none;color:#DD9A3D;background-color:#DD9A3D;" />
+                        
+                        <div class="content_img-2">
+                            <img src="assets/image/tebak1/face2.png" alt="" class="img-responsive img-1 img-load" style="margin:15px auto;">
+                            <div class="img_mark">
+                                <img src="assets/image/tebak1/object_2.png" alt="" id="tebak1Transparent2" style="">
+                            </div>
+                        </div>
+                    </div>
+                     
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#tebak1Transparent1").click(function() {
+      //alert( "Show Quiz Modal" );
+      game.nextSlide();
+    });
+
+    $("#tebak1Transparent2").click(function() {
+      //alert( "Show Quiz Modal" );
+      game.nextSlide();
+    });
+    
+   $(".btn-quit").click(function(e){
+     game.audio.audioButton.play();
+       try{
+           var btn_back = parent.top.document.getElementsByClassName("back-button")[0];
+           btn_back.click();
+       }
+       catch(e){
+           top.window.close();
+       }
+   });
+</script>

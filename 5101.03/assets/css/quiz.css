@@ -1,0 +1,68 @@
+.title_challenge{
+  position: relative;
+  margin-left: -100px;
+}
+
+.title_challenge .text_title{
+	font-size: 0.9em;
+	left: 75px !important;
+}
+
+.content_img-1{
+	position: relative;
+}
+
+.content_img-2{
+	position: relative;
+}
+
+
+.content_img-1 .img_mark{
+	position: absolute;
+    top: 60%;
+    left: 53%;
+}
+
+.content_img-1 .img_mark img{
+	width: 24px;
+}
+
+.content_img-2 .img_mark{
+    position: absolute;
+    top: 60%;
+    left: 53%
+}
+
+.content_img-2 .img_mark img{
+	width: 24px;
+}
+
+.number_quest{
+	position: absolute;
+    top: 0;
+    left: 94%;
+}
+
+.number_quest .text_num{
+	position: absolute;
+    top: 1px;
+    width: 100%;
+    font-size: 1.2em;
+    color: white;
+}
+
+@media screen and (min-device-width: 321px) and (max-device-width: 424px){
+   .title_challenge{
+       /*margin-left: -22%;*/
+   }
+}
+
+@media screen and (min-device-width: 376px) and (max-device-width: 767px){
+   .title_challenge{
+       /*margin-left: -47%;*/
+   }
+
+   .number_quest{
+		left: 96%;
+   }
+}

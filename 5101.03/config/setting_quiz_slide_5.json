@@ -1,0 +1,38 @@
+{
+	"settings":{
+		"type":"popup",
+		"showNumbering":true
+	},
+	"num_quest":[2,2,2,3,3],
+	"list_question":
+	[
+		{
+			"type":"mc",
+			"question":"Apa yang dimaksud dengan <i>integrity</i> Mas?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Kejujuran dalam menyelesaikan sebuah pekerjaan"},
+				{"index":1,"text":"Menjalankan tindakan sesuai keinginan kita"},
+				{"index":2,"text":"Konsisten melakukan tindakan benar meskipun tidak ada yang melihat"},
+				{"index":3,"text":"Mengambil keputusan sulit untuk masa depan yang cerah"}
+			],
+			"feedback":false,
+			"jawaban":[2]
+		},
+		{
+			"type":"mc",
+			"question":"Hal apa yang mencerminkan pribadi berintegritas?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Konsisten untuk melakukan suatu pekerjaan sepenuh hati dan maksimal"},
+				{"index":1,"text":"Inisiatif menawarkan produk perbankan"},
+				{"index":2,"text":"Memiliki simpati dan empati pada sesama"},
+				{"index":3,"text":"Berani menyampaikan pendapat dalam sebuah forum"}
+			],
+			"feedback":false,
+			"jawaban":[0]
+		}
+	]
+}
