@@ -28,6 +28,11 @@
 			"slide":5,
 			"file":"html/tebak2.html",
 			"class":"Tebak2"
+		},
+		{
+			"slide":6,
+			"file":"html/result.html",
+			"class":"Result"
 		}
 		
 	]

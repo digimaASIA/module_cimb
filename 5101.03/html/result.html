@@ -1,18 +1,22 @@
 <style type="text/css">
     .slider-content.lose{
-        background: #cd5a5a;
+        background: #CD5A5A;
     }
     .slider-content.win{
-        background: #619E61;
+        background: #619C61;
     }
     .slider-content .title-result{
+        /*background: url(../image/pita_result.png);*/
         text-align: center;
-        font-size: 1.15em;
-        font-family: 'Lato', sans-serif;
-        text-transform: uppercase;
+        font-size: 1.4em;
         height: 46px;
         color: #663333;
+        /*  background-repeat: no-repeat;
+        background-size: cover;*/
+        /* padding-top: 7px; */
         width: 100%;
+        /* margin: 5px auto; */
+        /* margin-bottom: 20px; */
         font-weight: 700;
         text-shadow: none;
         display: table-cell;
@@ -21,30 +25,60 @@
     }
     .slider-content .img-result-wrapper{
         text-align: center;
-        overflow: hidden;
-        z-index: 0;
-        position: relative;
     }
 
     .slider-content .img-result-wrapper .img-menang{
+        /*background: #9c617f;*/
         border-radius: 50%;
-        /* width: 120%; */
+        width: 270px;
+        height: 270px;
         position: relative;
         margin: 0 auto;
-        /* margin-left: -10%; */
     }
     .slider-content .img-result-wrapper .img-kalah{
+        background: #CDCD5A;
+        border-radius: 50%;
+        width: 270px;
+        height: 270px;
         margin: 0 auto;
         position: relative;
     }
 
-    .slider-content.win .img-result-wrapper .img-kalah,
+    .slider-content.win .img-result-wrapper .img-kalah{
+        display: none;
+    }
     .slider-content.lose .img-result-wrapper .img-menang{
         display: none;
+        border-radius: 50%;
+        width: 270px;
+        height: 270px;
         margin: 0 auto;
     }
     .slider-content .img-result-wrapper img{
+        width: 100%;
         margin: 0 auto;
+        /*position: absolute;*/
+        left: 0;
+        bottom: 0px;
+    }
+
+    .button-wrapper{
+        max-width: 310px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .btn-next-result{
+        border-radius: 5px;
+        width: 120px;
+        padding: 10px 0;
+        text-align: -webkit-center;
+        margin: 0 auto;
+        display: inline-block;
+        margin: 0 15px;
+        margin-top: 20px;
+        font-size: 1.3em;
+        /* font-weight: bolder; */
+        text-shadow: none;
     }
     .star-wrapper{
         padding: 10px 0;
@@ -56,7 +90,7 @@
         width: 18%;
         height: 30px;
         display: inline-block;
-        background: url(assets/image/result/star.png);
+        background: url(image/result/star.png);
         background-repeat: no-repeat;
         background-size: cover;
         background-position: -42px 0;
@@ -65,49 +99,139 @@
     .star-wrapper .star.active{
         background-position: 0px;
     }
-    .btn-next-result,.btn-tryagain{
+    .button_next_page{
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        padding: 15px;
+        cursor: pointer;
+        background: #e16f7f;
         display: none;
+        z-index: 30;
     }
+    .button_next_page.active{
+        display: block;
+    }
+    .btn-yes{
+        background: #e81c1c;
+        color: #fff;
+        padding: 10px;
+        width: 180px;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+    .btn-no{
+        width: 180px;
+        padding: 10px;
+        margin: 10px auto;
+        color: #e81c1c;
+        border: 1px solid #e81c1c;
+        cursor: pointer;
+    }
+    .btn-exit{
+        width: 120px;
+        height: 45px;
+        display: inline-block;
+        margin: 5px;
+        background: #930724;
+        padding-top: 8px;
+        border-radius: 5px;
+        border-bottom: 5px solid #620317;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.3em;
+    }
+    .txt_result .result_wrapper{
+        /*display: none;*/
+        background: #fff;
+        padding: 15px 20px;
+        /*border: 2px solid #CCAF88;*/
+        border-radius: 10px;
+        position: relative;
+        z-index: 3;
+        margin: 30px 10px 5px;
+    }
+
+    .slider-content.win .result_wrapper.win_wapper{
+        display: block !important;
+    }
+    .slider-content.win .txt_result .result_wrapper.win_wapper .title-desc{
+        color: #619C61;
+    }
+    .slider-content.win .txt_result .result_wrapper.win_wapper .title-desc h3{
+        text-align: center;
+        margin-top: 0px;
+    }
+    .slider-content .txt_result .result_wrapper .desc{
+        color: #333333;
+        text-align: center;
+        font-size: 1.2em;
+    }
+    .slider-content.lose .result_wrapper.lose_wapper{
+        display: block !important;
+    }
+    .total_score{
+        color: #86573a;
+        font-size: 0.7em;
+    }
+
 </style>
-<div class="slider-content noselect" data-role="page" data-prev="" data-next="" current_sub="0" index="-1" id="result">
+<div class="slider-content noselect" data-role="page" data-prev="" data-next="" current_sub="0" index="-1" id="result" style="background-color: #619c61;">
     <div class="wrap">
         <div style="text-align: left;">
-            <div class="l-table-middle">
-                <div class="l-table-middle__cell">
+           <!--  <div class="row">
+                <div class="col-xs-12"> -->
+
+                    <div class="l-table-middle">
+                        <div class="l-table-middle__cell">
 
                     <div class="about-wrapper2 animated zoomIn" style="max-width: 320px;margin:0 auto;">
-                        <div class="description">
-                            <div class="animated flipInX" style="animation-delay: 1s;display: table;position: relative;max-width: 310px;height: 50px;margin-top: -5px;width: 100%;">
-                            <img src="assets/image/result/pita_result.png" style="position: absolute;width: 100%;margin-top: 5px;">
-                                <span class="title-result">You Win!</span>
-                            </div>
-                        </div>
-
-                        <div class="star-wrapper">
-                            <div class="star animated bounceIn"></div>
-                            <div class="star animated bounceIn"></div>
-                            <div class="star animated bounceIn"></div>
-                            <div class="star animated bounceIn"></div>
-                           <div class="star animated bounceIn"></div>
-                        </div> 
 
                         <div class="img-result-wrapper">
                             <div class="img-menang">
-                                <img src="assets/image/result/win.gif" alt="" class="center-block img-responsive">
+                                <img class="img-responsive" src="assets/image/CIMB_Max_Win_Petualang_2.gif" alt="" style="">
                             </div>
-                            <div class="img-kalah">
-                                <img src="assets/image/result/lose.gif" alt="" class="center-block img-responsive">
+                            <div class="img-kalah" style="display: none;">
+                                <img src="assets/image/result/CIMB_Max_Win_Petualang_2.gif" alt="">
+                            </div>
+                        </div>
+
+                        <div class="pita_score" style="position: relative;z-index: 2;max-width: 300px;margin: 0 auto;margin-top: -20%;">
+                            <img src="assets/image/pita_score.png" alt="" style="width: 100%;">
+                            <div style="position: absolute;top: 0;width: 100%;height: 100%">
+                                <div class="label_score" style="display: inline-block;width: 50%;height: 100%;vertical-align: middle;">
+                                    <span style="display:table;width:100%;height:100%;">
+                                        <span style="display:table-cell;vertical-align:middle;color: #1D8BEC;font-size: 2em;font-weight: bold;padding-bottom: 10px;text-align: center;">
+                                            SCORE
+                                        </span>
+                                    </span>
+                                </div>
+                                <div style="display: inline-block;width: 42%;height: 100%;vertical-align: middle;">
+                                    <span style="display:table;width:100%;height:100%;">
+                                        <span style="display:table-cell;vertical-align:middle;color: #fff;font-size: 2em;font-weight: bold;text-align: center;padding-top: 10px;" class="txt_score">
+                                        <span class="txt_score">80</span>
+                                        <span class="total_score">/100</span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="txt_result">
+                            <div class="result_wrapper win_wapper">
+                                <div class="title-desc"><h3 style="color: green;margin-top: unset;">Congratulations!</h3></div>
+                                <div class="desc">Dengan menerapkan perilaku attention to detail, kita akan terbiasa untuk terperinci saat bekerja.</div>
+                            </div>
+                            <div class="result_wrapper lose_wapper" style="display: none;">
+                                <div class="desc">Nilai kamu tidak mencukupi. Kamu harus melakukan evaluasi kembali.</div>
                             </div>
                         </div>
 
                         <div class="button-wrapper">
-                            <div class="btn-standard btn-standard--next btn-next-result animated fadeInUp" style="animation-delay: .5s;">
-                                Next
+                            <div class="btn-standard btn-standard--tryagain btn-next-result animated fadeInUp" style="animation-delay: .5s;">
+                                Quit
                             </div>
-                            <div class="btn-standard btn-standard--tryagain btn-tryagain animated fadeInUp" style="animation-delay: .5s;">
-                                Quit &amp; Try Again
-                            </div>
-                        </div>   
+                        </div>  
                     </div>
 
                         </div>

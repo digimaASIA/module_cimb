@@ -22,6 +22,7 @@ Game.prototype.create_slide = function() {
 
 	var $this = this;
 	var current = $this.scorm_helper.getCurrSlide();
+	var current = 6;
 	//console.log($this.arr_content);
 	//console.log('current: '+current);
 	var str = $this.arr_content[current]["file"];

@@ -52,9 +52,13 @@
 }
 
 @media screen and (min-device-width: 321px) and (max-device-width: 424px){
-   .title_challenge{
-       /*margin-left: -22%;*/
-   }
+  .title_challenge{
+    /*margin-left: -22%;*/
+  }
+
+  .number_quest{
+    left: 95%;
+  }
 }
 
 @media screen and (min-device-width: 376px) and (max-device-width: 767px){
@@ -64,5 +68,11 @@
 
    .number_quest{
 		left: 96%;
+   }
+}
+
+@media screen and (min-device-width: 768px){
+   .number_quest{
+    left: 96%;
    }
 }
