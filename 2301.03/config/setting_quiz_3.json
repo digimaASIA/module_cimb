@@ -1,0 +1,65 @@
+{
+	"settings":{
+		"type":"",
+		"showNumbering":true,
+		"duration":9
+	},
+	"num_quest":[],
+	"list_question":
+	[
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Menolak berdasarkan"},
+				{"index":1,"text":"Cek identitas pada sistem"},
+				{"index":2,"text":"Mennyerahkan formulir"},
+				{"index":3,"text":"Memuji Pak Alvin"}
+			],
+			"feedback":false,
+			"jawaban":[1],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Apa yang harus saya sampaikan?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Memproses pembukaan"},
+				{"index":1,"text":"Meminta identitas lain"},
+				{"index":2,"text":"<span style='font-size: 12px;'>Menyarankan untuk melapor</span>"},
+				{"index":3,"text":"Langsung menolak"}
+			],
+			"feedback":false,
+			"jawaban":[2],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video_2.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Apa yang harus saya lakukan?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Memproses pembukaan"},
+				{"index":1,"text":"<span style='font-size: 12px;'>Bersikeras sistem tidak rusak</span>"},
+				{"index":2,"text":"Membandingkan dengan"},
+				{"index":3,"text":"<span style='font-size: 12px;'>Menginformasikan penolakan</span>"}
+			],
+			"feedback":false,
+			"jawaban":[3],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		}
+	]
+}

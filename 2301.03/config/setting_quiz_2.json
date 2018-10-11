@@ -1,0 +1,65 @@
+{
+	"settings":{
+		"type":"",
+		"showNumbering":true,
+		"duration":9
+	},
+	"num_quest":[],
+	"list_question":
+	[
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Langsung menolak"},
+				{"index":1,"text":"Memanggil atasan"},
+				{"index":2,"text":"Mencurigai Ibu Yunita"},
+				{"index":3,"text":"Cek identitas pada sistem"}
+			],
+			"feedback":false,
+			"jawaban":[3],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Apa yang harus saya sampaikan?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Menyerahkan formulir"},
+				{"index":1,"text":"Menolak karena Ibu Yunita"},
+				{"index":2,"text":"Menolak tanpa alasan"},
+				{"index":3,"text":"<span style='font-size: 12px;'>Mohon izin untuk bertanya ke</span>"}
+			],
+			"feedback":false,
+			"jawaban":[0],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video_2.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Apa yang harus saya lakukan?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"<span style='font-size: 12px;'>Membicarakan aktivitas untuk</span>"},
+				{"index":1,"text":"Menawarkan produk <i>online</i>"},
+				{"index":2,"text":"Membicarakan keadaan"},
+				{"index":3,"text":"Membiarkan Ibu Yunita"}
+			],
+			"feedback":false,
+			"jawaban":[0],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		}
+	]
+}

@@ -1,0 +1,98 @@
+.slider-content.lose{
+    background: #cd5a5a;
+}
+.slider-content.win{
+    background: #619E61;
+}
+.slider-content .title-result{
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    height: 46px;
+    color: #fff;
+    width: 100%;
+    font-weight: 700;
+    text-shadow: none;
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+}
+.slider-content .img-result-wrapper{
+    text-align: center;
+    overflow: hidden;
+    z-index: 0;
+    position: relative;
+}
+
+.slider-content .img-result-wrapper .img-menang{
+    border-radius: 50%;
+    width: 160%;
+    position: relative;
+    margin: 0 auto;
+    margin-left: -30%;
+}
+.slider-content .img-result-wrapper .img-kalah{
+    margin: 0 auto;
+    position: relative;
+}
+
+.slider-content.win .img-result-wrapper .img-kalah,
+.slider-content.lose .img-result-wrapper .img-menang{
+    display: none;
+    margin: 0 auto;
+}
+.slider-content .img-result-wrapper img{
+    margin: 0 auto;
+}
+.star-wrapper{
+    /* padding: 20px 0; */
+    /* height: 60px; */
+    max-width: 240px;
+    margin: 0 auto;
+}
+.star-wrapper .star{
+    width: 38px;
+    height: 75px;
+    display: inline-block;
+    background: url(../image/star.png);
+    background-repeat: no-repeat;
+    background-position: 0px 0;
+    display: none;
+    background-size: cover;
+}
+.star-wrapper .star.active{
+    background-position: -38px;
+}
+.btn-next-result,.btn-tryagain{
+    display: none;
+}
+
+.txt_result .result_wrapper{
+    display: none;
+    background: #fff;
+    padding: 15px 20px;
+    border: 2px solid #CCAF88;
+    border-radius: 10px;
+    position: relative;
+    z-index: 3;
+    margin: 30px 10px 5px;
+}
+
+.slider-content.win .result_wrapper.win_wapper{
+    display: block !important;
+}
+.slider-content.win .txt_result .result_wrapper.win_wapper .title-desc{
+    color: #619C61;
+}
+.slider-content.win .txt_result .result_wrapper.win_wapper .title-desc h3{
+    margin-top: 0px;
+}
+.slider-content .txt_result .result_wrapper .desc{
+    color: #333333;
+    text-align: center;
+    font-size: 0.9em;
+}
+.slider-content.lose .result_wrapper.lose_wapper{
+    display: block !important;
+}

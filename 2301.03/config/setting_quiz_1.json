@@ -1,0 +1,101 @@
+{
+	"settings":{
+		"type":"",
+		"showNumbering":true,
+		"duration":9
+	},
+	"num_quest":[],
+	"list_question":
+	[
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Langsung menolak"},
+				{"index":1,"text":"Memanggil atasan"},
+				{"index":2,"text":"Menanyakan asal negara"},
+				{"index":3,"text":"Menanyakan nama"}
+			],
+			"feedback":false,
+			"jawaban":[3],
+			"feedback_true" 	: "lorem ipsum dolor sit amet true",
+			"feedback_false" 	: "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Meminta paspor"},
+				{"index":1,"text":"Menolak"},
+				{"index":2,"text":"Menanyakan logat"},
+				{"index":3,"text":"Tidak percaya"}
+			],
+			"feedback":false,
+			"jawaban":[0],
+			"feedback_true" 	: "lorem ipsum dolor sit amet true",
+			"feedback_false" 	: "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video_2.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Menyerahkan formulir"},
+				{"index":1,"text":"Memanggil atasan"},
+				{"index":2,"text":"Konfirmasi identitas"},
+				{"index":3,"text":"Mengatakan Israel masuk"}
+			],
+			"feedback":false,
+			"jawaban":[2],
+			"feedback_true" 	: "lorem ipsum dolor sit amet true",
+			"feedback_false" 	: "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Memanggil atasan"},
+				{"index":1,"text":"<span style='font-size: 11px;'>Menyatakan belum bisa diproses</span>"},
+				{"index":2,"text":"<span style='font-size: 11px;'>Izin cek data di AML Solution</span>"},
+				{"index":3,"text":"Meminta calon nasabah"}
+			],
+			"feedback":false,
+			"jawaban":[1],
+			"feedback_true" : "lorem ipsum dolor sit amet true",
+			"feedback_false" : "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video_2.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		},
+		{
+			"type":"mc",
+			"question":"Bagaimana saya harus merespon?",
+			"image":false,
+			"pilihan":
+			[
+				{"index":0,"text":"Bersikeras menolak"},
+				{"index":1,"text":"Menyalahkan atasan"},
+				{"index":2,"text":"Menyampaikan dampaknya"},
+				{"index":3,"text":"Menyampaikan terkait"}
+			],
+			"feedback":false,
+			"jawaban":[1],
+			"feedback_true" 	: "lorem ipsum dolor sit amet true",
+			"feedback_false" 	: "lorem ipsum dolor sit amet false",
+			"video"				: "sample_video.mp4",
+			"video_feedback"	: "opening_video.mp4"
+		}
+	]
+}

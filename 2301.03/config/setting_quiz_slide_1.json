@@ -1,0 +1,35 @@
+{
+	"settings":{
+		"type":"page",
+		"showNumbering":true
+	},
+	"list_question":
+	[
+		{
+			"type":"dadseqcat",
+			"question":"Menurutmu apa yang membedakan antara <i>coaching, mentoring, teaching,</i> dan <i>counselling</i>? <br/>Tarik dan letakkan jawaban pada kategori yang sesuai.",
+			"category":["Coaching : ","Mentoring : ","Counselling : ","Teaching : "],
+			"pilihan":
+			[
+				{"index":0,"text":"Fokus untuk mencapai tujuan & objektif"},
+				{"index":1,"text":"Fokus untuk memberikan pengetahuan dan keterampilan "},
+				{"index":2,"text":"Fokus untuk membagikan pengalaman"},
+				{"index":3,"text":"Fokus untuk menyelesaikan masalah yang berkaitan dengan emosi"}
+			],
+			"jawaban":[0,2,3,1]
+		},
+		{
+			"type":"dadseqcat",
+			"question":"Menurutmu apa yang membedakan antara <i>coaching, mentoring, teaching,</i> dan <i>counselling</i>? <br/>Tarik dan letakkan jawaban pada kategori yang sesuai.",
+			"category":["Coaching : ","Mentoring : ","Counselling : ","Teaching : "],
+			"pilihan":
+			[
+				{"index":0,"text":"Digunakan untuk mendorong kesadaran diri dan pembelajaran mandiri"},
+				{"index":1,"text":"Digunakan saat pengetahuan dan pengalaman sangat kurang"},
+				{"index":2,"text":"Digunakan untuk mempersiapkan tanggung jawab dan posisi lebih tinggi"},
+				{"index":3,"text":"Dapat digunakan ketika kinerja terganggu"}
+			],
+			"jawaban":[0,1,3,2]
+		}
+	]
+}
