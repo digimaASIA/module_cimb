@@ -56,6 +56,7 @@ ModulReview.prototype.init = function() {
 	$this.flagSubmit = 0;
 
 	$this.arr_last_challenge = [];
+	$this.isDeletedatNull = 1;
 	$this.count_sub_challenge_before = 0;
 
 	$this.attemp = game.attemp;
@@ -184,15 +185,26 @@ ModulReview.prototype.mulai_game = function() {
 						if(activityid >= min && activityid <= max){
 							$this.flagSubmit = 1;
 							$this.arr_last_challenge.push(e[i]);
+
+							//set flag isDeletedatNull
+							if(e[i]['deleted_at']){
+								$this.isDeletedatNull = 0;
+							}
 						}
 					}else{
 						var last_attemp = (e[i]['attemp'] == 0 ? 1 : e[i]['attemp']);
 						if(activityid >= min && activityid <= max && last_attemp == $this.attemp){
 							$this.flagSubmit = 1;
 							$this.arr_last_challenge.push(e[i]);
+
+							//set flag isDeletedatNull
+							if(e[i]['deleted_at']){
+								$this.isDeletedatNull = 0;
+							}
 						}
 					}
 				}
+
 			}
 
 			//set mission upload to number_mission
@@ -581,64 +593,68 @@ ModulReview.prototype.create_challange = function() {
 	});
 	
 	console.log($this.arr_last_challenge);
-	if($this.arr_last_challenge.length > 0){
-		$this.disabledAllEvent();
-		// $('.icon_remove').css('display', 'none');
-
-		for (var i = 0; i < $this.arr_last_challenge.length; i++) {
-			var clone_item_3 = $(clone_item_2).clone();
-			var curr_upload_id = parseInt($('.curr_upload_id').val());
-			var response = $this.arr_last_challenge[i]['activity_response'];
-			if(i < $this.arr_last_challenge.length - 1){
-				if($this.arr_last_challenge[i]['activity_type'] == 1){
-					var img_src = response;
-	   				var arr_response = response.split('/');
-	   				var file_name = arr_response[8];
-					activity_type = 1; //activity type image
-					$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
-					$(clone_item_3).find('.img_dynamic').attr('id','img_dynamic-'+curr_upload_id);
-					$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
-					// $(clone_item_3).find('.fa-times').attr('onclick','modulReview.remove_item('+curr_upload_id+')');
-					$(clone_item_3).find('.txt_dynamic .file_name').html(file_name);
-
-	            	$(clone_item_3).find(".img_dynamic").attr("src",img_src);
-				}else{
-					var arr_response = response.split('/');
-	   				var file_name = arr_response[8];
-	   				file_name = file_name.split('>');
-					activity_type = 5; //activity type file
-					$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
-					$(clone_item_3).find('.img_dynamic').hide();
-					$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
-					// $(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
-					$(clone_item_3).find('.txt_dynamic .file_name').html(file_name[0]);
-					// $(clone_item_3).find(".img_dynamic").attr("src",img_src);
-				}
-
-				curr_upload_id += 1;
-				console.log('curr_upload_id: '+curr_upload_id);
-				$('.curr_upload_id').val(curr_upload_id);
-				$('.list-group').append(clone_item_3);
-			}
-			else{
-				$('.textarea_1').text(response);
-			}
-		}
-
-		$('.btn-back').click(function(){
-			game.setSlide(3);
-		});
-	}else{
-		//if curr challenge didn't submited, even though position in next step
-		($this.game_data["curr_challenge"] == undefined ? $this.game_data["curr_challenge"] = 1 : '');
-		if($this.game_data["curr_challenge"] == $this.curr_challenge){
-			
-		}else{
+	console.log('isDeletedatNull: '+$this.isDeletedatNull);
+	if($this.isDeletedatNull == 1){
+		if($this.arr_last_challenge.length > 0){
 			$this.disabledAllEvent();
+			// $('.icon_remove').css('display', 'none');
+
+			//looping data challenge answer from database
+			for (var i = 0; i < $this.arr_last_challenge.length; i++) {
+				var clone_item_3 = $(clone_item_2).clone();
+				var curr_upload_id = parseInt($('.curr_upload_id').val());
+				var response = $this.arr_last_challenge[i]['activity_response'];
+				if(i < $this.arr_last_challenge.length - 1){
+					if($this.arr_last_challenge[i]['activity_type'] == 1){
+						var img_src = response;
+		   				var arr_response = response.split('/');
+		   				var file_name = arr_response[8];
+						activity_type = 1; //activity type image
+						$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
+						$(clone_item_3).find('.img_dynamic').attr('id','img_dynamic-'+curr_upload_id);
+						$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
+						// $(clone_item_3).find('.fa-times').attr('onclick','modulReview.remove_item('+curr_upload_id+')');
+						$(clone_item_3).find('.txt_dynamic .file_name').html(file_name);
+
+		            	$(clone_item_3).find(".img_dynamic").attr("src",img_src);
+					}else{
+						var arr_response = response.split('/');
+		   				var file_name = arr_response[8];
+		   				file_name = file_name.split('>');
+						activity_type = 5; //activity type file
+						$(clone_item_3).attr('id', 'list-group-item_'+curr_upload_id);
+						$(clone_item_3).find('.img_dynamic').hide();
+						$(clone_item_3).find('.fa-times').attr('id','fa-times_'+curr_upload_id);
+						// $(clone_item_3).find('.fa-times').attr('onclick',this.remove_item);
+						$(clone_item_3).find('.txt_dynamic .file_name').html(file_name[0]);
+						// $(clone_item_3).find(".img_dynamic").attr("src",img_src);
+					}
+
+					curr_upload_id += 1;
+					console.log('curr_upload_id: '+curr_upload_id);
+					$('.curr_upload_id').val(curr_upload_id);
+					$('.list-group').append(clone_item_3);
+				}
+				else{
+					$('.textarea_1').text(response);
+				}
+			}
 
 			$('.btn-back').click(function(){
 				game.setSlide(3);
 			});
+		}else{
+			//if curr challenge didn't submited, even though position in next step
+			($this.game_data["curr_challenge"] == undefined ? $this.game_data["curr_challenge"] = 1 : '');
+			if($this.game_data["curr_challenge"] == $this.curr_challenge){
+				
+			}else{
+				$this.disabledAllEvent();
+
+				$('.btn-back').click(function(){
+					game.setSlide(3);
+				});
+			}
 		}
 	}
 	// $this.loadContent();

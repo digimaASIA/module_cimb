@@ -41,6 +41,8 @@ gameMap.prototype.init = function() {
 
     $this.attemp = game.attemp;
     $this.newAttemp = game.newAttemp;
+    $this.pointNotFilled = 0;
+    $this.total_score_notFilled = 0;
 
     //check status on review
  //    if($this.game_data['on_review'] != undefined){
@@ -227,7 +229,7 @@ gameMap.prototype.countScoreResult = function(){
 
 	//get perkiraan score dari score sekarang hingga score akhit, diambil jika menang terus atau score 5
 	console.log('$this.curr_score: '+$this.curr_score+' sisa_challenge: '+sisa_challenge+' $this.score_per_soal: '+$this.score_per_soal);
-	var perkiraan_score_akhir = $this.curr_score + (sisa_challenge * $this.score_per_soal);
+	var perkiraan_score_akhir = $this.curr_score + (sisa_challenge * $this.score_per_soal) + $this.total_score_notFilled;
 	// var perkiraan_score_akhir = 74;
 	console.log('perkiraan_score_akhir: '+perkiraan_score_akhir);
 	console.log('$this.hasReview: '+$this.hasReview);
@@ -252,12 +254,29 @@ gameMap.prototype.countScoreResult = function(){
 		$this.game_data = {};
 		game.scorm_helper.setSingleData('game_data', undefined);
 		//set new attemp
-		var attemp = $this.attemp + 1;
-		game.attemp = attemp;
-		game.scorm_helper.setSingleData('attemp', attemp);
+		// var attemp = $this.attemp + 1;
+		// game.attemp = attemp;
+		// game.scorm_helper.setSingleData('attemp', attemp);
 		game.closeModal('modal_feedback');
 		//got to cover page
-		game.setSlide(0);
+
+		if($this.curr_challenge != undefined){
+			var formData = new FormData();
+		    formData.append('username', game.username);
+		    formData.append('cmid', game.module_id);
+		    formData.append('attemp', $this.attemp);
+		    formData.append('challenge_id', $this.curr_challenge);
+		    // var formData = {"cmid":game.module_id,"username":game.username};
+		    var url = game.base_url+"challenge_answer.php?request=delete_challenge_answer";
+		    var async = false;
+		    $res = game.requestPost(url, async, formData);
+		    console.log($res);
+		    if($res.status == 200){
+		    	game.setSlide(3);
+		    }else{
+		    	alert('Server error!, please call administrator');
+		    }
+		}
 	});
 }
 
@@ -266,20 +285,29 @@ gameMap.prototype.setCurrScore = function(){
 	var $this = this;
 	var total_score = 0;
 	if($this.ldata.length > 0){
+		//looping challenge
 		for (var i = 0; i < $this.ldata.length; i++) {
+			var challangeId = $this.ldata[i]['id'];
 			var data2 = $this.ldata[i]['data'];
 			var curr_score_per_challenge = 0;
 			if(data2.length > 0){
 				var curr_score_per_sub_challenge = $this.score_per_soal / data2.length;
 				var point = 0;
+				//looping subchallenge
 				for (var j = 0; j < data2.length; j++) {
 					var curr_activityid = data2[j]['activityid'];
+					//flag find subchallenge in database based on attemp
+					var flagFindSubChallenge = 0;
+
 					if($this.last_challange.length > 0){
 						var flagPoint = 0;
+						//looping subchallenge in database
 						for (var k = 0; k < $this.last_challange.length; k++) {
 							var activityid = $this.last_challange[k]['activityid'];
 							var grade = $this.last_challange[k]['grade'];
 							var challange_id = $this.last_challange[k]['challenge_id'];
+							//field deleted_at in challenge answer, data deleted
+							var deleted_at = $this.last_challange[k]['deleted_at'];
 							var max = game.max_file_upload + 1;
 							var min = 1;
 							if(curr_activityid > 1){
@@ -297,17 +325,21 @@ gameMap.prototype.setCurrScore = function(){
 							// console.log(curr_activityid);
 							//check challenge id from json and database
 							if($this.newAttemp == false){
+								//compare challenge id in json and database
 								if($this.ldata[i]['id'] == challange_id){
 									if(activityid >= min && activityid <= max){
-										if(grade == 100){ //if review img and text accepted
-											flagPoint = 1;
-										}else if(grade == 0){ //if review img and text rejected
-											flagPoint = 0;
-											break;
-										}else if(grade == -1){
-											flagPoint = 0;
-											$this.hasReview = false;
-											break;
+										if(deleted_at == null){
+											flagFindSubChallenge = 1;
+											if(grade == 100){ //if review img and text accepted
+												flagPoint = 1;
+											}else if(grade == 0){ //if review img and text rejected
+												flagPoint = 0;
+												break;
+											}else if(grade == -1){
+												flagPoint = 0;
+												$this.hasReview = false;
+												break;
+											}
 										}
 									}
 								}
@@ -315,15 +347,18 @@ gameMap.prototype.setCurrScore = function(){
 								var last_attemp = ($this.last_challange[k]['attemp'] == 0 ? 1 : $this.last_challange[k]['attemp']);
 								if($this.ldata[i]['id'] == challange_id && last_attemp == $this.attemp){
 									if(activityid >= min && activityid <= max){
-										if(grade == 100){ //if review img and text accepted
-											flagPoint = 1;
-										}else if(grade == 0){ //if review img and text rejected
-											flagPoint = 0;
-											break;
-										}else if(grade == -1){
-											flagPoint = 0;
-											$this.hasReview = false;
-											break;
+										if(deleted_at == null){
+											flagFindSubChallenge = 1;
+											if(grade == 100){ //if review img and text accepted
+												flagPoint = 1;
+											}else if(grade == 0){ //if review img and text rejected
+												flagPoint = 0;
+												break;
+											}else if(grade == -1){
+												flagPoint = 0;
+												$this.hasReview = false;
+												break;
+											}
 										}
 									}
 								}
@@ -333,13 +368,21 @@ gameMap.prototype.setCurrScore = function(){
 							point += 1;
 						}
 					}
+					//if subchallenge not found in database
+					if(flagFindSubChallenge == 0){
+						if($this.curr_challenge == challangeId){
+							$this.pointNotFilled += 1;
+						}
+					}
 				}
 
 				console.log('challange_id: '+$this.ldata[i]['id']);
 				console.log('curr_score_per_sub_challenge: '+curr_score_per_sub_challenge+' point: '+point);
 				var curr_score_per_challenge = curr_score_per_sub_challenge * point;
+				var curr_score_per_challenge_2 = curr_score_per_sub_challenge * $this.pointNotFilled;
 				console.log('total_score: '+total_score);
 				total_score += curr_score_per_challenge;
+				$this.total_score_notFilled = curr_score_per_challenge_2;
 				console.log('total_score: '+total_score);
 			}
 		}

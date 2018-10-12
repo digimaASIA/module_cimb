@@ -100,7 +100,7 @@ var Game = function(){
             $this.attemp = 1;
             game_data = {
                 "category_game":"sales",
-                "start_date":"2018-09-20",
+                "start_date":"2018-10-7",
                 "curr_challenge":1,
                 "curr_sub_challenge":"2"
             };
@@ -420,11 +420,11 @@ Game.prototype.requestGet = function(url, async){
     return res;
 }
 
-Game.prototype.requestPost = function(url, async, data = ''){
+Game.prototype.requestPost = function(url, async, formData = {}){
     console.log('requestPost');
-    var formData = new FormData();
-    formData.append('user_id', game.username);
-    formData.append('cmid', game.module_id);
+    // var formData = new FormData();
+    // formData.append('user_id', game.username);
+    // formData.append('cmid', game.module_id);
     var res = '';
     $.ajax({
         url: url,
@@ -434,7 +434,7 @@ Game.prototype.requestPost = function(url, async, data = ''){
         cache: false,           // To unable request pages to be cached
         processData:false,      // To send DOMDocument or non processed data file it is set to false
         dataType: 'json',
-        async: async, // next process wait untul this ajax finish
+        async: async, // next process wait untul this ajax finish, default false
         beforeSend: function( xhr ) {
             $('.loader_image_index').show();
         },
