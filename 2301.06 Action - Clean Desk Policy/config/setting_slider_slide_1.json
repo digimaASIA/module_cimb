@@ -1,0 +1,18 @@
+[
+	{
+		"image":"prof-pic.png",
+		"text":"Apakah kamu pernah membuang fotokopi KTP nasabah ke tempat sampah?<br>Ataukah kamu pernah menggunakan formulir nasabah sebagai kertas bekas?<br>Sadarkah kamu, kejadian tersebut dapat menyebabkan bocornya data nasabah yang dapat dimanfaatkan oleh pihak-pihak tidak bertanggung jawab.<br> Untuk menghindarinya, kamu perlu memahami dan menerapkan aturan Clean Desk Policy dalam aktivitas kerjamu setiap saat.",
+		"ribbon":"",
+		"button":[
+			
+		]
+	},
+	{
+		"image":"prof-pic.png",
+		"text":"Kali ini, kamu berperan sebagai seorang Flying Customer Service & Flying Teller. Kamu harus memastikan penerapan Clean Desk Policy di setiap kantor cabang tempatmu bekerja.<br> Kamu harus mendapatkan minimal skor 75 untuk dapat lulus dari pembelajaran ini.<br> Apakah kamu sudah siap?",
+		"ribbon":"",
+		"button":[
+			{"text":"START"}
+		]
+	}
+] 

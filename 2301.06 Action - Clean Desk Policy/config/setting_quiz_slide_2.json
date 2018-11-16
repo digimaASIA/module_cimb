@@ -1,0 +1,119 @@
+{
+	"settings":{
+		"duration":false
+	},
+	"feedback_false":[
+		{"index":0,"text":"Ups, sebaiknya aku merapikan benda yang lain."},
+		{"index":1,"text":"Hmm, bukan ini, ya?"},
+		{"index":2,"text":"Wah, yang mana yang benar, ya?"},
+		{"index":3,"text":"Ups, aku salah."},
+		{"index":4,"text":"Eh, salah, ya?"},
+		{"index":5,"text":"Sepertinya aku harus belajar lagi aturannya."}
+	],
+	"feedback_true":[
+		{"index":0,"text":"Ok, selanjutnya apalagi yang perlu kurapikan?"},
+		{"index":1,"text":"Untung aku masih ingat aturan Clean Desk Policy."},
+		{"index":2,"text":"Selain ini, apalagi yang harus kurapikan, ya?"},
+		{"index":3,"text":"Masih ada yang lain sepertinya."},
+		{"index":4,"text":"Hmm, yang mana lagi, ya?"},
+		{"index":5,"text":"Jangan sampai masih ada yang terlewat!"}
+	],
+	"list_question":
+	[
+		[
+			{
+				"type":"dad_item_and_place",
+				"text":"Kantor Cabang CIMB Niaga",
+				"text_2":"07:45",
+				"question":"“Hmm, berantakan sekali mejaku. Mulai darimana ya?”",
+				"image":false,
+				"pilihan":
+				[
+					{"index":0,"text":"Foto","image":"foto.png"},
+					{"index":1,"text":"Dompet","image":"dompet.png"},
+					{"index":2,"text":"Boneka","image":"boneka.png"},
+					{"index":3,"text":"<i>Box (sterofoam)</i> bekas sarapan","image":"sterofoam.png"},
+					{"index":4,"text":"Tas","image":"tas.png"}
+				],
+				"pilihan_2":
+				[
+					{"index":0,"text":"Loker","image":"open-lockers.png"},
+					{"index":1,"text":"<i>Paper shredder</i>","image":"trash.png"},
+					{"index":2,"text":"Tempat sampah","image":"bin.png"},
+					{"index":3,"text":"Laci + kunci","image":"meja_laci.jpg"}
+				],
+				"feedback":
+				[
+					{"index":0,"video":"opening_video.mp4"},
+					{"index":1,"video":"closing_video.mp4"},
+					{"index":2,"video":"sample_video.mp4"},
+					{"index":3,"video":"sample_video_2.mp4"},
+					{"index":4,"video":"opening_video.mp4"}
+				],
+				"jawaban":[3,3,3,2,0]
+			}
+		],
+		[
+			{
+				"type":"mc",
+				"question":"Bagaimana saya harus merespon?",
+				"image":false,
+				"pilihan":
+				[
+					{"index":0,"text":"Memastikan maksud Sita kembali"},
+					{"index":1,"text":"Memberikan harapan"},
+					{"index":2,"text":"Menolak memberikan informasi"},
+					{"index":3,"text":"Tidak menjawab pertanyaan Sita"}
+				],
+				"feedback":[
+					{"index":0,"video":"Resto_1a.mp4"},
+					{"index":1,"video":"Resto_1b.mp4"},
+					{"index":2,"video":"Resto_1d.mp4"},
+					{"index":3,"video":"Resto_1c.mp4"}
+				],
+				"jawaban":[2],
+				"video": "Resto_0.mp4"
+			},
+			{
+				"type":"mc",
+				"question":"Apa yang sebaiknya saya sampaikan?",
+				"image":false,
+				"pilihan":
+				[
+					{"index":0,"text":"Menanyakan kebutuhan Sita"},
+					{"index":1,"text":"Mengingatkan sanksi"},
+					{"index":2,"text":"Memberikan sedikit informasi"},
+					{"index":3,"text":"Memberikan alternatif solusi"}
+				],
+				"feedback":[
+					{"index":0,"video":"Resto_2a.mp4"},
+					{"index":1,"video":"Resto_2c.mp4"},
+					{"index":2,"video":"Resto_2b.mp4"},
+					{"index":3,"video":"Resto_2d.mp4"}
+				],
+				"jawaban":[3],
+				"video": "Resto_1d_2.mp4"
+			},
+			{
+				"type":"mc",
+				"question":"Bagaimana saya menanggapinya?",
+				"image":false,
+				"pilihan":
+				[
+					{"index":0,"text":"Menyarankan Sita untuk mencoba"},
+					{"index":1,"text":"Minta waktu untuk berpikir"},
+					{"index":2,"text":"Menyetujui karena mendukung kepentingan CIMB Niaga"},
+					{"index":3,"text":"Menyetujui asal ditanggung bersama"}
+				],
+				"feedback":[
+					{"index":0,"video":"Resto_3d.mp4"},
+					{"index":1,"video":"Resto_3b.mp4"},
+					{"index":2,"video":"Resto_3a.mp4"},
+					{"index":3,"video":"Resto_3c.mp4"}
+				],
+				"jawaban":[0],
+				"video": "Resto_2d_2.mp4"
+			}
+		]
+	]
+}

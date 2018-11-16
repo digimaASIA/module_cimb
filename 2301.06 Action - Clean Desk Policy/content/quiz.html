@@ -1,0 +1,742 @@
+<style type="text/css">
+    .body-wrapper{
+        position: relative;
+    }
+    .point_challange_wrapper{
+        text-align: center;
+        margin: 35px 0;
+        display: inline-block;
+        position: relative;
+    }
+    .point_challange_wrapper .point_challenge{
+        display: inline-block;
+        background: #d69451;
+        border-radius: 50%;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin: 0 15px;
+    }
+    .point_challange_wrapper .point_challenge .check{
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+    .point_challange_wrapper .point_challenge.active .check{
+        display: table;
+    }
+    .point_challenge.end .img_bendera{
+        display: block !important;
+    }
+    .point_challange_wrapper .point_challenge .check>span{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 1.2em;
+        border-radius: 50%;
+        color: #d69451;
+        background: #f5bd6e;
+    }
+    .point_challange_wrapper .point_challenge .img_bendera{
+        position: absolute;
+        width: 45px;
+        bottom: 0;
+        left: 50%;
+        margin-left: -22.5px;
+        display: none;
+    }
+    .point_challange_wrapper .point_challenge .img_bendera img{
+        width: 100%;
+    }
+    .img_icon{
+        margin: 0 auto;
+        padding: 20px 10px 0px;
+        width: 100%;
+    }
+    .img_icon img{
+      width: 100%;  
+    }
+    .point_challange_wrapper .line{
+        height: 4px;
+        width: 80%;
+        position: absolute;
+        background: #d69451;
+        top: 50%;
+        margin-top: -2px;
+        left: 50%;
+        margin-left: -40%;
+        z-index: 0;
+    }
+    .point_challenge_wrap{
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+    }
+    .title_challenge{
+        position: relative;
+        display: inline-block;
+        /*width: 190px;*/
+    }
+    .title_challenge span{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        color: white;
+        padding: 3px;
+        font-size: 1em;
+        height: 100%;
+    }
+    .title_challenge img{
+        width: 100%;
+    }
+    .desc_challenge{
+        max-width: 250px;
+        margin: 20px auto;
+    }
+    .btn_start{
+        /*background: #1d8bec;*/
+        /*border-bottom: 7px solid #0759a2;*/
+        border-radius: 5px;
+        width: 130px;
+        margin: 0 auto;
+        padding: 10px 0;
+        /*color: #fff;*/
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+    .select_option{
+        /*opacity: .5;*/
+    }
+
+    .select_options a{
+        padding: 10px 20px 10px 20px;
+    }
+
+    .select_options button{
+        width: 170px;
+    }
+
+    .select_option.selected{
+        /*opacity: 1;*/
+        background-color: #91b5d6;
+    }
+
+    .dynamic_btn_submit{
+        margin-top: 30%;
+    }
+
+    video{
+      width: 100%;
+      height: 100%;
+     }
+    .col_md_two{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 40vh;
+    max-height: 200px;
+    }
+    .col_md_two img{
+      position: absolute;
+      min-width: 100%;
+      min-height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+    .col_md_two .bg-video{
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0,0,0,.4);
+      width: 100%;
+      height: 100%;
+      display: block;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .segitiga-play{
+      width: 75px;
+      height: 75px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -45px;
+      margin-top: -33px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 1px solid #fff;
+    }
+    .segitiga-play .segitiga{
+      width: 0;
+      height: 0;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 25px solid #fff;
+      position: absolute;
+      top: 50%;
+      margin-top: -20px;
+      left: 50%;
+      margin-left: -10px;
+    }
+
+    .video_btn_wrapper{
+        position: absolute;
+        top: 30%;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+    
+    .video_desc_wrapper{
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .btn_choose{
+        padding-top: 5px;
+    }
+
+    .btn_choose_text{
+        width: 95%;
+        background: #e92626;
+        color: white;
+        padding: 10px;
+        border-radius: 16px 16px 0 0;
+        border-top: solid 1px #FFF;
+        border-left: solid 1px #FFF;
+        border-right: solid 1px #FFF;
+    }
+
+    .div_btn_choose{
+        width: 95%;
+        border-radius: 0 0 16px 16px;
+        border-left: solid 1px #FFF;
+        border-right: solid 1px #FFF;
+        border-bottom: solid 1px #FFF;
+        padding: 10px 0px;
+    }
+
+    .pilihan_wrapper{
+        width: 95%;
+    }
+
+    .pilihan .bullet{
+        left: 20px;
+    }
+
+    .div_pilihan{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .right {
+        width: 100%;
+        max-width: unset;
+    }
+
+    .video_header_wrapper{
+        position: absolute;
+        top: 4px;
+        width:100%;
+    }
+
+    .row_no_margin{
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    /*.pilihan_wrapper .pilihan {
+        font-size: 14px;
+    }*/
+
+    .pilihan_wrapper .pilihan{
+        padding: 15px 15px;
+        /*padding: 13px 5px;*/
+    }
+
+    .icon_tutorial_wrap{
+        margin-top: 10px;
+    }
+
+    .icon_tutorial,.icon_exit_feedback{
+        font-size: 25px;
+        color: white;
+    }
+
+    .icon_tutorial_wrap{
+        text-align: right;
+    }
+
+    .modal#tutorial .description{
+        font-size: 14px;
+    }
+
+    .right {
+        display: block;
+    }
+
+    .video_div{
+        height: 100%;
+    }
+    .result{
+        position: absolute;
+        width: 100%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #FFF;
+        margin: 0 10px;
+    }
+
+
+    .curr_soal{
+        width: 50%;
+        float: left;
+        font-size: 20px;
+        /*margin-top: 10px;*/
+    }
+
+    .img_header{
+        width: 50%;
+        float: left;
+    }
+
+    .wrap>div{
+        height: unset !important;
+    }
+
+    .content_dad{
+        margin-top: 10px;
+    }
+
+    .item img{
+        margin:auto;
+    }
+
+    .item_place img{
+        margin: auto; 
+    }
+
+    .item_place img{
+        max-width: 150px;
+    }
+
+    .content_dad{
+        position: relative;
+        margin-top: -57%;
+    }
+
+    .text_header{
+        margin-top: 10px;
+        padding-left: 18%;
+    }
+
+    /*css pilihan*/
+    .pilihan_wrapper{
+        width: 90%;
+    }
+
+    .pilihan .bullet{
+        left: 20px;
+    }
+
+    .div_pilihan{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .right {
+        width: 100%;
+        max-width: unset;
+    }
+
+    .video_header_wrapper{
+        position: absolute;
+        top: 0;
+        width:100%;
+    }
+
+    .row_no_margin{
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .pilihan_wrapper .pilihan {
+        font-size: 14px;
+        padding: 13px 15px;
+        text-align: center;
+    }
+
+    .bg-content{
+        margin-top: 2%;
+    }
+
+    .text_challenge{
+        position: absolute;
+        font-size: 14px;
+    }
+
+    @media screen and (orientation:landscape) {
+        #content .slider-content>div{
+            padding: 15px;
+        }
+
+        .popupdialogbox_mc .description {
+            width: 75%;
+        }
+    }
+    /*end css pilihan*/
+</style>
+<div class="slider-content noselect" id="maps" style="background: #111;min-height: 100%;padding-left: unset;padding-right: unset;/* background-image: url(assets/image/game/bg/bg_cs.png); *//* background-size:cover; */">
+    <div class="wrap" style="padding: unset;">
+        <div class="row row_no_margin" style="position: relative;color: white;background: rgba(0, 0, 0, 0.5);height: 40px !important;">
+            <div class="img_triangle" style="position: absolute;width: 120px;">
+                <img src="assets/image/other/triangle-red.png" class="img-responsive">
+            </div>
+            <div class="text_challenge">
+                <span style="font-size: 12px">Mission</span><br><span style="font-size: 16px">1</span>
+            </div>
+            <div class="col-xs-8">
+                <!-- SCORE DALAM BINTANG -->
+                    <!-- <div class="star-wrapper">
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                    </div> -->
+                <!-- END --> 
+                <div class="text_header">
+                    <div class="text_title">
+                        <span style="font-size: 12px;">DAY 1 - Kantor Cabang CIMB Niaga<br></span>
+                    </div>
+                    <!-- <div class="text_question">“Hmm, berantakan sekali mejaku. Mulai darimana ya?”</div> -->
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <!-- <div class="icon_tutorial_wrap">
+                    <i class="fa fa-question-circle icon_tutorial" aria-hidden="true" style="display: none;"></i>
+                    <i class="fa fa-times-circle icon_exit_feedback" aria-hidden="true" style="display: none;"></i>
+                    <div class="timer" style="color: white;">
+                        <img src="" alt="">
+                        <span class="txt_timer"><span class="text_time" style="font-size: 24px;">00:00</span></span>
+                    </div>
+                </div> -->
+
+                <div class="curr_soal" style="">
+                    <div class="text_benda" style="font-size: 12px;">Benda</div>
+                    <div class="curr_benda" style="font-size: 18px;">0/4</div>
+                </div>
+                <div class="img_header" style="">
+                    <!-- <img src="assets/image/game/clock-circular-outline.png" class="img-responsive" style="max-width: 48px;margin: auto;"> -->
+                    <div class="text_pukul" style="font-size: 12px;">Pukul</div>
+                    <div class="curr_pukul" style="font-size: 18px;">07:45</div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-content">
+            <img src="assets/image/game/bg/bg_cs.png" class="img-responsive">
+        </div>
+        <div class="row row_no_margin content_dad" style="height: 100% !important;">
+             <!-- <div class="item_div col-xs-6"> -->
+                 <div class="item" id="item-1">
+                    <!-- <div class="text_item">Foto Liburan</div> -->
+                     <img src="assets/image/game/foto.png" class="img_item" id="img_item-1" style="cursor: pointer;position: absolute;width: 20%;left: 4%;z-index: 999999;top: 27%;">
+                 </div>
+                  <div class="item" id="item-2">
+                    <!-- <div class="text_item">Boneka</div> -->
+                     <img src="assets/image/game/dompet.png" class="img_item" id="img_item-2" style="cursor: pointer;position: absolute;width: 20%;left: 15%;top: 43%;">
+                 </div>
+                 <div class="item" id="item-3">
+                    <!-- <div class="text_item">Boneka</div> -->
+                     <img src="assets/image/game/boneka.png" class="img_item" id="img_item-3" style="cursor: pointer;position: absolute;width: 15%;left: 36%;top: 38%;">
+                 </div>
+                 <div class="item" id="item-4">
+                    <!-- <div class="text_item">Boneka</div> -->
+                     <img src="assets/image/game/sterofoam.png" class="img_item" id="img_item-4" style="cursor: pointer;position: absolute;width: 18%;left: 53%;top: 44%;">
+                 </div>
+                 <div class="item" id="item-5">
+                    <!-- <div class="text_item">Boneka</div> -->
+                     <img src="assets/image/game/tas.png" class="img_item" id="img_item-5" style="cursor: pointer;position: absolute;width: 28%;top: 17%;left: 66%;">
+                 </div>
+             <!-- </div> -->
+
+             <!-- <div class="item_place_div col-xs-6"> -->
+                 <!-- <div class="item_place" id="item_place-1">
+                    <div class="text_item"><i>paper shredder</i></div>
+                     <img src="assets/image/game/bin.png" class="img_item">
+                 </div>
+                  <div class="item_place" id="item_place-2">
+                    <div class="text_item">Tempat sampah</div>
+                     <img src="assets/image/game/trash.png" class="img_item">
+                 </div> -->
+             <!-- </div> -->
+        </div>
+
+        <!-- <div style="text-align: center;">
+            <div class="desc_challenge">
+            </div>
+
+            <div class="col_md_two" style="display: none;">
+                <div class="video">
+                  <div class="bg-video">
+                    <div class="segitiga-play">
+                      <div class="segitiga"></div>
+                    </div>
+                  </div>
+                  <img src="assets/image/other/bg-cover.png" class="cover img-responsive">
+                </div>
+            </div>          
+        </div> -->
+    </div>
+</div>
+
+<!-- POPUP VIDEO -->
+<div id="video" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: #000;display: none;z-index: 30;overflow-y: auto;" class="noselect">
+    <div class="btn-close" style="position: absolute;right: 10px;top: 50px;font-size: 1.6em;color: #9c9c9c;cursor: pointer;z-index: 30;">
+        <span class="glyphicon glyphicon-remove-circle"></span>
+    </div>
+    <div class="video_div">
+        <video controls controlsList="nodownload" id="video_feedback-1" style="display: none;">
+            <source src="assets/video/Kantor_grade 0.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="video_header_wrapper" style="display: none;">
+       <!--  <div class="row row_no_margin">
+            <div class="col-xs-6"> -->
+                <!-- SCORE DALAM BINTANG -->
+                    <!-- <div class="star-wrapper">
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                        <div class="star animated bounceIn"></div>
+                    </div> -->
+                <!-- END --> 
+            <!-- </div>
+            <div class="col-xs-6">
+                <div class="icon_tutorial_wrap">
+                    <i class="fa fa-question-circle icon_tutorial" aria-hidden="true" style="display: none;"></i>
+                    <i class="fa fa-times-circle icon_exit_feedback" aria-hidden="true" style="display: none;"></i>
+                    <div class="timer" style="color: white;">
+                        <img src="" alt="">
+                        <span class="txt_timer"><span class="text_time" style="font-size: 24px;">00:00</span></span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <div class="video_desc_wrapper" style="display: none;">
+        <span style="color: white;">Tap calon nasabah untuk memulai analisa.</span>
+    </div>
+    <div id="content-video">
+        <div class="video_btn_wrapper slider-content-video" style="display: none;background: rgba(0,0,0,.5);">
+
+            <div class="row row_no_margin btn_choose_text text_question" style="margin: 0 auto;">Question ?</div>
+
+            <div class="row row_no_margin div_btn_choose" style="margin: 0 auto;">
+                <ul class="pilihan_wrapper" style="margin-left: 0;">
+                    <div class="row">
+                        <div class="col-xs-6 div_pilihan">
+                            <li class="pilihan mc">
+                                <span class="bullet" style="display: none;">
+                                    <span class="bul_abjad">A</span>
+                                    <span class="bul_ceklis"></span>
+                                </span>
+                                <span class="txt_pilihan">Orang lain</span>
+                            </li>
+                        </div>
+                        <div class="col-xs-6 div_pilihan">
+                            <li class="pilihan mc">
+                                <span class="bullet" style="display: none;">
+                                    <span class="bul_abjad">B</span>
+                                    <span class="bul_ceklis"></span>
+                                </span>
+                                <span class="txt_pilihan">Tuhan</span>
+                            </li>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 div_pilihan">
+                            <li class="pilihan mc">
+                                <span class="bullet" style="display: none;">
+                                    <span class="bul_abjad">C</span>
+                                    <span class="bul_ceklis"></span>
+                                </span>
+                                <span class="txt_pilihan">Diri Sendiri</span>
+                            </li>
+                        </div>
+                        <div class="col-xs-6 div_pilihan">
+                            <li class="pilihan mc">
+                                <span class="bullet" style="display: none;">
+                                    <span class="bul_abjad">D</span>
+                                    <span class="bul_ceklis"></span>
+                                </span>
+                                <span class="txt_pilihan">Motivasi</span>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+
+            <div class="row row_no_margin" style="padding-bottom: 10px;">
+                <div class="col-xs-12 btn_choose">
+                    <button class="btn btn-primary btn-sm btn-standard--submit next-soal" style="display: none;font-size: 14px;">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="result" style="display: none;">
+        <div class="row row_no_margin">
+            <div class="img-result-wrapper">
+                <div class="img-menang">
+                    <img class="img-responsive" src="assets/image/Tangan-Menang.gif" alt="" style="">
+                </div>
+                <div class="img-kalah" style="display: none;">
+                    <img class="img-responsive" src="assets/image/Tangan-Kalah.gif" alt="" style="">
+                </div>
+            </div>
+
+            <div class="button-wrapper" style="height: 207px;margin: auto;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+                <div class="text_button_wrapper" style="display: none;text-align: center;color: black;padding: 0 10px;">
+                    Caramu menangani calon nasabah masih kurang tepat. Coba lagi, ya!
+                </div>
+                <div class="btn-standard btn-standard--submit btn_result_cust btn-next-tryagain animated fadeInUp" style="animation-delay: .5s;" style="display: none;">
+                    Try Again
+                </div>
+                <div class="btn-standard btn-standard--submit btn_result_cust btn-next-result animated fadeInUp" style="animation-delay: .5s;" style="display: none;">
+                    Next
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+
+
+<!-- popupdialogbox BENAR SALAH -->
+<div class="modal noselect popupdialogbox" id="popupdialogbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="tutorial" id="confirm_1" style="display: none;">
+                <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
+                    <div style="margin-top: -10px;">
+                       <!--  <div class="circle-ucok">
+                            <img src="assets/image/Ucok_Circle_Hallo.gif" alt="">
+                        </div> -->
+                        <div style="background: #fff;padding-top: 10px;border-radius: 10px;padding-bottom: 20px;">
+                            <!-- <div class="pita">
+                            <img src="assets/image/pita_result.png" alt="">
+                                <span class="txt_pita">Congratulations!</span>
+                            </div> -->
+                            <div class="title">
+                                <!-- <p><strong>Wait a minute</strong></p> -->
+                            </div>
+                            <p class="dynamic_text">
+                                Siap menjalani ujian master guru selama 20 hari ?
+                            </p>
+                           <!--  <div class="btn-bottom text-center dynamic_button">
+                                <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
+                                <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
+                            </div> -->
+                            <div class="btn_wrapper" style="margin-top: 20px;">
+                                <a class="btn-standard btn-standard--submit btn-inline close-modal" >
+                                    Yes
+                                </a>
+                                <a class="btn-standard btn-standard--no btn-inline popupdialogbox-prev-slide">
+                                    No
+                                </a>
+                            </div>
+                        </div>  
+                    </div> 
+                </div>
+            </div>
+
+            <div class="tutorial" id="confirm_2" style="display: none;">
+                <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
+                    <div style="margin-top: -10px;">
+                       <!--  <div class="circle-ucok">
+                            <img src="assets/image/Ucok_Circle_Hallo.gif" alt="">
+                        </div> -->
+                        <div style="background: #fff;padding-top: 10px;border-radius: 10px;padding-bottom: 20px;">
+                            <!-- <div class="pita">
+                            <img src="assets/image/pita_result.png" alt="">
+                                <span class="txt_pita">Congratulations!</span>
+                            </div> -->
+                            <div class="title">
+                                <!-- <p><strong>Wait a minute</strong></p> -->
+                            </div>
+                            <p class="dynamic_text">
+                                Apakah anda yakin dengan posisi yang anda pilih ?
+                            </p>
+                           <!--  <div class="btn-bottom text-center dynamic_button">
+                                <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
+                                <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
+                            </div> -->
+                            <div class="btn_wrapper" style="margin-top: 20px;">
+                                <a class="btn-standard btn-standard--submit btn-inline btn_submit" >
+                                    Yes
+                                </a>
+                                <a class="btn-standard btn-standard--no btn-inline close-modal">
+                                    No
+                                </a>
+                            </div>
+                        </div>  
+                    </div> 
+                </div>
+            </div>
+
+            <div class="popupdialogbox_mc" id="" style="display: none;">
+                <div class="description" style="padding: 20px 15px;background: #111;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;float: unset;margin: auto;">
+                    <div class="row row_no_margin">
+                        <ul class="pilihan_wrapper" style="margin-left: 0;" curr_soal="">
+                            <div class="col-xs-12 div_pilihan mc">
+                                <li class="pilihan mc" index="2">
+                                    <span class="bullet" style="display: none;">
+                                        <span class="bul_abjad">A</span>
+                                        <span class="bul_ceklis"></span>
+                                    </span>
+                                    <span class="txt_pilihan">Menanyakan asal negara</span>
+                                </li>
+                            </div>
+                            <div class="col-xs-12 div_pilihan mc">
+                                <li class="pilihan mc" index="1">
+                                    <span class="bullet" style="display: none;">
+                                        <span class="bul_abjad">B</span>
+                                        <span class="bul_ceklis"></span>
+                                    </span>
+                                    <span class="txt_pilihan">Memanggil atasan</span>
+                                </li>
+                            </div>
+                            <div class="col-xs-12 div_pilihan mc">
+                                <li class="pilihan mc" index="0">
+                                    <span class="bullet" style="display: none;">
+                                        <span class="bul_abjad">C</span>
+                                        <span class="bul_ceklis"></span>
+                                    </span>
+                                    <span class="txt_pilihan">Langsung menolak</span>
+                                </li>
+                            </div>
+                            <div class="col-xs-12 div_pilihan mc">
+                                <li class="pilihan mc" index="3">
+                                    <span class="bullet" style="display: none;">
+                                        <span class="bul_abjad">D</span>
+                                        <span class="bul_ceklis"></span>
+                                    </span>
+                                    <span class="txt_pilihan">Menanyakan nama</span>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

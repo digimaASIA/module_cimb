@@ -1,0 +1,16 @@
+{
+	"category":false,
+	"opening":"Kantor_grade 0.mp4",
+	"category_game":[
+		{
+			"id" :0,
+			"category_game_name":"A",
+			"image": "nas01.png"
+		},
+		{
+			"id" :1,
+			"category_game_name":"B",
+			"image": "nas02.png"
+		}
+	]
+}

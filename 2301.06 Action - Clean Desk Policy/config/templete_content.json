@@ -1,0 +1,30 @@
+{
+	"course":"Operation & Risk",
+	"module":"Clean Desk Policy",
+	"num_module":1,
+	"list_slide":[
+		{
+			"slide":0,
+			"file":"content/cover.html",
+			"hasClass":false
+		},
+		{
+			"slide":1,
+			"file":"content/slider.html",
+			"hasClass":true,
+			"class":"Slider"
+		},
+		{
+			"slide":2,
+			"file":"content/quiz.html",
+			"hasClass":true,
+			"class":"Modul"
+		},
+		{
+			"slide":3,
+			"file":"content/final.html",
+			"hasClass":true,
+			"class":"final"
+		}
+	]
+}
