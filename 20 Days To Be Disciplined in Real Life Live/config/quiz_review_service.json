@@ -1,0 +1,1063 @@
+[
+	{
+		"id": 1,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":1,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":2,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":3,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":4,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":5,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 2,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":6,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":7,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":8,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":9,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":10,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 3,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":11,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":12,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":13,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":14,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":15,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 4,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":16,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":17,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":18,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":19,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":20,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 5,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":21,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":22,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":23,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":24,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":25,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 6,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":26,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":27,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":28,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":29,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":30,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 7,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":31,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":32,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":33,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":34,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":35,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 8,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":36,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":37,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":38,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":39,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":40,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 9,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":41,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":42,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":43,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":44,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":45,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 10,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":46,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":47,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":48,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":49,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":50,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 11,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":51,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":52,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":53,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":54,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":55,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 12,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":56,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":57,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":58,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":59,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":60,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 13,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":61,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":62,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":63,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":64,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":65,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 14,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":66,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":67,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":68,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":69,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":70,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 15,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":71,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":72,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":73,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":74,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":75,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 16,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":76,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":77,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":78,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":79,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":80,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 17,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":81,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":82,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":83,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":84,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":85,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 18,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":86,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":87,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":88,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":89,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":90,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 19,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":91,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":92,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":93,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":94,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":95,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	},
+	{
+		"id": 20,
+		"label":"Terapkan 5 perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":96,
+			      	"label": "Membuat <i>to-do list</i> atau jadwal<br><span><i>(Contoh: Cabin Crew Check)</i></span>",
+			        "label_2": "Unggah bukti to-do list atau jadwal.(Contoh: <i>Cabin Crew Check</i>. Bukti: <i>Form.</i>)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":97,
+			      	"label": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/<i>Form</i> OMPK)",
+			        "label_2": "Unggah bukti informasi secara terperinci.(Contoh: Kronologi Eskalasi. Bukti: Rekaman suara/Form OMPK)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":98,
+			      	"label": "Bekerja sesuai prosedur<br><i>(Contoh: Clean Desk Policy)</i>",
+			        "label_2": "Unggah bukti dari bekerja sesuai prosedur. (Contoh: <i>Clean Desk Policy</i>. Bukti: Foto/Hasil DOB)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":99,
+			      	"label": "Memonitor detail dan kualitas pekerjaan<br><i>(Contoh: Pengecekan tiket akhir hari)</i>",
+			        "label_2": "Unggah foto hasil pekerjaanmu yang detail dan berkualitas. (Contoh: Pengecekan tiket akhir hari. Bukti: Tiket transaksi/<i>Journal Scan</i>)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":100,
+			      	"label": "<i>Double-Check<br>(Contoh: Dual control)</i>",
+			        "label_2": "Unggah bukti dari <i>double-check</i>. (Contoh: <i>Dual control</i>. Bukti: Foto saat <i>replenish</i> ATM)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"<strong>President / Global Chief Executive</strong>",
+			        "image":"divisi_digima_asia/option_border_1.png"
+			}
+		]
+	}
+	
+]

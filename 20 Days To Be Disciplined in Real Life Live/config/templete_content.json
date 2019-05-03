@@ -1,0 +1,83 @@
+{
+	"course":"Basic Core Competency",
+	"module":"20 Days to be Disciplined in Real Life",
+	"num_module":1,
+	"list_slide":[
+		{
+			"slide":0,
+			"file":"content/cover.html",
+			"hasClass":false,
+			"pre_slide":[]
+		},
+		{
+			"slide":1,
+			"file":"content/slider.html",
+			"hasClass":true,
+			"class":"Slider",
+			"pre_slide":[0],
+			"data":[
+				{
+					"image":"slider/slide_1.gif",
+					"text":"Master Guru ingin melihat kemampuanmu menerapkan perilaku disiplin.",
+					"ribbon":"",
+					"button":[
+						
+					]
+				},
+				{
+					"image":"slider/slide_2.gif",
+					"text":"Selama 20 hari, terapkan 5 perilaku disiplin dalam pekerjaan sehari-hari kamu.",
+					"ribbon":"",
+					"button":[
+						{"text":"Start"}
+					]
+				}
+			]
+		},
+		{
+			"slide":2,
+			"file":"content/before_challenge.html",
+			"hasClass":true,
+			"class":"beforeChallenge",
+			"pre_slide":[0,1]
+		},
+		{
+			"slide":3,
+			"file":"content/game_map.html",
+			"hasClass":true,
+			"class":"gameMap",
+			"pre_slide":[0,1,2],
+			"slide_data":[
+				
+			]
+		},
+		{
+			"slide":4,
+			"file":"content/review_list.html",
+			"hasClass":true,
+			"class":"reviewList",
+			"pre_slide":[0,1,2,3]
+		},
+		{
+			"slide":5,
+			"file":"content/quiz_review.html",
+			"hasClass":true,
+			"class":"ModulReview",
+			"pre_slide":[0,1,2,3,4]
+		},
+		{
+			"slide":6,
+			"file":"content/review_atasan.html",
+			"hasClass":true,
+			"class":"reviewAtasan",
+			"pre_slide":[0,1,2,3,4,5]
+		},
+		{
+			"slide":7,
+			"file":"content/result.html",
+			"hasClass":true,
+			"class":"Result",
+			"pre_slide":[0,1,2,3,4,5]
+		}
+	]
+}

@@ -1,0 +1,7 @@
+Note modul 20 days disciplined in real life:
+- Apabila restart attemp, akan cek data di tabel user_module_data. Jika ada data game_data. maka akan menggunakan start_data dari data itu
+
+Ketentuan untuk upload modul :
+- cek this.modeInterval, di game.js, line 69
+- cek var modeDev, di game.js, line 89
+- cek var modeTest, di game.js, line 118

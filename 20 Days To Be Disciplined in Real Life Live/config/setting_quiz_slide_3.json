@@ -1,0 +1,55 @@
+[
+	{
+		"id": 1,
+		"label":"Terapkan perilaku di pekerjaanmu!",
+		"image":false,
+		"desc":"Terapkan penerapan perilaku pada pekerjaan sehari-hari, lalu unggah bukti dan penjelasannya.",
+		"data":[
+			{
+			        "activityid":1,
+			      	"label": "Membuat <i>checklist</i> jadwal harian dan menjalankannya sesuai jadwal <i>(Practice Self Care)</i>",
+			        "label_2": "Unggah bukti checklist harian (Contoh: Membuat dan menjalankan aktivitas sesuai jadwal yang dibuat)",
+			        "question":"Berikan penjelasan terkait isi bukti yang kamu unggah!",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":2,
+			      	"label": "Membuat milestone aktivitas untuk mencapai tujuan (<i>Break Goals into Smaller Part</i>)",
+			        "label_2": "Unggah bukti milestone aktivitas (Contoh: Membuat milestone aktivitas-aktivitas untuk mencapai tujuan yang diinginkan)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":3,
+			      	"label": "Melakukan <i>follow up</i> proses pekerjaan <i>(Follow through)</i>",
+			        "label_2": "Unggah bukti dari follow up proses pekerjaan (Contoh: Catatan masalah awal dan hasil follow up-nya)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":4,
+			      	"label": "Mengidentifikasi potensi masalah yang dapat terjadi ketika menjalankan aktivitas (<i>Rise The Occasion</i>)",
+			        "label_2": "Unggah bukti mengidentifikasi potensi masalah (Contoh: Daftar potensi masalah/kendala yang dapat terjadi ketika menjalankan aktivitas )",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			},
+			{
+			        "activityid":5,
+			      	"label": "Merencanakan beberapa skenario untuk mengatasi faktor-faktor yang dapat menghambat tujuan yang ingin dicapai (<i>Avoid Temptation</i>)",
+			        "label_2": "Unggah bukti dari alternatif solusi (Contoh: Membuat rencana alternatif solusi agar tetap dapat mencapai tujuan)",
+			        "question":"",
+			        "type": "upload_input",
+			        "text":"",
+			        "image":""
+			}
+		]
+	}
+]

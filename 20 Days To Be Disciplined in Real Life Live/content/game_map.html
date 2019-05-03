@@ -1,0 +1,650 @@
+<style type="text/css">
+        .body-wrapper{
+            position: relative;
+        }
+        /*.bg-01{
+            background: url(image/map/01-100.JPG);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom left;
+        }*/
+
+        .img-map{
+            width:100%;
+        }
+
+        #main {
+            /*width: 400px;
+            height: 400px;*/
+            border: 1px solid #c3c3c3;
+            display: -webkit-flex; /* Safari */
+            -webkit-flex-direction: column-reverse; /* Safari 6.1+ */
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .div_map{
+            position: relative;
+            margin: auto;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .dynamic_img{
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .dynamic_img.active{
+            opacity: unset;
+        }
+
+        .dynamic_img.active_before{
+            opacity: unset;
+        }
+
+        .dynamic_img:hover img {
+            /*background-color: grey;*/
+        }
+
+        .dynamic_txt{
+            position: absolute;
+            font-family: Agenda-Black;
+            font-size: 20px;
+            color: white;
+        }
+
+        .header_map{
+            position: absolute;
+            top: 0;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .text_title{
+            color: white;
+            /*line-height: 1.4em;
+            font-size: 1.1em;*/
+            line-height: 7vw;
+            font-size: 4vw;
+            /* margin: 0; */
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: 5px;
+            font-family: Lato-Black;
+        }
+
+        .text_score{
+            color: white;
+            /*line-height: 1.4em;
+            font-size: 1.1em;*/
+            line-height: 7vw;
+            font-size: 5vw;
+            /* margin: 0; */
+            position: absolute;
+            top: 0;
+            /* left: 18px; */
+            width: 100%;
+            height: 100%;
+            padding-left: 33%;
+            padding-top: 10%;
+            text-align: left;
+            font-family: Agenda-Bold;
+        }
+
+        .img-tutorial{
+            width: 40%;
+        }
+
+        .div_header{
+            margin: 0;
+        }
+
+    @media screen and (max-width: 767px){
+        .img_map{
+            position: relative;
+            width: 100%;
+        }
+
+        .dynamic_img-1{
+            bottom: 18%;
+            left: 16%;
+        }
+
+        .dynamic_txt{
+            top: 15%;
+            /* left: 40%; */
+            text-align: center;
+            width: 100%;
+        }
+
+        .dynamic_img-2{
+            bottom: 36%;
+            left: 54%;
+        }
+
+        .dynamic_img-3 {
+            position: absolute;
+            bottom: 54%;
+            left: 27%;
+        }
+
+        .dynamic_img-4 {
+            bottom: 72%;
+            left: 16%;
+        }
+
+        .dynamic_img-5 {
+            bottom: 87%;
+            left: 58%;
+        }
+
+        .img_curr_step{
+            /*display: unset !important;*/
+            position: absolute;
+            top: -130%;
+            left: 10%;
+            z-index: 9;
+        }
+
+        #div_map-2 .dynamic_img-1 {
+            bottom: 3%;
+            left: 69%;
+        }
+
+        #div_map-2 .dynamic_img-2{
+            bottom: 15%;
+            left: 37%;
+        }
+
+        #div_map-2 .dynamic_img-3{
+            bottom: 29%;
+            left: 6%;
+        }
+
+        #div_map-2 .dynamic_img-4 {
+            bottom: 50%;
+            left: 17%;
+        }
+
+        #div_map-2 .dynamic_img-5 {
+            bottom: 58%;
+            left: 61%;
+        }
+
+        #div_map-3 .dynamic_img-1 {
+            bottom: -25%;
+            left: 38%;
+        }
+
+        #div_map-3 .dynamic_img-2 {
+            bottom: -7%;
+            left: 7%;
+        }
+
+        #div_map-3 .dynamic_img-3 {
+            bottom: 15%;
+            left: 17%;
+        }
+
+        #div_map-3 .dynamic_img-4 {
+            bottom: 28%;
+            left: 54%;
+        }
+
+        #div_map-3 .dynamic_img-5 {
+            bottom: 50%;
+            left: 70%;
+        }
+
+        #div_map-4 .dynamic_img-1 {
+            bottom: -29%;
+            left: 38%;
+        }
+
+        #div_map-4 .dynamic_img-2 {
+            bottom: -19%;
+            left: 8%;
+        }
+
+        #div_map-4 .dynamic_img-3 {
+            bottom: 11%;
+            left: 26%;
+        }
+
+        #div_map-4 .dynamic_img-4 {
+            bottom: 34%;
+            left: 41%;
+        }
+
+        #div_map-4 .dynamic_img-5 {
+            bottom: 53.5%;
+            left: 8%;
+        }
+
+    }
+
+    @media screen and (min-device-width: 376px) and (max-device-width: 767px){
+        .div_header{
+            /*margin-left: 12%;
+            margin-right: 13%;*/
+        }
+    }
+
+    @media screen and (min-device-width: 321px) and (max-device-width: 375px){
+        .div_header{
+            /*margin-left: 7%;
+            margin-right: 8%;*/
+        }
+    }
+
+    @media screen and (min-device-width: 768px){
+        .img_map{
+            width: 100%;
+        }
+
+        .text_title{
+            line-height: 1.4em;
+            font-size: 1.4em;
+        }
+
+        .text_score{
+            line-height: 1.5em;
+            font-size: 1.5em;
+        }
+
+        .img_map{
+            position: relative;
+            width: 100%;
+        }
+
+        .dynamic_img-1{
+            bottom: 18%;
+            left: 16%;
+        }
+
+        .dynamic_txt{
+            top: 15%;
+            /* left: 40%; */
+            text-align: center;
+            width: 100%;
+        }
+
+        .dynamic_img-2{
+            bottom: 36%;
+            left: 54%;
+        }
+
+        .dynamic_img-3 {
+            position: absolute;
+            bottom: 54%;
+            left: 27%;
+        }
+
+        .dynamic_img-4 {
+            bottom: 72%;
+            left: 16%;
+        }
+
+        .dynamic_img-5 {
+            bottom: 87%;
+            left: 58%;
+        }
+
+        .img_curr_step{
+            /*display: unset !important;*/
+            position: absolute;
+            top: -130%;
+            left: 10%;
+            z-index: 9;
+        }
+
+        #div_map-2 .dynamic_img-1 {
+            bottom: 3%;
+            left: 69%;
+        }
+
+        #div_map-2 .dynamic_img-2{
+            bottom: 15%;
+            left: 37%;
+        }
+
+        #div_map-2 .dynamic_img-3{
+            bottom: 29%;
+            left: 6%;
+        }
+
+        #div_map-2 .dynamic_img-4 {
+            bottom: 50%;
+            left: 17%;
+        }
+
+        #div_map-2 .dynamic_img-5 {
+            bottom: 58%;
+            left: 61%;
+        }
+
+        #div_map-3 .dynamic_img-1 {
+            bottom: -25%;
+            left: 38%;
+        }
+
+        #div_map-3 .dynamic_img-2 {
+            bottom: -7%;
+            left: 7%;
+        }
+
+        #div_map-3 .dynamic_img-3 {
+            bottom: 15%;
+            left: 17%;
+        }
+
+        #div_map-3 .dynamic_img-4 {
+            bottom: 28%;
+            left: 54%;
+        }
+
+        #div_map-3 .dynamic_img-5 {
+            bottom: 50%;
+            left: 70%;
+        }
+
+        #div_map-4 .dynamic_img-1 {
+            bottom: -29%;
+            left: 38%;
+        }
+
+        #div_map-4 .dynamic_img-2 {
+            bottom: -19%;
+            left: 8%;
+        }
+
+        #div_map-4 .dynamic_img-3 {
+            bottom: 11%;
+            left: 26%;
+        }
+
+        #div_map-4 .dynamic_img-4 {
+            bottom: 34%;
+            left: 41%;
+        }
+
+        #div_map-4 .dynamic_img-5 {
+            bottom: 53.5%;
+            left: 8%;
+        }
+    }
+</style>
+<div class="slider-content" style="background: #E5E5E5;overflow: hidden;">
+    <div class="wrap" style="padding: 0;">
+        <div id="main" style="text-align: center;margin: 0 auto;overflow-y: scroll;">
+            <div class="header_map">
+                <div class="row div_header" style="">
+                    <div class="col-xs-3" style="padding: 0;">
+                       
+                    </div>
+                    <div class="col-xs-6" style="padding: 0;">
+                        <img class="img-responsive" src="assets/image/map/title.png">
+                        <div class="text_title">20 Days to be Disciplined</div>
+                    </div>
+                    <div class="col-xs-3" style="padding: 0;">
+                    </div>
+
+                    <input type="text" name="" class="input_code" value="" style="opacity: 0;">
+                    <div class="div_date_server" style="display: none;">
+                        <div class="date_server_2" style="color:yellow;">0000-00-00</div>
+                        <input type="text" name="" class="date_server" value="" placeholder="2019-01-04">
+                        <button class="btn_date_server">Change Date Server</button>
+                        <div class="col-xs-6" style="color:yellow;">Mode interval</div>
+                        <select class="col-xs-6 mode_interval_select">
+                          <option value="1">By date server</option>
+                          <option value="2">By last date submit</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row div_header" style="">
+                    <div class="col-xs-4" style="padding: 0;">
+                        <img class="img-responsive" src="assets/image/map/score.png">
+                        <div class="text_score">
+                            <span class="curr_score">100</span>
+                            <span class="total_score" style="color: grey;font-size: 0.8em;">/100</span>
+                        </div>
+                    </div>
+                    <div class="col-xs-4" style="padding: 0;">
+                    </div>
+                     <div class="col-xs-4" style="padding: 0;">
+                        <img class="img-tutorial img-responsive" align="right" src="assets/image/map/tutorial.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 div_map" id="div_map-1">
+                <img class="img_map" src="assets/image/map/bg-01.png">
+                <div class="dynamic_img dynamic_img-1">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-2">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-3">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-4">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-5">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+            </div>
+            <div class="col-12 div_map" id="div_map-2">
+                <img class="img_map" src="assets/image/map/bg-01.png">
+                <div class="dynamic_img dynamic_img-1">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-2">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-3">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-4">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-5">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+            </div>
+            <div class="col-12 div_map" id="div_map-3">
+                <img class="img_map" src="assets/image/map/bg-01.png">
+                <div class="dynamic_img dynamic_img-1">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-2">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-3">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-4">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-5">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+            </div>
+            <div class="col-12 div_map" id="div_map-4">
+                <img class="img_map" src="assets/image/map/bg-01.png">
+                <div class="dynamic_img dynamic_img-1">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-2">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-3">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-4">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+                <div class="dynamic_img dynamic_img-5">
+                    <img class="img_step" src="assets/image/map/stage01_old.png">
+                    <img class="img_step-2" style="display: none;" src="assets/image/map/stage02.png">
+                    <div class="dynamic_txt dynamic_txt-1">
+                        <span>1</span>
+                    </div>
+                    <img class="img_curr_step" style="display: none;" src="assets/image/map/user.png">
+                </div>
+            </div>
+        </div>
+        <div style="position: absolute;bottom: 0;height: auto !important;left: 50%;transform: translateX(-50%);">
+            <div style="max-width: 530px;margin: 0 auto;overflow: hidden;">
+            	<!-- <img src="image/slide_1.gif" alt="" style="height: 62vh;max-height: 380px;"> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Modal popup dialog box review atasan -->
+<div class="modal noselect popupdialogbox_game_map" id="popupdialogbox_game_map" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-content-2 tutorial" style="">
+                <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
+                    <div style="margin-top: -10px;">
+                       <!--  <div class="circle-ucok">
+                            <img src="assets/image/Ucok_Circle_Hallo.gif" alt="">
+                        </div> -->
+                        <div style="background: #fff;padding-top: 10px;border-radius: 10px;padding-bottom: 20px;">
+                            <div class="">
+                                <img class="img-responsive" src="assets/image/score_header.png" alt="" style="margin:auto;">
+                                <!-- <span class="txt_pita">Congratulations!</span> -->
+                            </div>
+                            <div class="title">
+                                <!-- <p><strong>Wait a minute</strong></p> -->
+                            </div>
+                            <p class="dynamic_text">
+                                <div class="dynamic_text_title">Perolehan skor penerapan perilaku</div>
+                                <div class="dynamic_text_day" style="color: #1D8BEC;font-weight: bold;padding-top: 10px;font-size: 20px;">DAY 0</div>
+                                <div class="dynamic_text_score" style="padding-top: 10px;">
+                                    <img class="dynamic_text_score_img" src="assets/image/star_gold.png" style="max-width: 45px;margin-bottom: 10px;"></img>
+                                    <span class="dynamic_text_score_text" style="padding-left: 20px;"><span class="curr_score_game_map" style="color: #F6921E;font-size: 28px;">0</span><span class="total_score_game_map" style="color: #999999;"> / 100</span></span>
+                                </div>
+                            </p>
+                           <!--  <div class="btn-bottom text-center dynamic_button">
+                                <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
+                                <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
+                            </div> -->
+                            <div class="btn_wrapper" style="margin-top: 20px;">
+                                <button class="btn-standard btn-standard--submit btn-inline close_modal_game_map">
+                                    Close
+                                </button>
+                            </div>
+                        </div>  
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // var date = game.getDate2();
+    // $('.date_server').val(date);
+</script>

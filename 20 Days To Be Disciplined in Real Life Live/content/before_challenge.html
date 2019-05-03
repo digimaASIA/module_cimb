@@ -1,0 +1,262 @@
+<style type="text/css">
+    .body-wrapper{
+        position: relative;
+    }
+    .point_challange_wrapper{
+        text-align: center;
+        margin: 35px 0;
+        display: inline-block;
+        position: relative;
+    }
+    .point_challange_wrapper .point_challenge{
+        display: inline-block;
+        background: #d69451;
+        border-radius: 50%;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        margin: 0 15px;
+    }
+    .point_challange_wrapper .point_challenge .check{
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+    .point_challange_wrapper .point_challenge.active .check{
+        display: table;
+    }
+    .point_challenge.end .img_bendera{
+        display: block !important;
+    }
+    .point_challange_wrapper .point_challenge .check>span{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        font-size: 1.2em;
+        border-radius: 50%;
+        color: #d69451;
+        background: #f5bd6e;
+    }
+    .point_challange_wrapper .point_challenge .img_bendera{
+        position: absolute;
+        width: 45px;
+        bottom: 0;
+        left: 50%;
+        margin-left: -22.5px;
+        display: none;
+    }
+    .point_challange_wrapper .point_challenge .img_bendera img{
+        width: 100%;
+    }
+    .img_icon{
+        margin: 0 auto;
+        padding: 20px 10px 0px;
+        width: 100%;
+    }
+    .img_icon img{
+      width: 100%;  
+    }
+    .point_challange_wrapper .line{
+        height: 4px;
+        width: 80%;
+        position: absolute;
+        background: #d69451;
+        top: 50%;
+        margin-top: -2px;
+        left: 50%;
+        margin-left: -40%;
+        z-index: 0;
+    }
+    .point_challenge_wrap{
+        display: inline-block;
+        position: relative;
+        z-index: 1;
+    }
+    .title_challenge{
+        position: relative;
+        display: inline-block;
+        /*width: 190px;*/
+    }
+    .title_challenge span{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        color: white;
+        padding: 3px;
+        font-size: 1em;
+        height: 100%;
+    }
+    .title_challenge img{
+        width: 100%;
+    }
+    .desc_challenge{
+        max-width: 250px;
+        margin: 20px auto;
+    }
+    .btn_start{
+        /*background: #1d8bec;*/
+        /*border-bottom: 7px solid #0759a2;*/
+        border-radius: 5px;
+        width: 130px;
+        margin: 0 auto;
+        padding: 10px 0;
+        /*color: #fff;*/
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+    .select_option{
+        /*opacity: .5;*/
+    }
+
+    .select_options a{
+        padding: 10px 20px 10px 20px;
+    }
+
+    .select_options button{
+        width: 170px;
+    }
+
+    .select_option.selected{
+        /*opacity: 1;*/
+        background-color: #91b5d6;
+    }
+
+    .dynamic_btn_submit{
+        margin-top: 30%;
+    }
+</style>
+<div class="slider-content noselect" id="maps" style="background: #E5E5E5;min-height: 100%;">
+    <div class="wrap">
+        <div style="text-align: center;">
+            <!-- <div class="img_icon">
+                <img src="image/gate_1_c.png">             
+            </div>
+            <div class="point_challange_wrapper">  
+                <div class="point_challenge_wrap">
+                    <div class="point_challenge" index="1">
+                        <div class="check">
+                            <span class="fa fa-check" aria-hidden="true"></span>
+                        </div>
+                        <div class="img_bendera">
+                            <img src="image/c_bendera_1.png">
+                        </div>
+                    </div>                 
+                </div>   
+                <div class="line"></div>       
+            </div>  -->
+            <!-- <div class="title_challenge title_instruction">
+                <img src="assets/image/ribbon-instruction.png">
+                <span>Pilihlah jabatanmu di CIMB Niaga!</span>
+            </div>
+            <div class="desc_challenge">
+                Terapkan <span class="color-red">5 perilaku</span> attention to detail <span class="color-red">sesuai dengan peranmu</span> di CIMB Niaga!
+            </div>
+            <div class="select_options">
+                <button class="btn-standard--white btn_start select_option" id="btn_sales">Sales</button> <br>      
+                <button class="btn-standard--white btn_start select_option" id="btn_service">Service</button>
+            </div>
+            <div class="dynamic_btn_submit">
+                <div class="btn_start btn_confirm btn-standard--submit" id="">Submit</div>        
+            </div>    -->           
+        </div>
+    </div>
+</div>
+
+  <div class="modal noselect popupdialogbox" id="popupdialogbox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="tutorial" id="confirm_1" style="display: none;">
+                    <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
+                        <div style="margin-top: -10px;">
+                           <!--  <div class="circle-ucok">
+                                <img src="assets/image/Ucok_Circle_Hallo.gif" alt="">
+                            </div> -->
+                            <div style="background: #fff;padding-top: 10px;border-radius: 10px;padding-bottom: 20px;">
+                                <!-- <div class="pita">
+                                <img src="assets/image/pita_result.png" alt="">
+                                    <span class="txt_pita">Congratulations!</span>
+                                </div> -->
+                                <div class="title">
+                                    <!-- <p><strong>Wait a minute</strong></p> -->
+                                </div>
+                                <p class="dynamic_text">
+                                    Siap menjalani ujian master guru selama 20 hari ?
+                                </p>
+                               <!--  <div class="btn-bottom text-center dynamic_button">
+                                    <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
+                                    <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
+                                </div> -->
+                                <div class="btn_wrapper" style="margin-top: 20px;">
+                                    <a class="btn-standard btn-standard--submit btn-inline btn_submit">
+                                        Yes
+                                    </a>
+                                    <a class="btn-standard btn-standard--no btn-inline popupdialogbox-prev-slide">
+                                        No
+                                    </a>
+                                </div>
+                            </div>  
+                        </div> 
+                    </div>
+                </div>
+
+                <div class="tutorial" id="confirm_2" style="display: none;">
+                    <div class="description" style="padding: 20px 15px;background: #fff;border-radius: 5px;text-align: center;overflow: inherit !important;position: relative;">
+                        <div style="margin-top: -10px;">
+                           <!--  <div class="circle-ucok">
+                                <img src="assets/image/Ucok_Circle_Hallo.gif" alt="">
+                            </div> -->
+                            <div style="background: #fff;padding-top: 10px;border-radius: 10px;padding-bottom: 20px;">
+                                <!-- <div class="pita">
+                                <img src="assets/image/pita_result.png" alt="">
+                                    <span class="txt_pita">Congratulations!</span>
+                                </div> -->
+                                <div class="title">
+                                    <!-- <p><strong>Wait a minute</strong></p> -->
+                                </div>
+                                <p class="dynamic_text">
+                                    Apakah anda yakin dengan posisi yang anda pilih ?
+                                </p>
+                               <!--  <div class="btn-bottom text-center dynamic_button">
+                                    <a type="button" class="btn btn-primary btn-sm" onclick="game.setSlide(2)">YES</a>
+                                    <a type="button" class="btn btn-grey btn-sm" onclick="game.setSlide(1)">NO</a>
+                                </div> -->
+                                <div class="btn_wrapper" style="margin-top: 20px;">
+                                    <a class="btn-standard btn-standard--submit btn-inline btn_submit" >
+                                        Yes
+                                    </a>
+                                    <a class="btn-standard btn-standard--no btn-inline close-modal">
+                                        No
+                                    </a>
+                                </div>
+                            </div>  
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    $('.tutorial#confirm_1').show();
+    $('#popupdialogbox').modal('show');
+
+    $(".close-modal").click(function(){
+        game.audio.audioButton.play();
+        $("#popupdialogbox").modal("hide");
+        game.setSlide(3);
+    });
+
+    $(".popupdialogbox-prev-slide").click(function(e){
+        game.audio.audioButton.play();
+        $("#popupdialogbox").modal("hide");
+        game.setSlide(1);
+    });
+
+    $(".btn_start.select_option").click(function(e){
+        console.log(this);
+        $('.btn_start').removeClass('selected');
+        $(this).addClass('selected');
+    });
+</script>
