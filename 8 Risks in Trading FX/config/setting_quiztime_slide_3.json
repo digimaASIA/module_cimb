@@ -1,0 +1,23 @@
+{
+	"ribbon":{
+		"ribbon_image":"bg_ribbon_quiztime.png",
+		"ribbon_text":"QUIZ TIME",
+		"ribbon_color":"#333333"
+	},
+	"background":"#B3DDD1",
+	"image":"MC_CIMB_ITSecurity_QuizTime.gif",
+	"desc":{
+		"text":"<strong>Yuk, uji pemahamanmu sekarang!</strong><br>Jawablah seluruh soal dengan benar untuk bisa lulus dari modul ini.",
+		"text_color":"#333333"
+	},
+	"button":{
+		"popup":"popupAlertSlider",
+		"gotoslide":1,
+		"text":"NEXT",
+		"css":{
+			"border-radius":"16px",
+			"background":"#FFB04B",
+			"border":"none"
+		}
+	}
+}

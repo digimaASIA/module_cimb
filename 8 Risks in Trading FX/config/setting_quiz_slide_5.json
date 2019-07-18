@@ -1,0 +1,208 @@
+{
+	"background":"#F5F0F4",
+	"settings":{
+		"type":"page",
+		"showNumbering":true
+	},
+	"tutorial":{
+		"css":{
+			"border-radius":"16px",
+			"background":"#F8975C",
+			"border":"none",
+			"color":"#FFFFFF"
+		}
+	},
+	"list_question":
+	[
+		{
+			"title":{
+				"text":"Pilih pernyataan sesuai dengan kategori yang benar!",
+				"css":{
+					"color":"#ffffff"
+				}
+			},
+			"type":"mc_custom",
+			"question":"Unit kerja yang berhak untuk membuat dan menghapus akses user di CIMB Niaga adalah...1",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"RISIKO KEPATUHAN"
+				},
+				{
+					"index":1,
+					"text":"RISIKO REPUTASI"
+				},
+				{
+					"index":2,
+					"text":"RISIKO LIKUDITITAS"
+				},
+				{
+					"index":3,
+					"text":"RISIKO KREDIT"
+				}
+			],
+			"jawaban":[2],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilih pernyataan sesuai dengan kategori yang benar!",
+				"css":{
+					"color":"#ffffff"
+				}
+			},
+			"type":"mc_custom",
+			"question":"Dalam beberapa minggu terakhir nilai Rupiah terhadap USD sangat fluktuatif. Kondisi tersebut akan menimbulkan risiko ...",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"RISIKO HUKUM"
+				},
+				{
+					"index":1,
+					"text":"RISIKO PASAR"
+				},
+				{
+					"index":2,
+					"text":"RISIKO LIKUDITITAS"
+				},
+				{
+					"index":3,
+					"text":"RISIKO KREDIT"
+				}
+			],
+			"jawaban":[1],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilih pernyataan sesuai dengan kategori yang benar!",
+				"css":{
+					"color":"#ffffff"
+				}
+			},
+			"type":"mc_custom",
+			"question":"Ketidaksesuaian kurs di counter cabang dengan yang ditetapkan oleh treasurer. merupakan contoh kondisi ...",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"RISIKO OPERASIONAL"
+				},
+				{
+					"index":1,
+					"text":"RISIKO REPUTASI"
+				},
+				{
+					"index":2,
+					"text":"RISIKO LIKUDITITAS"
+				},
+				{
+					"index":3,
+					"text":"RISIKO KREDIT"
+				}
+			],
+			"jawaban":[0],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilih pernyataan sesuai dengan kategori yang benar!",
+				"css":{
+					"color":"#ffffff"
+				}
+			},
+			"type":"mc_custom",
+			"question":"Ketidaksesuaian kurs di counter cabang dengan yang ditetapkan oleh treasurer. merupakan contoh kondisi ...",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"RISIKO KEPATUHAN"
+				},
+				{
+					"index":1,
+					"text":"RISIKO REPUTASI"
+				},
+				{
+					"index":2,
+					"text":"RISIKO STRATEJIK"
+				},
+				{
+					"index":3,
+					"text":"RISIKO KREDIT"
+				}
+			],
+			"jawaban":[3],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilih pernyataan sesuai dengan kategori yang benar!",
+				"css":{
+					"color":"#ffffff"
+				}
+			},
+			"type":"mc_custom",
+			"question":"Mr. Richie bersama kuasa hukumnya, menuntut transaksi perdagangan FX yang tidak sesuai. Merupakan contoh risiko ...",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"RISIKO HUKUM"
+				},
+				{
+					"index":1,
+					"text":"RISIKO REPUTASI"
+				},
+				{
+					"index":2,
+					"text":"RISIKO LIKUDITITAS"
+				},
+				{
+					"index":3,
+					"text":"RISIKO PASAR"
+				}
+			],
+			"jawaban":[3],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		}
+	]
+}

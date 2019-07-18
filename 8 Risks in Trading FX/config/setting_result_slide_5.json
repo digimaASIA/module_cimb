@@ -1,0 +1,32 @@
+{
+	"win":{
+		"ribbon_image":"bg_ribbon_win.png",
+		"ribbon_text":"Congratulations!",
+		"ribbon_color":"#333333",
+		"ribbon_background":"#D1DCE2",
+		"background_text":"#B3DDD1",
+		"text":"''Dengan mengetahui pentingnya <i>Physical Security</i>, secara tidak langsung kamu telah ikut menjaga aset atau data perusahaan di lingkup kerja masing - masing serta lebih peduli terhadap data maupun orang yang tidak dikenal untuk masuk ke lingkungan kerja.''",
+		"color":"#333333",
+		"button_text":"Quit",
+		"button_css":{
+			"border-radius":"16px",
+			"background":"#FFB04B",
+			"border":"none"
+		}
+	},
+	"lose":{
+		"ribbon_image":"bg_ribbon_lose.png",
+		"ribbon_text":"Keep Trying!",
+		"ribbon_color":"#FFFFFF",
+		"ribbon_background":"#777777",
+		"background_text":"#777777",
+		"text":"Kamu belum berhasil.<br>Klik <i>Quit & Try Again</i> untuk mengulangnya. Tetap semangat!",
+		"color":"#FFFFFF",
+		"button_text":"Quit & Try Again",
+		"button_css":{
+			"border-radius":"16px",
+			"background":"#FFB04B",
+			"border":"none"
+		}
+	}
+}

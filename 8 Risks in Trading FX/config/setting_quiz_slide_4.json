@@ -1,0 +1,213 @@
+{
+	"background":"#F5F0F4",
+	"settings":{
+		"type":"page",
+		"showNumbering":true
+	},
+	"tutorial":{
+		"css":{
+			"border-radius":"16px",
+			"background":"#F8975C",
+			"border":"none",
+			"color":"#FFFFFF"
+		}
+	},
+	"list_question":
+	[
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"type":"mc",
+			"question":"Unit kerja yang berhak untuk membuat dan menghapus akses user di CIMB Niaga adalah...",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"<i>HR Exit Operation</i>"
+				},
+				{
+					"index":1,
+					"text":"BHOSD"
+				},
+				{
+					"index":2,
+					"text":"<i>Team Application Access & Team User Id</i>"
+				},
+				{
+					"index":3,
+					"text":"<i>User</i>"
+				}
+			],
+			"jawaban":[2],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"type":"mc",
+			"question":"Dibawah ini yang dilakukan untuk pengamanan <i>password</i>, kecuali :",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"Tidak menggunakan <i>default password</i>"
+				},
+				{
+					"index":1,
+					"text":"Sering mengubah <i>password</i>"
+				},
+				{
+					"index":2,
+					"text":"Menggunakan <i>password</i> yang sama dan tidak pernah diganti pada semua <i>account</i>"
+				},
+				{
+					"index":3,
+					"text":"Menggunakan susunan <i>password</i> yang unik"
+				}
+			],
+			"jawaban":[2],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"type":"mc",
+			"question":"Berikut adalah alasan mengapa diperlukan keamanan pada komputer / <i>desktop</i> kita, kecuali:",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"Serangan terhadap komputer / <i>desktop</i> yang semakin hari semakin canggih"
+				},
+				{
+					"index":1,
+					"text":"Kita tidak tahu siapa saja yang memiliki kemampuan untuk melakukan <i>hacking</i> atas <i>notebook</i> / <i>dekstop</i> kita"
+				},
+				{
+					"index":2,
+					"text":"Beberapa data statistik menunjukkan bahwa risiko operasional terkait pembobolan data perusahaan dari <i>notebook</i> / <i>dekstop</i> cenderung meningkat"
+				},
+				{
+					"index":3,
+					"text":"Keyakinan yang tinggi karena PC/<i>notebook</i> sudah terinstall antivirus sehingga data tidak bisa diambil oleh orang yang tidak berhak."
+				}
+			],
+			"jawaban":[3],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"type":"mc",
+			"question":"Apa yang harus dilakukan apabila kamu ingin meninggalkan laptopmu di dalam mobil?",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"Menyimpannya di dashboard mobil"
+				},
+				{
+					"index":1,
+					"text":"Menaruh laptop di kursi depan"
+				},
+				{
+					"index":2,
+					"text":"Memasukkan laptop ke bagasi mobil atau simpan di bawah jok yang tidak tampak dari luar"
+				},
+				{
+					"index":3,
+					"text":"Menaruh laptop di kursi depan dan mengaktifkan <i>password</i> laptop"
+				}
+			],
+			"jawaban":[2],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"type":"mc",
+			"question":"Berikut ini penggunaan <i>User Access card</i> (<i>id card</i>) maupun <i>User Access logic</i> (<i>user id</i>) yang benar adalah... ",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"<i>User logic</i> digunakan untuk <i>Login</i> ke aplikasi "
+				},
+				{
+					"index":1,
+					"text":"<i>User logic</i> dipinjamkan untuk operasional cabang"
+				},
+				{
+					"index":2,
+					"text":"<i>User Access Card</i> karyawan digunakan tamu untuk masuk gedung cabang"
+				},
+				{
+					"index":3,
+					"text":"<i>User access</i> untuk mengunduh aplikasi yang tidak dikenal"
+				}
+			],
+			"jawaban":[0],
+			"feedback_salah":"",
+			"feedback_benar":"",
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		}
+	]
+}

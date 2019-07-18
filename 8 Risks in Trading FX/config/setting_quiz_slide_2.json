@@ -1,0 +1,123 @@
+{
+	"background":"#F5F0F4",
+	"settings":{
+		"type":"page",
+		"showNumbering":true
+	},
+	"tutorial":{
+		"css":{
+			"border-radius":"16px",
+			"background":"#F8975C",
+			"border":"none",
+			"color":"#FFFFFF"
+		}
+	},
+	"list_question":
+	[
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"image":"MC_ITSecurity_C10M02_05_v.0.0.0.1.gif",
+			"type":"tf_custom",
+			"question":"Bima telah mengajukan <i>resign</i>. Sebelum ia benar-benar meninggalkan kantornya, Joni sebagai SPV memastikan kepada Bima terkait penghapusan data dan user IDnya. Apakah Joni  telah menerapkan aturan <i>Physical Access</i> dalam <i>review</i> hak akses?",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"Menerapkan"
+				},
+				{
+					"index":1,
+					"text":"Tidak Menerapkan"
+				}
+			],
+			"jawaban":[0],
+			"feedback":
+			[
+			"<u><i>Review</i> Hak Akses</u> <br><br>Untuk menghindari penyalahgunaan user access oleh orang yang  tidak berwenang, maka setiap supervisor harus memastikan <i>user access</i> karyawan mutasi telah diminta untuk dihapus. <br><br><i>User Access</i> dapat berupa :<br>1. <i>User Access</i> ke aplikasi.<br>2. Access masuk gedung, baik kartu maupun <i>finger print.</i>"
+			],
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"image":"MC_ITSecurity_C10M02_06_v.0.0.0.1.gif",
+			"type":"tf_custom",
+			"question":"Roby dipercaya oleh atasan untuk  memiliki akses penuh terhadap data-data rahasia perusahaan. Tiba-tiba rekan kerja Roby meminta <i>password</i> untuk mengakses data rahasia. Robypun segera memberinya. Apakah Roby  telah menerapkan aturan <i>System Access</i>  dalam <i>password security</i>?",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"Menerapkan"
+				},
+				{
+					"index":1,
+					"text":"Tidak Menerapkan"
+				}
+			],
+			"jawaban":[1],
+			"feedback":
+			[
+				"<u><i>Password Security</i></u> <br><br>Jangan <i>Sharing Password</i> dan menuliskan <i>Password</i> di dekat Komputer.<br>1. <i>Password</i> adalah kata sandi yang bersifat pribadi dan personal.<br>2. <i>Password</i> adalah target No 1 untuk diserang oleh penjahat ataupun hacker dari seluruh dunia.",
+				"3. Kelemahan <i>password</i>, risiko tertinggi pada keamanan IT 90%  keberhasilan penyusupan dari analisa terpisah konsultan Verizon dan McAfee berawal dari kelemahan <i>password</i>.<br>4. Pengamanan <i>password</i> adalah salah satu prioritas utama dalam hal pengamanan informasi. <br><br>Namun demikian, menjaga keamanan <i>password</i> merupakan prioritas utama bagi seluruh karyawan."
+			],
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		},
+		{
+			"title":{
+				"text":"Pilihlah satu jawaban yang menurut Anda benar!",
+				"css":{
+					"color":"#ffffff",
+					"background":"#80BEAF"
+				}
+			},
+			"image":"MC_ITSecurity_C10M02_07_v.0.0.0.1.gif",
+			"type":"tf_custom",
+			"question":"Frans ditugaskan atasannya untuk <i>meeting</i> ke luar negeri. Saat tiba di bandara, ia memasukan seluruh koper termasuk laptopnya ke bagasi pesawat agar tidak merepotkannya. Apakah Frans telah menerapkan aturan <i>System Acces</i> dalam laptop <i>security</i>?",
+			"pilihan":
+			[
+				{
+					"index":0,
+					"text":"Menerapkan"
+				},
+				{
+					"index":1,
+					"text":"Tidak Menerapkan"
+				}
+			],
+			"jawaban":[1],
+			"feedback":
+			[
+				"<u>Laptop <i>Security</i></u> <br>Proteksi Fisik:<br>1. Jangan tinggalkan laptop tanpa pengamanan. Simpan  laptop pada laci/loker yang terkunci. <br>2. Jangan tempatkan laptop dengan kaca jendela yang dapat dipecahkan dengan mudah. <br>3. Buatlah tanda pengenal yang unik pada laptop misalnya: <i>sticker</i>, graffiti dll. <br>4.Catat dan simpan nomor identifikasi  laptop seperti: <i>Serial number</i>, dll.",
+				"<u>Proteksi Saat Berpergian</u>:<br>1. Awasi laptop dalam pengawasan. <br>2.Jangan tempatkan laptop didalam bagasi  pesawat.<br>3. Berhati-hatilah saat melalui <i>security check</i> bandara. Awasi dan segera ambil setelah melalui <i>X-ray</i> petugas bandara.<br>4. Jika petugas hendak memeriksa laptop, pastikan hanya anda yang menanganinya.<br>5. Pastikan instalasi <i>end point encryption</i> pada laptop untuk mencegah kehilangan data apabila kehilangan laptop.",
+				"<u>Penyimpanan Pada Mobil</u>:<br><br>Jika mengendarai mobil sendirian, tempatkan laptop pada kursi depan Jika laptop hendak ditinggalkan didalam mobil, maka simpan pada bagasi mobil atau dibawah jok yang tak tampak dari luar."
+			],
+			"next_button":true,
+			"button_css":{
+				"border-radius":"16px",
+				"background":"#F8975C",
+				"border":"none"
+			}
+		}
+	]
+}
