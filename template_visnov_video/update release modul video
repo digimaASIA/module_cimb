@@ -8,6 +8,8 @@
 	2. opening_vdeo.js
 	3. game.js
 	4. setting.js
+	5. result_step.js (new)
+	6. resultgame.js (new)
 3. delete semua file di \assets\image\character.
 4. timpah file assets\css\:
 	1. visual_novel.css

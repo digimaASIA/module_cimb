@@ -269,6 +269,8 @@ Opening.prototype.showQuestion = function(mode = '') {
     var $clone_dialog_feedback =  $('.item_dialog .item_dialog_feedback_text').clone();
     var $clone_dialog_feedback_false =  $('.item_dialog .item_dialog_feedback_false_text').clone();
     var $clone_img_character =  $('.item_character .img_item').clone();
+    var $clone_div_label = $(".content_visnov .div_name_label").clone();
+    var $clone_div_label_img = $(".content_visnov .div_label_img").clone();
 
     //sudah append slide_content sebelumnya
     // console.log($this.isAppend);
@@ -350,16 +352,16 @@ Opening.prototype.showQuestion = function(mode = '') {
         }
 
         /*Function Append dialog*/
-            $clone.find('.item_dialog').html('');
+            $clone.find('.item_dialog .item_dialog_wrapper').html('');
             var arr_dialog = $this.ldata2["text_3"];
             for (var i = 0; i < arr_dialog.length; i++) {
-               
+                console.log($clone_dialog);
                 //append options
                 $clone_dialog.attr('index',i);
-                let dialog_text = arr_dialog[i]['text'];
+
                 //substring text
-                // let max_string_length = 141;
-                // dialog_text = $this.substringText(dialog_text, max_string_length);
+                let max_string_length = 141;
+                let dialog_text = $this.substringText(arr_dialog[i]['text'], max_string_length);
                 // console.log(dialog_text);
 
                 /*Function set css dialog box*/
@@ -376,17 +378,25 @@ Opening.prototype.showQuestion = function(mode = '') {
                 $clone_dialog.attr('id','item_dialog_text-'+i);
 
                 //function add class suara_batin
+                $clone_dialog.removeClass('suara_batin');
                 if(arr_dialog[i]['suara_batin'] != undefined){
                     if(arr_dialog[i]['suara_batin'] == 1){
                         $clone_dialog.addClass('suara_batin');
                     }
-                }else{
-                    $clone_dialog.removeClass('suara_batin');
                 }
-                // console.log($clone_dialog);
-                $clone.find('.item_dialog').append($($clone_dialog)[0]['outerHTML']);
+                console.log($clone_dialog);
+                $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog)[0]['outerHTML']);
             }
         /*End function append dialog*/
+
+        //move div_name_label
+        console.log($clone_div_label);
+        $clone.find(".content_visnov .div_name_label").remove();
+        $clone.find('.item_dialog .item_dialog_wrapper').append($clone_div_label);
+
+        //move div_label_image
+        $clone.find(".content_visnov .div_label_img").remove();
+        $clone.find(".item_dialog .item_dialog_wrapper").append($clone_div_label_img);
 
         /*Function append content*/
             $($clone).addClass($this.ldata2["type"]);

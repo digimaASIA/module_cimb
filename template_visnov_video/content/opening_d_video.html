@@ -1,36 +1,31 @@
 <!-- opening page -->
 <style type="text/css">
-    .video_wrapper{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-    }
     
-    .video_wrapper .img_video{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        object-fit: cover;
-        display: none;
-    }
-    
-    #video{
-        position: absolute;
-    }
 </style>
     <link rel="stylesheet" href="assets/css/visual_novel.css">
 
 <div class="div_content">
     <div class="slider-content" style="max-height: unset;">
-        <div class="btn_next_dialog" style="display: none;position: absolute;z-index: 1042;"></div>
-        <div class="btn_next_dialog-2" style="display: none;position: absolute;z-index: 1042;"></div>
+        <div class="btn_next_dialog" style="display: none;position: absolute;z-index: 12;"></div>
+        <div class="btn_next_dialog-2" style="display: none;position: absolute;z-index: 12;"></div>
+        <!-- <div class="row row_no_margin header_quiz" style="position: static;top:0;color: white;background: #162533;height: 50px !important;width: 100%;z-index: 10;padding: unset;">
+            <div class="img_triangle" style="position: absolute;width: 85px;">
+                <img src="assets/image/other/trapesium-red.png" class="img-responsive">
+            </div>
+            <div class="text_challenge" style="padding-left: 7px;padding-top: 10px;font-family: Roboto-Regular;font-weight: bold;">
+                <span style="font-size: 18px">Mission</span><br>
+            </div>
+            <div class="text_place" style="text-align: left;padding-left: 100px;max-height: 42px;">
+                <div class="text_header" style="float: left;">
+                    <div class="text_title" style="font-size: 16px;">
+                       Office Hall
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
-        <div class="content_dad row row_no_margin" id="" style="padding: unset;height: unset;">
-            <div class="video_wrapper">
+        <div class="content_visnov row row_no_margin" id="" style="padding: unset;height: unset;">
+             <div class="video_wrapper">
                 <video id="video" preload="none" controlsList="nodownload" playsinline>
                     <source src="assets/video/MC_CIMB_ITSECURITY_J03C10M05_Chase1_25_Salah_v.0.0.0.1.mp4" type="video/mp4">
                 </video>
@@ -44,7 +39,13 @@
                     </div>
                     <ul class="pilihan_wrapper" style="margin-left: 0;width: 100%;">
                         <div class="row_pilihan" style="">
+                           <!--  <div class="col-xs-12 div_question" disabled="">
+                                <li class="question_li mc pilihan_question">                                   
+                                    <span class="txt_question" style="font-size: 1.1em;">test ?</span>
+                                </li>
+                            </div> -->
                             <div class="timer_quiz col-xs-12">
+                                <!-- <div class="text_time">--:--</div> -->
                                 <div class="progress">
                                     <div class="progress-bar" style="width: 100%; background: #E72330;">
                                         <h3 class="progress-title"></h3>
@@ -77,9 +78,11 @@
                     <img src="assets/image/character/ava-1.png" class="img_item img-responsive animated fadeIn" id="img_item-1" style="margin: auto;height: 470px;position: absolute;bottom: 0;display: none;">
                 </div>
                 <div class="item_dialog" style="">
-                    <div class="item_dialog_text" id="item_dialog_text-1" style="display: none;height: max-content;">Text 1</div>
-                    <div class="item_dialog_feedback_text" id="item_dialog_feedback_text-1" style="display: none;">Text feedback 1</div>
-                    <div class="item_dialog_feedback_false_text" id="item_dialog_feedback_false_text-1" style="display: none;">Text feedback false 1</div>
+                    <div class="item_dialog_wrapper" style="position: relative;">
+                        <div class="item_dialog_text" id="item_dialog_text-1" style="display: none;height: max-content;">Text 1</div>
+                        <div class="item_dialog_feedback_text" id="item_dialog_feedback_text-1" style="display: none;">Text feedback 1</div>
+                        <div class="item_dialog_feedback_false_text" id="item_dialog_feedback_false_text-1" style="display: none;">Text feedback false 1</div>
+                    </div>
                 </div>
 
                 <div class="btn_dialog_wrapper" style="display: none;">
@@ -96,21 +99,45 @@
                     </div>
                 </div>
 
+                 <img class="div_label_img" src="assets/image/" style="width: 4.5vh; height: 4.5vh; display: none;">
+
                 <div class="button_wrapper" style="text-align: right;
                 position: absolute;
                 width: 100%;
                 bottom: 105px;
                 z-index: 13;">
+                    <!-- <button type="button" class="btn btn-standard--submit-2 btn_next_dialog" style="color: white;">Next</button> -->
+                    <!-- <button type="button" class="btn btn-standard--submit-2 btn_next_dialog-2" style="display: none;color: white;">Try Again</button> -->
                 </div>
             </div>
         </div>
 
-        <img class="img_click img_item-2" src="" style="position: absolute;
+        <img class="img_click img_item-2" src="assets/image/other/Hand-click-1.gif" style="position: absolute;
         margin: auto;
         right: 20%;
         bottom: 15%;
         width: 20%;
-        z-index: 15;
-        display: none;">
+        z-index: 15;">
+
+        <!-- <div class="wrap">
+
+        </div> -->
     </div>
 </div>
+
+<!-- SCORE DALAM BINTANG -->
+   <!--  <div class="star-wrapper" style="float: left;
+    padding-right: 10px;
+    /* float: right; */
+    /* display: block; */
+    /* text-align: right; */
+    margin-top: 50px;
+    margin-right: 10px;
+    z-index: 2;
+    position: fixed;
+    right: 0;">
+        <div class="star animated bounceIn"></div>
+        <div class="star animated bounceIn"></div>
+        <div class="star animated bounceIn"></div>
+    </div> -->
+<!-- END --> 

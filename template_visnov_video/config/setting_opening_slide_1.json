@@ -28,8 +28,8 @@
 				[
 					{
 					 	"index":0,
-					 	"text_2":"",
-					 	"text_2_position":"right",
+					 	"text_2":"Zac",
+					 	"text_2_position":"left",
 					 	"text":"Hai CIMBians!<br><br>Kali ini, kamu akan berperan menjadi staf yang ditugaskan untuk mengatur pelaksanaan <i>monthly meeting</i> unit kerja.",
 					 	"img_character":[0],
 					 	"audio":"",
@@ -41,7 +41,15 @@
 						    "border": "1px solid #8BB2E6",
 						    "border-radius": "16px"
 					 	},
-					 	"video":"MC_CIMB_BEATS_C01M02_Opening_01_v.0.0.0.1.mp4",
+					 	"label_name_style":{
+							"background": "#2AB2E5",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+					 	"video":"",
 					 	"hand_touch_img_video":""
 					},
 					{
