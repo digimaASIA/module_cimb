@@ -1,6 +1,6 @@
 {
 	"settings":{
-		"duration":30,
+		"duration":3000,
 		"dialog_box_img":"",
 		"backsound":"Cafe Music BGM channel - NEW SONGS Cafe Terrace.mp3"
 	},
@@ -104,7 +104,7 @@
 					 	"text_2":"",
 					 	"text_2_position":"left",
 					 	"label_name_img":"",
-					 	"text":"Bu Bella memintamu untuk menyelenggarakan <i>meeting</i> rutin bulanan.",
+					 	"text":"",
 					 	"img_character":[1],
 					 	"audio":"",
 					 	"suara_batin":0,
@@ -214,9 +214,9 @@
 					{
 						"index":1,
 						"video":"",
-						"text":"Salah satunya, kita akan membahas prosedur baru. Hmm... detailnya, kamu koordinasi dengan Rico ya...",
+						"text":"",
 						"img_character":[5],
-						"text_2":"Bu Bella",
+						"text_2":"",
 						"text_2_position":"left",
 						"label_name_img":"",
 						"audio":"",
@@ -301,9 +301,9 @@
 					{
 					 	"index":1,
 					 	"video":"",
-						"text":"Perasaan saya belum kasih arahan apa-apa...",
+						"text":"",
 					 	"img_character":[8],
-					 	"text_2":"Bu Bella",
+					 	"text_2":"",
 					 	"text_2_position":"left",
 					 	"audio":"",
 					 	"suara_batin":1,

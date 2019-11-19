@@ -5,6 +5,7 @@ var UlarTanggaCustom = function(){
 UlarTanggaCustom.prototype.init = function(current_settings) {
     console.log("ular-tangga");
     var $this = this;
+
     $this.current_settings = current_settings;
     $this.question_data = [];
     $this.curr_soal=0;
@@ -96,9 +97,12 @@ UlarTanggaCustom.prototype.init = function(current_settings) {
                   $(".timer").hide();
               }
           // }
-        
-          if(game.show_tutorial_ular_tangga == true && game.flag_tutorial_show == 0){
-              game.flag_tutorial_show = 1;
+          
+          console.log(game.setting);
+          console.log(game.setting["flag_tutorial_ular_tangga"]);
+          if(game.setting["show_tutorial_ular_tangga"] == true && game.setting["flag_tutorial_ular_tangga"] == 0){
+              // game.flag_tutorial_show = 1;
+              game.setting["flag_tutorial_ular_tangga"] = 1;
 
               //show modal
               $this.setTutorial_ulartangga();

@@ -2,6 +2,10 @@ var Game = function(){
     var $this = this;
     this.audio = new Audio();
     this.setting = new Setting();
+
+    //variabel setting global
+    this.setting_global = new Setting();
+    
     this.score = 0;
     // this.startGame = 0;
     this.total_soal = 0; //total soal dari semua step
@@ -13,8 +17,8 @@ var Game = function(){
     this.video_duration = 0;
     // this.cmid = 668; // cmid uat
     this.cmid = 600; // cmid live
-    this.show_tutorial_ular_tangga = true; //show hide tutorial
-    this.flag_tutorial_show = 0;
+    // this.show_tutorial_ular_tangga = true; //show hide tutorial
+    // this.flag_tutorial_show = 0;
     this.audio_backsound_per_stage;
     this.time_backsound_per_stage;
     this.game_data = {};
@@ -63,7 +67,7 @@ var Game = function(){
         this.hide_step_connector = this.setting["hide_step_connector"];
     /*End setting page map*/
     
-    $.get("config/templete_content_noStage.json",function(e){
+    $.get("config/templete_content.json",function(e){
         $this.arr_content = e["list_slide"];
         $this.curr_module = e["module"];
         $this.curr_course = e["course"];

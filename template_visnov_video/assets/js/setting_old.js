@@ -1,13 +1,20 @@
 var Setting = function(){
    var $this = this;
+   let mode_visual_novel = 'beats'; //['linear','beats','pkc']
 
    this.image_path = 'assets/image/';
-   this.show_tutorial_ular_tangga = true; //show hide tutorial
-   this.flag_tutorial_ular_tangga = 0; //flag tutorial_ular_tangga sudah muncul
 
-   /*Mode visual novel*/
-   // this.linear_visual_novel = false;
-   /*End mode visual novel*/
+   if(mode_visual_novel == 'linear'){
+      /*Mode visual novel linear*/
+         this.linear_visual_novel = true;
+         this.show_tutorial_ular_tangga = true; //show hide tutorial
+         this.flag_tutorial_ular_tangga = 0; //flag tutorial_ular_tangga sudah muncul
+         this.total_step = 2;
+      /*End mode visual novel*/
+   }else if(mode_visual_novel == 'beats'){
+      this.show_tutorial_ular_tangga = true; //show hide tutorial pada stage ular tangga
+      this.flag_tutorial_ular_tangga = 0; //flag tutorial_ular_tangga sudah muncul
+   }
 
    /*Setting able variable*/
       /*Setting score*/

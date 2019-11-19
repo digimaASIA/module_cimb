@@ -5,6 +5,7 @@ var UlarTanggaCustom = function(){
 UlarTanggaCustom.prototype.init = function(current_settings) {
     console.log("ular-tangga");
     var $this = this;
+
     $this.current_settings = current_settings;
     $this.question_data = [];
     $this.curr_soal=0;
@@ -72,19 +73,19 @@ UlarTanggaCustom.prototype.init = function(current_settings) {
           console.log($this.step_data);
 
           /*Function get total soal from all stage*/
-            $this.total_soal = 0;
-            console.log($this.total_step);
-            for (var i = 0; i < $this.total_step; i++) {
-              let no = $this.current_settings["slide"] + (i+1);
-              console.log("config/setting_quiz_slide_"+no+".json");
-              $.get("config/setting_quiz_slide_"+no+".json",function(e3){
-                  $this.total_soal += e3["list_question"].length;
-                  console.log($this.total_soal);
-                  game.total_soal = $this.total_soal;
-              });
-              console.log($this.total_soal);
+            // $this.total_soal = 0;
+            // console.log($this.total_step);
+            // for (var i = 0; i < $this.total_step; i++) {
+            //   let no = $this.current_settings["slide"] + (i+1);
+            //   console.log("config/setting_quiz_slide_"+no+".json");
+            //   $.get("config/setting_quiz_slide_"+no+".json",function(e3){
+            //       $this.total_soal += e3["list_question"].length;
+            //       console.log($this.total_soal);
+            //       game.total_soal = $this.total_soal;
+            //   },'json');
+            //   console.log($this.total_soal);
 
-            }
+            // }
           /*End function get total soal from all stage*/
 
           // if($this.arr_content[current]["slide"] == 3){
@@ -96,9 +97,12 @@ UlarTanggaCustom.prototype.init = function(current_settings) {
                   $(".timer").hide();
               }
           // }
-        
-          if(game.show_tutorial_ular_tangga == true && game.flag_tutorial_show == 0){
-              game.flag_tutorial_show = 1;
+          
+          console.log(game.setting_global);
+          console.log(game.setting_global["flag_tutorial_ular_tangga"]);
+          if(game.setting_global["show_tutorial_ular_tangga"] == true && game.setting_global["flag_tutorial_ular_tangga"] == 0){
+              // game.flag_tutorial_show = 1;
+              game.setting_global["flag_tutorial_ular_tangga"] = 1;
 
               //show modal
               $this.setTutorial_ulartangga();
@@ -133,11 +137,12 @@ UlarTanggaCustom.prototype.get_total_soal = function() {
           $.get("config/setting_quiz_slide_"+no+".json",function(e3){
               console.log(e3);
               console.log(game.scorm_helper.lmsConnected);
-              e3 = (game.scorm_helper.lmsConnected == true ? JSON.parse(e3) : e3);
+              // e3 = (game.scorm_helper.lmsConnected == true ? JSON.parse(e3) : e3);
               $this.total_soal += e3["list_question"].length;
               console.log($this.total_soal);
               game.total_soal = $this.total_soal;
 
+              game.game_data["total_soal"] = game.total_soal;
               console.log($this.total_soal);
               console.log(($this.total_step-1));
               console.log(no_2);
@@ -145,7 +150,7 @@ UlarTanggaCustom.prototype.get_total_soal = function() {
               if(($this.total_step-1) == no_2){
                   $this.mulai_game_ulartangga();
               }
-          });
+          },'json');
         }
     }else{
         $this.mulai_game_ulartangga();
@@ -230,6 +235,10 @@ UlarTanggaCustom.prototype.mulai_game_ulartangga = function() {
   var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
   console.log(ldata);
   game.temp = game.scorm_helper.getSingleData("temp");
+
+  game.scorm_helper.setSingleData("game_data", game.game_data);
+  // console.log(game.scorm_helper.getSingleData('game_data'));
+
     // console.log($this.curr_step);
     // console.log(game.total_step);
    if($this.curr_step <= game.total_step){
@@ -287,8 +296,20 @@ UlarTanggaCustom.prototype.setButton_ulartangga = function() {
             console.log(".button.btn-"+$this.count_soal);
             console.log($(".button.btn-"+$this.count_soal).hasClass("success"));
             $(".button.btn-"+idx).removeClass("disabled");
-            if(!$(".button.btn-"+idx).hasClass("success")){
-              $(".button.btn-"+idx).addClass("success");  
+            if(!$(".button.btn-"+idx).hasClass("success") || !$(".button.btn-"+idx).hasClass("failed")){
+                let find_array = -1; //variabel find array, default -1
+                let class_add = 'success';
+                if(game.game_data["failed_stage"] != undefined){
+                  if(game.game_data["failed_stage"].length > 0){
+                    let failed_stage = game.game_data["failed_stage"];
+                    find_array = failed_stage.indexOf(idx);
+                  }
+                }
+
+                if(find_array > -1){
+                  class_add = 'failed';
+                }
+                $(".button.btn-"+idx).addClass(class_add);  
             }
           }
         }
@@ -322,11 +343,13 @@ UlarTanggaCustom.prototype.setButton_ulartangga = function() {
   });
   console.log($this.curr_soal);
   console.log($this.total_step);
+  console.log(game.game_data);
   if($this.curr_soal > $this.total_step){
     console.log($this.count_soal);
     console.log(".button.btn-"+$this.count_soal);
-    if(!$(".button.btn-"+$this.count_soal).hasClass("success")){
-      $(".button.btn-"+$this.count_soal).addClass("success");  
+    if(!$(".button.btn-"+$this.count_soal).hasClass("success") && !$(".button.btn-"+$this.count_soal).hasClass("failed")){
+
+      // $(".button.btn-"+$this.count_soal).addClass("success");  
     }else{
       $(".button.finish_state").removeClass("disabled");
       $(".button.finish_state").addClass("active");
@@ -1023,6 +1046,7 @@ UlarTanggaCustom.prototype.showStep = function(){
       $(clone_step_2).find(".idle").attr("src","assets/image/ular-tangga/"+$this.step_data[i]["image"]);
       $(clone_step_2).find(".success").attr("src","assets/image/ular-tangga/"+$this.step_data[i]["image_2"]);
       $(clone_step_2).find(".locked").attr("src","assets/image/ular-tangga/"+$this.step_data[i]["image_3"]);
+      $(clone_step_2).find(".failed").attr("src","assets/image/ular-tangga/"+$this.step_data[i]["image_4"]);
       $(clone_step_2).css($this.step_data[i]["style"]);
 
       console.log(clone_step_2);

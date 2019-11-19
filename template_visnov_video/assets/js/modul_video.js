@@ -3828,8 +3828,12 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
         $($clone).find(".item_dialog_text").hide();
 
         if(benar == 0){
+            var arr_dialog = $this.ldata2["feedback_false"];
+            var name_character = $this.ldata2["feedback_false"][index]['text_2'];
+            console.log(arr_dialog);
+
+            $($clone).find('.item_dialog_feedback_false_text').hide();
             if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                $($clone).find('.item_dialog_feedback_false_text').hide();
                 $($clone).find('#item_dialog_feedback_false_text-'+index).show();
                 $(".btn_dialog_wrapper #btn_dialog-1").show();
             }else{
@@ -3846,8 +3850,11 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
                 $this.playDialogSound(src_audio_2);
             }
         }else{
+            var arr_dialog = $this.ldata2["feedback"];
+            var name_character = $this.ldata2["feedback"][index]['text_2'];
+
+            $($clone).find('.item_dialog_feedback_text').hide();
             if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                $($clone).find('.item_dialog_feedback_text').hide();
                 $($clone).find('#item_dialog_feedback_text-'+index).show();
                 $(".btn_dialog_wrapper #btn_dialog-1").show();
             }else{

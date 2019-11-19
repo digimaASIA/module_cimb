@@ -1,6 +1,6 @@
 var Setting = function(){
    var $this = this;
-   let mode_visual_novel = 'linear'; //['linear','beats','pkc']
+   let mode_visual_novel = 'beats'; //['linear','beats','pkc']
 
    this.image_path = 'assets/image/';
 
@@ -35,7 +35,7 @@ var Setting = function(){
       this.timer_global = 1000; //milisecond timer global
       this.pause_timer_global = false; //pause timer global default false
       this.hide_icon_complete_bar = false; //jika true, maka complete bar akan disembunyikan
-      this.complete_bar_type = 2; //tipe complete bar [1,2]
+      this.complete_bar_type = 1; //tipe complete bar [1,2]
       this.slide_result_per_step = 6; //variabel untuk menentukan slide pertama result step
       this.slide_result = 9; //variabel untuk menentukan slide ke-n dari page result
       this.slide_game_map = 2; //variabel untuk menentukan slike ke-n dari page game map

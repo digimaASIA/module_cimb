@@ -16,9 +16,9 @@
 		},
 		{
       		"slide":2,
-      		"file":"content/stage_bootstrap.html",
+      		"file":"content/ular_tangga_custom.html",
       		"hasClass":true,
-      		"class":"StageBootstrap",
+      		"class":"UlarTanggaCustom",
       		"text_complete_bar":"SuperBEATS"
     	},
 		{
