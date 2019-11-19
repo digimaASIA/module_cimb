@@ -1,0 +1,61 @@
+{
+	"score":true,
+	"background":"",
+	"background_video":"MC_BEATS_ClearStage_01_v.0.0.0.1.mp4",
+	"win":{
+		"ribbon":"ribbon menang.png",
+		"ribbon_text":"STAGE CLEAR",
+		"backsound":"niceJob.mp3",
+		"description":{
+			"text":"Kamu telah mengidentifikasi prinsip<br><br><b>- Establish Need:</b> Menciptakan kebutuhan.<br><b>- Build Rapport:</b> Membangun kedekatan atau keakraban.",
+			"css":{
+				"color": "#000000",
+			    "background": "rgb(255, 255, 255)",
+			    "border": "2px solid #8BB2E6",
+			    "border-radius": "16px"
+			}
+		},
+		"score_css":{
+			"color":"#000",
+			"background":"#FFF",
+			"border":"none",
+			"border-radius":"16px"
+		},
+		"button":{
+			"text":"<strong>NEXT</strong>",
+			"button_css":{
+				"border-radius": "28px",
+			    "background": "#1D8BEC",
+			    "border": "2px solid #FFFFFF"
+			}
+		}
+	},
+	"lose":{
+		"ribbon":"ribbon kalah.png",
+		"ribbon_text":"STAGE CLEAR",
+		"backsound":"WayToGo.mp3",
+		"description":{
+			"text":"Lanjut ke tantangan berikutnya!",
+			"css":{
+				"color": "#000000",
+			    "background": "rgb(255, 255, 255)",
+			    "border": "2px solid #8BB2E6",
+			    "border-radius": "16px"
+			}
+		},
+		"score_css":{
+			"color":"#000",
+			"background":"#FFF",
+			"border":"none",
+			"border-radius":"16px"
+		},
+		"button":{
+			"text":"<strong>NEXT</strong>",
+			"button_css":{
+				"border-radius": "28px",
+			    "background": "#1D8BEC",
+			    "border": "2px solid #FFFFFF"
+			}
+		}
+	}
+}

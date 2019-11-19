@@ -1,0 +1,133 @@
+.pilihan_wrapper{
+    display: inline-block;
+    list-style: none;
+    text-align: left;
+    width: 80%;
+    vertical-align: top;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    margin-top: 0px;
+}
+.pilihan_wrapper .pilihan{
+    height: auto;
+    line-height: 20px;
+    padding: 15px 50px;
+    border: 1px solid #fff;
+    color: #fff;
+    text-shadow: none;
+    margin: 4px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    min-height: 135px;
+    text-align: left;
+}
+.slider-content.mc .pilihan_wrapper .pilihan,
+.slider-content.mmc .pilihan_wrapper .pilihan{
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.slider-content.mc .pilihan_wrapper .pilihan.active{
+    background: #1D8BEC;
+    color: #fff;
+}
+.slider-content.mmc .pilihan_wrapper .pilihan.active{
+    background: rgba(255,255,255,.3);
+}
+.slider-content.mmc .pilihan_wrapper .pilihan.active .bullet{
+    display: table;
+    background: #fff;
+}
+.pilihan .bullet .bul_abjad , .pilihan .bullet .bul_ceklis{
+    display: none;
+    color: #333 !important;
+}
+.pilihan.mmc .bullet .bul_ceklis{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(../image/centang_inactive.svg);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 50%;
+}
+.slider-content.mmc .pilihan_wrapper .pilihan.active .bullet .bul_ceklis{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    color: #fff !important;
+    background: url(../image/centang_active.svg);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 45%;
+}
+.pilihan_wrapper .pilihan.right{
+    background: #3dd957 !important;
+    color: #fff;
+    border: border: solid 1px #FFF;
+}
+.pilihan_wrapper .pilihan.right .bullet .bul_ceklis{
+    text-align: center;
+    color: #fff !important;
+    background: url(../image/benar.svg);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: 45%;
+}
+
+
+.pilihan_wrapper .pilihan.right .bullet{
+    background: #3dd957;
+    color: #fff;
+    border: none;
+}
+.pilihan_wrapper .pilihan.wrong{
+    background: #e64141 !important;
+    color: #fff;
+    border: solid 1px #FFF !important;
+}
+.pilihan_wrapper .pilihan.wrong .bullet{
+    background: #e64141;
+    color: #fff;
+    border: none;
+}
+.pilihan_wrapper .pilihan.mmc.wrong .bullet .bul_ceklis{
+    background: url(../image/salah.svg);
+    background-repeat: no-repeat;
+    background-size: 53%;
+    background-position: 45%;
+}
+
+.pilihan .bullet {
+    display: none;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    margin-top: -20px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    color: #fff !important;
+    background: #fff;
+}
+.pilihan.mc .bullet,.pilihan.mmc .bullet{
+    display: block;
+}
+.pilihan.mmc .bullet{background: rgba(0,0,0,.6);border: none;}
+.pilihan.wrong .bullet .bul_abjad,
+.pilihan.right .bullet .bul_abjad{
+    color: #fff !important;
+}
+.pilihan.mc .bullet .bul_abjad {
+    display: block;
+    padding: 9px;
+    text-align: center;
+}
+.pilihan_wrapper .pilihan.mc.right .bullet .bul_abjad{
+    color: #fff !important;
+}
+

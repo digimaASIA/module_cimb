@@ -1,0 +1,116 @@
+<!-- opening page -->
+<style type="text/css">
+    .video_wrapper{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    
+    .video_wrapper .img_video{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        display: none;
+    }
+    
+    #video{
+        position: absolute;
+    }
+</style>
+    <link rel="stylesheet" href="assets/css/visual_novel.css">
+
+<div class="div_content">
+    <div class="slider-content" style="max-height: unset;">
+        <div class="btn_next_dialog" style="display: none;position: absolute;z-index: 1042;"></div>
+        <div class="btn_next_dialog-2" style="display: none;position: absolute;z-index: 1042;"></div>
+
+        <div class="content_dad row row_no_margin" id="" style="padding: unset;height: unset;">
+            <div class="video_wrapper">
+                <video id="video" preload="none" controlsList="nodownload" playsinline>
+                    <source src="assets/video/MC_CIMB_ITSECURITY_J03C10M05_Chase1_25_Salah_v.0.0.0.1.mp4" type="video/mp4">
+                </video>
+                <img class="img_video" src="assets/image/brancing/haljud.png" style="">
+            </div>
+            <div class="item" id="item-1">
+                <!-- <div class="text_item">Foto Liburan</div> -->
+                <div class="pilihan_place" style="display: none;">
+                    <div class="div_question" disabled="" style="">
+                        <span class="txt_question">question ? </span> 
+                    </div>
+                    <ul class="pilihan_wrapper" style="margin-left: 0;width: 100%;">
+                        <div class="row_pilihan" style="">
+                            <div class="timer_quiz col-xs-12">
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 100%; background: #E72330;">
+                                        <h3 class="progress-title"></h3>
+                                        <div class="progress-value" style="right: -5.4vw;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row_no_margin" style="">
+                                <div class="col-xs-12 div_pilihan">
+                                    <li class="pilihan mc">
+                                        <span class="bullet" style="display:none;">
+                                        </span>
+                                        <span class="txt_pilihan">Loker</span>
+                                    </li>
+                                </div>
+                                <div class="col-xs-12 div_pilihan">
+                                    <li class="pilihan mc">
+                                        <span class="bullet" style="display:none;">
+                                        </span>
+                                        <span class="txt_pilihan">Laci</span>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="modal-backdrop in modal-backdrop-cust" style="display: none;"></div>
+                <div class="item_character" style="position: absolute;bottom: 0;z-index: 10;width: 425px;">
+                    <img src="assets/image/character/ava-1.png" class="img_item img-responsive animated fadeIn" id="img_item-1" style="margin: auto;height: 470px;position: absolute;bottom: 0;display: none;">
+                </div>
+                <div class="item_dialog" style="">
+                    <div class="item_dialog_text" id="item_dialog_text-1" style="display: none;height: max-content;">Text 1</div>
+                    <div class="item_dialog_feedback_text" id="item_dialog_feedback_text-1" style="display: none;">Text feedback 1</div>
+                    <div class="item_dialog_feedback_false_text" id="item_dialog_feedback_false_text-1" style="display: none;">Text feedback false 1</div>
+                </div>
+
+                <div class="btn_dialog_wrapper" style="display: none;">
+                    <img src="assets/image/other/btn_next.png" style="width: 100%;">
+                </div>
+
+                <div class="div_name_label" 
+                style="">
+                    <div class="div_name_label-2">
+                        <img class="img_label" src="assets/image/other/name bg.png" style="width: 150px;opacity:0.8;">
+                        <div class="name_label_text" style="">
+                            Bu Riska
+                        </div>
+                    </div>
+                </div>
+
+                <div class="button_wrapper" style="text-align: right;
+                position: absolute;
+                width: 100%;
+                bottom: 105px;
+                z-index: 13;">
+                </div>
+            </div>
+        </div>
+
+        <img class="img_click img_item-2" src="" style="position: absolute;
+        margin: auto;
+        right: 20%;
+        bottom: 15%;
+        width: 20%;
+        z-index: 15;
+        display: none;">
+    </div>
+</div>

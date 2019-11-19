@@ -1,0 +1,140 @@
+"settings":{
+		"dialog_box_img":"",
+		"backsound":"BGM.mp3" //set audio bacsound per step
+	},
+	"feedback_false":[
+		
+	],
+	"feedback_true":[
+		
+	],
+	"feedback_timeout":{
+		"text":"Waktu anda telah habis"
+	},
+	"list_question":
+	[
+		[
+			{
+				"type":"mc", 
+				"text":"", 
+				"label_question_text":"Josafat", //label name text
+				"label_question_position":"left", //label name position [left, center, right]
+				"label_question_img":"alert.png", //label image, jika mau menampilkan gambar hapus "label_name_style"
+				"suara_batin":1, //menampilkan label name dengan mode suara batin
+				"label_name_icon":"", //ganti icon di label name, sebelah kanan
+				"question":"Mbak Agnes, antrian teller hari ini panjang sekali! Ini saya sudah ngantri 2 jam loh!! beda bro", //text question
+				"box_style":{ //css dialog question box
+					"background": "white",
+				    "color": "rgb(17, 17, 17)",
+					"background-repeat": "no-repeat",
+				    "border-radius": "16px",
+				    "border":"1px solid #8BB2E6"
+				},
+				"label_name_style":{ //css label name question
+					"background": "#db6edb",
+				    "border-radius": "15px",
+				    "color": "white",
+				    "border": "1px solid white",
+				    "font-weight": "bold",
+				    "font-family": "Lato-Bold"
+				},
+				"pilihan": //data pilihan pada quiz mc
+				[
+					{"index":0,"text":"Minta <i>support</i> Teller lain"},
+					{"index":1,"text":"Panggil Supervisor"},
+					{"index":2,"text":"Bersikap tenang"}
+				],
+				"box_style_pilihan":{ //css dialog question box
+					"background": "white",
+			 		"background-size": "cover",
+			 		"background-size": "100% 100%",
+					"color": "#111",
+					"border":"1px solid #8BB2E6"
+				},
+				"jawaban":[2], //kunci jawaban
+				"background_image":"",
+				"audio":"",
+				"img_character":[ //kumpulan data imaga karakter
+									"MC_PKC_C07M01_Chase1_01_v.0.0.0.1.gif",
+									"MC_PKC_C07M01_Chase1_02_v.0.0.0.1.gif",
+									"MC_PKC_C07M01_Chase1_03_Salah1_v.0.0.0.1.gif",
+									"MC_PKC_C07M01_Chase1_04_Salah2_v.0.0.0.1.gif",
+									"MC_PKC_C07M01_Chase1_05_Benar_v.0.0.0.1.gif"
+								],
+				"img_max_width":[0,1,2,3,4], //kumpulan image karakter yang lebarnya diset maksimum
+				"character_bg_one_gif":1, //aktifkan moda image karakter full 1 screen, image karakter diset di text_3
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"Pak Dimas",
+					 	"text_2_img":"alert.png", //label image, jika ingin menggunakan hapus label_name_style
+					 	"text_2_position":"left", 
+					 	"text":"Mohon maaf atas ketidaknyamanannya, kami akan berupaya untuk terus meningkatkan layanan kami.",
+					 	"img_character":[0],
+					 	"audio":"", //audio per dialog
+					 	"suara_batin":0,
+					 	"box_style":{
+					 		"background": "white",
+						    "color": "rgb(17, 17, 17)",
+						    "background-size": "cover",
+						    "border-radius": "16px",
+						    "border": "1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"label_name_icon":"alert.png" //set icon di sebelah kanan label name
+					}
+				],
+				"feedback":
+				[
+					{
+						"index":0,
+						"video":"",
+						"text":"Padahal saya cuma izin keluar kantor satu jam! Jadi telat deh!",
+						"img_character":[4],
+						"text_2":"Pak Dimas",
+						"text_2_img":"alert.png",
+						"text_2_position":"Left",
+						"audio":"",
+						"suara_batin":1,
+						"box_style":{
+					 		"background": "white",
+						    "color": "rgb(17, 17, 17)",
+						    "background-size": "cover",
+						    "border-radius": "16px",
+						    "border": "1px solid #8BB2E6"
+					 	}
+					}
+				],
+				"feedback_false":
+				[
+					{
+					 	"index":0,
+					 	"video":"",
+						"text":"Sebentar Pak Dimas.....",
+					 	"img_character":[2],
+					 	"text_2":"Agnes",
+					 	"text_2_img":"alert.png",
+					 	"text_2_position":"right",
+					 	"audio":"",
+					 	"suara_batin":1,
+					 	"box_style":{
+					 		"background": "white",
+						    "color": "rgb(17, 17, 17)",
+						    "background-size": "cover",
+						    "border-radius": "16px",
+						    "border": "1px solid #8BB2E6"
+					 	}
+					}
+				]
+			}
+		]
+	]
+}

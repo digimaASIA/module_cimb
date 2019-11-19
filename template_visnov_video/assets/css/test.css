@@ -1,0 +1,42 @@
+.item_dialog .item_dialog_text, .item_dialog_feedback_text, .item_dialog_feedback_false_text {
+    /* background-color: rgb(22, 37, 51); */
+    margin: 0 6.4%;
+    height: 17.24vh;
+    padding: 3.6vh;
+    color: #fff;
+    font-size: 1.15em;
+    text-align: center;
+    line-height: 3.6vh;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.item_dialog {
+    position: absolute;
+    bottom: 6%;
+    /* margin: 0 3%; */
+    /* background-color: rgb(22, 37, 51); */
+    width: 100%;
+    height: 15vh;
+    color: white;
+    /* padding: 10px; */
+    z-index: 11;
+    /* opacity: 0.8 !important; */
+}
+
+.div_name_label {
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 18.5%;
+    z-index: 12;
+    margin-bottom: -0.5px;
+}
+
+.btn_dialog_wrapper {
+    position: absolute;
+    bottom: 4.5%;
+    right: 9%;
+    z-index: 11;
+    width: 4.3%;
+}

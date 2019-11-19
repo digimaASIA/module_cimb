@@ -1,0 +1,77 @@
+{
+	"settings":{
+		"dialog_box_img":""
+	},
+	"feedback_false":[
+		
+	],
+	"feedback_true":[
+		
+	],
+	"feedback_timeout":{
+		"text":"Waktu anda telah habis"
+	},
+	"list_question":
+	[
+		[
+			{
+				"text":"",
+				"background_image":"BG1.png",
+				"audio":"Crowd_Outside.mp3",
+				"label_name_img":"img-map-09.png",
+				"img_character":[
+									"MC_CIMB_BEATS_C01M02_Chase1_01_v.0.0.0.1.gif"
+								],
+				"img_max_width":[0],
+				"character_bg_one_gif":1,
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"right",
+					 	"text":"Hai CIMBians!<br><br>Kali ini, kamu akan berperan menjadi staf yang ditugaskan untuk mengatur pelaksanaan <i>monthly meeting</i> unit kerja.",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+					 		"background": "#fff",
+						    "color": "rgb(17, 17, 17)",
+						    "background-size": "100% 100%",
+						    "border": "1px solid #8BB2E6",
+						    "border-radius": "16px"
+					 	},
+					 	"video":"MC_CIMB_BEATS_C01M02_Opening_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"right",
+					 	"text":"Jadilah <b><i>SuperBEATS</i></b> dengan memilih jawaban yang sesuai dengan prinsip <b>CIMB BEATS</b> saat berinteraksi dengan atasan dan rekanmu!",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+					 		"background": "#fff",
+						    "color": "rgb(17, 17, 17)",
+						    "background-size": "100% 100%",
+						    "border": "1px solid #8BB2E6",
+						    "border-radius": "16px"
+					 	},
+					 	"video":"MC_CIMB_BEATS_C01M02_Opening_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback":
+				[
+					
+				],
+				"feedback_false":
+				[
+					
+				]
+			}
+		]
+	]
+}

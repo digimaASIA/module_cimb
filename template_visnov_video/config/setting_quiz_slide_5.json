@@ -1,0 +1,409 @@
+{
+	"settings":{
+		"duration":30,
+		"dialog_box_img":"",
+		"backsound":"Cinematic Inspirational Music Instrumental.mp3"
+	},
+	"feedback_false":[
+		
+	],
+	"feedback_true":[
+		
+	],
+	"feedback_timeout":{
+		"text":"Waktu anda telah habis"
+	},
+	"list_question":
+	[
+		[
+			{
+				"type":"mc",
+				"text":"",
+				"question":"Wah... ada buku ketinggalan...",
+				"box_style":{
+					"background-image": "url(assets/image/background/diabox-ngomong.png)",
+				    "color": "rgb(17, 17, 17)",
+				    "background-size": "cover",
+				    "border-radius": "16px"
+				},
+				"pilihan":
+				[
+					{"index":0,"text":"Mengambil dan menyimpan buku"},
+					{"index":1,"text":"Mencari tahu pemilik buku"}
+				],
+				"box_style_pilihan":{
+					"background-image": "url(assets/image/background/diabox-piljaw.png)",
+			 		"background-size": "cover",
+			 		"background-size": "100% 100%",
+					"color": "#111",
+					"background-color": "unset",
+					"border":"unset"
+				},
+				"jawaban":[1],
+				"background_image":"",
+				"audio":"",
+				
+				"label_name_img":"",
+				"img_character":[
+									"MC_BEATS_C01M02_Chase3_01_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_02_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_03_Benar_01_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_04_Salah_01_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_05_Salah_02_v.0.0.0.1.gif"
+								],
+				"img_max_width":[0,1,2,3,4],
+				"first_img_character":[1],
+				"character_bg_one_gif":1,
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"text":"Setelah <i>meeting</i>...",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"text_2":"Kamu",
+					 	"text_2_position":"right",
+					 	"text":"Wah.. ada buku ketinggalan...",
+					 	"img_character":[1],
+					 	"audio":"",
+					 	"suara_batin":1,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback":
+				[
+					{
+						"index":0,
+						"video":"",
+						"text":"Ternyata punya Bu Alice, saya kembalikan deh sekarang...",
+						"img_character":[2],
+						"text_2":"Kamu",
+						"text_2_position":"right",
+						"audio":"",
+						"suara_batin":1,
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_03_Benar_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback_false":
+				[
+					{
+					 	"index":0,
+					 	"video":"",
+						"text":"Simpan dulu deh... nanti juga ada yang cari...",
+					 	"img_character":[3],
+					 	"text_2":"Kamu",
+					 	"text_2_position":"right",
+					 	"audio":"",
+					 	"suara_batin":1,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_04_Salah_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"video":"",
+						"text":"",
+					 	"img_character":[4],
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"hand_touch_img":"Hand-click-1.gif",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_05_Salah_02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				]
+			}
+		],
+		[
+			{
+				"type":"mc",
+				"text":"",
+				"question":"Pilih prinsip BEATS yang dapat membantu Bu Alice!",
+				"box_style":{
+					"background-image": "url(assets/image/background/diabox-ngomong.png)",
+				    "color": "rgb(17, 17, 17)",
+				    "background-size": "cover",
+				    "border-radius": "16px"
+				},
+				"pilihan":
+				[
+					{"index":0,"text":"Simple"},
+					{"index":1,"text":"Build Rapport"}
+				],
+				"box_style_pilihan":{
+					"background-image": "url(assets/image/background/diabox-piljaw.png)",
+			 		"background-size": "cover",
+			 		"background-size": "100% 100%",
+					"color": "#111",
+					"background-color": "unset",
+					"border":"unset"
+				},
+				"jawaban":[0],
+				"background_image":"",
+				"audio":"",
+				
+				"label_name_img":"",
+				"img_character":[
+									"MC_BEATS_C01M02_Chase3_06_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_07_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_08_Benar_01_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_09_Benar_02_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_10_Salah_01_v.0.0.0.1.gif",
+									"MC_BEATS_C01M02_Chase3_11_Salah_02_v.0.0.0.1.gif"
+								],
+				"img_max_width":[0,1,2,3,4,5],
+				"first_img_character":[0],
+				"character_bg_one_gif":1,
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"right",
+					 	"text":"",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_06_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"text_2":"Bu Alice",
+					 	"text_2_position":"left",
+					 	"text":"Terima kasih ya... ini dia yang saya cari-cari.. soalnya ada yang harus segera saya <i>follow up.</i>",
+					 	"img_character":[1],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_07_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback":
+				[
+					{
+						"index":0,
+						"video":"",
+						"text":"Jangan khawatir Bu, saya akan kirim hasil <i>meeting</i> beserta <i>follow up action</i>-nya sore ini juga.",
+						"img_character":[2],
+						"text_2":"Kamu",
+						"text_2_position":"right",
+						"audio":"",
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_08_Benar_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+						"index":1,
+						"video":"",
+						"text":"Wah! mantaap sekali... terima kasih yaa.",
+						"img_character":[3],
+						"text_2":"Bu Alice",
+						"text_2_position":"Left",
+						"audio":"",
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_09_Benar_02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback_false":
+				[
+					{
+					 	"index":0,
+					 	"video":"",
+						"text":"Wah... Ibu rajin ya... nanti saya pinjam ya catatannya untuk membuat hasil <i>meeting</i>.",
+					 	"img_character":[4],
+					 	"text_2":"Kamu",
+					 	"text_2_position":"right",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_10_Salah_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"video":"",
+						"text":"Lho... memangnya tadi kamu nggak mencatat?",
+					 	"img_character":[5],
+					 	"text_2":"Bu Alice",
+					 	"text_2_position":"left",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase3_11_Salah_02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				]
+			}
+		]
+	]
+}

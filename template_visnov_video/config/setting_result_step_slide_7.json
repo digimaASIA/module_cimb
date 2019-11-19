@@ -1,0 +1,61 @@
+{
+	"score":true,
+	"background":"",
+	"background_video":"MC_BEATS_ClearStage_02_v.0.0.0.1.mp4",
+	"win":{
+		"ribbon":"ribbon menang.png",
+		"ribbon_text":"STAGE CLEAR",
+		"backsound":"niceJob.mp3",
+		"description":{
+			"text":"Kamu telah mengidentifikasi prinsip<br><br><b>- Act on Solution:</b> Memberi Solusi<br><b>- Take Responsibility:</b> Bertanggung jawab permasalahan hingga tuntas<br><b>- Simple:</b> Memberi kemudahan",
+			"css":{
+				"color": "#000000",
+			    "background": "rgb(255, 255, 255)",
+			    "border": "2px solid #8BB2E6",
+			    "border-radius": "16px"
+			}
+		},
+		"score_css":{
+			"color":"#000",
+			"background":"#FFF",
+			"border":"none",
+			"border-radius":"16px"
+		},
+		"button":{
+			"text":"<strong>NEXT</strong>",
+			"button_css":{
+				"border-radius": "28px",
+			    "background": "#1D8BEC",
+			    "border": "2px solid #FFFFFF"
+			}
+		}
+	},
+	"lose":{
+		"ribbon":"ribbon kalah.png",
+		"ribbon_text":"STAGE CLEAR",
+		"backsound":"WayToGo.mp3",
+		"description":{
+			"text":"Yuk, Lanjut ke tantangan berikutnya",
+			"css":{
+				"color": "#000000",
+			    "background": "rgb(255, 255, 255)",
+			    "border": "2px solid #8BB2E6",
+			    "border-radius": "16px"
+			}
+		},
+		"score_css":{
+			"color":"#000",
+			"background":"#FFF",
+			"border":"none",
+			"border-radius":"16px"
+		},
+		"button":{
+			"text":"<strong>NEXT</strong>",
+			"button_css":{
+				"border-radius": "28px",
+			    "background": "#1D8BEC",
+			    "border": "2px solid #FFFFFF"
+			}
+		}
+	}
+}

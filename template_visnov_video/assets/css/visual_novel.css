@@ -1,0 +1,847 @@
+.body-wrapper{
+    position: relative;
+}
+
+#content>.div_content>.slider-content{
+    height: 100%;
+    width: 100%;
+    /*overflow-y: auto;*/
+    /* padding-bottom: 100px; */
+    position: fixed;
+    max-width: 425px; 
+    max-height: 640px;
+    font-size: 14px;
+    line-height: 1.5em;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.slider-content{
+    background: url(assets/image/background/classroom.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-blend-mode: overlay;
+}
+
+.point_challange_wrapper{
+    text-align: center;
+    margin: 35px 0;
+    display: inline-block;
+    position: relative;
+}
+.point_challange_wrapper .point_challenge{
+    display: inline-block;
+    background: #d69451;
+    border-radius: 50%;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 15px;
+}
+.point_challange_wrapper .point_challenge .check{
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+}
+.point_challange_wrapper .point_challenge.active .check{
+    display: table;
+}
+.point_challenge.end .img_bendera{
+    display: block !important;
+}
+.point_challange_wrapper .point_challenge .check>span{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1.2em;
+    border-radius: 50%;
+    color: #d69451;
+    background: #f5bd6e;
+}
+.point_challange_wrapper .point_challenge .img_bendera{
+    position: absolute;
+    width: 45px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -22.5px;
+    display: none;
+}
+.point_challange_wrapper .point_challenge .img_bendera img{
+    width: 100%;
+}
+.img_icon{
+    margin: 0 auto;
+    padding: 20px 10px 0px;
+    width: 100%;
+}
+.img_icon img{
+  width: 100%;  
+}
+.point_challange_wrapper .line{
+    height: 4px;
+    width: 80%;
+    position: absolute;
+    background: #d69451;
+    top: 50%;
+    margin-top: -2px;
+    left: 50%;
+    margin-left: -40%;
+    z-index: 0;
+}
+.point_challenge_wrap{
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+.title_challenge{
+    position: relative;
+    display: inline-block;
+    /*width: 190px;*/
+}
+.title_challenge span{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    color: white;
+    padding: 3px;
+    font-size: 1em;
+    height: 100%;
+}
+.title_challenge img{
+    width: 100%;
+}
+.desc_challenge{
+    max-width: 250px;
+    margin: 20px auto;
+}
+.btn_start{
+    /*background: #1d8bec;*/
+    /*border-bottom: 7px solid #0759a2;*/
+    border-radius: 5px;
+    width: 130px;
+    margin: 0 auto;
+    padding: 10px 0;
+    /*color: #fff;*/
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+.select_option{
+    /*opacity: .5;*/
+}
+
+.select_options a{
+    padding: 10px 20px 10px 20px;
+}
+
+.select_options button{
+    width: 170px;
+}
+
+.select_option.selected{
+    /*opacity: 1;*/
+    background-color: #91b5d6;
+}
+
+.dynamic_btn_submit{
+    margin-top: 30%;
+}
+
+video{
+  width: 100%;
+  height: unset;
+ }
+.col_md_two{
+position: relative;
+overflow: hidden;
+width: 100%;
+height: 40vh;
+max-height: 200px;
+}
+.col_md_two img{
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.col_md_two .bg-video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.4);
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.segitiga-play{
+  width: 75px;
+  height: 75px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -45px;
+  margin-top: -33px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+.segitiga-play .segitiga{
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 25px solid #fff;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  left: 50%;
+  margin-left: -10px;
+}
+
+.video_btn_wrapper{
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.video_desc_wrapper{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.btn_choose{
+    padding-top: 5px;
+}
+
+.btn_choose_text{
+    width: 95%;
+    background: #e92626;
+    color: white;
+    padding: 10px;
+    border-radius: 16px 16px 0 0;
+    border-top: solid 1px #FFF;
+    border-left: solid 1px #FFF;
+    border-right: solid 1px #FFF;
+}
+
+.div_btn_choose{
+    width: 95%;
+    border-radius: 0 0 16px 16px;
+    border-left: solid 1px #FFF;
+    border-right: solid 1px #FFF;
+    border-bottom: solid 1px #FFF;
+    padding: 10px 0px;
+}
+
+.pilihan .bullet{
+    border-radius: 0;
+}
+
+.div_question{
+    /*padding-left: 5px;
+    padding-right: 5px;*/
+    padding-left: unset;
+    padding-right: unset;
+}
+
+.question_li{
+    background-color: #BD151F!important;
+    border: unset;
+    border-radius: unset;
+    position: relative;
+    color: white;
+    margin: 5px 0;
+    text-align: center;
+    padding: 5px 7px;
+    min-height: 40px !important;
+}
+
+.div_question .pilihan{
+    background-color: #BD151F!important;
+    border: unset;
+    border-radius: unset;
+    position: relative;
+}
+
+.div_pilihan{
+    /*padding-left: 5px;
+    padding-right: 5px;*/
+    padding: 0;
+}
+
+.right {
+    width: 100%;
+    max-width: unset;
+}
+
+.video_header_wrapper{
+    position: absolute;
+    top: 4px;
+    width:100%;
+}
+
+.row_no_margin{
+    margin-left: unset;
+    margin-right: unset;
+}
+
+/*.pilihan_wrapper .pilihan {
+    font-size: 14px;
+}*/
+
+.icon_tutorial_wrap{
+    margin-top: 10px;
+}
+
+.icon_tutorial,.icon_exit_feedback{
+    /*font-size: 25px;
+    color: white;*/
+}
+
+.icon_tutorial_wrap{
+    text-align: right;
+}
+
+.modal#tutorial .description{
+    font-size: 14px;
+}
+
+.right {
+    display: block;
+}
+
+.video_div{
+    height: 100%;
+}
+.result{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #FFF;
+    /*margin: 0 10px;*/
+}
+.result_2{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #FFF;
+    /*margin: 0 10px;*/
+}
+
+.curr_soal{
+    width: 50%;
+    float: left;
+    font-size: 20px;
+    height: 40px;
+    margin-top: 7px;
+}
+
+.img_header{
+    width: 50%;
+    float: left;
+    height: 50px;
+}
+
+.wrap>div{
+    /*height: unset !important;*/
+}
+
+.content_dad{
+    /*margin-top: 40px;*/
+    /*position: absolute;*/
+    /* margin-top: -55%; */
+    /*top: 0;*/
+    width: 100%;
+}
+
+.item img{
+    margin:auto;
+}
+
+.item_place img{
+    margin: auto; 
+}
+
+.item_place img{
+    max-width: 150px;
+}
+
+.text_header{
+    margin-top: 10px;
+    /*padding-left: 18%;*/
+}
+
+/*css pilihan*/
+.pilihan_wrapper{
+    /*width: 90%;*/
+    margin-left: 0;
+    width: 25%;
+    /*background: #080808;*/
+    background: unset;
+    padding: 1.2vh 0 3.6vh;
+    width: 95%;
+    padding-left: unset;
+    padding-right: unset;
+}
+
+.pilihan .bullet{
+    /*left: 20px;*/
+    left: 6px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 10px;
+}
+
+.div_pilihan{
+    /*padding-left: 5px;
+    padding-right: 5px;*/
+}
+
+.right {
+    width: 100%;
+    max-width: unset;
+}
+
+.video_header_wrapper{
+    position: absolute;
+    top: 0;
+    width:100%;
+}
+
+.row_no_margin{
+    margin-left: unset;
+    margin-right: unset;
+}
+
+.pilihan_wrapper .pilihan {
+    font-size: 14px;
+    /*padding: 13px 15px;*/
+    text-align: left;
+    padding: 5px 7px;
+    min-height: 10vh !important;
+    background: #162533;
+    font-size: 1.15em;
+}
+
+.bg-content{
+    /*margin-top: 2%;*/
+}
+
+.text_challenge{
+    position: absolute;
+    font-size: 14px;
+    text-align: center;
+}
+
+.img-result-wrapper .text_banner{
+    position: absolute;
+    top: 73px;
+    width: 100%;
+    text-align: center;
+    color: #1A4466;
+    font-size: 22px;
+    font-family: Lato-Black;
+}
+
+.pilihan.mc{
+    text-align: center;
+    display: table;
+    width: 100%;
+    min-height: unset !important;
+    height: 7.5vh;
+}
+
+.pilihan.mc .txt_pilihan{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/*button_wrapper*/
+.button_wrapper button{
+    margin-right: 10px;
+}
+/*end button_wrapper*/
+
+/*item character*/
+.img_item{
+    width: 150px;
+}
+
+.img_item.cust{
+    width: 150px;
+}
+
+.timer_quiz{
+    padding: 0 6.4%;
+}
+
+.timer_quiz .progress{
+    margin-bottom: 0.5vh;
+}
+    
+/*CSS dialog box*/
+    .item_dialog{
+        position: absolute;
+        bottom: 3.6%;
+        /* margin: 0 3%; */
+        /* background-color: rgb(22, 37, 51); */
+        width: 100%;
+        /*height: 15vh;*/
+        color: white;
+        /* padding: 10px; */
+        z-index: 11;
+        /* opacity: 0.8 !important; */
+    }
+
+    .item_dialog .item_dialog_text,
+    .item_dialog_feedback_text,
+    .item_dialog_feedback_false_text{
+        /* background-color: rgb(22, 37, 51); */
+        margin: 0 6.4%;
+        height: 17.24vh;
+        min-height: 115px;
+        /*padding: 3.6vh;*/
+        padding: 3vh;
+        color: #fff;
+        font-size: 1.15em;
+        text-align: center;
+        line-height: 3.6vh;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .item_dialog_text.suara_batin,
+    .item_dialog_feedback_text.suara_batin,
+    .item_dialog_feedback_false_text.suara_batin{
+        /*background-color: transparent !important;*/
+        opacity: 0.8 !important;
+        /*color: black !important;*/
+    }
+
+    .btn_dialog_wrapper,
+    .btn_dialog_question_wrapper{
+        position: absolute;
+        bottom: 4.5%;
+        right: 9%;
+        z-index: 11;
+        width: 4.3%;
+        z-index: 1041;
+    }
+
+    .div_label_img{
+        width: 4.5vh;
+        height: 4.5vh;
+        position: absolute;
+        top: -2.5vh;
+        left: 12%;
+    }
+
+    .div_name_label{
+        display: none;
+        position: absolute;
+        /*width: 100%;*/
+        bottom: 18.5%;
+        /*bottom: 124px;*/
+        z-index: 12;
+        /*margin-bottom: -0.5px;*/
+        padding: 0 6.4%;
+        top: -2.5vh;
+    }
+
+    .div_name_label .div_name_label-2{
+        margin: 0 3%;
+        position: relative;
+        float: left;
+    }
+
+    .name_label_text{
+        position: absolute;
+        position: unset;
+        bottom: 0;
+        height: 100%;
+        color: #fff;
+        font-size: 1.15em;
+        padding: 5px;
+        text-align: center;
+        /*width: 100%;*/
+        font-family: Lato-Bold;
+        width: max-content;
+        /*width: -moz-max-content;
+        width: -webkit-max-content;*/
+        /*width: 200px;*/
+        height: 4.8vh;
+        padding: 0.7vh 4.3vw;
+        min-height: 30px;
+        /*text-align: left;*/
+        /*display: inline-block;*/
+    }
+
+    .div_name_label.left_label{
+        left: 6.4%;
+    }
+
+    .div_name_label.right_label{
+        right: 9.4%;
+    }
+
+    .div_name_label.center_label{
+        left: 50%;
+        transform: translateX(-50%);
+        width: unset;
+    }
+
+    .div_name_label.center_label .name_label_text{
+        /*position: unset;*/
+    }
+
+    .div_name_label.right_label .name_label_text{
+        right: 0;
+    }
+
+    .div_name_label .img_suara_batin{
+        width: 6.4vw;
+        height: 100%;
+        display: inline-block;
+        object-fit: contain;
+    }
+
+    .question_label_name{
+        position: absolute;
+        top: -2.5vh;
+        padding: 0.5vh 4.3vw;
+        /*width: max-content;*/
+        height: 4.8vh;
+        min-height: 30px;
+
+    }
+
+    .question_label_name .question_img_suara_batin{
+        width: 6.4vw;
+        height: 100%;
+        object-fit: contain;
+        position: unset;
+        /*display: inline-block;*/
+    }
+
+    .question_label_img{
+        position: absolute;
+        top: -2.5vh;
+    }
+
+    .question_label_name.left_label,
+    .question_label_img.left_label{
+        left: 10.7%;
+    }
+
+    .question_label_name.right_label,
+    .question_label_img.right_label{
+        right: 10.7%;
+    }
+
+    .question_label_name.center_label,
+    .question_label_img.center_label{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .div_name_label.center_label .div_name_label-2{
+        float: unset !important;
+    }
+
+    .pilihan_place{
+        display: none;
+        z-index: 1041;
+        position: absolute;
+        /*bottom: 33%;*/
+        bottom: -1.2%;
+        width: 100%;
+        color: white;
+    }
+
+    .div_question{
+        position: relative;
+       /* margin: 0 6.4%;
+        height: 17.24vh;
+        min-height: 115px;*/
+        /*padding: 3.6vh;*/
+       /* color: #fff;
+        font-size: 1.15em;
+        text-align: center;
+        line-height: 3.6vh;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;*/
+    }
+
+    .div_question .txt_question{
+        margin: 0 6.4%;
+        height: 17.24vh;
+        min-height: 115px;
+        /* padding: 3.6vh; */
+        color: #fff;
+        font-size: 1.15em;
+        text-align: center;
+        line-height: 3.6vh;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .div_question .txt_question.suara_batin{
+        opacity: .8;
+    }
+
+    .pilihan_wrapper .row_no_margin{
+        padding: 0 6.4%;
+    }
+
+    .item_character.character_bg_one_gif{
+        width: 100% !important;
+        height: 100%;
+    }
+
+    .item_character.character_bg_one_gif .img_item{
+        width: 100%;
+        margin-left: 0 !important;
+        height: 100% !important;
+        object-fit: cover;
+    }
+/*End CSS dialog box*/
+
+@media screen and (max-width: 320px) {
+    .img_item{
+        margin-left: -57px !important;
+    }
+
+    .div_name_label{
+        /*bottom: 121px;*/
+    }
+
+    .div_question {
+        /*padding: 2.8vh;*/
+    }
+}
+
+@media screen and (min-width:321px) and (max-width: 424px) {
+    .img_item{
+        margin-left: -33px !important;
+    }
+}
+
+@media screen and (orientation:landscape) {
+    #content .slider-content>div{
+        padding: 15px;
+    }
+
+    .popupdialogbox_mc .description {
+        width: 75%;
+    }
+
+    /*#item_div pilihan_place*/
+    .item .pilihan_place{
+        display: none;
+        /*max-width: 220px;*/
+        max-width: 425px;
+        z-index: 10;
+    }
+
+    #item_div-1 #item-1 .pilihan_place{
+        position: absolute;
+        z-index:10;
+        left: 0%;
+        top: -9%;
+    }
+
+    #item_div-1 #item-2 .pilihan_place{
+        position: absolute;
+        z-index: 10;
+        left: 9%;
+        top: 9%;
+    }
+
+    #item_div-1 #item-3 .pilihan_place{
+        position: absolute;
+        z-index: 10;
+        left: 26%;
+        top: 3%;
+    }
+
+    #item_div-1 #item-4 .pilihan_place{
+        position: absolute;
+        z-index: 10;
+        left: 43%;
+        top: 12%;
+    }
+
+    #item_div-1 #item-5 .pilihan_place{
+        position: absolute;
+        z-index: 10;
+        left: 66%;
+        top: -1%;
+    }
+
+    /*end item_div pilihan_place*/
+
+
+
+    .result .img-result-wrapper {
+        width: 50%;
+        float: left;
+    }
+
+    .result_2 .button-wrapper {
+        width: 50%;
+        float: left;
+    }
+}
+/*end css pilihan*/
+
+/*Animation float up*/
+.float {
+    position: relative;
+    -webkit-animation: floatBubble 1s  normal ease-out;
+    animation: floatBubble 1s  normal ease-out;
+}
+
+@-webkit-keyframes floatBubble {
+    0% {
+        bottom: -200px;
+    }
+    100% {
+        bottom: 0px;
+    }
+}
+
+@keyframes floatBubble {
+    0% {
+        bottom: -200px;
+    }
+    100% {
+        bottom: 0px;
+    }
+}
+
+.animated_custom{
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.modal-backdrop.in{
+    opacity: .2 !important;
+}
+/*End animation float up*/

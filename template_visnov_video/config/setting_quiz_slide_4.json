@@ -1,0 +1,552 @@
+{
+	"settings":{
+		"duration":30,
+		"dialog_box_img":"",
+		"backsound":"Corporate Piano Background Music For Your Presentations.mp3"
+	},
+	"feedback_false":[
+		
+	],
+	"feedback_true":[
+		
+	],
+	"feedback_timeout":{
+		"text":"Waktu anda telah habis"
+	},
+	"list_question":
+	[
+		[
+			{
+				"type":"mc",
+				"text":"",
+				"question":"Pilih prinsip BEATS yang harus diterapkan pada situasi ini!",
+				"box_style":{
+					"background-image": "url(assets/image/background/diabox-ngomong.png)",
+				    "color": "rgb(17, 17, 17)",
+				    "background-size": "cover",
+				    "border-radius": "16px"
+				},
+				"pilihan":
+				[
+					{"index":0,"text":"Act on Solution"},
+					{"index":1,"text":"Establish Needs"}
+				],
+				"box_style_pilihan":{
+					"background-image": "url(assets/image/background/diabox-piljaw.png)",
+			 		"background-size": "cover",
+			 		"background-size": "100% 100%",
+					"color": "#111",
+					"background-color": "unset",
+					"border":"unset"
+				},
+				"jawaban":[0],
+				"background_image":"",
+				"audio":"",
+				
+				"label_name_img":"",
+				"img_character":[
+									"MC_CIMB_BEATS_C01M02_Chase2_01_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_02_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_03_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_04_benar01_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_05_benar02_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_06_salah01_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_07_salah02_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_08_salah03_v.0.0.0.1.gif"
+								],
+				"img_max_width":[0,1,2,3,4,5,6,7],
+				"first_img_character":[1],
+				"character_bg_one_gif":1,
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"text":"Pada hari H... Rico dan kamu mengecek kesiapan <i>meeting.</i>",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+
+					},
+					{
+					 	"index":1,
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"text":"Namun tiba-tiba...",
+					 	"img_character":[1],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":2,
+					 	"text_2":"Rico",
+					 	"text_2_position":"left",
+					 	"text":"Gawat! Tiba-tiba laptopnya mati, padahal materi presentasi ada di sana dan <i>meeting</i> dimulai 15 menit lagi..",
+					 	"img_character":[2],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#5576FF",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_03_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback":
+				[
+					{
+						"index":0,
+						"video":"",
+						"text":"Tenang Pak! Materi presentasi sudah disimpan juga di laptop saya... kita pakai laptop saya saja sekarang.",
+						"img_character":[3],
+						"text_2":"Kamu",
+						"text_2_position":"right",
+						"audio":"",
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_04_benar01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+						"index":1,
+						"video":"",
+						"text":"Oke! wah syukur lah...",
+						"img_character":[4],
+						"text_2":"Rico",
+						"text_2_position":"left",
+						"audio":"",
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_05_benar02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback_false":
+				[
+					{
+					 	"index":0,
+					 	"video":"",
+						"text":"Apa yang bisa saya bantu Pak?",
+					 	"img_character":[5],
+					 	"text_2":"Kamu",
+					 	"text_2_position":"right",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_06_salah01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"video":"",
+						"text":"Waduh..saya bingung nih. Kamu punya <i>back up</i>-nya ga?",
+					 	"img_character":[6],
+					 	"text_2":"Rico",
+					 	"text_2_position":"left",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#5576FF",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_07_salah02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":2,
+					 	"video":"",
+						"text":"Ada sih... ya sudah, pakai laptop saya deh.",
+					 	"img_character":[7],
+					 	"text_2":"Kamu",
+					 	"text_2_position":"right",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_08_salah03_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				]
+			}
+		],
+		[
+			{
+				"type":"mc",
+				"text":"Kamu",
+				"question":"Wah, gimana nih kalau Pak Riky terlambat... kan Pak Riky harus presentasi juga.",
+				"label_name_question_style":{
+					"background": "#db6edb",
+				    "border-radius": "24px",
+				    "color": "white",
+				    "border": "1px solid white",
+				    "font-weight": "bold",
+				    "font-family": "Lato-Bold"
+				},
+				"box_style":{
+					"background-image": "url(assets/image/background/diabox-ngomong.png)",
+				    "color": "rgb(17, 17, 17)",
+				    "background-size": "cover",
+				    "border-radius": "16px"
+				},
+				"pilihan":
+				[
+					{"index":0,"text":"Mengusulkan <i>meeting</i> jarak jauh"},
+					{"index":1,"text":"Memundurkan waktu <i>meeting</i>"}
+				],
+				"box_style_pilihan":{
+					"background-image": "url(assets/image/background/diabox-piljaw.png)",
+			 		"background-size": "cover",
+			 		"background-size": "100% 100%",
+					"color": "#111",
+					"background-color": "unset",
+					"border":"unset"
+				},
+				"jawaban":[0],
+				"background_image":"",
+				"audio":"",
+				"label_name_img":"",
+				"img_character":[
+									"MC_CIMB_BEATS_C01M02_Chase2_09_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_10_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_11_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_12_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_13_Benar_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_14_Benar2_v.0.0.0.1..gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_15_Salah_v.0.0.0.1.gif",
+									"MC_CIMB_BEATS_C01M02_Chase2_16_Salah2_v.0.0.0.1.gif"
+								],
+				"img_max_width":[0,1,2,3,4,5,6,7],
+				"first_img_character":[0],
+				"character_bg_one_gif":1,
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"right",
+					 	"text":"Para peserta mulai datang...",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_09_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"text_2":"",
+					 	"text_2_position":"right",
+					 	"hand_touch_img":"Hand-click-1.gif",
+					 	"text":"",
+					 	"img_character":[1],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_10_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":2,
+					 	"text_2":"",
+					 	"text_2_position":"right",
+					 	"hand_touch_img":"Hand-click-1.gif",
+					 	"text":"",
+					 	"img_character":[2],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_11_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":3,
+					 	"text_2":"Kamu",
+					 	"text_2_position":"right",
+					 	"text":"Wah, gimana nih kalau Pak Riky terlambat... kan Pak Riky harus presentasi juga.",
+					 	"img_character":[3],
+					 	"audio":"",
+					 	"suara_batin":1,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_12_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback":
+				[
+					{
+						"index":0,
+						"video":"",
+						"text":"",
+						"img_character":[4],
+						"text_2":"",
+						"text_2_position":"Left",
+						"hand_touch_img":"Hand-click-1.gif",
+						"audio":"",
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_13_Benar01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+						"index":1,
+						"video":"",
+						"text":"<i>Meeting</i> pun dimulai dan dapat berjalan lancar sesuai jadwal.",
+						"img_character":[5],
+						"text_2":"",
+						"text_2_position":"Left",
+						"audio":"",
+						"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_14_Benar02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback_false":
+				[
+					{
+					 	"index":0,
+					 	"video":"",
+						"text":"",
+					 	"img_character":[6],
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_15_Salah01_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"video":"",
+						"text":"<i>Meeting</i> diundur, akibatnya banyak peserta yang meninggalkan ruangan karena ada agenda lain...",
+					 	"img_character":[7],
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"audio":"",
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#FF5C55",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_CIMB_BEATS_C01M02_Chase2_16_Salah02_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				]
+			}
+		]
+	]
+}

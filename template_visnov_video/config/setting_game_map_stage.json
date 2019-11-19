@@ -1,0 +1,56 @@
+{
+	"background":"url('assets/image/ular-tangga/bg-quiz-custom.png') white no-repeat bottom",
+	"list_step":
+	[
+		{
+			"id":1,
+			"image":"list_1.png",
+			"image_2":"list_done_1.png",
+			"image_3":"list_locked_1.png",
+			"image_4":"list_fail_1.png",
+			"style":{
+			
+			}
+		},
+		{
+			"id":2,
+			"image":"list_2.png",
+			"image_2":"list_done_2.png",
+			"image_3":"list_locked_2.png",
+			"image_4":"list_fail_2.png",
+			"style":{
+			
+			}
+		},
+		{
+			"id":3,
+			"image":"list_2.png",
+			"image_2":"list_done_2.png",
+			"image_3":"list_locked_2.png",
+			"image_4":"list_fail_2.png",
+			"style":{
+			
+			}
+		},
+		{
+			"id":4,
+			"image":"list_2.png",
+			"image_2":"list_done_2.png",
+			"image_3":"list_locked_2.png",
+			"image_4":"list_fail_2.png",
+			"style":{
+			
+			}
+		},
+		{
+			"id":5,
+			"image":"list_2.png",
+			"image_2":"list_done_2.png",
+			"image_3":"list_locked_2.png",
+			"image_4":"list_fail_2.png",
+			"style":{
+			
+			}
+		}
+	]
+}

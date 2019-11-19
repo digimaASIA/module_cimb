@@ -1,0 +1,117 @@
+<style type="text/css">
+	.game_map_stage .button_wrapper {
+	    position: relative;
+	    height: 100%;
+	    width: 320px;
+	    margin: 0 auto;
+	    top: 50%;
+	    transform: translateY(-50%);
+	    display: table;
+	}
+
+	.game_map_stage .step_wrapper{
+		display: table-cell;
+    	vertical-align: middle;
+    	width: 100%;
+	}
+	/*.ular_tangga_custom .button .idle{
+		display: none;
+	}*/
+
+	.game_map_stage .button.active img.idle{
+		display: block;
+	}
+
+	.game_map_stage .button.disabled img.idle{
+		display: none;
+	}
+
+	.game_map_stage .finish_state.disabled img{
+		display: block !important;
+	}
+
+	.game_map_stage .button .locked{
+		display: none;
+	}
+
+	.game_map_stage .button.disabled img.locked{
+		display: block;
+	}
+
+	.game_map_stage .button.stage{
+		-webkit-transition: all 1s ease;
+    	transition: all 1s ease;
+		width: 100%;
+		position: unset;
+    	margin: 2vh 0;
+	}
+
+	.step_wrapper-2{
+		max-height: 72.8vh;
+    	overflow-y: scroll;
+	}
+
+	.button_wrapper-2{
+		position: absolute;
+    	bottom: 0; 
+    	text-align: center; 
+    	width: 100%;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="assets/css/ular_tangga.css">
+<div class="slider-content game_map_stage" style="background: url(assets/image/ular-tangga/bg-quiz-10.png);background-size: cover;background-repeat: no-repeat;background-position: center;">
+    <div class="wrap" style="padding: 0">
+        <div class="map_wrapper" style="max-width: 555px;margin: 0 auto; /*margin-top:10px;*/ position: relative;">
+        	<img src="assets/image/ular-tangga/" alt="" style="display: none;">
+	        <div class="button_wrapper">
+	        	<!-- <div class="col-xs-3 col-md-3 col-lg-3 man">
+	        		<img src="assets/image/ular-tangga/icon-max-09.png" alt="" style="width: 100%;">
+	        	</div> -->
+	        	<!-- <div class="girl">
+	        		<img src="assets/image/ular-tangga/icon-planeselect-09.png" alt="" style="width: 100%;">
+	        	</div> -->
+	        <!-- 	<div class="start_step_wrapper">
+		        	<div class="button start_state change">
+		        		<img src="assets/image/ular-tangga/00-09.png" alt="" class="idle" style="width: 100%;">
+		        	</div>
+		        </div> -->
+		       <!--  <div class="finish_step_wrapper">
+		        	<div class="button finish_state disabled change">
+		        		<img src="assets/image/ular-tangga/06-select-09.png" alt="" class="idle" style="width: 100%;">
+		        	</div>
+		        </div> -->
+	        	<div class="step_wrapper">
+	        		<div class="step_wrapper-2">
+			        	<div class="button stage btn-1 change">
+				        	<img src="assets/image/ular-tangga/01-select-09.png" alt="" class="idle" style="width: 100%;">
+				        	<img src="assets/image/ular-tangga/01-done-09.png" alt="" class="success" style="width: 100%;">
+				        	<img src="assets/image/ular-tangga/01-done-09.png" alt="" class="locked" style="width: 100%;">
+				        </div>	
+				        <div class="button stage btn-2 disabled">
+				        	<img src="assets/image/ular-tangga/02-select-09.png" alt="" class="idle" style="width: 100%;">
+				        	<img src="assets/image/ular-tangga/02-done-09.png" alt="" class="success" style="width: 100%;">
+				        </div>
+				        <div class="button stage btn-3 disabled">
+				        	<img src="assets/image/ular-tangga/03-select-09.png" alt="" class="idle" style="width: 100%;">
+				        	<img src="assets/image/ular-tangga/03-done-09.png" alt="" class="success" style="width: 100%;">
+				        </div>
+				        <div class="button stage btn-4 disabled">
+				        	<img src="assets/image/ular-tangga/04-select-09.png" alt="" class="idle" style="width: 100%;">
+				        	<img src="assets/image/ular-tangga/04-done-09.png" alt="" class="success" style="width: 100%;">
+				        </div>
+				        <div class="button stage btn-5 disabled">
+				        	<img src="assets/image/ular-tangga/05-select-09.png" alt="" class="idle" style="width: 100%;">
+				        	<img src="assets/image/ular-tangga/05-done-09.png" alt="" class="success" style="width: 100%;">
+				        </div>
+				    </div>
+			    </div>
+	        </div>
+
+            <div class="button_wrapper-2">
+                <button class="button btn-standard btn-standard--submit btn-finish" style="width: 18vh;font-family: Lato-Bold;">
+                    FINISH
+                </button>
+            </div>	
+        </div>
+    </div>
+</div>

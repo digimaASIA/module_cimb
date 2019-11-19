@@ -1,0 +1,23 @@
+{
+	"background":"url('assets/image/ular-tangga/bg.png') white no-repeat bottom",
+	"items_row":1,
+	"items":[
+		{
+			"default":"list_1.png",
+			"complete":"list_1_done.png",
+			"failed":"list_1_fail.png"
+		},
+		{
+			"default":"list_2.png",
+			"complete":"list_2_done.png",
+			"failed":"list_2_fail.png"
+		}
+	],
+	"list_tutorial":[
+	],
+	"button":{
+		"text":"FINISH",
+		"gotoslide":7,
+		"css":""
+	}
+}

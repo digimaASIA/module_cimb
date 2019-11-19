@@ -1,0 +1,60 @@
+{
+	"background":"url('assets/image/ular-tangga/bg-quiz-custom.png') white no-repeat bottom",
+	"start_step":{
+		"image":"icon_1.png",
+		"style":{
+			"bottom": "44px",
+		    "position": "absolute",
+		    "right": "33%",
+		    "margin-right": "-45px"
+		}
+	},
+	"finish_step":{
+		"image":"icon_2.png",
+		"style":{
+			"position": "absolute",
+			"bottom": "386px",
+			"left": "194px"
+		}
+	},
+	"list_step":
+	[
+		{
+			"id":1,
+			"image":"icon_3.png",
+			"image_2":"icon_done_3.png",
+			"image_3":"icon_disable_3.png",
+			"image_4":"icon_fail_3.png",
+			"style":{
+				"position": "absolute",
+			    "bottom": "63px",
+			    "right": "185px"
+			}
+		},
+		{
+			"id":2,
+			"image":"icon_4.png",
+			"image_2":"icon_done_4.png",
+			"image_3":"icon_disable_4.png",
+			"image_4":"icon_fail_4.png",
+			"style":{
+				"position": "absolute",
+			    "bottom": "177px",
+			    "right": "32%",
+			    "margin-right": "-45px"
+			}
+		},
+		{
+			"id":3,
+			"image":"icon_5.png",
+			"image_2":"icon_done_5.png",
+			"image_3":"icon_disable_5.png",
+			"image_4":"icon_fail_5.png",
+			"style":{
+				"position": "absolute",
+			    "bottom": "305px",
+			    "left": "64px"
+			}
+		}
+	]
+}
