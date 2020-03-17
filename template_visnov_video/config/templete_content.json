@@ -10,34 +10,34 @@
 		},
 		{
 			"slide":1,
-			"file":"content/opening_d_video.html",
+			"file":"content/sliderfullscreen.html",
 			"hasClass":true,
-			"class":"Opening"
+			"class":"SliderFullScreen"
 		},
 		{
       		"slide":2,
-      		"file":"content/ular_tangga_custom.html",
+      		"file":"content/stage_bootstrap.html",
       		"hasClass":true,
-      		"class":"UlarTanggaCustom",
+      		"class":"StageBootstrap",
       		"text_complete_bar":"SuperBEATS"
     	},
 		{
 			"slide":3,
-			"file":"content/quiz_d_video.html",
+			"file":"content/quiz_visnov.html",
 			"hasClass":true,
-			"class":"Modul"
+			"class":"quizVisnov"
 		},
 		{
 			"slide":4,
-			"file":"content/quiz_d_video.html",
+			"file":"content/quiz_visnov.html",
 			"hasClass":true,
-			"class":"Modul"
+			"class":"quizVisnov"
 		},
 		{
 			"slide":5,
-			"file":"content/quiz_d_video.html",
+			"file":"content/quiz_visnov.html",
 			"hasClass":true,
-			"class":"Modul"
+			"class":"quizVisnov"
 		},
 		{
 			"slide":6,

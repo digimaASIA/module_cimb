@@ -30,12 +30,24 @@
 		transform: translateX(-50%);
 	}
 	.button_wrapper{
-		display: none;
+		/*display: none;*/
 		position: absolute;
 	    left: 50%;
 	    bottom: 0;
 	    transform: translateX(-50%);
+	    /*opacity: 0.5;*/
+	    width: 100%;
+    	text-align: center;
 	}
+	.button_wrapper .button_finish{
+		/*opacity: 0.5;*/
+	}
+	.notif_red{
+		text-align: center;
+    	color: red;
+    	display: none;
+	}
+
 	@-webkit-keyframes brightactive {
 		0%{
 			-webkit-filter: brightness(100%);
@@ -85,12 +97,15 @@
 		}
 		50%{
 			-webkit-filter: brightness(150%);
-			filter: brightness(150%);
+			filter: brightness(125%);
 		}
 		100% { 
 			-webkit-filter: brightness(100%);
 			filter: brightness(100%);
 		}
+	}
+	.button_finish.disabled{
+		background: grey;
 	}
 </style>
 <div class="slider-content" style="background: url(assets/image/game_map_stage/bg.png);background-size: cover;background-repeat: no-repeat;background-position: center;">
@@ -104,7 +119,8 @@
 	    	</div>
 		</div>
 		<div class="button_wrapper">
-			<button class="button btn-standard btn-long btn-standard--submit button_finish">Finish</button>
+			<div class="notif_red">Kamu belum lulus di seluruh stage !</div>
+			<button class="button btn-standard btn-long btn-standard--submit button_finish disabled">Finish</button>
 		</div>
 	</div>
 </div>

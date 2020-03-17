@@ -66,20 +66,39 @@ Modul.prototype.init = function(current_settings) {
     $this.video_path = 'assets/video/stage-'+($this.curr_step+1)+'/';
     $this.path_image = "assets/image/";
     $this.mode = 'video';
+    $this.play_video_flag;
     $this.play_video_interval; //variabel interval video
+    $this.play_video_interval_feedback; //variabel interval video feedback
     /*End path file global*/
 
     //variabel setting global
     $this.setting_global = new Setting();
 
-    console.log("config/setting_quiz_slide_"+$this.current_settings["slide"]+".json");
-    $.get("config/setting_quiz_slide_"+$this.current_settings["slide"]+".json",function(e){
+    // console.log($this.current_settings["slide"]);
+    // console.log("config/setting_quiz_slide_"+$this.current_settings["slide"]+".json");
+
+    //jika visual novel linear, tampilkan tutorial
+    $this.json_prefix_name = "config/setting_quiz_slide_";
+    if($this.setting_global["linear_visual_novel"] != undefined){
+        if($this.setting_global["linear_visual_novel"] == true){
+            $this.json_prefix_name = "config/setting_quiz_linear_slide_";
+        }
+    }
+    console.log($this.json_prefix_name+$this.current_settings["slide"]+".json");
+    $.get($this.json_prefix_name+$this.current_settings["slide"]+".json",function(e){
         console.log(e);
         $this.ldatas = e;
         $this.settings = e["settings"];
         // console.log(e['list_question']);
         console.log($this.category_game);
         $this.question_datas = e['list_question'];
+
+        // if($this.setting_global["linear_visual_novel"] != undefined){
+        //     if($this.setting_global["linear_visual_novel"] == true){
+        //         $this.total_soal = $this.question_datas.length;
+        //         game.total_soal = $this.total_soal;
+        //     }
+        // }
 
         //set game data-prev
         $this.game_data["total_soal_current_slide"] = $this.question_datas.length;
@@ -133,11 +152,31 @@ Modul.prototype.init = function(current_settings) {
         $this.slide_content = $(".slider-content").clone();
         $this.pilihan_wrap = $this.slide_content.find(".div_pilihan").first().clone();
 
-        $this.mulai_game();
+        // $this.mulai_game();
+
+        //check tutorial
+        // console.log($this.setting_global);
+
+        //jika visual novel linear, tampilkan tutorial
+        if($this.setting_global["linear_visual_novel"] != undefined){
+            if($this.setting_global["linear_visual_novel"] == true){
+                if($this.setting_global["show_tutorial_ular_tangga"] && $this.setting_global["flag_tutorial_ular_tangga"] == 0){
+                    $this.setting_global["flag_tutorial_ular_tangga"] = 1;
+                    $this.setting_global["flag_tutorial_ular_tangga"] = $this.setting_global["flag_tutorial_ular_tangga"];
+                    $this.setTutorial();
+                    $(".img_click").hide();
+                }else{
+                    $this.get_total_soal();
+                }
+            }
+        }else{
+            $this.mulai_game();
+        }
     },'json');
 };
 
 Modul.prototype.mulai_game = function(){
+    console.log("mulai_game");
     var $this = this;
 
      //show header element
@@ -1305,8 +1344,12 @@ Modul.prototype.cekJawaban = function($clone,$type) {
         // $this.showHideSoal('hide');
         // $this.question_data[$this.curr_soal]["feedback_popup"] = undefined;
         if($this.mode == 'video'){
-            let index = 0;
-            $this.showVideoFeedback($clone, benar, index);
+            if($this.question_data[$this.curr_soal]["feedback_popup"] != undefined){
+                $this.showModalFeedback_2(benar, 0);
+            }else{
+                let index = 0;
+                $this.showVideoFeedback($clone, benar, index);
+            }
         }else{
             if($this.question_data[$this.curr_soal]["feedback_popup"] != undefined){
                 $this.showModalFeedback_2(benar, 0);
@@ -1347,8 +1390,12 @@ Modul.prototype.cekJawaban = function($clone,$type) {
         // $this.question_data[$this.curr_soal]["feedback_popup"] = undefined;
 
          if($this.mode == 'video'){
-            let index = 0;
-            $this.showVideoFeedback($clone, benar, index);
+            if($this.question_data[$this.curr_soal]["feedback_popup"] != undefined){
+                $this.showModalFeedback_2(benar, 0);
+            }else{
+                let index = 0;
+                $this.showVideoFeedback($clone, benar, index);
+            }
         }else{
             if($this.question_data[$this.curr_soal]["feedback_false_popup"] != undefined){
                 $this.showModalFeedback_2(benar, 0);
@@ -1364,7 +1411,7 @@ Modul.prototype.cekJawaban = function($clone,$type) {
         $(".alert").removeClass("salah");
 
         //click button in dialog feedback
-        $this.settingDialogFeedback($clone, benar);
+        // $this.settingDialogFeedback($clone, benar);
 
         //set game_data and send to scorm
         var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
@@ -1502,6 +1549,7 @@ Modul.prototype.settingDialogFeedback_2 = function($clone, benar, index){
 
 //setting to next dialog feedback video atau next soal
 Modul.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
+    console.log("settingDialogFeedbackVideo_2");
     var $this = this;
 
     if(benar == 1){
@@ -3559,7 +3607,7 @@ Modul.prototype.nextSoal = function(){
     clearInterval($this.time_backsound);
     $this.stopBackSound();
     // alert($this.current_settings["slide"]);
-    console.log($this.current_settings["slide"]);
+    // console.log($this.current_settings["slide"]);
     // $this.current_settings["slide"] = 3;
     game.setSlide($this.current_settings["slide"]);
     // $this.curr_soal += 1;
@@ -3626,12 +3674,24 @@ Modul.prototype.nextSoalAtLast = function(){
         game.time_backsound_per_stage = undefined;
     }
 
-    if($this.setting_global['hide_step_connector'] != undefined){
-        if($this.setting_global['hide_step_connector'] == true){
-            game.setSlide($this.setting_global['slide_game_map']);
+    //set video interval false
+    $this.play_video_flag = false;
+
+    if($this.setting_global['linear_visual_novel'] != undefined){
+        if($this.setting_global['linear_visual_novel'] == true){
+            console.log($this.setting_global['slide_result']);
+            // game.setSlide($this.setting_global['slide_result']);
+            game.nextSlide();
         }
     }else{
-        game.setSlide($this.slide_result_per_step);
+        if($this.setting_global['hide_result_step_page'] != undefined){
+            if($this.setting_global['hide_result_step_page'] == true){
+                game.setSlide($this.setting_global['slide_game_map']);
+            }
+        }else{
+            // alert($this.slide_result_per_step);
+            game.setSlide($this.slide_result_per_step);
+        }
     }
 }
 
@@ -3644,11 +3704,13 @@ Modul.prototype.setVideo = function($clone = '', src, show_soal = '', index, fla
     $("#video").find("source").attr("src",$this.video_path+src);
     console.log($(".img_video"));
     $(".img_video").hide();
+    $("#video").hide();
     $("#video")[0].load();
 
     game.showLoading();
     $("#video").on("canplay",function(e){
         game.hideLoading();
+        $("#video").show();
         $this.playVideo();
 
         if(flag_loop == 0){
@@ -3702,6 +3764,9 @@ Modul.prototype.setVideo = function($clone = '', src, show_soal = '', index, fla
                     $($clone).find(".item_dialog_text").hide();
                     $($clone).find(".div_name_label").hide();
 
+                    //pause video
+                    // $this.pauseVideo();
+
                     //set soal
                     // show soal element
                     $(".txt_question").show();
@@ -3732,9 +3797,14 @@ Modul.prototype.setVideo = function($clone = '', src, show_soal = '', index, fla
             // $this.pauseVideo();
 
             //call function set video, to call again this video
-            $this.play_video_interval = setInterval(function() {
-                $this.playVideo();
-            },200);
+            // clearInterval($this.play_video_interval);
+            // console.log($this.play_video_interval);
+            // $this.play_video_interval = setInterval(function() {
+                // console.log($this.play_video_interval);
+                // $(this).loop = true;
+                $this.playVideo_loop();
+                // var vid = document.getElementById("video");
+            // },200);
         });
     });
 };
@@ -3744,24 +3814,30 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
     // alert("setVideo");
     var $this = this;
     // console.log($("#video").find("source"));
-    console.log($this.video_path+src);
+    // console.log($this.video_path+src);
     $("#video").find("source").attr("src",$this.video_path+src);
     // console.log($(".img_video"));
     $(".img_video").hide();
+    $("#video").show();
     $("#video")[0].load();
 
     game.showLoading();
     $("#video").on("canplay",function(e){
         game.hideLoading();
+        $("#video").show();
         $this.playVideo();
 
         //hide item dialog
-        console.log($($clone).find(".item_dialog_text"));
+        // console.log($($clone).find(".item_dialog_text"));
         $($clone).find(".item_dialog_text").hide();
 
         if(benar == 0){
+            var arr_dialog = $this.ldata2["feedback_false"];
+            var name_character = $this.ldata2["feedback_false"][index]['text_2'];
+            console.log(arr_dialog);
+
+            $($clone).find('.item_dialog_feedback_false_text').hide();
             if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                $($clone).find('.item_dialog_feedback_false_text').hide();
                 $($clone).find('#item_dialog_feedback_false_text-'+index).show();
                 $(".btn_dialog_wrapper #btn_dialog-1").show();
             }else{
@@ -3772,14 +3848,17 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
             var audio = $this.ldata2['feedback_false'][index]['audio'];
             if(audio != undefined){
                 //clear interval
-                clearInterval($this.play_video_interval);
+                clearInterval($this.play_video_interval_feedback);
 
                 var src_audio_2 = "assets/audio/"+audio;
                 $this.playDialogSound(src_audio_2);
             }
         }else{
+            var arr_dialog = $this.ldata2["feedback"];
+            var name_character = $this.ldata2["feedback"][index]['text_2'];
+
+            $($clone).find('.item_dialog_feedback_text').hide();
             if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                $($clone).find('.item_dialog_feedback_text').hide();
                 $($clone).find('#item_dialog_feedback_text-'+index).show();
                 $(".btn_dialog_wrapper #btn_dialog-1").show();
             }else{
@@ -3790,7 +3869,7 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
             var audio = $this.ldata2['feedback'][index]['audio'];
             if(audio != undefined){
                 //clear interval
-                clearInterval($this.play_video_interval);
+                clearInterval($this.play_video_interval_feedback);
 
                 var src_audio_2 = "assets/audio/"+audio;
                 $this.playDialogSound(src_audio_2);
@@ -3822,10 +3901,11 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
 
         $($clone).find(".btn_next_dialog-2").show();
         $($clone).find(".btn_next_dialog-2").unbind().click(function(){
+            // console.log("btn_next_dialog-2");
             //clear interval
-            clearInterval($this.play_video_interval);
+            clearInterval($this.play_video_interval_feedback);
 
-            console.log(last_index);
+            // console.log(last_index);
             if(last_index == 1){
                 let index_2 = index + 1;
                 $this.settingDialogFeedbackVideo_2($clone, benar, index_2);
@@ -3838,9 +3918,12 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
         $("#video").on("ended",function(e){
             $(this).off();
             // $this.pauseVideo();
-            $this.play_video_interval = setInterval(function() {
-                $this.playVideo();
-            },200);
+
+            // $this.play_video_interval_feedback = setInterval(function() {
+            //     $this.playVideo();
+            // },200);
+
+            $this.playVideo_loop();
         });
     });
 };
@@ -3848,6 +3931,14 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
 Modul.prototype.playVideo = function() {
     var $this = this;
     // console.log($("#video")[0]);
+    $("#video")[0].play();
+};
+
+Modul.prototype.playVideo_loop = function() {
+    var $this = this;
+    // console.log(/*$("#video")[0]*/);
+
+    $("#video")[0].loop = true;
     $("#video")[0].play();
 };
 
@@ -3859,9 +3950,7 @@ Modul.prototype.pauseVideo = function() {
 //function set show or hide dialog feedback base on slide-content id
 Modul.prototype.showVideo = function(index, $clone = ''){
     var $this = this;
-    console.log(index);
-    console.log($clone);
-
+   
     if($clone == ''){
        
     }else{
@@ -3871,9 +3960,9 @@ Modul.prototype.showVideo = function(index, $clone = ''){
         // console.log(index_dialog);
         let video = index_dialog['video'];
         // console.log(video);
-        console.log('index_dialog');
-        console.log(index_dialog);
-        console.log(index);
+        // console.log('index_dialog');
+        // console.log(index_dialog);
+        // console.log(index);
         if(index_dialog != undefined && arr_dialog.length > (index+1)){
             //setting video
             //call function set hand touch image
@@ -4018,3 +4107,67 @@ Modul.prototype.setSoalVideo = function($clone, index){
         $(".timer_quiz").hide();
     }
 };
+
+//function set tutorial
+Modul.prototype.setTutorial = function() {
+    var $this = this;
+    if(game.scorm_helper.getSingleData("tutorial") == undefined){
+        $("#tutorial .tutorial.stagebootstrap").addClass("done");
+        $("#tutorial .tutorial.stagebootstrap").addClass("active");
+        $("#tutorial").modal({backdrop: 'static',keyboard: true,show: true});
+        $("#tutorial .tutorial.stagebootstrap").find("div").first().slick({
+            dots: true,
+            infinite: false,
+            speed: 500,
+            prevArrow: false,
+            nextArrow: false
+        });
+        $("#tutorial .tutorial.stagebootstrap").find(".start-game-snake").click(function(e){
+            game.scorm_helper.setSingleData("tutorial",true);
+            $("#tutorial").modal('hide');
+
+            $this.get_total_soal();
+        });
+    }else{
+        $this.get_total_soal();
+    }
+};
+
+/*Function get total soal from all stage*/
+Modul.prototype.get_total_soal = function() {
+    console.log("get_total_soal");
+    var $this = this;
+    $this.total_soal = game.total_soal;
+    console.log($this.total_soal);
+    console.log($this.total_step);
+
+    if($this.total_soal == 0){
+        for (var i = 0; i < $this.total_step; i++) {
+            console.log(i);
+            console.log($this.current_settings["slide"]);
+            let no = $this.current_settings["slide"] + i;
+            const no_2 = i;
+            // console.log("config/setting_quiz_slide_"+no+".json");
+            $.get($this.json_prefix_name+no+".json",function(e3){
+                console.log(e3);
+                console.log(game.scorm_helper.lmsConnected);
+                //check lms connect
+                // e3 = (game.scorm_helper.lmsConnected == true ? JSON.parse(e3) : e3);
+                $this.total_soal += e3["list_question"].length;
+                console.log($this.total_soal);
+                game.total_soal = $this.total_soal;
+
+                console.log($this.total_soal);
+                console.log(($this.total_step-1));
+                console.log(no_2);
+                console.log(($this.total_step-1) == no_2);
+                if(($this.total_step-1) == no_2){
+                    $this.mulai_game();
+                }
+            },'json');
+        }
+    }else{
+        $this.mulai_game();
+    }
+};
+/*End function get total soal from all stage*/ 

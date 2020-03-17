@@ -3,26 +3,25 @@
 	"list_slider":
 	[
 		{
-			"image":"MC_ITSecurity_C10M02_01_v.0.0.0.1.gif",
+			"image":"MC_CIMB_BEATS_C01M02_Opening_01_v.0.0.0.1.mp4",
 			"text":"Test 123"
 		},
 		{
-			"image":"MC_ITSecurity_C10M02_02_v.0.0.0.1.gif",
+			"image":"MC_BEATS_C01M02_Chase1_01_v.0.0.0.1.mp4",
 			"text":"Menggunakan sistem dan akses informasi sesuai dengan yang diperbolehkan perusahaan dan tidak menyalahgunakan sistem dan akses informasi tanpa izin merupakan aturan <i>system access</i> yang harus diikuti."
 		},
 		{
-			"image":"MC_ITSecurity_C10M02_03_v.0.0.0.1.gif",
+			"image":"MC_CIMB_BEATS_C01M02_Opening_01_v.0.0.0.1.mp4",
 			"text":"Pada modul kali ini kamu akan mempelajari aturan <i>system access</i> di ruangan dan lingkungan kerjamu agar kamu dapat menjaga asset dan data-data perusahaan."
 		},
 		{
-			"image":"MC_ITSecurity_C10M02_04_v.0.0.0.1.gif",
+			"image":"MC_BEATS_C01M02_Chase1_01_v.0.0.0.1.mp4",
 			"text":"Yuk, Ikuti Zac untuk mengidentifikasi  apa saja aturan <i>system access</i> di ruangan dan lingkungan kerja.",
 			"button":[
 				{
 					"text":"NEXT",
 					"css":{
 						"border-radius":"16px",
-						"background":"#F8975C",
 						"border":"none"
 					}
 				}

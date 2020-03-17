@@ -355,13 +355,13 @@ Opening.prototype.showQuestion = function(mode = '') {
             $clone.find('.item_dialog .item_dialog_wrapper').html('');
             var arr_dialog = $this.ldata2["text_3"];
             for (var i = 0; i < arr_dialog.length; i++) {
-               
+                console.log($clone_dialog);
                 //append options
                 $clone_dialog.attr('index',i);
-                let dialog_text = arr_dialog[i]['text'];
+
                 //substring text
-                // let max_string_length = 141;
-                // dialog_text = $this.substringText(dialog_text, max_string_length);
+                let max_string_length = 141;
+                let dialog_text = $this.substringText(arr_dialog[i]['text'], max_string_length);
                 // console.log(dialog_text);
 
                 /*Function set css dialog box*/
@@ -378,15 +378,14 @@ Opening.prototype.showQuestion = function(mode = '') {
                 $clone_dialog.attr('id','item_dialog_text-'+i);
 
                 //function add class suara_batin
+                $clone_dialog.removeClass('suara_batin');
                 if(arr_dialog[i]['suara_batin'] != undefined){
                     if(arr_dialog[i]['suara_batin'] == 1){
                         $clone_dialog.addClass('suara_batin');
                     }
-                }else{
-                    $clone_dialog.removeClass('suara_batin');
                 }
-                // console.log($clone_dialog);
-                $clone.find('.item_dialog').append($($clone_dialog)[0]['outerHTML']);
+                console.log($clone_dialog);
+                $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog)[0]['outerHTML']);
             }
         /*End function append dialog*/
 
@@ -3133,7 +3132,6 @@ Opening.prototype.setVideo = function($clone = '', src, show_soal = '', index, f
     console.log("setVideo");
     // alert("setVideo");
     var $this = this;
-    // $(".img_video").show();
     console.log($("#video").find("source"));
     console.log($this.video_path+src);
     $("#video").find("source").attr("src",$this.video_path+src);
@@ -3147,7 +3145,6 @@ Opening.prototype.setVideo = function($clone = '', src, show_soal = '', index, f
     $("#video").on("canplay",function(e){
         // alert("test 2");
         game.hideLoading();
-        // $(".img_video").hide();
         $("#video").show();
         $this.playVideo();
 
@@ -3205,6 +3202,7 @@ Opening.prototype.setVideo = function($clone = '', src, show_soal = '', index, f
                     // $this.showHideSoal('show');
                     // $this.setSoalVideo($clone, index);
 
+                    // alert($this.time_backsound);
                     if($this.time_backsound != undefined){
                         clearInterval($this.time_backsound);
                         $this.stopBackSound();

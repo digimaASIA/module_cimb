@@ -1,0 +1,55 @@
+18/11/2019
+1. Add folder assets\video:
+	1. opening, tempat video opening
+	2. result, tempat video result step dan result
+	3. stage-n, tempat video stage n
+2. timpah file \assets\js:
+	1. modul_video.js
+	2. opening_vdeo.js
+	3. game.js
+	4. setting.js
+	5. result_step.js (new)
+	6. resultgame.js (new)
+3. delete semua file di \assets\image\character.
+4. timpah file assets\css\:
+	1. visual_novel.css
+5. update \config\:
+	1. setting_quiz_slide_n.json. Tambahkan "video":"MC_BEATS_C01M02_Chase1_01_v.0.0.0.1.mp4", di text_3, feedback dan feedback_false.
+6. timpah \content.
+7. timpah index.html
+8. update template_content.json:
+	1. Bila ditemukan opening.html ganti opening_d_video.html
+	2. ganti quiz.html menjadi quiz_d_video.html
+9. update game.js, tambahkan fungsi:
+
+Game.prototype.stopBacksound = function(){
+    var $this = this;
+    $this.audio_backsound_per_stage.pause();
+    $this.audio_backsound_per_stage.currentTime = 0;
+};
+
+Game.prototype.showLoading = function (){
+  $(".loader_image_index").show();
+  $(".modal-backdrop in").show();
+}
+
+Game.prototype.hideLoading = function (){
+  $(".loader_image_index").hide();
+  $(".modal-backdrop in").hide();
+}
+
+10. update settingan di game.js ke setting.js
+
+11. assets/js, modul_video.js, untuk json modul visual novel linear dengan penamaan "setting_quiz_linear_slide_2". 
+
+27/11/2019
+1. update function setVideo di opening.js, modul_video.js, result_step.js dan resultgame.js.
+2. update function setVideoFeedback di modul_video.js
+3. add image png to image/cover
+4. update opening_d_video.html, quiz_d_video.html, result_step_d_video.html dan result_game_d_video.html
+
+21/01/2019
+1. update json quiz, add key "question_video" to json, to show different video from dialog.
+
+Fitur v.0.0.1:
+1. Stage dan No Stage, untuk ubah dari stage ke no stage di setting.js this.mode_visual_novel = 'linear'

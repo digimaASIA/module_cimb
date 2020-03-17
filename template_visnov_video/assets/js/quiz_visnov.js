@@ -3,35 +3,25 @@ var flag_item_click = 0;
 var item_selected2 = undefined;
 var time_backsound = 0;
 
-var Modul = function(){
+var quizVisnov = function(){
     
 }
 
-Modul.prototype.init = function(current_settings) {
+quizVisnov.prototype.init = function(current_settings) {
     console.log('init modul');
     var $this = this;
     /*game data*/
     $this.current_settings = current_settings;
-    $this.game_data = game.game_data;
-    console.log($this.current_settings);
-    //Function set total soal current slide dan total answer true of this slide
-    if($this.game_data["slide"] == undefined){
-        $this.game_data["slide"] = $this.current_settings["slide"];
-    }else{
-        if($this.game_data["slide"] != $this.current_settings["slide"]){
-            $this.game_data["total_soal_current_slide"] = 0;
-            $this.game_data["total_answer_true"] = 0;
-            $this.game_data["slide"] = $this.current_settings["slide"]; 
-        }
-    }
-    console.log($this.game_data);
-    $this.category_game = ($this.game_data['category_game'] != undefined ? $this.game_data['category_game'] : 0);
+    $this.game_data = game.scorm_helper.getSingleData("game_data");
+    $this.game_data = ($this.game_data != undefined ? $this.game_data : {});
+    // console.log($this.current_settings);
+    // console.log($this.game_data);
+   
     $this.life = ($this.game_data['last_life'] != undefined ? $this.game_data['last_life'] : game.life_max);
     $this.total_step = game.total_step; //total step dari setiap game
     $this.total_soal = 0; //total soal dari semua stage
-    $this.curr_soal = $this.game_data['curr_soal'] != undefined ? $this.game_data['curr_soal'] : 0;
-    $this.curr_step = (game.game_data["curr_step"] != undefined ? game.game_data["curr_step"] : 0);
-    $this.last_score = (game.game_data["last_score"] != undefined ? game.game_data["last_score"] : 0);
+    $this.curr_step = ($this.game_data["curr_step"] != undefined ? $this.game_data["curr_step"] : 0);
+    $this.last_score = ($this.game_data["last_score"] != undefined ? $this.game_data["last_score"] : 0);
     /*end game data*/
     $this.isViewVideo = game.isViewVideo;
     $this.question_data = [];
@@ -57,7 +47,7 @@ Modul.prototype.init = function(current_settings) {
     $this.interval_auto_next; //interval auto next
 
     //slide number page
-    $this.slide_result_per_step = game.slide_result_per_step + $this.curr_step;
+    $this.slide_result_per_step = game.slide_result_per_step + ($this.game_data["selected_stage"]-1);
     $this.slide_result = game.slide_result;
     $this.tryagain_question_false_answer = game.tryagain_question_false_answer;
 
@@ -65,7 +55,7 @@ Modul.prototype.init = function(current_settings) {
     if($this.game_data["selected_stage"] == undefined){
         $this.game_data["selected_stage"] = 1;
     }
-    console.log('assets/video/stage-'+($this.game_data["selected_stage"])+'/');
+    // console.log('assets/video/stage-'+($this.game_data["selected_stage"])+'/');
     $this.video_path = 'assets/video/stage-'+($this.game_data["selected_stage"])+'/';
     $this.path_image = "assets/image/";
     $this.mode = 'video';
@@ -77,91 +67,44 @@ Modul.prototype.init = function(current_settings) {
     //variabel setting global
     $this.setting_global = new Setting();
 
-    // console.log($this.current_settings["slide"]);
-    // console.log("config/setting_quiz_slide_"+$this.current_settings["slide"]+".json");
-
     //jika visual novel linear, tampilkan tutorial
     $this.json_prefix_name = "config/setting_quiz_slide_";
-    if($this.setting_global["linear_visual_novel"] != undefined){
-        if($this.setting_global["linear_visual_novel"] == true){
-            $this.json_prefix_name = "config_noStage/setting_quiz_slide_";
-        }
+    if($this.setting_global["mode_visual_novel"] == "linear"){
+        $this.json_prefix_name = "config_noStage/setting_quiz_slide_";
     }
-    console.log($this.json_prefix_name+$this.current_settings["slide"]+".json");
+    // console.log($this.json_prefix_name+$this.current_settings["slide"]+".json");
     $.get($this.json_prefix_name+$this.current_settings["slide"]+".json",function(e){
         console.log(e);
         $this.ldatas = e;
         $this.settings = e["settings"];
-        // console.log(e['list_question']);
-        console.log($this.category_game);
         $this.question_datas = e['list_question'];
 
         //set game data-prev
         $this.game_data["total_soal_current_slide"] = $this.question_datas.length;
 
-        $this.question_data = e['list_question'][$this.category_game];
-        console.log($this.question_data);
+        // $this.question_data = e['list_question'][$this.curr_soal];
+        // console.log($this.question_data);
+        // console.log($this.question_data);
         // setting timer game per soal
         $this.isTimer = (e["settings"]["duration"] != undefined && e["settings"]["duration"] != "")?true:false;
-        // $this.isTimer = ($this.question_data[$this.curr_soal]['duration'])?true:false;
+        // $this.isTimer = ($this.question_datas[$this.curr_soal]['duration'])?true:false;
         // console.log($this.isTimer);
         // $this.countTime = (e["settings"]["duration"])?e["settings"]["duration"]:$this.countTime;
         $this.countTime = $this.settings['duration'];
         $this.total_time = $this.settings['duration'];
-
-        //get backsound stage
-        if($this.settings["backsound"] != undefined && $this.settings["backsound"] != ""){
-            console.log(game.time_backsound_per_stage);
-            if(game.time_backsound_per_stage == undefined){
-                game.playBacksound($this.settings["backsound"]);
-            }
-        }
-       
-        console.log(e['settings']['sound_loading_bar']);
-        if(e['settings']['sound_loading_bar'] != undefined){
-            //play audio loading bar
-            // var src_audio = "assets/audio/"+$this.question_data['audio'];
-            // $this.audio_dynamic_2 = game.audio.audio_dynamic(src_audio);
-            // var promise = $this.audio_dynamic_2.play();
-
-            // if (promise !== undefined) {
-            //     promise.then(_ => {
-            //         // Autoplay started!
-            //     }).catch(error => {
-            //         // Autoplay was prevented.
-            //         // Show a "Play" button so that user can start playback.
-            //     });
-            // }
-        }
-
-        //play backsound
-        alert("playBacksound");
-        $this.playBacksound();
-
-        //set background image
-        var background_image = "url(assets/image/background/"+$this.question_data[$this.curr_soal]["background_image"]+")";
-        console.log(background_image);
-        $(".slider-content").css("background-image",background_image);
-      
+        
         $this.slide_content = $(".slider-content").clone();
         $this.pilihan_wrap = $this.slide_content.find(".div_pilihan").first().clone();
 
-        // $this.mulai_game();
-
-        //check tutorial
-        // console.log($this.setting_global);
-
         //jika visual novel linear, tampilkan tutorial
-        if($this.setting_global["linear_visual_novel"] != undefined){
-            if($this.setting_global["linear_visual_novel"] == true){
-                if($this.setting_global["show_tutorial_ular_tangga"] && $this.setting_global["flag_tutorial_ular_tangga"] == 0){
-                    $this.setting_global["flag_tutorial_ular_tangga"] = 1;
-                    $this.setting_global["flag_tutorial_ular_tangga"] = $this.setting_global["flag_tutorial_ular_tangga"];
-                    $this.setTutorial();
-                    $(".img_click").hide();
-                }else{
-                    $this.get_total_soal();
-                }
+        if($this.setting_global["mode_visual_novel"] == "linear"){
+            if($this.setting_global["show_tutorial_ular_tangga"]){
+                $this.get_total_soal();
+                $this.setTutorial();
+                $(".img_click").hide();
+                // $this.mulai_game();
+            }else{
+                $this.mulai_game();
             }
         }else{
             $this.mulai_game();
@@ -169,11 +112,150 @@ Modul.prototype.init = function(current_settings) {
     },'json');
 };
 
-Modul.prototype.mulai_game = function(){
+quizVisnov.prototype.stage_brankas = function(show_feedback_visnov = "", benar = "") {
+    console.log("stageBrankas");
+    var $this = this;
+    $this.game_data = (game.scorm_helper.getSingleData("game_data") != undefined ? game.scorm_helper.getSingleData("game_data") : {});
+    // $this.completed_stage = $this.game_data["completed_stage"];
+    // $this.failed_stage = $this.game_data["failed_stage"];
+    let ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+    // ldata = {
+    //  "index": "game_slide_13",
+    //  "answer": [1,0],
+    //  "list_question": [0, 1, 2],
+    //  "start_date": "12 Februari 2020 13:46:33",
+    //  "end_date": "",
+    //  "is_complete": false
+    // };
+    console.log($this.game_data);
+    console.log(ldata);
+    let curr_soal = ($this.game_data["curr_soal"] != undefined ? $this.game_data["curr_soal"] : 0);
+    console.log(curr_soal);
+
+    $(".content_visnov").hide();
+    $(".stage_brankas_wrapper").show();
+    $(".header").hide();
+    //set stage indicator
+    $(".stage_b").removeClass("active");
+    $(".stage_b").removeClass("fail");
+    $(".stage_b").removeClass("complete");
+
+    let arr_answer = (ldata != undefined ? ldata["answer"] : []);
+    let arr_list_question = (ldata != undefined ? ldata["list_question"] : []);
+    if(ldata == undefined || arr_answer != undefined){
+        // let arr_answer = arr_answer;
+        // let arr_list_question = ldata["list_question"];
+        for (var i = 0; i < arr_answer.length; i++) {
+            if(arr_answer[i] == 1){
+                $(".star:nth-child("+(i+1)+")").addClass("complete");
+                $(".stage_b:nth-child("+(arr_list_question[i]+1)+")").addClass("complete");
+
+            }else if(arr_answer[i] == 0){
+                $(".star:nth-child("+(i+1)+")").addClass("fail");
+                $(".stage_b:nth-child("+(arr_list_question[i]+1)+")").addClass("fail");
+            }
+        }
+    }
+
+    //set stage n dengan addClass active
+    console.log(show_feedback_visnov);
+    if(show_feedback_visnov == ""){
+        if(arr_answer != undefined){
+            if(arr_answer.length == $this.question_datas.length && arr_answer.indexOf(0) == -1){
+                $this.nextSoalAtLast();
+                return;
+            }
+        }
+
+        $this.setTutorial();
+
+        for (var i = 0; i < $this.question_datas.length; i++) {
+            if($this.game_data["curr_soal_next"] == undefined){
+                if(i == 0){
+                    $(".stage_b:nth-child("+1+")").addClass("active");
+                }
+            }else{
+                if(i == $this.game_data["curr_soal_next"]){
+                    $(".stage_b:nth-child("+(i+1)+")").addClass("active");
+                }
+            }
+        }
+    }else{
+        // $(".btn-global.btn_show_feedback").show();
+        // $(".btn_show_feedback").unbind().click(function(){
+        //     game.audio.audioButton.play();
+        //     $(".btn_show_feedback").show();
+        //     if($this.question_datas[curr_soal]["list_feedback_slider"] != undefined){
+        //         $this.setTutorialSlider();
+        //     }
+        // });
+
+        $(".btn-global.btn_show_feedback").show();
+        $(document).ready(function(){
+            // $clone_img = $(".loader_image_index-2 img").first().clone();
+            // let html = "<img class='img_stage_b' src='assets/image/stage_brankas/MC_CIMB_3D_1313.02_BukaPintu_Transparant_Win_v.0.0.0.1-"+(curr_soal+1)+".gif' style='width:100%;'>";
+            console.log(benar);
+            let src = "assets/image/stage_brankas/MC_CIMB_3D_1313.02_BukaPintu_Transparant_Win_v.0.0.0.1-"+(curr_soal+1)+".gif";
+            if(benar == 0){
+                src = "assets/image/stage_brankas/MC_CIMB_3D_1313.02_BukaPintu_Transparant_Lose_v.0.0.0.1-"+(curr_soal+1)+".gif";
+            }
+            $(".stage_b:nth-child("+(curr_soal+1)+") img").attr("src",src);
+
+            // $(".stage_b:nth-child("+(curr_soal+1)+")").html("");
+            // $(".stage_b:nth-child("+(curr_soal+1)+")").append(html);
+
+            //stage ganjil
+            if(curr_soal%2 == 1){
+               $(".stage_b:nth-child("+(curr_soal+1)+") img").css({"-webkit-transform":"scaleX(-1)","transform":"scaleX(-1)"})
+            }
+           
+            //play backsound countdown
+            // setTimeout(function(){
+                // let src_audio = "assets/audio/"+$this.settings["backsound_countdown"];
+                // let audio = game.audio.audio_dynamic(src_audio);
+                // audio.play();   
+            // },100);
+
+            setTimeout(function(){
+                // alert("test");
+                $(".btn-global.btn_show_feedback").hide();
+                if($this.question_datas[curr_soal]["list_feedback_slider"] != undefined){
+                    $this.setTutorialSlider();
+                }
+            },2000);
+        });
+    }
+
+    $(".stage_b").unbind().click(function(){
+        if($(this).hasClass("active") || $(this).hasClass("fail")){
+            game.audio.audioButton.play();
+            let index = parseInt($(this).attr("index"));
+
+            $this.game_data["curr_soal"] = (index-1);
+            // game.nextSlide();
+            $(".stage_brankas_wrapper").hide();
+            // $(".content_visnov").show();
+
+            // if(show_feedback_visnov == 1){
+            //     if($this.question_datas[curr_soal]["list_feedback_slider"] != undefined){
+            //         $this.setTutorialSlider();
+            //     }
+            // }else{
+                $this.mulai_game();
+            // }
+        }
+    });
+};
+
+quizVisnov.prototype.mulai_game = function(){
     console.log("mulai_game");
     var $this = this;
 
-    //show header element
+    // console.log($this.total_soal);
+
+    $("html").removeClass("ui-mobile");
+
+     //show header element
     $(".header").show();
 
     //show hide timer global
@@ -186,30 +268,65 @@ Modul.prototype.mulai_game = function(){
 
     /*Function set progress bar*/
         let mode = 2; 
-        // $this.setProgresBar(mode);
+        game.setProgresBar();
     /*End function set progress bar*/
+   
+    // console.log(e['settings']['sound_loading_bar']);
+    if(this.settings['sound_loading_bar'] != undefined){
+        //play audio loading bar
+        // var src_audio = "assets/audio/"+$this.question_datas[$this.curr_soal]['audio'];
+        // $this.audio_dynamic_2 = game.audio.audio_dynamic(src_audio);
+        // var promise = $this.audio_dynamic_2.play();
 
-    console.log("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
-    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
+        // if (promise !== undefined) {
+        //     promise.then(_ => {
+        //         // Autoplay started!
+        //     }).catch(error => {
+        //         // Autoplay was prevented.
+        //         // Show a "Play" button so that user can start playback.
+        //     });
+        // }
+    }
+
+    console.log("game_slide_"+$this.current_settings["slide"]);
+    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+    // $this.curr_soal = $this.game_data["curr_soal"];
     console.log(ldata);
     console.log($this.game_data);
+    console.log($this.curr_soal);
 
-    if($this.game_data["category_game"] != undefined){
+    if($this.game_data["curr_soal"] != undefined){
         $this.resume = 1;
+    }
+
+    //get backsound stage
+    if($this.settings["backsound"] != undefined && $this.settings["backsound"] != ""){
+        // console.log(game.time_backsound_per_stage);
+        // if(game.time_backsound_per_stage == undefined){
+        //     game.playBacksound($this.settings["backsound"]);
+        // }
+
+        let src = "assets/audio/"+$this.settings["backsound"];
+        console.log(src);
+        $this.playBacksound(src);
     }
 
     //show modal tutorial
     // baru pertama kali mulai
     // $this.curr_soal = 0;
 
-    if(ldata == undefined || ldata["answer"] == undefined || ldata["answer"]== null || ldata["answer"].length < $this.question_data.length){
+    if(ldata == undefined || ldata["answer"] == undefined || ldata["answer"]== null){
         // console.log(ldata);
         // console.log($this.getQuestion());
-        var sdata = game.scorm_helper.setQuizData("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game,$this.getQuestion(),ldata);
+        var sdata = game.scorm_helper.setQuizData("game_slide_"+$this.current_settings["slide"],$this.getQuestion(),ldata);
         console.log(sdata);
         ldata = sdata;
+        $this.curr_soal = 0;
+        console.log($this.curr_soal);
+        console.log($this.question_datas);
+        $this.feedback_type = ($this.question_datas[$this.curr_soal]["feedback_type"] != undefined ? $this.question_datas[$this.curr_soal]["feedback_type"] : undefined);
         // console.log($this.question_data);
-        $this.ldata2 = $this.question_data[$this.curr_soal];
+        $this.ldata2 = $this.question_datas[$this.curr_soal];
         //hideo close video button
         $(".btn-close").hide(); 
 
@@ -222,15 +339,59 @@ Modul.prototype.mulai_game = function(){
         $this.showQuestion();
     }
     else{ //resume game
-        $this.ldata2 = $this.question_data[$this.curr_soal];
-       
-        if(ldata["answer"].length == ldata["list_question"].length){
-            let arr_index = ldata["index"].split("_");
+        // $this.curr_soal = ldata["answer"].length;
+        // // alert($this.curr_soal);
+        // $this.ldata2 = $this.question_datas[$this.curr_soal];
+        // $this.feedback_type = ($this.question_datas[$this.curr_soal]["feedback_type"] != undefined ? $this.question_datas[$this.curr_soal]["feedback_type"] : undefined);
 
-            if($this.category_game == ($this.question_datas.length - 1)){
-                $this.nextSoalAtLast();
+        let selected_stage = ($this.game_data["selected_stage"] != undefined ? $this.game_data["selected_stage"] : []);
+        let arr_failed_stage = ($this.game_data["failed_stage"] != undefined ? $this.game_data["failed_stage"] : []);
+
+        console.log(arr_failed_stage);
+        //jika stage n terdapat di array failed_stage, set ulang data game_quiz
+        let index_failed = arr_failed_stage.indexOf(selected_stage);
+        if(index_failed > -1){
+            var sdata = game.scorm_helper.setQuizData("game_slide_"+$this.current_settings["slide"],$this.getQuestion(),ldata);
+            console.log(sdata);
+            ldata = sdata;
+            $this.curr_soal = 0;
+            $this.ldata2 = $this.question_datas[$this.curr_soal];
+            $this.feedback_type = ($this.question_datas[$this.curr_soal]["feedback_type"] != undefined ? $this.question_datas[$this.curr_soal]["feedback_type"] : undefined);
+            
+            //splice / pull 
+            $this.game_data["failed_stage"].splice(index_failed,1);
+
+            if(game.mode_life == true){
+                //show life
+                $this.show_life();
+            }
+
+            $this.showQuestion();
+        }else{
+            $this.curr_soal = ldata["answer"].length;
+            // alert($this.curr_soal);
+            $this.ldata2 = $this.question_datas[$this.curr_soal];
+            $this.feedback_type = ($this.question_datas[$this.curr_soal]["feedback_type"] != undefined ? $this.question_datas[$this.curr_soal]["feedback_type"] : undefined);
+
+            //jika panjang data jawaban sama dengan list question dan dalam data jawaban tidaj ditemukan jawaban 0
+            // console.log(ldata);
+            // console.log(ldata["answer"].indexOf(0));
+            if(ldata["answer"].length == ldata["list_question"].length && ldata["answer"].indexOf(0) == -1){
+                let arr_index = ldata["index"].split("_");
+             
+                if($this.curr_soal == ($this.question_datas.length - 1)){
+                    $this.nextSoalAtLast();
+                }else{
+                    $this.nextSoal();
+                }
             }else{
-                $this.nextSoal();
+                if(game.mode_life == true){
+                    //show life
+                    $this.show_life();
+                }
+
+                //show question
+                $this.showQuestion();
             }
         }
     }
@@ -243,7 +404,7 @@ Modul.prototype.mulai_game = function(){
         $('.tutorial.mc').removeClass('active');
 
         // console.log($this.question_data);
-        var arr_before_game = $this.question_data[$this.curr_soal]['before_game'];
+        var arr_before_game = $this.question_datas[$this.curr_soal]['before_game'];
         if(arr_before_game != undefined){
             var text_bubble = arr_before_game[0]['text'];
             $('.modal.modal_bubble_text #text_bubble-1').html(text_bubble);
@@ -276,16 +437,13 @@ Modul.prototype.mulai_game = function(){
             }
         }
     });
-
-    //set current item info
-    // alert('setCurrItem');
-    // $this.setCurrItem(ldata['answer'].length, ldata['list_question'].length);
 }
 
 //fungsi menampilkan soal dan pertanyaan
-Modul.prototype.showQuestion = function() {
+quizVisnov.prototype.showQuestion = function() {
     var $this = this;
-    var item_div_n = $this.category_game + 1;
+
+    var item_div_n = $this.curr_soal + 1;
     var $clone = $this.slide_content.clone();
     var $clone_dialog =  $('.item_dialog .item_dialog_text').clone();
     var $clone_dialog_feedback =  $('.item_dialog .item_dialog_feedback_text').clone();
@@ -294,12 +452,22 @@ Modul.prototype.showQuestion = function() {
     var $clone_div_label = $(".content_visnov .div_name_label").clone();
     var $clone_div_label_img = $(".content_visnov .div_label_img").clone();
 
+    //play backsound
+    // $this.playBacksound();
+
+    //set background image
+    if($this.question_datas[$this.curr_soal]["background_image"] != ""){
+        var background_image = "url(assets/image/background/"+$this.question_datas[$this.curr_soal]["background_image"]+")";
+        // console.log(background_image);
+        $(".slider-content").css("background-image",background_image);
+    }
+
 
     //sudah append slide_content sebelumnya
     // console.log($this.isAppend);
     if($this.isAppend == 1){
-        console.log($this.question_data);
-        $this.ldata2 = $this.question_data[$this.curr_soal];
+        // console.log($this.question_data);
+        $this.ldata2 = $this.question_data;
     }else{
         $('.div_content').html('');
     }
@@ -312,7 +480,7 @@ Modul.prototype.showQuestion = function() {
         //if type soal mc
          if($this.ldata2['type'] == 'mc'){
             $clone.find(".text_title").html($this.ldata2["text"]);
-            $clone.find(".text_challenge_num").html($this.category_game + 1);
+            $clone.find(".text_challenge_num").html($this.curr_soal + 1);
 
 
             var options = $this.ldata2["pilihan"];
@@ -320,10 +488,12 @@ Modul.prototype.showQuestion = function() {
             var item_div_n = 1;
 
             /*Append question and option*/
+                // console.log(question);
+                // console.log("#item-"+item_div_n);
                 let max_string_length = 141;
-                console.log(question);
+                // console.log(question);
                 let dialog_text = $this.substringText(question, max_string_length);
-                console.log(dialog_text);
+                // console.log(dialog_text);
 
                 /*Function set css pilihan jawaban box*/
                     if($this.ldata2['box_style'] != undefined){
@@ -344,7 +514,7 @@ Modul.prototype.showQuestion = function() {
 
                 arr_rand = arr;
 
-                console.log(arr_rand);
+                // console.log(arr_rand);
                 $clone.find(".row_pilihan .row_no_margin").html("");
                 for (var i = 0; i < arr_rand.length; i++) {
                     var no = i+1;
@@ -358,10 +528,10 @@ Modul.prototype.showQuestion = function() {
                     let max_string_length = 45;
                     // console.log("test");
                     let pilihan_text = $this.substringText_2(options[arr_rand[i]]['text'], max_string_length);
-                    console.log(pilihan_text);
+                    // console.log(pilihan_text);
                     // $clone.find("#item-"+item_div_n+" .div_pilihan .txt_pilihan").eq(i).html(pilihan_text);
                     pilihan_wrap_clone.find(".txt_pilihan").html(pilihan_text);
-                    console.log(pilihan_wrap_clone);
+                    // console.log(pilihan_wrap_clone);
                     $clone.find(".row_pilihan .row_no_margin").append(pilihan_wrap_clone);
                 }
 
@@ -378,22 +548,22 @@ Modul.prototype.showQuestion = function() {
 
             /*Function Append dialog*/
                 $clone.find('.item_dialog .item_dialog_wrapper').html('');
-                console.log($this.ldata2["text_3"]);
+                // console.log($this.ldata2["text_3"]);
                 var arr_dialog = $this.ldata2["text_3"];
                 for (var i = 0; i < arr_dialog.length; i++) {
-                    console.log($clone_dialog);
+                    // console.log($clone_dialog);
                     //append options
                     $clone_dialog.attr('index',i);
 
                     //substring text
                     let max_string_length = 141;
-                    console.log(arr_dialog[i]['text']);
+                    // console.log(arr_dialog[i]['text']);
                     let dialog_text = $this.substringText(arr_dialog[i]['text'], max_string_length);
                     // console.log(dialog_text);
 
                     /*Function set css dialog box*/
                         if(arr_dialog[i]['box_style'] != undefined){
-                            console.log(arr_dialog[i]);
+                            // console.log(arr_dialog[i]);
                             $clone_dialog.css(arr_dialog[i]['box_style']);
                         }else{
                             $clone_dialog.removeAttr('style');
@@ -411,94 +581,96 @@ Modul.prototype.showQuestion = function() {
                             $clone_dialog.addClass('suara_batin');
                         }
                     }
-                    console.log($clone_dialog);
+                    // console.log($clone_dialog);
                     $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog)[0]['outerHTML']);
                 }
             /*End function append dialog*/
                 
             /*Append dialog feedback true*/
-                var arr_dialog_feedback = $this.ldata2["feedback"];
-                for (var i = 0; i < arr_dialog_feedback.length; i++) {
-                   
-                    //append options
-                    $clone_dialog_feedback.attr('index',i);
+                if($this.ldata2["feedback"] != undefined){
+                    var arr_dialog_feedback = $this.ldata2["feedback"];
+                    for (var i = 0; i < arr_dialog_feedback.length; i++) {
+                       
+                        //append options
+                        $clone_dialog_feedback.attr('index',i);
 
-                    //substring text
-                    let max_string_length = 141;
-                    let dialog_text = $this.substringText(arr_dialog_feedback[i]['text'], max_string_length);
+                        //substring text
+                        let max_string_length = 141;
+                        let dialog_text = $this.substringText(arr_dialog_feedback[i]['text'], max_string_length);
 
-                    /*Function set css dialog box*/
-                        if(arr_dialog_feedback[i]['box_style'] != undefined){
-                            $clone_dialog_feedback.css(arr_dialog_feedback[i]['box_style']);
-                        }else{
-                            $clone_dialog_feedback.removeAttr('style');
-                            $clone_dialog_feedback.css("display","none");
+                        /*Function set css dialog box*/
+                            if(arr_dialog_feedback[i]['box_style'] != undefined){
+                                $clone_dialog_feedback.css(arr_dialog_feedback[i]['box_style']);
+                            }else{
+                                $clone_dialog_feedback.removeAttr('style');
+                                $clone_dialog_feedback.css("display","none");
+                            }
+                        /*End function set css dialog box*/
+
+                        $clone_dialog_feedback.html(dialog_text);
+                        $clone_dialog_feedback.attr('id','item_dialog_feedback_text-'+i);
+
+                        //function add class suara_batin
+                        $clone_dialog_feedback.removeClass('suara_batin');
+                        if(arr_dialog_feedback[i]['suara_batin'] != undefined){
+                            if(arr_dialog_feedback[i]['suara_batin'] == 1){
+                                $clone_dialog_feedback.addClass('suara_batin');
+                            }
                         }
-                    /*End function set css dialog box*/
 
-                    $clone_dialog_feedback.html(dialog_text);
-                    $clone_dialog_feedback.attr('id','item_dialog_feedback_text-'+i);
-
-                    //function add class suara_batin
-                    $clone_dialog_feedback.removeClass('suara_batin');
-                    if(arr_dialog_feedback[i]['suara_batin'] != undefined){
-                        if(arr_dialog_feedback[i]['suara_batin'] == 1){
-                            $clone_dialog_feedback.addClass('suara_batin');
-                        }
+                        $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog_feedback)[0]['outerHTML']);
                     }
-
-                    $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog_feedback)[0]['outerHTML']);
                 }
             /*End append dialog feedback true*/
 
             /*Append dialog feedback false*/
-                var arr_dialog_feedback_false = $this.ldata2["feedback_false"];
-                for (var i = 0; i < arr_dialog_feedback_false.length; i++) {
-                   
-                    //append options
-                    $clone_dialog_feedback_false.attr('index',i);
+                if($this.ldata2["feedback"] != undefined){
+                    var arr_dialog_feedback_false = $this.ldata2["feedback_false"];
+                    for (var i = 0; i < arr_dialog_feedback_false.length; i++) {
+                       
+                        //append options
+                        $clone_dialog_feedback_false.attr('index',i);
 
-                     //substring text
-                    let max_string_length = 141;
-                    let dialog_text = $this.substringText(arr_dialog_feedback_false[i]['text'], max_string_length);
+                         //substring text
+                        let max_string_length = 141;
+                        let dialog_text = $this.substringText(arr_dialog_feedback_false[i]['text'], max_string_length);
 
-                    /*Function set css dialog box*/
-                        if(arr_dialog_feedback_false[i]['box_style'] != undefined){
-                            $clone_dialog_feedback_false.css(arr_dialog_feedback_false[i]['box_style']);
-                        }else{
-                            $clone_dialog_feedback_false.removeAttr('style');
-                            $clone_dialog_feedback_false.css("display","none");
+                        /*Function set css dialog box*/
+                            if(arr_dialog_feedback_false[i]['box_style'] != undefined){
+                                $clone_dialog_feedback_false.css(arr_dialog_feedback_false[i]['box_style']);
+                            }else{
+                                $clone_dialog_feedback_false.removeAttr('style');
+                                $clone_dialog_feedback_false.css("display","none");
+                            }
+                        /*End function set css dialog box*/
+
+                        $clone_dialog_feedback_false.html(dialog_text);
+                        $clone_dialog_feedback_false.attr('id','item_dialog_feedback_false_text-'+i);
+
+
+                        //function add class suara_batin
+                        $clone_dialog_feedback_false.removeClass('suara_batin');
+                        if(arr_dialog_feedback_false[i]['suara_batin'] != undefined){
+                            if(arr_dialog_feedback_false[i]['suara_batin'] == 1){
+                                $clone_dialog_feedback_false.addClass('suara_batin');
+                            }
                         }
-                    /*End function set css dialog box*/
 
-                    $clone_dialog_feedback_false.html(dialog_text);
-                    $clone_dialog_feedback_false.attr('id','item_dialog_feedback_false_text-'+i);
-
-
-                    //function add class suara_batin
-                    $clone_dialog_feedback_false.removeClass('suara_batin');
-                    if(arr_dialog_feedback_false[i]['suara_batin'] != undefined){
-                        if(arr_dialog_feedback_false[i]['suara_batin'] == 1){
-                            $clone_dialog_feedback_false.addClass('suara_batin');
-                        }
+                        // console.log($clone_dialog_feedback_false);
+                        $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog_feedback_false)[0]['outerHTML']);
                     }
-
-                    // console.log($clone_dialog_feedback_false);
-                    $clone.find('.item_dialog .item_dialog_wrapper').append($($clone_dialog_feedback_false)[0]['outerHTML']);
                 }
             /*End append dialog feedback false*/
 
             //move div_name_label
-            console.log($clone_div_label);
+            // console.log($clone_div_label);
             $clone.find(".content_visnov .div_name_label").remove();
             $clone.find('.item_dialog .item_dialog_wrapper').append($clone_div_label);
 
             //append
             $($clone).addClass($this.ldata2["type"]);
-            // console.log('append div_content');
-            // console.log($clone);
             $(".div_content").append($clone);
-            $($clone).attr("id","slide_"+$this.attemp_soal+"_"+$this.category_game+"_"+$this.curr_soal);
+            $($clone).attr("id","slide_"+$this.attemp_soal+"_"+$this.curr_soal);
             $($clone).attr("curr_soal",$this.curr_soal);
             $('.slider-content').hide();
             $($clone).show();
@@ -510,7 +682,7 @@ Modul.prototype.showQuestion = function() {
         /*Function append content*/
             $($clone).addClass($this.ldata2["type"]);
             $(".div_content").append($clone);
-            $($clone).attr("id","slide_"+$this.attemp_soal+"_"+$this.category_game+"_"+$this.curr_soal);
+            $($clone).attr("id","slide_"+$this.attemp_soal+"_"+$this.curr_soal);
             $($clone).attr("curr_soal",$this.curr_soal);
         /*End function append content*/
 
@@ -519,31 +691,26 @@ Modul.prototype.showQuestion = function() {
     }
     
     // panggil jquery mobile untuk setting swipe (di panggil saat pertama kali/1x)
-    if($this.isAppend == 0){
-        $this.isAppend = 1;
-        // $this.setTutorial();
-        $.getScript( "assets/js/jquery.mobile-1.4.5.min.js", function( data, textStatus, jqxhr ) {
-            $this.settingPage($clone);
-            $('.ui-loader').hide();
-        });
-    }
-    else{
-        $this.settingPage($clone);
-    }
+    // if($this.isAppend == 0){
+    //     $this.isAppend = 1;
+    //     $this.setTutorial();
+    //     $.getScript( "assets/js/jquery.mobile-1.4.5.min.js", function( data, textStatus, jqxhr ) {
+    //         $this.settingPage($clone);
+    //         $('.ui-loader').hide();
+    //     });
+    // }
+    // else{
+    //     $this.settingPage($clone);
+    // }
+     $this.settingPage($clone);
 };
 
-Modul.prototype.setCurrItem = function(curr_item, max_item){
-    var $this = this;
-    // alert(max_item);
-    $('.curr_benda').html(curr_item+'/'+max_item);
-}
-
-Modul.prototype.getQuestion = function() {
+quizVisnov.prototype.getQuestion = function() {
     var $this = this;
     var arr_quest = [];
     var arr = [];
     // console.log($this.question_data);
-    for (var i = 0; i < $this.question_data.length; i++) {
+    for (var i = 0; i < $this.question_datas.length; i++) {
         arr.push(i);
     }
 
@@ -561,19 +728,19 @@ Modul.prototype.getQuestion = function() {
     return arr_quest;
 };
 
-Modul.prototype.settingPage = function($clone) {
+quizVisnov.prototype.settingPage = function($clone) {
     var $this = this;
     console.log('settingPage');
     // $this.curr_soal = 0;
     // setting prev
     if($this.curr_soal>0){
-        $($clone).attr("data-prev","#slide_"+$this.attemp_soal+"_"+$this.category_game+"_"+(parseInt($this.curr_soal)-1));   
+        $($clone).attr("data-prev","#slide_"+$this.attemp_soal+"_"+(parseInt($this.curr_soal)-1));   
     }else{
         $($clone).attr("data-prev","");
     }
     // setting next
     if(parseInt($this.curr_soal)+1<$this.question_data.length){
-        $($clone).attr("data-next","#slide_"+$this.attemp_soal+"_"+$this.category_game+"_"+(parseInt($this.curr_soal)+1));
+        $($clone).attr("data-next","#slide_"+$this.attemp_soal+"_"+(parseInt($this.curr_soal)+1));
     }
     else{
         $($clone).attr("data-next","#result");
@@ -581,22 +748,14 @@ Modul.prototype.settingPage = function($clone) {
 
     // change to first question
     if($this.curr_soal == 0){
-        $.mobile.changePage( "#slide_"+$this.attemp_soal+"_"+$this.category_game+"_"+$this.curr_soal, { transition: "none"} );
+        // $.mobile.changePage( "#slide_"+$this.attemp_soal+"_"+$this.curr_soal, { transition: "none"} );
     }
-    // swipe left
-    $($clone).swipeleft(function( event ) {
-        // $this.next();  
-    });
-    // click button next-soal
-    $($clone).find(".next-soal").click(function(e){
-        // $this.next();
-    });
 
     // console.log($this.curr_soal);
     // jika tipe soalnya drag and drop sequence
     // console.log($this.curr_soal);
     // console.log($this.question_data);
-    if($this.question_data[$this.curr_soal]["type"] == "dadswipe"){
+    if($this.question_datas[$this.curr_soal]["type"] == "dadswipe"){
         $clone.find(".pilihan_wrapper").sortable();
         // click button submit
         $($clone).find(".btn-submit").click(function(e){
@@ -610,15 +769,15 @@ Modul.prototype.settingPage = function($clone) {
 
             // kasi jawaban benarnya
             $clone.find(".pilihan_wrapper").html("");
-            for (var i = 0; i < $this.question_data[$($clone).attr("curr_soal")]["jawaban"].length; i++) {
+            for (var i = 0; i < $this.question_datas[$this.curr_soal][$($clone).attr("curr_soal")]["jawaban"].length; i++) {
                 $app_pilihan = $this.pilihan_wrap.clone();
-                $app_pilihan.find(".txt_pilihan").html($this.question_data[$($clone).attr("curr_soal")]["pilihan"][$this.question_data[$($clone).attr("curr_soal")]["jawaban"][i]]["text"]);
+                $app_pilihan.find(".txt_pilihan").html($this.question_datas[$this.curr_soal][$($clone).attr("curr_soal")]["pilihan"][$this.question_datas[$this.curr_soal][$($clone).attr("curr_soal")]["jawaban"][i]]["text"]);
                 $clone.find(".pilihan_wrapper").append($app_pilihan);
             }
 
         });
     }
-    else if($this.question_data[$this.curr_soal]["type"] == "mc"){
+    else if($this.question_datas[$this.curr_soal]["type"] == "mc"){
         // jika tipe soalnya multiple choice
         $clone.find(".btn-submit").hide();
 
@@ -644,7 +803,7 @@ Modul.prototype.settingPage = function($clone) {
             $this.cekJawaban($(this).parents(".slider-content"),"mc");
         });
     }
-    else if($this.question_data[$this.curr_soal]["type"] == "mmc"){
+    else if($this.question_datas[$this.curr_soal]["type"] == "mmc"){
         // jika tipe nya multiple-multiple choice
 
         // click button pilihan
@@ -666,7 +825,7 @@ Modul.prototype.settingPage = function($clone) {
             $this.cekJawaban($(this).parents(".slider-content"),"mmc");
         });
     }
-    else if($this.question_data[$this.curr_soal]["type"] == "dad_item_and_place"){
+    else if($this.question_datas[$this.curr_soal]["type"] == "dad_item_and_place"){
         console.log('dad_item_and_place');
         console.log($clone);
         // jika tipe soalnya multiple choice
@@ -706,14 +865,14 @@ Modul.prototype.settingPage = function($clone) {
 // cek jawaban
 // clone -> div content parentnya (class slider-content)
 // type -> tipe pertanyaannya
-Modul.prototype.cekJawaban = function($clone,$type) {
+quizVisnov.prototype.cekJawaban = function($clone,$type) {
     console.log('cekJawaban');
     var $this = this;
     // console.log($this);
     var $flag=0;
     // akumulasi jumlah pilihan jawaban yang benar
     var count = 0;
-    var item_div_n = $this.category_game + 1;
+    var item_div_n = $this.curr_soal + 1;
     // $this.curr_soal = 0;
 
     // set response for cmi.interactions.n.student_response
@@ -725,24 +884,24 @@ Modul.prototype.cekJawaban = function($clone,$type) {
     var jawaban;
     // console.log($($clone).attr("curr_soal"));
     if(isNaN($($clone).attr("curr_soal")) && $($clone).attr("curr_soal") != undefined){
-        response = $this.question_data[parseInt($($clone).attr("curr_soal"))]["question"];
-        jawaban = $this.question_data[parseInt($($clone).attr("curr_soal"))]["jawaban"];
+        response = $this.question_datas[$this.curr_soal][parseInt($($clone).attr("curr_soal"))]["question"];
+        jawaban = $this.question_datas[$this.curr_soal][parseInt($($clone).attr("curr_soal"))]["jawaban"];
     }else{
-        response = $this.question_data[$this.curr_soal]["question"];
-        jawaban = $this.question_data[$this.curr_soal]["jawaban"];
+        response = $this.question_datas[$this.curr_soal]["question"];
+        jawaban = $this.question_datas[$this.curr_soal]["jawaban"];
     }
     var id_video = $this.item_selected;
     $($clone).find(".pilihan").each(function(index){
         // jika tipenya drag and drop sequence
         if($type == "dadswipe"){
             // jika urutannya salah
-            if($(this).attr("index") != $this.question_data[parseInt($($clone).attr("curr_soal"))]["jawaban"][index]){
+            if($(this).attr("index") != $this.question_datas[$this.curr_soal][parseInt($($clone).attr("curr_soal"))]["jawaban"][index]){
                 $flag=1;
             }
         }
         else{
             if($type == "dad_item_and_place"){
-                var folder = 'game_'+($this.category_game+1);
+                var folder = 'game_'+($this.curr_soal+1);
                 if($(this).hasClass("active")){
                     // cek jika indexnya ada di list jawaban atau sesuai $cek=1 jika tidak $cek=0
                     var $cek=0;
@@ -810,10 +969,10 @@ Modul.prototype.cekJawaban = function($clone,$type) {
 
                     // cek jika indexnya ada di list jawaban atau sesuai $cek=1 jika tidak $cek=0
                     var $cek=0;
-                    console.log($this.question_data);
-                    console.log(parseInt($($clone).attr("curr_soal")));
-                    for (var i = 0; i < $this.question_data[parseInt($($clone).attr("curr_soal"))]["jawaban"].length; i++) {
-                        if($this.question_data[parseInt($($clone).attr("curr_soal"))]["jawaban"][i] == $(this).attr("index")){
+                    // console.log($this.question_datas);
+                    // console.log(parseInt($($clone).attr("curr_soal")));
+                    for (var i = 0; i < $this.question_datas[parseInt($($clone).attr("curr_soal"))]["jawaban"].length; i++) {
+                        if($this.question_datas[parseInt($($clone).attr("curr_soal"))]["jawaban"][i] == $(this).attr("index")){
                             $cek=1;
                             break;
                         }
@@ -838,7 +997,7 @@ Modul.prototype.cekJawaban = function($clone,$type) {
     // jika tipenya multiple choice atau multiple-multipe choice
     if($type == "mc" || $type == "mmc"){
         // jumlah pilihan jawaban yang benar tidak sesuai 
-        // console.log($this.question_data[$this.curr_soal]);
+        // console.log($this.question_data);
         // console.log(parseInt($($clone).attr("curr_soal")));
         var index_pilihan = parseInt($(this).attr('index'));
         // console.log(jawaban[$this.item_selected-1]+' - '+index_pilihan);
@@ -849,64 +1008,71 @@ Modul.prototype.cekJawaban = function($clone,$type) {
         // }else{
         //     $(this).addClass("right");
         // }
-        if(count != $this.question_data[$this.curr_soal]["jawaban"].length){
+        if(count != $this.question_datas[$this.curr_soal]["jawaban"].length){
             // $flag=1;
         }
     }
 
     var curr_soal = $this.curr_soal;
-    // var quiz_result = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game]);
+    // var quiz_result = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.curr_soal]);
     // var last_score = parseInt(quiz_result['score']);
     var last_score = $this.last_score;
     var benar = 1;
-    
-    // console.log('$flag: '+$flag);
-
-    // $($clone).find('.pilihan_place').hide();
+   
+    // let ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+    // console.log(ldata);
+   
     $this.showHideSoal('hide');
+
+    let ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+    console.log(ldata);
+
     // jawabannya benar
     if($flag==0){
         var last_life = parseInt($this.life);
-        var arr_temp = [];
-        // arr_temp.push(parseInt($this.category_game));//key untuk index
-        arr_temp.push(1);
+        // var arr_temp = [];
+        // arr_temp.push(parseInt($this.curr_soal));//key untuk index
+        // arr_temp.push(1);
         last_score += 1;
         $this.last_score = last_score;
         $this.game_data["last_score"] = $this.last_score;
-        game.game_data = $this.game_data;
 
-        //call function set progress bar
-        game.setProgresBar();
-
-        game.scorm_helper.pushAnswer(arr_temp,response,last_score,last_life);
+        //set answer game_slide
+        if(ldata["answer"][$this.curr_soal] != undefined){
+            if (ldata["answer"][$this.curr_soal] == 0) {
+                // ldata["answer"].splice($this.curr_soal, 1);
+                ldata["answer"][$this.curr_soal] = 1;
+            }
+        }else{
+            game.scorm_helper.pushAnswer(1,response);
+        }
 
         //set game data value total answer true of this slide
         // console.log($this.game_data);
         // console.log(($this.game_data["total_answer_true"] == undefined));
-        $this.game_data["total_answer_true"] = ($this.game_data["total_answer_true"] == undefined ? 1 : ($this.game_data["total_answer_true"] + 1));
+        // $this.game_data["total_answer_true"] = ($this.game_data["total_answer_true"] == undefined ? 1 : ($this.game_data["total_answer_true"] + 1));
         // console.log($this.game_data);
-        // $this.setScore(last_score);
         game.audio.audioBenar.play();
         $(".alert").addClass("benar");
         // game.audio.audioButton.play();       
         // $this.resetValue();
 
         // $this.showHideSoal('hide');
-        // $this.question_data[$this.curr_soal]["feedback_popup"] = undefined;
-        if($this.mode == 'video'){
-            if($this.question_data[$this.curr_soal]["feedback_popup"] != undefined){
-                $this.showModalFeedback_2(benar, 0);
-            }else{
-                let index = 0;
-                $this.showVideoFeedback($clone, benar, index);
-            }
+        // $this.question_datas[$this.curr_soal]["feedback_popup"] = undefined;
+        if($this.feedback_type == 'custom'){
+            // $this.stage_brankas(1, benar);
+        }
+        else if($this.question_datas[$this.curr_soal]["feedback_popup"] != undefined){
+            $this.showModalFeedback_2(benar, 0);
+        }else{
+            let index = 0;
+            $this.showVideoFeedback($clone, benar, index);
         }
     }else{
         var last_life = parseInt($this.life);
-        $this.setFalseAnswer();
-        var arr_temp = [];
-        // arr_temp.push(parseInt($this.category_game));//key untuk index
-        arr_temp.push(0);
+        // var arr_temp = [];
+        // arr_temp.push(parseInt($this.curr_soal));//key untuk index
+        // arr_temp.push(0);
 
         if($this.life == 0){
             game.setSlide($this.slide_result);
@@ -920,24 +1086,30 @@ Modul.prototype.cekJawaban = function($clone,$type) {
         }
 
         //jika jawab salah lanjut ke soal berikutnya
-        if($this.tryagain_question_false_answer == false){
+        // if($this.tryagain_question_false_answer == false){
             //push jawaban salah ke array ldata
-            game.scorm_helper.pushAnswer(arr_temp,response,last_score,last_life);
+        if(ldata["answer"][$this.curr_soal] != undefined){
+          
+        }else{
+            game.scorm_helper.pushAnswer(0,response);
         }
+
+        // }
         game.audio.audioSalah.play();
         $(".alert").addClass("salah");
         benar = 0;
 
          // $this.showHideSoal('hide');
-        // $this.question_data[$this.curr_soal]["feedback_popup"] = undefined;
+        // $this.question_datas[$this.curr_soal]["feedback_popup"] = undefined;
 
-        if($this.mode == 'video'){
-            if($this.question_data[$this.curr_soal]["feedback_popup"] != undefined){
-                $this.showModalFeedback_2(benar, 0);
-            }else{
-                let index = 0;
-                $this.showVideoFeedback($clone, benar, index);
-            }
+        if($this.feedback_type == 'custom'){
+            // $this.stage_brankas(1, benar);
+        }
+        else if($this.question_datas[$this.curr_soal]["feedback_popup"] != undefined){
+            $this.showModalFeedback_2(benar, 0);
+        }else{
+            let index = 0;
+            $this.showVideoFeedback($clone, benar, index);
         }
     }
 
@@ -951,20 +1123,18 @@ Modul.prototype.cekJawaban = function($clone,$type) {
         // $this.settingDialogFeedback($clone, benar);
 
         //set game_data and send to scorm
-        var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
-        // game.game_data['last_challenge'] = ldata['answer'].length;
-
-        //set current item info
-        // $this.setCurrItem(ldata['answer'].length, ldata['list_question'].length);
+        var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
 
         //setting game_data di scorm
         game.scorm_helper.setSingleData("game_data",$this.game_data);
-        // console.log(ldata);
-        // console.log(game.game_data);
+
+
+        //call function set progress bar
+        game.setProgresBar();
     },800);
 };
 
-Modul.prototype.settingDialogFeedback = function($clone, benar){
+quizVisnov.prototype.settingDialogFeedback = function($clone, benar){
     var $this = this;
     //click button in dialog feedback
     $($clone).find('.btn_next_dialog-2').unbind().click(function(){
@@ -986,7 +1156,7 @@ Modul.prototype.settingDialogFeedback = function($clone, benar){
 }
 
 //setting to next dialog feedback atau next soal
-Modul.prototype.settingDialogFeedback_2 = function($clone, benar, index){
+quizVisnov.prototype.settingDialogFeedback_2 = function($clone, benar, index){
     var $this = this;
 
     if(benar == 1){
@@ -1006,25 +1176,25 @@ Modul.prototype.settingDialogFeedback_2 = function($clone, benar, index){
             console.log($this.question_data);
             if(curr_soal<$this.question_data.length){
                 $this.curr_soal += 1;
-                game.game_data['curr_soal'] = $this.curr_soal;
+                $this.game_data['curr_soal'] = $this.curr_soal;
                 console.log('$this.curr_soal: '+$this.curr_soal);
-                console.log(game.game_data);
-                game.scorm_helper.setSingleData('game_data', game.game_data);
+                console.log($this.game_data);
+                game.scorm_helper.setSingleData('game_data', $this.game_data);
                 // $this.showQuestion();   
             }else{
-                game.game_data['curr_soal'] = 0;
-                //game.game_data['last_life'] = game.life_max;
+                $this.game_data['curr_soal'] = 0;
+                //$this.game_data['last_life'] = game.life_max;
 
-                var category_game = $this.category_game + 1;
-                if(category_game < $this.question_datas.length){
+                var curr_soal = $this.curr_soal + 1;
+                if(curr_soal < $this.question_datas.length){
                     $this.nextSoal();
                 }else{
                     $this.nextSoalAtLast();
                 }
             }
         }else{
-            console.log(game.game_data);
-            game.scorm_helper.setSingleData('game_data', game.game_data);
+            console.log($this.game_data);
+            game.scorm_helper.setSingleData('game_data', $this.game_data);
             $this.showDialogFeedback(index,benar,$clone);
             $($clone).find('.btn_next_dialog-2').attr('index',index);
         }
@@ -1033,8 +1203,8 @@ Modul.prototype.settingDialogFeedback_2 = function($clone, benar, index){
         if(index == ($this.ldata2['feedback_false'].length)){
             console.log("tryagain_question_false_answer: "+$this.tryagain_question_false_answer);
             if($this.tryagain_question_false_answer == false){
-                var category_game = $this.category_game + 1;
-                if(category_game < $this.question_datas.length){
+                var curr_soal = $this.curr_soal + 1;
+                if(curr_soal < $this.question_datas.length){
                     $this.nextSoal();
                 }else{
                     $this.nextSoalAtLast();
@@ -1067,8 +1237,8 @@ Modul.prototype.settingDialogFeedback_2 = function($clone, benar, index){
                 /*End function continue timer*/
             }
         }else{
-            console.log(game.game_data);
-            game.scorm_helper.setSingleData('game_data', game.game_data);
+            console.log($this.game_data);
+            game.scorm_helper.setSingleData('game_data', $this.game_data);
 
             //call function showDialogFeedback
             $this.showDialogFeedback(index,benar,$clone);
@@ -1087,7 +1257,7 @@ Modul.prototype.settingDialogFeedback_2 = function($clone, benar, index){
 }
 
 //setting to next dialog feedback video atau next soal
-Modul.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
+quizVisnov.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
     console.log("settingDialogFeedbackVideo_2");
     var $this = this;
 
@@ -1108,25 +1278,27 @@ Modul.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
             console.log($this.question_data);
             if(curr_soal < $this.question_data.length){
                 $this.curr_soal += 1;
-                game.game_data['curr_soal'] = $this.curr_soal;
+                $this.game_data['curr_soal'] = $this.curr_soal;
                 console.log('$this.curr_soal: '+$this.curr_soal);
-                console.log(game.game_data);
-                game.scorm_helper.setSingleData('game_data', game.game_data);
+                console.log($this.game_data);
+                game.scorm_helper.setSingleData('game_data', $this.game_data);
                 // $this.showQuestion();   
             }else{
-                game.game_data['curr_soal'] = 0;
-                //game.game_data['last_life'] = game.life_max;
+                $this.game_data['curr_soal'] = 0;
+                //$this.game_data['last_life'] = game.life_max;
 
-                var category_game = $this.category_game + 1;
-                if(category_game < $this.question_datas.length){
+                var curr_soal = $this.curr_soal + 1;
+                console.log(curr_soal);
+                console.log($this.question_datas);
+                if(curr_soal < $this.question_datas.length){
                     $this.nextSoal();
                 }else{
                     $this.nextSoalAtLast();
                 }
             }
         }else{
-            console.log(game.game_data);
-            game.scorm_helper.setSingleData('game_data', game.game_data);
+            console.log($this.game_data);
+            game.scorm_helper.setSingleData('game_data', $this.game_data);
             $this.showDialogFeedback(index,benar,$clone);
             $($clone).find('.btn_next_dialog-2').attr('index',index);
         }
@@ -1135,8 +1307,8 @@ Modul.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
         if(index == ($this.ldata2['feedback_false'].length)){
             console.log("tryagain_question_false_answer: "+$this.tryagain_question_false_answer);
             if($this.tryagain_question_false_answer == false){
-                var category_game = $this.category_game + 1;
-                if(category_game < $this.question_datas.length){
+                var curr_soal = $this.curr_soal + 1;
+                if(curr_soal < $this.question_datas.length){
                     $this.nextSoal();
                 }else{
                     $this.nextSoalAtLast();
@@ -1169,8 +1341,8 @@ Modul.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
                 /*End function continue timer*/
             }
         }else{
-            console.log(game.game_data);
-            game.scorm_helper.setSingleData('game_data', game.game_data);
+            console.log($this.game_data);
+            game.scorm_helper.setSingleData('game_data', $this.game_data);
 
             //call function showDialogFeedback
             $this.showDialogFeedback(index,benar,$clone);
@@ -1188,12 +1360,7 @@ Modul.prototype.settingDialogFeedbackVideo_2 = function($clone, benar, index){
     }
 }
 
-Modul.prototype.next = function($clone,$type) {
-    var $this = this;
-    game.setSlide(3);
-};
-
-Modul.prototype.show_life = function() {
+quizVisnov.prototype.show_life = function() {
     console.log("show_life");
     var $this = this;
     var count_star = 0;
@@ -1214,18 +1381,18 @@ Modul.prototype.show_life = function() {
     },200); 
 };
 
-Modul.prototype.count_life = function(val) {
+quizVisnov.prototype.count_life = function(val) {
     var $this = this;
     if(val == false){
         $this.life -= 1;
     }
 
     $this.game_data['last_life'] = $this.life;
-    game.game_data = $this.game_data;
-    // game.scorm_helper.setSingleData('game_data', game.game_data);
+    $this.game_data = $this.game_data;
+    // game.scorm_helper.setSingleData('game_data', $this.game_data);
 }
 
-Modul.prototype.startGameTimer = function() {
+quizVisnov.prototype.startGameTimer = function() {
     console.log('startGameTimer');
     var $this = this;
     // $(".timer").show();
@@ -1252,10 +1419,6 @@ Modul.prototype.startGameTimer = function() {
                     //stop backsound
                     $this.stopBackSound();
 
-                    // var quiz_result = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game]);
-                    // console.log(quiz_result);
-                    // var last_score = $this.game_data["last_score"];
-
                     if(game.mode_life == true){
                         //call function show life
                         $this.show_life();
@@ -1266,19 +1429,15 @@ Modul.prototype.startGameTimer = function() {
                     }
 
                     //set game_data and send to scorm
-                    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
+                    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
                     // console.log(ldata);
 
                     /*Setting game data*/
                         $this.game_data['last_challenge'] = ldata['answer'].length;
-                        $this.game_data['category_game'] = $this.category_game;
+                        $this.game_data['curr_soal'] = $this.curr_soal;
                         $this.game_data["curr_step"] = $this.curr_step;
-                        game.game_data = $this.game_data;
-                        game.scorm_helper.setSingleData('game_data', game.game_data);
+                        game.scorm_helper.setSingleData('game_data', $this.game_data);
                     /*End setting game data*/
-
-                    //set current item info
-                    // $this.setCurrItem(ldata['answer'].length, ldata['list_question'].length);
 
                     /*show modal feedback*/
                         console.log("icon_exit_feedback");
@@ -1321,16 +1480,15 @@ Modul.prototype.startGameTimer = function() {
                                             var arr_temp = [];
                                             arr_temp.push(0);
 
-                                            response = $this.question_data[$this.curr_soal]["question"];
-                                            jawaban = $this.question_data[$this.curr_soal]["jawaban"];
+                                            response = $this.question_datas[$this.curr_soal]["question"];
+                                            jawaban = $this.question_datas[$this.curr_soal]["jawaban"];
 
                                             var last_score = $this.last_score;
                                             var last_life = parseInt($this.life);
 
-                                            game.scorm_helper.pushAnswer(arr_temp,response,last_score,last_life);
-                                            game.scorm_helper.setSingleData("game_data",game.game_data);
+                                            game.scorm_helper.pushAnswer(0,response,last_score,last_life);
+                                            game.scorm_helper.setSingleData("game_data",$this.game_data);
                                             console.log(ldata);
-                                            console.log(game.game_data);
                                         /*End set answer*/
 
                                         //call function dialog feedback
@@ -1365,22 +1523,12 @@ Modul.prototype.startGameTimer = function() {
     }
 };
 
-Modul.prototype.resetTimer = function(){
+quizVisnov.prototype.resetTimer = function(){
     clearInterval(timer_interval);
     $(".timer .text_time").html("--:--");
 }
 
-Modul.prototype.setQuizFalseAnswer = function(){
-    var last_life = parseInt($this.life);
-    $this.setFalseAnswer();
-    var arr_temp = [];
-    arr_temp.push(parseInt($this.item_selected));//key untuk index
-    arr_temp.push(0);
-    last_life -= 1;
-    game.scorm_helper.pushAnswer(arr_temp,response,last_score,last_life);
-}
-
-Modul.prototype.setTimer = function() {
+quizVisnov.prototype.setTimer = function() {
     // console.log('setTimer');
     $this = this;
     // console.log($this.countTime);
@@ -1407,7 +1555,7 @@ Modul.prototype.setTimer = function() {
     return str;
 };
 
-Modul.prototype.setTimerPercent = function(){
+quizVisnov.prototype.setTimerPercent = function(){
     $this = this;
 
     $this.countTime = $this.countTime-1;
@@ -1416,11 +1564,11 @@ Modul.prototype.setTimerPercent = function(){
     $(".timer_quiz .progress-bar").css("width",percent+"%");
 };
 
-Modul.prototype.showModal = function() {
+quizVisnov.prototype.showModal = function() {
     console.log('showModal');
     var $this = this;
-    console.log($this.category_game);
-    // if($this.category_game == 3 || $this.category_game == 4){
+    console.log($this.curr_soal);
+    // if($this.curr_soal == 3 || $this.curr_soal == 4){
     //     $('.tutorial.dad .animated.fadeIn').html("Kali ini, kamu hanya diberikan <b>waktu 1 menit</b> dan <b>3 kesempatan salah</b>! Kamu siap?");
     // }
     
@@ -1428,39 +1576,9 @@ Modul.prototype.showModal = function() {
     $('.tutorial.mc').addClass('active');
 };
 
-Modul.prototype.showModalFeedback = function(benar, timeout = 0){
+quizVisnov.prototype.showModalFeedback_2 = function(benar, timeout = 0){
     var $this = this;
-    $(".modal#modal_feedback").find(".title_feedback_2").hide();
-    console.log($(".modal#modal_feedback .modal_feedback_black"));
-    $(".modal#modal_feedback .modal_feedback_black").show();
-
-    var rand = Math.floor(Math.random() * 6);//random 0 sampai 5
-
-    //hide img benar dan salah
-    $(".modal#modal_feedback").find(".title_feedback").hide();
-    if(benar==1){
-        console.log($(".modal#modal_feedback").find(".text_dynamic"));
-        console.log($this.question_data['feedback_true']);
-        var feedback_true = $this.ldatas['feedback_true'][rand]['text'];
-
-        // $(".modal#modal_feedback").find(".text_dynamic").html(feedback_true);
-        $(".modal#modal_feedback").find(".benar").show();
-        $('.modal#modal_feedback').modal('show');
-        game.audio.audioWin.play();
-
-    }else{
-        var feedback_false = $this.ldatas['feedback_false'][rand]['text'];
-
-        // $(".modal#modal_feedback").find(".text_dynamic").html(feedback_false);
-        $(".modal#modal_feedback").find(".salah").show();
-        $('.modal#modal_feedback').modal('show');
-        game.audio.audioLose.play();
-
-    }
-}
-
-Modul.prototype.showModalFeedback_2 = function(benar, timeout = 0){
-    var $this = this;
+    console.log("showModalFeedback_2");
     $(".modal#modal_feedback").find(".title_feedback_2").hide();
     console.log($(".modal#modal_feedback .modal_feedback_black"));
     // $(".modal#modal_feedback .modal_feedback_black").show();
@@ -1571,18 +1689,7 @@ Modul.prototype.showModalFeedback_2 = function(benar, timeout = 0){
     });
 }
 
-Modul.prototype.setFalseAnswer = function(){
-    var $this = this;
-
-    var response = $this.question_data[$this.curr_soal]["question"];
-    // game.audio.audioSalah.play();
-    game.audio.audioButton.play();
-  
-    //set flag view video
-    game.isViewVideo = true;
-};
-
-Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
+quizVisnov.prototype.close_feedback_2 = function(benar, timeout = 0){
     console.log('close_feedback_2');
     var $this = this;
     // $('.icon_exit_feedback').click(function(e){
@@ -1602,12 +1709,12 @@ Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
         // $(".alert").removeClass("salah");
         // $(".alert").removeClass("benar");
 
-        game.scorm_helper.setSingleData('game_data', game.game_data);
+        game.scorm_helper.setSingleData('game_data', $this.game_data);
         //if soal sudah sampai soal terakhir dari data di json
-        // var total = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game]);
-        var total = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game]);
+        // var total = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]]);
+        var total = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]]);
         console.log(total);
-        var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
+        var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
         console.log($this.life);
         console.log(ldata);
 
@@ -1620,11 +1727,11 @@ Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
             //set score lose
             $(this).hide();
 
-            // game.game_data['last_score'] = 0;
+            // $this.game_data['last_score'] = 0;
             game.audio.audioKalah.play();
             game.scorm_helper.setStatus("failed");
 
-            var quiz_result = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game]);
+            var quiz_result = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]]);
             var last_score = $this.last_score;
             game.scorm_helper.sendResult(last_score);
 
@@ -1636,8 +1743,8 @@ Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
             if(ldata["answer"].length == 1){
                 var date = game.getDate();
 
-                game.game_data['start_date'] = date;
-                $this.game_data = game.game_data;
+                $this.game_data['start_date'] = date;
+                $this.game_data = $this.game_data;
             }
 
             console.log(ldata["answer"].length);
@@ -1655,16 +1762,16 @@ Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
                 $(".btn-next-result").click(function(e){
                     $(this).off();
                     console.log('btn-next-result');
-                    console.log($this.category_game);
+                    console.log($this.curr_soal);
                     console.log($this.ldatas['list_question'].length);
-                    if($this.category_game == $this.ldatas['list_question'].length - 1){
+                    if($this.curr_soal == $this.ldatas['list_question'].length - 1){
                         console.log('slide 3');
                         $('.result_2').show();
                         game.setSlide(3);
                     }else{
                         $this.resetGameData();
-                        game.game_data['category_game'] = $this.category_game + 1;
-                        console.log(game.game_data);
+                        $this.game_data['curr_soal'] = $this.curr_soal + 1;
+                        console.log($this.game_data);
                         game.setSlide(2); //go to page quiz
                     }
                 });
@@ -1683,9 +1790,7 @@ Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
                     game.setSlide(4);
                 }
             }else{
-                // $this.hideItemSelected($this.item_selected);
                 // game.setSlide(2); //go to quiz page
-                // $this.nextGamePickPlaceItem();
                 // $this.stopVideo_plyr($this.video_plyr);
                 // $("#video").hide();\
 
@@ -1722,39 +1827,18 @@ Modul.prototype.close_feedback_2 = function(benar, timeout = 0){
             }
         }
        
-        console.log(game.game_data);
+        console.log($this.game_data);
     // });
 };
 
-Modul.prototype.resetCurrGame = function(){
+quizVisnov.prototype.resetCurrGame = function(){
     var $this = this;
-    game.scorm_helper.resetQuizDataByIndex("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
-    $this.resetGameData();
-    game.game_data["category_game"] = $this.category_game;
+    game.scorm_helper.resetQuizDataByIndex("game_slide_"+$this.current_settings["slide"]);
+    $this.game_data["curr_soal"] = $this.curr_soal;
 }
 
-Modul.prototype.hideItemSelected = function(item_id){
-    var $this = this;
-    var item_div_n = $this.category_game + 1;
-    $('#item_div-'+item_div_n+' #item-'+item_id).hide();
-}
-
-Modul.prototype.nextGamePickPlaceItem = function(){
-    var $this = this;
-    console.log(video1);
-    // $this.stopVideo_plyr(video1);
-}
-
-Modul.prototype.setScore = function(score){
-    var $this = this;
-    // var total = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game]);
-    // console.log(total);
-    $this.game_data['last_score'] = score;
-    game.game_data['last_score'] = $this.game_data['last_score'];
-}
-
-//function show append conetent in video
-Modul.prototype.showVideoFeedback = function($clone, benar, index){
+//function show append content in video
+quizVisnov.prototype.showVideoFeedback = function($clone, benar, index){
     // alert("showVideoFeedback");
     var $this = this;
 
@@ -1895,22 +1979,20 @@ Modul.prototype.showVideoFeedback = function($clone, benar, index){
     }
 };
 
-Modul.prototype.resetGameData = function(){
-    game.game_data["category_game"]=undefined,
-    game.game_data["last_challenge"]=undefined,
-    game.game_data["last_life"]=undefined,
-    game.game_data["last_score"]=undefined;
-    game.game_data["start_date"]=undefined;
-}
-
-Modul.prototype.playBacksound = function() {
+quizVisnov.prototype.playBacksound = function(src = '') {
     var $this = this;
    
     //play sound 2
     console.log($this.curr_soal);
     console.log($this.question_data);
-    console.log($this.question_data[$this.curr_soal]);
-    var src_audio_2 = "assets/audio/"+$this.question_data[$this.curr_soal]['audio'];
+    console.log($this.question_datas[$this.curr_soal]);
+
+    var src_audio_2
+    if(src == ''){
+        src_audio_2 = "assets/audio/"+$this.question_datas[$this.curr_soal]['audio'];
+    }else{
+        src_audio_2 = src;
+    }
     console.log('src_audio_2: '+src_audio_2);
     $this.audio_dynamic_2 = game.audio.audio_dynamic(src_audio_2);
     var promise = $this.audio_dynamic_2.play();
@@ -1945,11 +2027,11 @@ Modul.prototype.playBacksound = function() {
     },800);    
 };
 
-Modul.prototype.playDialogSound = function(src) {
+quizVisnov.prototype.playDialogSound = function(src) {
     var $this = this;
    
     //play sound 2
-    // var src_audio_2 = "assets/audio/"+$this.question_data[$this.curr_soal]['audio'];
+    // var src_audio_2 = "assets/audio/"+$this.question_datas[$this.curr_soal]['audio'];
     var src_audio_2 = src;
     console.log('src_audio_2: '+src_audio_2);
     $this.audio_dialog = game.audio.audio_dynamic(src_audio_2);
@@ -1966,7 +2048,7 @@ Modul.prototype.playDialogSound = function(src) {
     }
 };
 
-Modul.prototype.setLabelNameQuestion = function($clone, $label_text, $label_style, $label_position, $suara_batin, $label_icon, $label_img){
+quizVisnov.prototype.setLabelNameQuestion = function($clone, $label_text, $label_style, $label_position, $suara_batin, $label_icon, $label_img){
     $($clone).find(".pilihan_place .question_label_name").removeAttr("style");
     $($clone).find(".pilihan_place .question_label_name .question_label_img .question_label_name-2").remove();
     $($clone).find(".pilihan_place .question_label_name").hide();
@@ -2029,7 +2111,7 @@ Modul.prototype.setLabelNameQuestion = function($clone, $label_text, $label_styl
     /*End function set icon label name*/
 }
 
-Modul.prototype.setLabelNameDialog = function($clone, $name_character, $label_style, $label_position, $suara_batin, $label_icon, $label_img, $label_bg_img = ""){
+quizVisnov.prototype.setLabelNameDialog = function($clone, $name_character, $label_style, $label_position, $suara_batin, $label_icon, $label_img, $label_bg_img = ""){
     var $this = this;
     console.log("setLabelNameDialog");
     $($clone).find('.div_name_label').hide();
@@ -2099,7 +2181,7 @@ Modul.prototype.setLabelNameDialog = function($clone, $name_character, $label_st
         // $($clone).find('.div_name_label').show();    
 }
 
-Modul.prototype.setHandTouchImg = function($image){
+quizVisnov.prototype.setHandTouchImg = function($image){
     console.log("setHandTouchImg");
     console.log($image);
     if($image != undefined && $image != ""){
@@ -2109,7 +2191,7 @@ Modul.prototype.setHandTouchImg = function($image){
 }
 
 //function set show or hide dialog feedback base on slide-content id
-Modul.prototype.showDialogFeedback = function(index, benar, $clone = ''){
+quizVisnov.prototype.showDialogFeedback = function(index, benar, $clone = ''){
     // alert("showDialogFeedback");
     var $this = this;
 
@@ -2242,7 +2324,7 @@ Modul.prototype.showDialogFeedback = function(index, benar, $clone = ''){
     }
 }
 
-Modul.prototype.showHideSoal = function(mode){
+quizVisnov.prototype.showHideSoal = function(mode){
     if(mode == 'show'){
         // $('.modal-backdrop-cust').show();
         console.log($('.pilihan_place'));
@@ -2252,7 +2334,6 @@ Modul.prototype.showHideSoal = function(mode){
 
         //hide btn_dialog
         // $('.btn_dialog_wrapper .btn_dialog').hide();
-
     }else{
         $('.modal-backdrop-cust').hide();
         $('.pilihan_place').css('z-index','unset');
@@ -2262,14 +2343,23 @@ Modul.prototype.showHideSoal = function(mode){
 }
 
 //stop backsound
-Modul.prototype.stopBackSound = function(){
+quizVisnov.prototype.stopBackSound = function(){
     var $this = this;
     //pause sound
-    $this.audio_dynamic_2.pause();
-    $this.audio_dynamic_2.currentTime = 0;
+    // console.log($this.audio_dynamic_2);
+    if($this.audio_dynamic_2 != undefined){
+        $this.audio_dynamic_2.pause();
+        $this.audio_dynamic_2.currentTime = 0;
+    }
+
+    // if(game.audio_backsound_per_stage != undefined){
+    //     clearInterval(game.audio_backsound_per_stage);
+    //     game.audio_backsound_per_stage.pause();
+    //     game.audio_backsound_per_stage.currentTime = 0;
+    // }
 }
 
-Modul.prototype.substringText = function(string, max_string){
+quizVisnov.prototype.substringText = function(string, max_string){
     var $this = this;
     /*Function set dialog text*/
         let dialog_text = string;
@@ -2292,7 +2382,7 @@ Modul.prototype.substringText = function(string, max_string){
     /*End function set dialog text*/
 }
 
-Modul.prototype.substringText_2 = function(string, max_string){
+quizVisnov.prototype.substringText_2 = function(string, max_string){
 /*Function set dialog text*/
     let dialog_text = string;
     console.log(dialog_text.length);
@@ -2307,7 +2397,7 @@ Modul.prototype.substringText_2 = function(string, max_string){
 /*End function set dialog text*/
 }
 
-Modul.prototype.getHtmltag = function (a){
+quizVisnov.prototype.getHtmltag = function (a){
     var temp = document.createElement("div");
      temp.innerHTML = a;
 
@@ -2324,7 +2414,7 @@ Modul.prototype.getHtmltag = function (a){
      return tags;
 }
 
-Modul.prototype.showQuestion_2 = function($clone){
+quizVisnov.prototype.showQuestion_2 = function($clone){
     var $this = this;
     $this.showHideSoal('show');
     $($clone).find('.div_name_label').hide();
@@ -2346,16 +2436,29 @@ Modul.prototype.showQuestion_2 = function($clone){
 }
 
 //function setting next soal 
-Modul.prototype.nextSoal = function(){
+quizVisnov.prototype.nextSoal = function(){
     console.log('nextSoal');
     var $this = this;
-    $this.category_game += 1;
-    $this.game_data['category_game'] = $this.category_game;
-    // console.log(game.game_data);
-    game.game_data = $this.game_data;
-    game.scorm_helper.setSingleData('game_data', game.game_data);
-    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]+"_"+$this.category_game);
-    // console.log(ldata);
+    // console.log($this.curr_soal);
+    // $this.curr_soal += 1;
+    //  console.log($this.curr_soal);
+    $this.game_data['curr_soal'] = $this.curr_soal;
+    $this.game_data['show_feedback_visnov'] = 1;
+    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+
+
+    // let curr_soal_next = ($this.game_data['curr_soal_next'] != undefined ? $this.game_data['curr_soal_next'] :0);
+    // if(curr_soal_next < $this.question_datas.length){
+    //     curr_soal_next += 1;
+    // }
+    let curr_soal_next = ldata["answer"].length;
+    $this.game_data['curr_soal_next'] = curr_soal_next;
+
+    // console.log($this.game_data);
+    // $this.game_data = $this.game_data;
+    game.scorm_helper.setSingleData('game_data', $this.game_data);
+    console.log($this.game_data);
+    console.log(ldata);
 
     //stop interval play sound
     clearInterval($this.time_backsound);
@@ -2363,86 +2466,96 @@ Modul.prototype.nextSoal = function(){
     // alert($this.current_settings["slide"]);
     // console.log($this.current_settings["slide"]);
     // $this.current_settings["slide"] = 3;
+    console.log($this.current_settings["slide"]);
     game.setSlide($this.current_settings["slide"]);
-    // $this.curr_soal += 1;
-    // $this.isAppend = 0;
-    // $this.showQuestion();
 }
 
 //functon setting next soal if current soal last soal
-Modul.prototype.nextSoalAtLast = function(){
+quizVisnov.prototype.nextSoalAtLast = function(){
     var $this = this;
     console.log("nextSoalAtLast");
     // alert("nextSoalAtLast");
-    // console.log(game.game_data);
+    // console.log($this.game_data);
 
-    $this.game_data["category_game"] = 0;
-    $this.game_data["curr_soal"] = 0;
+    // $this.game_data["curr_soal"] = 0;
+    // $this.game_data["curr_soal"] = 0;
+    // let ldata = game.scorm_helper.getSingleData("game_slide_"+$this.current_settings["slide"]);
+    var game_quiz = game.scorm_helper.getQuizResult(["game_slide_"+$this.current_settings["slide"]]);
+    console.log(game_quiz);
 
-    /*Function set stage clear*/ 
-        let selected_stage = game.game_data["selected_stage"];
-        let complete_stage = ($this.game_data["complete_stage"] != undefined ? $this.game_data["complete_stage"] : []);
-        let failed_stage = ($this.game_data["failed_stage"] != undefined ? $this.game_data["failed_stage"] : []);
-        let percent_correct_answer =  $this.game_data["total_answer_true"] / $this.game_data["total_soal_current_slide"] * 100;
-        console.log(percent_correct_answer);
-        let percent_correct_answer_per_stage = ($this.settings["percent_correct_answer_per_stage"] != undefined ? $this.settings["percent_correct_answer_per_stage"] : $this.setting_global["percent_correct_answer_per_stage"]);
+    if($this.setting_global["mode_visual_novel"] == "linear"){
+
+    }else{
+        /*Function set stage clear*/ 
+            let selected_stage = $this.game_data["selected_stage"];
+            let complete_stage = ($this.game_data["complete_stage"] != undefined ? $this.game_data["complete_stage"] : []);
+            let failed_stage = ($this.game_data["failed_stage"] != undefined ? $this.game_data["failed_stage"] : []);
+            let percent_correct_answer =  game_quiz["score"] / game_quiz["total_soal"] * 100;
+            console.log(percent_correct_answer);
+            let percent_correct_answer_per_stage = ($this.settings["percent_correct_answer_per_stage"] != undefined ? $this.settings["percent_correct_answer_per_stage"] : $this.setting_global["percent_correct_answer_per_stage"]);
 
 
-        if(percent_correct_answer >=  percent_correct_answer_per_stage){
-            let index_failed = failed_stage.indexOf(selected_stage);
-            if(index_failed > -1){
-                failed_stage.splice(index_failed,1);
+            if(percent_correct_answer >=  percent_correct_answer_per_stage){
+                let index_failed = failed_stage.indexOf(selected_stage);
+                if(index_failed > -1){
+                    failed_stage.splice(index_failed,1);
+                }
+                complete_stage.push(selected_stage);
+            }else{
+                // console.log(game.scorm_helper.ldata);
+                let quiz = game.scorm_helper.ldata["quiz"];
+                console.log(quiz);
+                // console.log(quiz.length);
+                // console.log($this.question_datas.length);
+
+                let index_failed = failed_stage.indexOf(selected_stage);
+                console.log(index_failed);
+                // let start_index = parseInt(quiz.length) - parseInt($this.question_datas.length);
+                // quiz.splice(start_index,parseInt($this.question_datas.length));
+
+                //kurangi last_score dari score yang salah dijawab pada satage ini
+                if($this.game_data["last_score"] > 0){
+                    console.log($this.question_datas);
+                    // console.log($this.game_data["total_answer_true"]);
+                    // if(selected_stage == 1){
+                    //     $this.game_data["last_score"] = 0;
+                    // }else{
+                        // $this.game_data["last_score"] -= $this.game_data["total_answer_true"];
+                    // }
+                }
+
+                if(index_failed == -1){
+                    // console.log(quiz);
+                    failed_stage.push(selected_stage);
+                }
             }
-            complete_stage.push(selected_stage);
-        }else{
-            // console.log(game.scorm_helper.ldata);
-            let quiz = game.scorm_helper.ldata["quiz"];
-            // console.log(quiz);
-            // console.log(quiz.length);
-            // console.log($this.question_datas.length);
 
-            let index_failed = failed_stage.indexOf(selected_stage);
-            console.log(index_failed);
-            let start_index = parseInt(quiz.length) - parseInt($this.question_datas.length);
-            quiz.splice(start_index,parseInt($this.question_datas.length));
-
-            //kurangi last_score dari score yang salah dijawab pada satage ini
-            if(game.game_data["last_score"] > 0){
-                console.log($this.question_datas);
-                console.log($this.game_data["total_answer_true"]);
-                // if(selected_stage == 1){
-                //     game.game_data["last_score"] = 0;
-                // }else{
-                    game.game_data["last_score"] -= $this.game_data["total_answer_true"];
-                // }
+            console.log(complete_stage);       
+            console.log(failed_stage);       
+            if((($this.curr_step+1) < $this.game_data["total_stage"]) && ((complete_stage.length + failed_stage.length) == ($this.curr_step+1))){
+                $this.curr_step += 1; 
+                $this.game_data["curr_step"] = $this.curr_step;
             }
 
-            if(index_failed == -1){
-                // console.log(quiz);
-                failed_stage.push(selected_stage);
-            }
-        }
+            console.log(complete_stage);
+            console.log(failed_stage);
+            $this.game_data["complete_stage"] = complete_stage;
+            $this.game_data["failed_stage"] = failed_stage;
+            // $this.game_data["total_answer_true_2"] = $this.game_data["total_answer_true"];
+            // $this.game_data["total_answer_true"] = 0;
+        /*End function set stage clear*/ 
+    }
 
-        console.log(complete_stage);       
-        console.log(failed_stage);       
-        if((($this.curr_step+1) < game.game_data["total_stage"]) && ((complete_stage.length + failed_stage.length) == ($this.curr_step+1))){
-            $this.curr_step += 1; 
-            $this.game_data["curr_step"] = $this.curr_step;
-        }
-
-        console.log(complete_stage);
-        console.log(failed_stage);
-        $this.game_data["complete_stage"] = complete_stage;
-        $this.game_data["failed_stage"] = failed_stage;
-        $this.game_data["total_answer_true_2"] = $this.game_data["total_answer_true"];
-        $this.game_data["total_answer_true"] = 0;
-    /*End function set stage clear*/ 
-
+    // console.log($this.game_data);
+    $this.game_data = $this.game_data;
     console.log($this.game_data);
-    game.game_data = $this.game_data;
-    console.log(game.game_data);
-    game.scorm_helper.setSingleData('game_data', game.game_data);
-    // console.log(game.game_data);
+    game.scorm_helper.setSingleData('game_data', $this.game_data);
+
+    var ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+    console.log(ldata);
+    let ldata2 = game.scorm_helper.ldata;
+    console.log(ldata2);
+    // console.log($this.game_data);
     clearInterval($this.time_backsound);
 
     if($this.audio_dynamic_2 != undefined){
@@ -2452,9 +2565,9 @@ Modul.prototype.nextSoalAtLast = function(){
     if($this.audio_dialog != undefined){
         $this.audio_dialog.pause();
     }
-    // console.log(game.game_data);
+    // console.log($this.game_data);
 
-    console.log("slide_result: "+$this.slide_result_per_step);
+    // console.log("slide_result: "+$this.slide_result_per_step);
     game.pause_timer_global = true;
 
     //stop backsound per stage
@@ -2476,12 +2589,10 @@ Modul.prototype.nextSoalAtLast = function(){
     //set video interval false
     $this.play_video_flag = false;
 
-    if($this.setting_global['linear_visual_novel'] != undefined){
-        if($this.setting_global['linear_visual_novel'] == true){
-            console.log($this.setting_global['slide_result']);
-            // game.setSlide($this.setting_global['slide_result']);
-            game.nextSlide();
-        }
+    if($this.setting_global['mode_visual_novel'] == "linear"){
+        // game.setSlide($this.setting_global['slide_result']);
+        // alert("nextSlide");
+        game.nextSlide();
     }else{
         if($this.setting_global['hide_result_step_page'] != undefined){
             if($this.setting_global['hide_result_step_page'] == true){
@@ -2489,173 +2600,179 @@ Modul.prototype.nextSoalAtLast = function(){
             }
         }else{
             // alert($this.slide_result_per_step);
-            game.setSlide($this.slide_result_per_step);
+            game.setSlide($this.setting_global["slide_game_map"]);
+            // game.nextSlide();
         }
     }
 }
 
-Modul.prototype.setVideo = function($clone = '', src, show_soal = '', index, flag_loop = 0) {
-    // console.log("setVideo");
+quizVisnov.prototype.setVideo = function($clone = '', src, show_soal = '', index, flag_loop = 0) {
+    console.log("setVideo");
     // alert("setVideo");
     var $this = this;
     // console.log($(".img_video"));
     // $(".img_video").show();
     // console.log($("#video").find("source"));
-    console.log($this.video_path+src);
+    // console.log($this.video_path+src);
     $("#video").find("source").attr("src",$this.video_path+src);
     // console.log($(".img_video"));
-    $(".img_video").show();
+    // $(".img_video").show();
     $("#video").hide();
     $("#video")[0].load();
 
     game.showLoading();
+    let flag_play_video = 0;
     $("#video").on("canplay",function(e){
-        game.hideLoading();
+        if(flag_play_video == 0){
+            flag_play_video = 1;
+            game.hideLoading();
 
-        //check if game resume
-        // console.log($this.resume);
-        $("video").prop('muted',false);
-        if($this.resume != undefined){
-            if ($this.resume == 1) {
-                $this.resume = undefined;
-                //muted video, agar bisa diplay
-                $("video").prop('muted',true);
+            //check if game resume
+            // console.log($this.resume);
+            $("video").prop('muted',false);
+            if($this.resume != undefined){
+                if ($this.resume == 1) {
+                    $this.resume = undefined;
+                    //muted video, agar bisa diplay
+                    $("video").prop('muted',true);
+                }
             }
-        }
 
-        $(".img_video").hide();
-        $("#video").show();
-        $this.playVideo();
+            // $(".img_video").hide();
+            $("#video").show();
+            $this.playVideo_loop();
 
-        if(flag_loop == 0){
-            /*Function set dialog*/
-                var arr_dialog = $this.ldata2["text_3"];
-                var name_character = $this.ldata2["text_3"][index]['text_2'];
+            if(flag_loop == 0){
+                /*Function set dialog*/
+                    var arr_dialog = $this.ldata2["text_3"];
+                    var name_character = $this.ldata2["text_3"][index]['text_2'];
 
-                //show hide dialog text and box
-                // console.log(arr_dialog[index]["text"]);
-                $($clone).find('.item_dialog_text').hide();
-                if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                    $($clone).find('#item_dialog_text-'+index).show();
-                    // console.log($($clone).find(".btn_dialog_wrapper"));
-                    // $($clone).find(".btn_dialog_wrapper").show();
-                    $($clone).find(".btn_dialog_wrapper img").show();
-                }else{
-                    $($clone).find(".btn_dialog_wrapper img").hide();
-                }
+                    //show hide dialog text and box
+                    // console.log(arr_dialog[index]["text"]);
+                    $($clone).find('.item_dialog_text').hide();
+                    if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
+                        $($clone).find('#item_dialog_text-'+index).show();
+                        // console.log($($clone).find(".btn_dialog_wrapper"));
+                        // $($clone).find(".btn_dialog_wrapper").show();
+                        $($clone).find(".btn_dialog_wrapper img").show();
+                    }else{
+                        $($clone).find(".btn_dialog_wrapper img").hide();
+                    }
 
-                //call function set label name
-                let $label_text = name_character;
-                let $label_style = $this.ldata2["text_3"][index]["label_name_style"];
-                let $label_position = $this.ldata2["text_3"][index]["text_2_position"]; 
-                let $suara_batin = $this.ldata2["text_3"][index]["suara_batin"];
-                let $label_icon = $this.ldata2["text_3"][index]["label_name_icon"];
-                let $label_img = $this.ldata2["text_3"][index]["text_2_img"];
-                $this.setLabelNameDialog($clone, $label_text, $label_style, $label_position, $suara_batin, $label_icon, $label_img);
+                    //call function set label name
+                    let $label_text = name_character;
+                    let $label_style = $this.ldata2["text_3"][index]["label_name_style"];
+                    let $label_position = $this.ldata2["text_3"][index]["text_2_position"]; 
+                    let $suara_batin = $this.ldata2["text_3"][index]["suara_batin"];
+                    let $label_icon = $this.ldata2["text_3"][index]["label_name_icon"];
+                    let $label_img = $this.ldata2["text_3"][index]["text_2_img"];
+                    $this.setLabelNameDialog($clone, $label_text, $label_style, $label_position, $suara_batin, $label_icon, $label_img);
 
-                //call function set hand touch
-                let $image = $this.ldata2["text_3"][index]["hand_touch_img"];
-                if($image != undefined && $image != ""){
-                    $this.setHandTouchImg($image);
-                }else{
-                    $(".img_click").hide()
-                }
-            /*End function set dialog*/
-        }
+                    //call function set hand touch
+                    let $image = $this.ldata2["text_3"][index]["hand_touch_img"];
+                    if($image != undefined && $image != ""){
+                        $this.setHandTouchImg($image);
+                    }else{
+                        $(".img_click").hide()
+                    }
+                /*End function set dialog*/
+            }
 
-        // console.log(show_soal);
-        if(show_soal == 1){
-            // alert('show soal');
-            $($clone).find(".btn-global").hide();
+            // console.log(show_soal);
+            if(show_soal == 1){
+                // alert('show soal');
+                $($clone).find(".btn-global").hide();
 
-            $($clone).find(".btn_next_dialog").show();
-            $($clone).find(".btn_next_dialog").unbind().click(function(){
-                $(this).hide();
-                if(!$(this).hasClass('unclickable')){
+                $($clone).find(".btn_next_dialog").show();
+                $($clone).find(".btn_next_dialog").unbind().click(function(){
+                    $(this).hide();
+                    if(!$(this).hasClass('unclickable')){
+                        //clear interval
+                        // clearInterval($this.play_video_interval);
+
+                        $(this).addClass('unclickable');
+                        //hide dialog element
+                        $($clone).find(".item_dialog_text").hide();
+                        $($clone).find(".div_name_label").hide();
+
+                        //pause video
+                        // $this.pauseVideo();
+
+                        //check if question_video exist
+                        if($this.ldata2["question_video"] != undefined){
+                            if($this.ldata2["question_video"] != ""){
+                                //set video question
+                                let src_2 = $this.ldata2["question_video"];
+                                $this.setVideo_2(src_2);
+                            }
+                        }
+
+                        //set soal
+                        // show soal element
+                        $(".txt_question").show();
+                        // alert("showHideSoal 99");
+                        $this.showHideSoal('show');
+                        $this.setSoalVideo($clone, index);
+                    }
+                });
+            }else{
+                console.log('showVideo');
+                let index_2 = index + 1;
+
+                $(".btn_next_dialog").show();
+                $($clone).find(".btn_next_dialog").unbind().click(function(){
+                    $(this).hide();
+
                     //clear interval
                     // clearInterval($this.play_video_interval);
 
-                    $(this).addClass('unclickable');
-                    //hide dialog element
+                    // alert('btn_next_dialog');
                     $($clone).find(".item_dialog_text").hide();
                     $($clone).find(".div_name_label").hide();
+                    $this.showVideo(index_2, $clone);
+                });
+            }
 
-                    //pause video
-                    // $this.pauseVideo();
+            $("#video").on("ended",function(e){
+                $(this).off();
+                // $this.pauseVideo();
 
-                    //check if question_video exist
-                    if($this.ldata2["question_video"] != undefined){
-                        if($this.ldata2["question_video"] != ""){
-                            //set video question
-                            let src_2 = $this.ldata2["question_video"];
-                            $this.setVideo_2(src_2);
-                        }
-                    }
-
-                    //set soal
-                    // show soal element
-                    $(".txt_question").show();
-                    // alert("showHideSoal 99");
-                    $this.showHideSoal('show');
-                    $this.setSoalVideo($clone, index);
-                }
-            });
-        }else{
-            console.log('showVideo');
-            let index_2 = index + 1;
-
-            $(".btn_next_dialog").show();
-            $($clone).find(".btn_next_dialog").unbind().click(function(){
-                $(this).hide();
-
-                //clear interval
+                //call function set video, to call again this video
                 // clearInterval($this.play_video_interval);
-
-                // alert('btn_next_dialog');
-                $($clone).find(".item_dialog_text").hide();
-                $($clone).find(".div_name_label").hide();
-                $this.showVideo(index_2, $clone);
+                // console.log($this.play_video_interval);
+                // $this.play_video_interval = setInterval(function() {
+                    // console.log($this.play_video_interval);
+                    // $(this).loop = true;
+                    // $this.playVideo_loop();
+                    // var vid = document.getElementById("video");
+                // },200);
             });
         }
-
-        $("#video").on("ended",function(e){
-            $(this).off();
-            // $this.pauseVideo();
-
-            //call function set video, to call again this video
-            // clearInterval($this.play_video_interval);
-            // console.log($this.play_video_interval);
-            // $this.play_video_interval = setInterval(function() {
-                // console.log($this.play_video_interval);
-                // $(this).loop = true;
-                $this.playVideo_loop();
-                // var vid = document.getElementById("video");
-            // },200);
-        });
     });
 };
 
-Modul.prototype.setVideo_2 = function(src) {
+quizVisnov.prototype.setVideo_2 = function(src) {
     // alert("setVideo_2");
     var $this = this;
     // console.log($("#video").find("source"));
     // console.log($this.video_path+src);
     $("#video").find("source").attr("src",$this.video_path+src);
     // console.log($(".img_video"));
-    $(".img_video").show();
+    // $(".img_video").show();
     $("#video").hide();
     $("#video")[0].load();
 
     game.showLoading();
     $("#video").on("canplay",function(e){
         game.hideLoading();
-        $(".img_video").hide();
+        // $(".img_video").hide();
         $("#video").show();
         $this.playVideo();
 
         $(".item_dialog_text").hide();
         $(".btn_dialog_wrapper .btn_dialog").hide();
         $(".div_name_label").hide();
+        $(".btn-global").hide();
 
         $("#video").on("ended",function(e){
             $(this).off();
@@ -2671,7 +2788,7 @@ Modul.prototype.setVideo_2 = function(src) {
     });
 };
 
-Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last_index = '') {
+quizVisnov.prototype.setVideoFeedback = function($clone = '', src, index, benar, last_index = '') {
     console.log("setVideoFeedback");
     // alert("setVideo");
     var $this = this;
@@ -2683,124 +2800,128 @@ Modul.prototype.setVideoFeedback = function($clone = '', src, index, benar, last
     $(".img_video").hide();
     $("#video").hide();
     $("#video")[0].load();
-    let flag_first_play = 0;
+
     game.showLoading();
+    $this.pauseVideo();
+    let flag_play_video = 0;
     $("#video").on("canplay",function(e){
-        game.hideLoading();
-        // $(".img_video").hide();
-        $("#video").show();
-        $this.playVideo();
-
-        //hide item dialog
-        // console.log($($clone).find(".item_dialog_text"));
-        $($clone).find(".item_dialog_text").hide();
-
-        if(benar == 0){
-            var arr_dialog = $this.ldata2["feedback_false"];
-            var name_character = $this.ldata2["feedback_false"][index]['text_2'];
-            console.log(arr_dialog);
-
-            $($clone).find('.item_dialog_feedback_false_text').hide();
-            if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                $($clone).find('#item_dialog_feedback_false_text-'+index).show();
-                $(".btn_dialog_wrapper #btn_dialog-1").show();
-            }else{
-                $(".btn_dialog_wrapper .btn_dialog").hide();
-            }
-
-            //play audio dialog
-            var audio = $this.ldata2['feedback_false'][index]['audio'];
-            if(audio != undefined){
-                //clear interval
-                // clearInterval($this.play_video_interval_feedback);
-
-                var src_audio_2 = "assets/audio/"+audio;
-                $this.playDialogSound(src_audio_2);
-            }
-        }else{
-            var arr_dialog = $this.ldata2["feedback"];
-            var name_character = $this.ldata2["feedback"][index]['text_2'];
-
-            $($clone).find('.item_dialog_feedback_text').hide();
-            if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
-                $($clone).find('#item_dialog_feedback_text-'+index).show();
-                $(".btn_dialog_wrapper #btn_dialog-1").show();
-            }else{
-                $(".btn_dialog_wrapper .btn_dialog").hide();
-            }
-
-            //play audio dialog
-            var audio = $this.ldata2['feedback'][index]['audio'];
-            if(audio != undefined){
-                //clear interval
-                // clearInterval($this.play_video_interval_feedback);
-
-                var src_audio_2 = "assets/audio/"+audio;
-                $this.playDialogSound(src_audio_2);
-            }
-        }
-
-        var name_character = arr_dialog[index]['text_2'];
-
-        //call function set label name
-        let $label_text = name_character;
-        let $label_style = arr_dialog[index]["label_name_style"];
-        let $label_position = arr_dialog[index]["text_2_position"]; 
-        let $suara_batin = arr_dialog[index]["suara_batin"];
-        let $label_icon = arr_dialog[index]["label_name_icon"];
-        let $label_img = arr_dialog[index]["text_2_img"];
-        alert(flag_first_play);
-        $this.setLabelNameDialog($clone, $label_text, $label_style, $label_position, $suara_batin, $label_icon, $label_img);
-
-        //call function set hand touch image
-        let $image = arr_dialog[index]["hand_touch_img"];
-        if($image != undefined && $image != ""){
-            $this.setHandTouchImg($image);
-        }else{
-            $(".img_click").hide()
-        }
-
-
-        //remove class unclickable di class btn_next_dialog
-        // $(".btn_next_dialog").removeClass('unclickable');
-
-        $($clone).find(".btn_next_dialog-2").show();
-        $($clone).find(".btn_next_dialog-2").unbind().click(function(){
-            // console.log("btn_next_dialog-2");
-            //clear interval
-            // clearInterval($this.play_video_interval_feedback);
-
-            // console.log(last_index);
-            if(last_index == 1){
-                let index_2 = index + 1;
-                $this.settingDialogFeedbackVideo_2($clone, benar, index_2);
-            }else{
-                let index_2 = index + 1;
-                $this.showVideoFeedback($clone, benar, index_2);
-            }
-        });
-
-        $("#video").on("ended",function(e){
-            $(this).off();
-            // $this.pauseVideo();
-
-            // $this.play_video_interval_feedback = setInterval(function() {
-            //     $this.playVideo();
-            // },200);
-            flag_first_play = 1;
-
+        if(flag_play_video == 0){
+            flag_play_video = 1;
+            game.hideLoading();
+            // $(".img_video").hide();
+            $("#video").show();
             $this.playVideo_loop();
-        });
+
+            //hide item dialog
+            // console.log($($clone).find(".item_dialog_text"));
+            $($clone).find(".item_dialog_text").hide();
+
+            if(benar == 0){
+                var arr_dialog = $this.ldata2["feedback_false"];
+                var name_character = $this.ldata2["feedback_false"][index]['text_2'];
+                console.log(arr_dialog);
+
+                $($clone).find('.item_dialog_feedback_false_text').hide();
+                if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
+                    $($clone).find('#item_dialog_feedback_false_text-'+index).show();
+                    $(".btn_dialog_wrapper #btn_dialog-1").show();
+                }else{
+                    $(".btn_dialog_wrapper .btn_dialog").hide();
+                }
+
+                //play audio dialog
+                var audio = $this.ldata2['feedback_false'][index]['audio'];
+                if(audio != undefined){
+                    //clear interval
+                    // clearInterval($this.play_video_interval_feedback);
+
+                    var src_audio_2 = "assets/audio/"+audio;
+                    $this.playDialogSound(src_audio_2);
+                }
+            }else{
+                var arr_dialog = $this.ldata2["feedback"];
+                var name_character = $this.ldata2["feedback"][index]['text_2'];
+
+                $($clone).find('.item_dialog_feedback_text').hide();
+                if(arr_dialog[index]["text"] != undefined && arr_dialog[index]["text"] != ""){
+                    $($clone).find('#item_dialog_feedback_text-'+index).show();
+                    $(".btn_dialog_wrapper #btn_dialog-1").show();
+                }else{
+                    $(".btn_dialog_wrapper .btn_dialog").hide();
+                }
+
+                //play audio dialog
+                var audio = $this.ldata2['feedback'][index]['audio'];
+                if(audio != undefined){
+                    //clear interval
+                    // clearInterval($this.play_video_interval_feedback);
+
+                    var src_audio_2 = "assets/audio/"+audio;
+                    $this.playDialogSound(src_audio_2);
+                }
+            }
+
+            var name_character = arr_dialog[index]['text_2'];
+
+            //call function set label name
+            let $label_text = name_character;
+            let $label_style = arr_dialog[index]["label_name_style"];
+            let $label_position = arr_dialog[index]["text_2_position"]; 
+            let $suara_batin = arr_dialog[index]["suara_batin"];
+            let $label_icon = arr_dialog[index]["label_name_icon"];
+            let $label_img = arr_dialog[index]["text_2_img"];
+            // alert("setLabelNameDialog");
+            $this.setLabelNameDialog($clone, $label_text, $label_style, $label_position, $suara_batin, $label_icon, $label_img);
+
+            //call function set hand touch image
+            let $image = arr_dialog[index]["hand_touch_img"];
+            if($image != undefined && $image != ""){
+                $this.setHandTouchImg($image);
+            }else{
+                $(".img_click").hide();
+            }
+
+
+            //remove class unclickable di class btn_next_dialog
+            // $(".btn_next_dialog").removeClass('unclickable');
+
+            $($clone).find(".btn_next_dialog-2").show();
+            $($clone).find(".btn_next_dialog-2").unbind().click(function(){
+                // console.log("btn_next_dialog-2");
+                //clear interval
+                // clearInterval($this.play_video_interval_feedback);
+
+                // console.log(last_index);
+                if(last_index == 1){
+                    let index_2 = index + 1;
+                    $this.settingDialogFeedbackVideo_2($clone, benar, index_2);
+                }else{
+                    let index_2 = index + 1;
+                    $this.showVideoFeedback($clone, benar, index_2);
+                }
+            });
+
+            $("#video").on("ended",function(e){
+                $(this).off();
+                // $this.pauseVideo();
+
+                // $this.play_video_interval_feedback = setInterval(function() {
+                //     $this.playVideo();
+                // },200);
+
+                // $this.playVideo_loop();
+            });
+        }
     });
 };
 
-Modul.prototype.playVideo = function() {
+quizVisnov.prototype.playVideo = function() {
     var $this = this;
     // console.log($("#video")[0]);
     $("#video")[0].play();
 };
 
-Modul.prototype.playVideo_loop = function() {
+quizVisnov.prototype.playVideo_loop = function() {
     var $this = this;
     // console.log(/*$("#video")[0]*/);
 
@@ -2808,13 +2929,13 @@ Modul.prototype.playVideo_loop = function() {
     $("#video")[0].play();
 };
 
-Modul.prototype.pauseVideo = function() {
+quizVisnov.prototype.pauseVideo = function() {
     var $this = this;
     $("#video")[0].pause();
 };
 
 //function set show or hide dialog feedback base on slide-content id
-Modul.prototype.showVideo = function(index, $clone = ''){
+quizVisnov.prototype.showVideo = function(index, $clone = ''){
     var $this = this;
    
     if($clone == ''){
@@ -2920,7 +3041,7 @@ Modul.prototype.showVideo = function(index, $clone = ''){
     }
 };
 
-Modul.prototype.setSoalVideo = function($clone, index){
+quizVisnov.prototype.setSoalVideo = function($clone, index){
     var $this = this;
     console.log("setSoalVideo");
     var arr_dialog = $this.ldata2["text_3"];
@@ -2975,65 +3096,191 @@ Modul.prototype.setSoalVideo = function($clone, index){
 };
 
 //function set tutorial
-Modul.prototype.setTutorial = function() {
+quizVisnov.prototype.setTutorial = function() {
+    console.log("setTutorial");
     var $this = this;
-    if(game.scorm_helper.getSingleData("tutorial") == undefined){
-        $("#tutorial .tutorial.stagebootstrap").addClass("done");
-        $("#tutorial .tutorial.stagebootstrap").addClass("active");
+    console.log(game.show_tutorial_visnov);
+    if(game.show_tutorial_visnov == 0){
+        $("#tutorial .tutorial.visnov").addClass("done");
+        $("#tutorial .tutorial.visnov").addClass("active");
         $("#tutorial").modal({backdrop: 'static',keyboard: true,show: true});
-        $("#tutorial .tutorial.stagebootstrap").find("div").first().slick({
-            dots: true,
-            infinite: false,
-            speed: 500,
-            prevArrow: false,
-            nextArrow: false
-        });
-        $("#tutorial .tutorial.stagebootstrap").find(".start-game-snake").click(function(e){
-            game.scorm_helper.setSingleData("tutorial",true);
+        // $(".modal-backdrop.in").css("background","#fff");
+        // $("#tutorial .tutorial.visnov").find("div").first().slick({
+        //     dots: true,
+        //     infinite: false,
+        //     speed: 500,
+        //     prevArrow: false,
+        //     nextArrow: false
+        // });
+        $("#tutorial .tutorial.visnov").find(".start-game").click(function(e){
+            game.show_tutorial_visnov = 1;
+            $("#tutorial .tutorial.visnov").removeClass("done");
+            $("#tutorial .tutorial.visnov").removeClass("active");
             $("#tutorial").modal('hide');
 
-            $this.get_total_soal();
+            // $this.stage_brankas();
+            $this.mulai_game();
         });
     }else{
-        $this.get_total_soal();
+        // $this.stage_brankas();
+        $this.mulai_game();
     }
 };
 
 /*Function get total soal from all stage*/
-Modul.prototype.get_total_soal = function() {
+quizVisnov.prototype.get_total_soal = function() {
     console.log("get_total_soal");
     var $this = this;
     $this.total_soal = game.total_soal;
-    console.log($this.total_soal);
-    console.log($this.total_step);
+    // console.log($this.total_soal);
+    // console.log($this.total_step);
 
     if($this.total_soal == 0){
         for (var i = 0; i < $this.total_step; i++) {
-            console.log(i);
-            console.log($this.current_settings["slide"]);
+            // console.log(i);
+            // console.log($this.current_settings["slide"]);
             let no = $this.current_settings["slide"] + i;
             const no_2 = i;
             // console.log("config/setting_quiz_slide_"+no+".json");
             $.get($this.json_prefix_name+no+".json",function(e3){
                 console.log(e3);
-                console.log(game.scorm_helper.lmsConnected);
+                // console.log(game.scorm_helper.lmsConnected);
                 //check lms connect
                 // e3 = (game.scorm_helper.lmsConnected == true ? JSON.parse(e3) : e3);
                 $this.total_soal += e3["list_question"].length;
-                console.log($this.total_soal);
+                // console.log($this.total_soal);
                 game.total_soal = $this.total_soal;
 
-                console.log($this.total_soal);
-                console.log(($this.total_step-1));
-                console.log(no_2);
-                console.log(($this.total_step-1) == no_2);
-                if(($this.total_step-1) == no_2){
-                    $this.mulai_game();
-                }
+                // console.log($this.total_soal);
+                // console.log(($this.total_step-1));
+                // console.log(no_2);
+                // console.log(($this.total_step-1) == no_2);
+                // if(($this.total_step-1) == no_2){
+                    // $this.mulai_game();
+                // }
             },'json');
         }
+        // console.log($this.total_soal);
     }else{
-        $this.mulai_game();
+        // $this.mulai_game();
     }
 };
 /*End function get total soal from all stage*/ 
+
+quizVisnov.prototype.setTutorialSlider = function() {
+    var $this = this;
+    let ldata = game.scorm_helper.getLastGame("game_slide_"+$this.current_settings["slide"]);
+    /*Generate content to tutorial*/
+        // game.flag_tutorial_show = 1;
+        $this.cloneLogoImage = $("#popupList-2 .logo_image img").first().clone();
+        $this.cloneWrapper = $("#popupList-2 .point_wrapper").first().clone();
+        $("#popupList-2").find(".logo_image").html("");
+        $("#popupList-2").find(".slider_wrapper").html("");
+
+        $this.tutorial_data = $this.question_datas[$this.curr_soal]["list_feedback_slider"];
+        console.log($this.tutorial_data);
+        if ($this.tutorial_data.length > 0) {
+            $("#popupList-2").find(".slider_wrapper").html("");
+            console.log($this.cloneWrapper.find(".point_desc"));
+            for (var i = 0; i < $this.tutorial_data.length; i++) {
+                var cWrapper = $($this.cloneWrapper).first().clone();
+                var cLogoImage = $($this.cloneLogoImage).first().clone();
+                // Setting image
+                if($this.tutorial_data[i]["image"] != undefined){
+                    cLogoImage.attr("id","logo_image-"+i);
+                    cLogoImage.attr("src","assets/image/tutorial/"+$this.tutorial_data[i]["image"]);
+                    
+                    if(i>0){
+                        cLogoImage.hide();
+                    }
+                }
+
+                //Setting logo_image
+                $(".logo_image").append(cLogoImage);
+
+                // Setting title
+                cWrapper.find(".title").html($this.tutorial_data[i]["title"]);
+
+                //setting imga
+                 cWrapper.find(".slider_image").attr("src","assets/image/tutorial/"+$this.tutorial_data[i]["image"]);
+
+                // Setting desc
+                console.log(cWrapper.find(".point_desc"));
+                cWrapper.find(".point_desc").html($this.tutorial_data[i]["desc"]);
+
+                // var cList = $($this.cloneList).first().clone();
+                // $(cList).find(".point_desc").html($this.listSlider[parseInt($(this).closest(".list_slider").attr("data-slick-index"))]["click_and_show_image"][parseInt($(this).attr("index"))]["list"][m][n]);
+                // $(cWrapper).append(cList);
+
+                if((i+1) < $this.tutorial_data.length){
+                    cWrapper.find(".button_wrapper").hide();
+                }else{
+                    cWrapper.find(".button_wrapper").show();
+                }
+
+                $("#popupList-2").find(".slider_wrapper").append(cWrapper);
+            }
+        }
+    /*End generate content to tutorial*/
+
+    $("#popupList-2").modal({backdrop: 'static',keyboard: true,show: true});
+    $this.sliderPopup();
+
+    $("#popupList-2 .start-game-quiz").click(function(e){
+        $("#popupList-2").modal('hide');
+        $("#popupList-2").find(".slider_wrapper").slick('unslick');
+        // $this.mulai_game();
+        // console.log($this.curr_soal);
+        // console.log($this.question_datas.length);
+        // let curr_soal = ldata["answer"];
+        if(ldata["answer"].length == $this.question_datas.length && ldata["answer"].indexOf(0) == -1){
+            $this.nextSoalAtLast();
+        }else{
+            $this.nextSoal();
+        }
+    });
+};
+
+quizVisnov.prototype.sliderPopup = function() {
+    var $this = this;
+
+    $("#popupList-2").find(".slider_wrapper").not('.slick-initialized').slick({
+        slidesToShow: 1,
+        dots: true,
+        infinite: false,
+        speed: 500,
+        arrows: false,
+        variableWidth: true
+    });
+
+    console.log($("#popupList-2").find(".slider_wrapper"));
+    let slider_length = $("#popupList-2").find(".slider_wrapper").length;
+    console.log(slider_length);
+    if(slider_length == 1){
+        $("#popupList-2 .logo_image img").show();
+        $("#popupList-2 .start-game-quiz").show();
+    }
+    $("#popupList-2").find(".slider_wrapper").on("afterChange", function(event, slick, currentSlide, nextSlide){
+        console.log(event);
+        console.log(slick);
+        console.log(slick["slideCount"]);
+
+        console.log("currentSlide: "+currentSlide);
+        $("#popupList-2").find(".logo_image img").hide();
+        $("#popupList-2").find("#logo_image-"+currentSlide).show();
+
+        if((slick["slideCount"] - 1) == currentSlide){
+            $(this).find(".start-game-quiz").show();
+        }else{
+            $(this).find(".start-game-quiz").hide();
+        }
+    });
+
+    console.log($("#popupList-2").find(".slider_wrapper"));
+    console.log($("#popupList-2").find(".slider_wrapper")[0]);
+    $("#popupList-2").find(".slider_wrapper")[0].slick.refresh();
+
+    $('.modal#popupList-2').on('shown.bs.modal', function (e) {
+        $("#popupList-2").find(".slider_wrapper").resize();
+    });
+};

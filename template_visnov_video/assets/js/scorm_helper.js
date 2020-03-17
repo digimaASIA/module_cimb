@@ -57,14 +57,30 @@ var ScormHelper = function(){
 		else{
 			$this.ldata = {};
 
-			/*test*/
+			// /*test*/
 			// $this.ldata = {
 			// 	"curr_slide":3,
 			// 	"quiz":[
-			// 		{"index":"game_slide_3_0","answer":[[1]],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5},
-			// 		{"index":"game_slide_3_1","answer":[[1]],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5}
+			// 		{"index":"game_slide_2","answer":[1,0],"list_question":[0,1],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5},
+			// 		// {"index":"game_slide_3","answer":[1],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5},
+			// 		// {"index":"game_slide_4","answer":[1],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5},
+			// 		// {"index":"game_slide_5","answer":[1],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5},
+			// 		// {"index":"game_slide_3_3","answer":[[1]],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5},
+			// 		// {"index":"game_slide_3_4","answer":[[1]],"list_question":[0],"start_date":"7 November 2019 14:24:41","end_date":"7 November 2019 14:25:11","is_complete":true,"last_score":1,"last_life":5}
 			// 	],
-			// 	"game_data":{"total_soal_current_slide":2,"total_soal":6,"slide":3,"last_score":2,"total_answer_true":2,"curr_soal":0,"category_game":1}
+			// 	"game_data":{
+			// 		"total_stage":3,
+			// 		"selected_stage":3,
+			// 		"total_soal_current_slide":2,
+			// 		"curr_soal":0,
+			// 		"show_feedback_visnov":1,
+			// 		"curr_soal_next":1,
+			// 		"category_game":0,
+			// 		"curr_step":2,
+			// 		"complete_stage":[2,1,3],
+			// 		"failed_stage":[],
+			// 		"last_score":6
+			// 	}
 			// };
 
 			// $this.curr_slide = $this.ldata["curr_slide"];
@@ -150,7 +166,7 @@ ScormHelper.prototype.setSingleData = function(index,value) {
 ScormHelper.prototype.getLastGame = function(category) {
 	var $this = this;
 	var arr = [];
-	console.log($this.ldata["quiz"]);
+	// console.log($this.ldata["quiz"]);
 	if($this.ldata["quiz"] === undefined || $this.ldata["quiz"].length == 0){
 		$this.ldata["quiz"] = [];
 	}
@@ -357,44 +373,46 @@ ScormHelper.prototype.getResultByCategory = function(slide) {
  */
 ScormHelper.prototype.getQuizResult = function(arrSlide) {
 	var $this = this;
+	console.log($this.ldata);
 	var arr = $this.ldata["quiz"];
 	console.log(arr);
 	var result = [];
 	result["score"]=0;
 	result["total_soal"]=0;
 	// console.log(arrSlide);
-	for (var i = 0; i < arr.length; i++) {
-		var cek = 0;
-		if(arrSlide!=undefined){			
-			for (var k = 0; k < arrSlide.length; k++) {
-				// console.log(arr[i]["index"]+" "+arrSlide[k]);
-				if(arr[i]["index"] == arrSlide[k]){
-					cek=1;
-					break;
+	if(arr != undefined){
+		for (var i = 0; i < arr.length; i++) {
+			var cek = 0;
+			if(arrSlide!=undefined){			
+				for (var k = 0; k < arrSlide.length; k++) {
+					// console.log(arr[i]["index"]+" "+arrSlide[k]);
+					if(arr[i]["index"] == arrSlide[k]){
+						cek=1;
+						break;
+					}
 				}
 			}
-		}
-		else{
-			cek = 1;
-		}
-		if(cek == 1){
-			console.log(parseInt(result["total_soal"]));
-			console.log(arr[i]["list_question"]);
-			result["total_soal"] = parseInt(result["total_soal"])+arr[i]["list_question"].length;	
-			for (var j = 0; j < arr[i]["answer"].length; j++) {
-				if(arr[i]["answer"][j].length > 1){
-					if(arr[i]["answer"][j][1]==1){
-						result["score"] = parseInt(result["score"])+1;
-					}
-				}else{
-					if(arr[i]["answer"][j]==1){
-						result["score"] = parseInt(result["score"])+1;
+			else{
+				cek = 1;
+			}
+			if(cek == 1){
+				console.log(parseInt(result["total_soal"]));
+				console.log(arr[i]["list_question"]);
+				result["total_soal"] = parseInt(result["total_soal"])+arr[i]["list_question"].length;	
+				for (var j = 0; j < arr[i]["answer"].length; j++) {
+					if(arr[i]["answer"][j].length > 1){
+						if(arr[i]["answer"][j][1]==1){
+							result["score"] = parseInt(result["score"])+1;
+						}
+					}else{
+						if(arr[i]["answer"][j]==1){
+							result["score"] = parseInt(result["score"])+1;
+						}
 					}
 				}
 			}
 		}
 	}
-
 	return result;
 };
 

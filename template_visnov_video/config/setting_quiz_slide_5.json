@@ -2,7 +2,8 @@
 	"settings":{
 		"duration":30,
 		"dialog_box_img":"",
-		"backsound":"Cinematic Inspirational Music Instrumental.mp3"
+		"backsound":"Cinematic Inspirational Music Instrumental.mp3",
+		"percent_correct_answer_per_stage":60
 	},
 	"feedback_false":[
 		
@@ -15,7 +16,6 @@
 	},
 	"list_question":
 	[
-		[
 			{
 				"type":"mc",
 				"text":"",
@@ -42,7 +42,6 @@
 				"jawaban":[1],
 				"background_image":"",
 				"audio":"",
-				
 				"label_name_img":"",
 				"img_character":[
 									"MC_BEATS_C01M02_Chase3_01_v.0.0.0.1.gif",
@@ -196,9 +195,7 @@
 					 	"hand_touch_img_video":""
 					}
 				]
-			}
-		],
-		[
+			},
 			{
 				"type":"mc",
 				"text":"",
@@ -404,6 +401,5 @@
 					}
 				]
 			}
-		]
 	]
 }

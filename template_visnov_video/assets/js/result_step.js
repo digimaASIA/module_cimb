@@ -41,42 +41,29 @@ resultStep.prototype.setResult = function() {
     // game.audio.audioMotor.pause();
 
     /*comment by elim*/
-    // var game_quiz = game.scorm_helper.getQuizResult(["game_slide_2"]);
+    console.log("game_slide_"+$this.game_data["slide"]);
+    var game_quiz = game.scorm_helper.getQuizResult(["game_slide_"+$this.game_data["slide"]]);
+    var game_quiz2 = game.scorm_helper.getQuizResultPrefix();
     // var game_quiz = game.scorm_helper.getQuizResultPrefix();
-    // console.log(game_quiz);
-    // count all game score range 0-5 for the star
-    // var score = parseInt(game_quiz["score"])/parseInt(game_quiz["total_soal"])*game.max_score;
-    // $this.life = ($this.game_data['last_life'] != undefined ? $this.game_data['last_life'] : game.life_max);
+    console.log(game.game_data);
+    console.log(game_quiz);
+    console.log(game_quiz2);
 
-    // $this.global_timeout = ($this.game_data["global_timeout"] != undefined ? $this.game_data["global_timeout"] : undefined);
-
-    var score = 0;
-    // $this.game_data["total_answer_true"] = 2;
-    // $this.game_data["total_soal_current_slide"] = 2;
-    if($this.game_data["total_answer_true"] == $this.game_data["total_soal_current_slide"]){
-        score = 100;
-    }
+    // var score = 0;
+    var score = $this.game_data["total_answer_true_2"] / $this.game_data["total_soal_current_slide"] * 100;
 
     /*end comment by elim*/
     // count score range 0-100 for save to cmi.raw.score
-    var count = score/game.max_score*100;
+    // var count = score/game.max_score*100;
     // for score in text
     $(".score").html(Math.round(score));
-    // if($this.score){
-    //     $(".star_wrapper").hide();
-    //     $(".score_wrapper").show();
-    // }else{
-    //     $(".star_wrapper").show();
-    //     $(".score_wrapper").hide();
-    // }
-    $(".star_wrapper").hide();
-    $(".score_wrapper").hide();
-
-    // save score to to cmi.raw.score
-    game.scorm_helper.sendResult(Math.round(count));
-    // set duration and save to scorm
-    // game.scorm_helper.setDuration();
-    // if score larger than minimum grade
+    if($this.score){
+        $(".star_wrapper").hide();
+        $(".score_wrapper").show();
+    }else{
+        $(".star_wrapper").show();
+        $(".score_wrapper").hide();
+    }
 
     //validasi set background using gif or video
     if($this.ldata['background_video'] != undefined && $this.ldata['background_video'] != ""){
@@ -87,8 +74,10 @@ resultStep.prototype.setResult = function() {
         $(".result_wrapper").css("background","url(assets/image/cover/"+$this.background+") no-repeat center / cover");
     }
     
-    // console.log(score);
-    if(Math.round(score) >= game.min_score){
+    console.log(score);
+    console.log(game.min_score);
+    let complete_stage_arr = game.game_data["complete_stage"];
+    if(complete_stage_arr.indexOf(game.game_data["selected_stage"]) > -1){
         // set to win
         // $(".slider-content").css({"background":"url('assets/image/result/bg-win.png') no-repeat center","background-size":"cover"});
         // $this.win["backsound"] = undefined;
@@ -168,7 +157,7 @@ resultStep.prototype.setResult = function() {
             //     top.window.close();
             // }
 
-             game.setSlide(2);
+            game.setSlide(2);
         });
     }
 
@@ -198,11 +187,13 @@ resultStep.prototype.setVideo = function($clone, src) {
     $("#video").find("source").attr("src",$this.video_path+src);
     // console.log($(".img_video"));
     $(".img_video").hide();
+    $("#video").hide();
     $("#video")[0].load();
 
     game.showLoading();
     $("#video").on("canplay",function(e){
         game.hideLoading();
+        $("#video").show();
         $this.playVideo();
 
         $("#video").on("ended",function(e){

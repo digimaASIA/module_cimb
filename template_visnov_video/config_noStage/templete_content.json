@@ -1,0 +1,30 @@
+{
+	"course":"How BEATS Are You?",
+	"module":"BEATS In Our Circle",
+	"num_module":1,
+	"list_slide":[
+		{
+			"slide":0,
+			"file":"content/cover.html",
+			"hasClass":false
+		},
+		{
+			"slide":1,
+			"file":"content/sliderfullscreen.html",
+			"hasClass":true,
+			"class":"SliderFullScreen"
+		},
+		{
+			"slide":2,
+			"file":"content/quiz_visnov.html",
+			"hasClass":true,
+			"class":"quizVisnov"
+		},
+		{
+			"slide":3,
+			"file":"content/result_game_d_video.html",
+			"hasClass":true,
+			"class":"ResultGame"
+		}
+	]
+}

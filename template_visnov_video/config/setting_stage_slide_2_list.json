@@ -11,6 +11,11 @@
 			"default":"list_2.png",
 			"complete":"list_2_done.png",
 			"failed":"list_2_fail.png"
+		},
+		{
+			"default":"list_1.png",
+			"complete":"list_1_done.png",
+			"failed":"list_1_fail.png"
 		}
 	],
 	"list_tutorial":[

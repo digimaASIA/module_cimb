@@ -151,15 +151,14 @@
 
 video{
   width: 100%;
-  /*height: 100%;*/
   height: unset;
-}
+ }
 .col_md_two{
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    height: 40vh;
-    max-height: 200px;
+position: relative;
+overflow: hidden;
+width: 100%;
+height: 40vh;
+max-height: 200px;
 }
 .col_md_two img{
   position: absolute;
@@ -521,7 +520,7 @@ video{
         color: #fff;
         font-size: 1.15em;
         text-align: center;
-        /*line-height: 3.4vh;*/
+        line-height: 3.6vh;
         background-size: 100% 100%;
         background-repeat: no-repeat;
     }
@@ -616,8 +615,9 @@ video{
 
     .div_name_label .img_suara_batin{
         width: 6.4vw;
-        margin-top: -0.9vh;
+        height: 100%;
         display: inline-block;
+        object-fit: contain;
     }
 
     .question_label_name{
@@ -632,7 +632,8 @@ video{
 
     .question_label_name .question_img_suara_batin{
         width: 6.4vw;
-        margin-top: -0.9vh;
+        height: 100%;
+        object-fit: contain;
         position: unset;
         /*display: inline-block;*/
     }

@@ -940,6 +940,8 @@ UlarTanggaCustom.prototype.setTutorial_ulartangga = function() {
           nextArrow: false
       });
       $("#tutorial .tutorial.snake").find(".start-game-snake").click(function(e){
+        $("#tutorial .tutorial.snake").removeClass("done");
+        $("#tutorial .tutorial.snake").removeClass("active");
         $("#tutorial").modal('hide');
       });
   }

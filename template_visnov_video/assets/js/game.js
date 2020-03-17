@@ -22,7 +22,7 @@ var Game = function(){
     this.audio_backsound_per_stage;
     this.time_backsound_per_stage;
     this.game_data = {};
-    // this.curr_step = 1; //variabel yang mendefinisikan step sekarang, default step 1
+    this.show_tutorial_visnov = 0;
 
     /*Setting able variable*/
         this.max_score = this.setting["max_score"];;
@@ -49,15 +49,6 @@ var Game = function(){
         this.slide_result_per_step = this.setting["slide_result_per_step"]; //variabel untuk menentukan slide pertama result step
         this.slide_result = this.setting["slide_result"]; //variabel untuk menentukan slide result
         this.slide_game_map = this.setting["slide_game_map"];
-        /*
-            game_data ={
-                category_game: 2 //array n dari list soal di json, default 0
-                curr_soal: 0 //soal terakhir dari soal di json, default 0
-                last_score: 0 //skor terakhir dari game, default 0,
-                slide: undefined //mendefinisikan slide terakhir
-                last_life: 5 //mendefinisikan life terakhir
-            };
-        */
 
         this.orientation_landscape = this.setting["orientation_landscape"];
     /*End setting able variable*/
@@ -67,7 +58,13 @@ var Game = function(){
         this.hide_step_connector = this.setting["hide_step_connector"];
     /*End setting page map*/
     
-    $.get("config/templete_content.json",function(e){
+    $this.json_path = "config/templete_content.json";
+    if($this.setting_global["mode_visual_novel"] == "linear"){
+        $this.json_path = "config_noStage/templete_content.json";
+    }
+    console.log($this.json_path);
+    $.get($this.json_path,function(e){
+        console.log(e);
         $this.arr_content = e["list_slide"];
         $this.curr_module = e["module"];
         $this.curr_course = e["course"];
@@ -423,9 +420,13 @@ Game.prototype.setProgresBar = function() {
     console.log(game.total_soal);
     // console.log(mode);
 
+    let game_quiz = game.scorm_helper.getQuizResult(['game_slide_3','game_slide_4','game_slide_5']);
+    console.log(game_quiz);
+
     let mode = 2; //mode 1 berdasarkan total step; mode 2 berdasarkan total soal
     if(mode == 2){
-        var_a = (game.game_data["last_score"] != undefined ? game.game_data["last_score"] : 0);
+        // var_a = (game.game_data["last_score"] != undefined ? game.game_data["last_score"] : 0);
+        var_a = game_quiz["score"];
         var_b = game.total_soal;
     }else{
         var_a = (game.game_data["curr_step"] != undefined ? game.game_data["curr_step"] : 0);

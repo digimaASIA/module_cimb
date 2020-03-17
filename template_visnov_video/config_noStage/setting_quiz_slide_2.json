@@ -1,0 +1,298 @@
+{
+	"settings":{
+		"duration":5,
+		"dialog_box_img":"",
+		"backsound":"Cafe Music BGM channel - NEW SONGS Cafe Terrace.mp3",
+		"percent_correct_answer_per_stage":100
+	},
+	"feedback_false":[
+		
+	],
+	"feedback_true":[
+		
+	],
+	"feedback_timeout":{
+		"text":"Waktu anda telah habis"
+	},
+	"list_question":
+	[
+		{
+			"type":"mc",
+			"text":"",
+			"label_question_text":"Kamu",
+			"label_question_position":"right",
+			"label_name_question_style":{
+				"background": "#2AB2E5",
+			    "border-radius": "24px",
+			    "color": "white",
+			    "border": "1px solid white",
+			    "font-weight": "bold",
+			    "font-family": "Lato-Bold"
+			},
+			"label_question_img":"alert.png",
+			"suara_batin":0,
+			"label_name_icon":"",
+			"question":"&quot;Sepertinya Fajar melanggar aturan keamanan deh. Apa ya?&quot;",
+			"question_video":"MC_BEATS_C01M02_Chase1_13_v.0.0.0.1.mp4",
+			"box_style":{
+				"background-image": "url(assets/image/background/diabox-ngomong.png)",
+			    "color": "rgb(17, 17, 17)",
+				"background-repeat": "no-repeat",
+			    "border-radius": "16px"
+			},
+			"pilihan":
+			[
+				{"index":0,"text":"Menempelkan rencana kerjanya di PC"},
+				{"index":1,"text":"Menempelkan password di PC"}
+			],
+			"box_style_pilihan":{
+				"background": "white",
+		 		"background-size": "cover",
+		 		"background-size": "100% 100%",
+				"color": "#111",
+				"border":"1px solid #8BB2E6"
+			},
+			"jawaban":[1],
+			"background_image":"bg_white.png",
+			"audio":"",
+			"label_name_img":"",
+			"img_character":[],
+			"img_max_width":[0,1,2,3,4],
+			"character_bg_one_gif":1,
+			"text_3":
+			[
+				{
+				 	"index":0,
+				 	"text_2":"Kamu",
+				 	"text_2_position":"right",
+				 	"label_name_img":"",
+				 	"text":"&quot;Aku mau bikin kopi ah!&quot;",
+				 	"img_character":[0],
+				 	"audio":"",
+				 	"suara_batin":0,
+				 	"box_style":{
+				 		"background": "white",
+						"color": "rgb(17, 17, 17)",
+						"background-repeat": "no-repeat",
+						"border-radius": "16px",
+						"border":"1px solid #8BB2E6"
+				 	},
+				 	"label_name_style":{
+						"background": "#2AB2E5",
+					    "border-radius": "15px",
+					    "color": "white",
+					    "border": "1px solid white",
+					    "font-weight": "bold",
+					    "font-family": "Lato-Bold"
+					},
+					"video":"MC_BEATS_C01M02_Chase1_01_v.0.0.0.1.mp4"
+				},
+				{
+				 	"index":1,
+				 	"text_2":"",
+				 	"text_2_position":"right",
+				 	"label_name_img":"",
+				 	"text":"Kamu pun berjalan ke <i>pantry</i> dan melewati meja kerja Fajar. Tiba-tiba....",
+				 	"img_character":[1],
+				 	"audio":"",
+				 	"suara_batin":0,
+				 	"box_style":{
+						"background": "white",
+						"color": "rgb(17, 17, 17)",
+						"background-repeat": "no-repeat",
+						"border-radius": "16px",
+						"border":"1px solid #8BB2E6"
+				 	},
+				 	"label_name_style":{
+						"background": "#2AB2E5",
+					    "border-radius": "15px",
+					    "color": "white",
+					    "border": "1px solid white",
+					    "font-weight": "bold",
+					    "font-family": "Lato-Bold"
+					},
+					"video":"MC_BEATS_C01M02_Chase1_02_v.0.0.0.1.mp4"
+				},
+				{
+				 	"index":2,
+				 	"text_2":"",
+				 	"text_2_position":"right",
+				 	"label_name_img":"",
+				 	"text":"Kamu melihat sesuatu yang aneh di meja Fajar",
+				 	"img_character":[2],
+				 	"audio":"",
+				 	"suara_batin":0,
+				 	"box_style":{
+				 		"background": "white",
+						"color": "rgb(17, 17, 17)",
+						"background-repeat": "no-repeat",
+						"border-radius": "16px",
+						"border":"1px solid #8BB2E6"
+				 	},
+				 	"label_name_style":{
+						"background": "#2AB2E5",
+					    "border-radius": "15px",
+					    "color": "white",
+					    "border": "1px solid white",
+					    "font-weight": "bold",
+					    "font-family": "Lato-Bold"
+					},
+					"video":"MC_BEATS_C01M02_Chase1_03_v.0.0.0.1.mp4"
+				}
+			],
+			"feedback":
+			[
+			],
+			"feedback_false":
+			[
+			],
+			"feedback_popup":{
+				"text": "<p style='text-align:left;'>Tips agar terhindar dari serangan <i>malware</i> :</p><br><ol style='text-align: left;'><li> Hindari <i>software</i> bajakan.<br></li><li> <i>Update software</i> aplikasi dan <i>browser</i> yang digunakan. <br></li><li> Pasang antivirus dan pastikan sudah <i>up to date.</i> <br></li><li> Jangan membuka <i>link</i> dalam email dari orang tidak dikenal.<br></li><li> Bersihkan temporary <i>internet files, cookie files.</i></ol>"  
+			},
+			"feedback_false_popup":{
+				"text": "<p style='text-align:left;'>Tips agar terhindar dari serangan <i>malware</i> :</p><br><ol style='text-align: left;'><li> Hindari <i>software</i> bajakan.<br></li><li> <i>Update software</i> aplikasi dan <i>browser</i> yang digunakan. <br></li><li> Pasang antivirus dan pastikan sudah <i>up to date.</i> <br></li><li> Jangan membuka <i>link</i> dalam email dari orang tidak dikenal.<br></li><li> Bersihkan temporary <i>internet files, cookie files.</i></ol>"
+			}
+		},
+		{
+				"type":"mc",
+				"text":"",
+				"label_question_text":"Kamu",
+				"label_question_position":"right",
+				"label_name_question_style":{
+					"background": "#2AB2E5",
+				    "border-radius": "24px",
+				    "color": "white",
+				    "border": "1px solid white",
+				    "font-weight": "bold",
+				    "font-family": "Lato-Bold"
+				},
+				"label_question_img":"alert.png",
+				"suara_batin":0,
+				"label_name_icon":"",
+				"question":"&quot;Sepertinya Fajar melanggar aturan keamanan deh. Apa ya?&quot;",
+				"question_video":"",
+				"box_style":{
+					"background-image": "url(assets/image/background/diabox-ngomong.png)",
+				    "color": "rgb(17, 17, 17)",
+    				"background-repeat": "no-repeat",
+				    "border-radius": "16px"
+				},
+				"pilihan":
+				[
+					{"index":0,"text":"Menempelkan rencana kerjanya di PC"},
+					{"index":1,"text":"Menempelkan password di PC"}
+				],
+				"box_style_pilihan":{
+					"background": "white",
+			 		"background-size": "cover",
+			 		"background-size": "100% 100%",
+					"color": "#111",
+					"border":"1px solid #8BB2E6"
+				},
+				"jawaban":[1],
+				"background_image":"bg_white.png",
+				"audio":"",
+				"label_name_img":"",
+				"img_character":[],
+				"img_max_width":[0,1,2,3,4],
+				"character_bg_one_gif":1,
+				"text_3":
+				[
+					{
+					 	"index":0,
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"label_name_img":"",
+					 	"text":"Kamu akan menemui Rico untuk membahas persiapan <i>meeting</i> bulan depan.",
+					 	"img_character":[0],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+					 		"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"label_name_icon":"alert.png",
+						"video":"MC_BEATS_C01M02_Chase1_11_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":1,
+					 	"text_2":"",
+					 	"text_2_position":"left",
+					 	"label_name_img":"",
+					 	"text":"Tapi... tiba-tiba...",
+					 	"img_character":[1],
+					 	"audio":"fall.mp3",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase1_12_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					},
+					{
+					 	"index":2,
+					 	"text_2":"Rico",
+					 	"text_2_position":"left",
+					 	"label_name_img":"",
+					 	"text":"Aduh pada jatuh semua!!",
+					 	"img_character":[2],
+					 	"audio":"",
+					 	"suara_batin":0,
+					 	"box_style":{
+							"background": "white",
+							"color": "rgb(17, 17, 17)",
+							"background-repeat": "no-repeat",
+							"border-radius": "16px",
+							"border":"1px solid #8BB2E6"
+					 	},
+					 	"label_name_style":{
+							"background": "#db6edb",
+						    "border-radius": "15px",
+						    "color": "white",
+						    "border": "1px solid white",
+						    "font-weight": "bold",
+						    "font-family": "Lato-Bold"
+						},
+						"video":"MC_BEATS_C01M02_Chase1_13_v.0.0.0.1.mp4",
+					 	"hand_touch_img_video":""
+					}
+				],
+				"feedback":
+				[
+				],
+				"feedback_false":
+				[
+				],
+				"feedback_popup":{
+					"text": "<p style='text-align:left;'>Tips agar terhindar dari serangan <i>malware</i> :</p><br><ol style='text-align: left;'><li> Hindari <i>software</i> bajakan.<br></li><li> <i>Update software</i> aplikasi dan <i>browser</i> yang digunakan. <br></li><li> Pasang antivirus dan pastikan sudah <i>up to date.</i> <br></li><li> Jangan membuka <i>link</i> dalam email dari orang tidak dikenal.<br></li><li> Bersihkan temporary <i>internet files, cookie files.</i></ol>"  
+				},
+				"feedback_false_popup":{
+					"text": "<p style='text-align:left;'>Tips agar terhindar dari serangan <i>malware</i> :</p><br><ol style='text-align: left;'><li> Hindari <i>software</i> bajakan.<br></li><li> <i>Update software</i> aplikasi dan <i>browser</i> yang digunakan. <br></li><li> Pasang antivirus dan pastikan sudah <i>up to date.</i> <br></li><li> Jangan membuka <i>link</i> dalam email dari orang tidak dikenal.<br></li><li> Bersihkan temporary <i>internet files, cookie files.</i></ol>"
+				}
+		}
+	]
+}

@@ -15,7 +15,14 @@ ResultGame.prototype.init = function(current_settings) {
 	$this.current_settings = current_settings;
 	$this.video_path = 'assets/video/result/';
 	$this.play_video_interval_result; //variabel interval play video
-	$.get("config/setting_result_slide_"+$this.current_settings["slide"]+".json",function(e){
+	$this.setting_global = new Setting();
+
+	$this.path_config = "config/setting_result_slide_";
+	if($this.setting_global["mode_visual_novel"] == "linear"){
+		$this.path_config = "config_noStage/setting_result_slide_";
+	}
+
+	$.get($this.path_config+$this.current_settings["slide"]+".json",function(e){
 		$this.ldata = e;
 		$this.score = e["score"];
 		$this.background = e["background"];
@@ -45,15 +52,16 @@ ResultGame.prototype.setResult = function() {
 	if(modeTest == 1){
 		score = 100;
 	}else{
-		game_quiz = game.scorm_helper.getQuizResultPrefix();
-		
+		// game_quiz = game.scorm_helper.getQuizResultPrefix();
+		game_quiz = game.scorm_helper.getQuizResult(["game_slide_3","game_slide_4","game_slide_5"]);
+		console.log(game_quiz);
 		if(game_quiz["score"] == 0){
 			score = 0;
 		}else{
 			console.log(game_quiz["score"]);
 			console.log(game.total_soal);
 			console.log(game.max_score);
-			score = parseInt(game_quiz["score"])/parseInt(game.total_soal)*game.max_score;
+			score = parseInt(game_quiz["score"])/parseInt(game_quiz["total_soal"])*game.max_score;
 		}
 	}
 
@@ -196,17 +204,19 @@ ResultGame.prototype.setResult = function() {
 ResultGame.prototype.setVideo = function($clone, src) {
     // console.log("setVideo");
     var $this = this;
+    $(".img_video").show();
     // console.log($("#video").find("source"));
     // console.log($this.video_path+src);
     $("#video").find("source").attr("src",$this.video_path+src);
     // console.log($(".img_video"));
-    $(".img_video").hide();
+    // $(".img_video").hide();
     $("#video")[0].load();
 
     game.showLoading();
     // alert("test");
     $("#video").on("canplay",function(e){
     	game.hideLoading();
+    	$(".img_video").hide();
         $this.playVideo();
 
         $("#video").on("ended",function(e){
